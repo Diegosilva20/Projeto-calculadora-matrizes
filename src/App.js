@@ -72,8 +72,24 @@ function Home() {
     );
   };
 
-  const formatMatrix = (matrix) => {
-    return `[${matrix.map(row => `[${row.map(val => Number(val).toFixed(2)).join(', ')}]`).join(', ')}]`;
+  const isRowEchelonForm = (matrix) => {
+    let lastPivotCol = -1;
+    for (let i = 0; i < matrix.length; i++) {
+      let pivotCol = -1;
+      for (let j = 0; j < matrix[i].length; j++) {
+        if (Math.abs(matrix[i][j]) > 1e-10) {
+          pivotCol = j;
+          break;
+        }
+      }
+      if (pivotCol === -1) continue;
+      if (pivotCol <= lastPivotCol) return false;
+      for (let k = i + 1; k < matrix.length; k++) {
+        if (Math.abs(matrix[k][pivotCol]) > 1e-10) return false;
+      }
+      lastPivotCol = pivotCol;
+    }
+    return true;
   };
 
   const toArray = (result) => {
@@ -132,32 +148,55 @@ function Home() {
         let m = math.matrix(parsedA);
         let steps = [];
         let n = size;
-        steps.push(`<strong>Matriz inicial</strong>: ${formatMatrix(m.toArray())}`);
+
+        if (isRowEchelonForm(parsedA)) {
+          steps.push({
+            description: 'A matriz já está na forma escalonada por linhas.',
+            matrix: parsedA.map(row => row.map(val => Number(val.toFixed(2))))
+          });
+          setResult(parsedA.map(row => row.map(val => Number(val.toFixed(2)))));
+          setSteps(steps);
+          return;
+        }
+
+        steps.push({
+          description: 'Matriz inicial',
+          matrix: m.toArray().map(row => row.map(val => Number(val.toFixed(2))))
+        });
+
         for (let i = 0; i < n; i++) {
           let pivot = m.get([i, i]);
           if (Math.abs(pivot) < 1e-10) {
             setError('Matriz não pode ser reduzida (pivô zero ou muito pequeno).');
             return;
           }
-          steps.push(
-            `<strong>Tornar o pivô [${i + 1},${i + 1}] igual a 1</strong>: ` +
-            `Dividir a Linha ${i + 1} por ${pivot.toFixed(2)} (pivô).`
-          );
-          for (let j = i; j < n; j++) {
-            m.set([i, j], m.get([i, j]) / pivot);
+          if (Math.abs(pivot - 1) > 1e-10) {
+            steps.push({
+              description: `Tornar o pivô [${i + 1},${i + 1}] igual a 1: Dividir a Linha ${i + 1} por ${pivot.toFixed(2)} (pivô).`,
+              matrix: null
+            });
+            for (let j = i; j < n; j++) {
+              m.set([i, j], m.get([i, j]) / pivot);
+            }
+            steps.push({
+              description: 'Nova matriz',
+              matrix: m.toArray().map(row => row.map(val => Number(val.toFixed(2))))
+            });
           }
-          steps.push(`Nova matriz: ${formatMatrix(m.toArray())}`);
           for (let k = i + 1; k < n; k++) {
             let factor = m.get([k, i]);
             if (Math.abs(factor) < 1e-10) continue;
-            steps.push(
-              `<strong>Zerar o elemento [${k + 1},${i + 1}]</strong>: ` +
-              `Subtrair ${factor.toFixed(2)} × Linha ${i + 1} da Linha ${k + 1}.`
-            );
+            steps.push({
+              description: `Zerar o elemento [${k + 1},${i + 1}]: Subtrair ${factor.toFixed(2)} × Linha ${i + 1} da Linha ${k + 1}.`,
+              matrix: null
+            });
             for (let j = i; j < n; j++) {
               m.set([k, j], m.get([k, j]) - factor * m.get([i, j]));
             }
-            steps.push(`Nova matriz: ${formatMatrix(m.toArray())}`);
+            steps.push({
+              description: 'Nova matriz',
+              matrix: m.toArray().map(row => row.map(val => Number(val.toFixed(2))))
+            });
           }
         }
         const resultArray = m.toArray().map(row => row.map(val => Number(val.toFixed(2))));
@@ -209,19 +248,62 @@ function Home() {
     </div>
   );
 
+  const renderMatrixStep = (matrix) => (
+    <div
+      className="grid gap-1 mx-auto max-w-[90vw] justify-center"
+      style={{ gridTemplateColumns: `repeat(${matrix[0].length}, minmax(0, 60px))` }}
+    >
+      {matrix.map((row, i) =>
+        row.map((val, j) => (
+          <div
+            key={`step-matrix-${i}-${j}`}
+            className="bg-gray-200 p-2 rounded text-center text-sm"
+          >
+            {Number(val).toFixed(2)}
+          </div>
+        ))
+      )}
+    </div>
+  );
+
+  const renderResult = () => {
+    if (!result) return null;
+
+    return (
+      <div className="mt-6">
+        <h3 className="font-semibold mb-2 text-sm sm:text-base">Resultado</h3>
+        <div
+          className="grid gap-1 mx-auto max-w-[90vw] justify-center"
+          style={{ gridTemplateColumns: `repeat(${result[0].length}, minmax(0, 60px))` }}
+        >
+          {result.map((row, i) =>
+            row.map((val, j) => (
+              <div
+                key={`result-${i}-${j}`}
+                className="bg-gray-200 p-2 rounded text-center text-sm"
+              >
+                {Number(val).toFixed(2)}
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="p-4 sm:p-6 text-center max-w-4xl mx-auto">
       <Helmet>
         <title>Calculadora de Matrizes - Matrizes+</title>
         <meta
           name="description"
-          content="Realize operações com matrizes como soma, subtração, multiplicação, determinante, inversa, transposição e mais."
+          content="Realize operações com matrizes como soma, subtração, multiplicação, determinante, inversa, transposição, multiplicação por escalar e eliminação de Gauss."
         />
       </Helmet>
 
       <h1 className="text-2xl sm:text-3xl font-bold mb-4">Calculadora de Matrizes</h1>
       <p className="mb-4 text-sm sm:text-base">
-        Realize operações com matrizes como soma, subtração, multiplicação, determinante, inversa, transposição e mais.
+        Realize operações com matrizes como soma, subtração, multiplicação, determinante, inversa, transposição, multiplicação por escalar e eliminação de Gauss.
       </p>
 
       <div className="mb-4">
@@ -278,34 +360,19 @@ function Home() {
 
       {error && <p className="text-red-500 mt-4 font-semibold text-sm">{error}</p>}
 
-      {result && (
-        <div className="mt-6">
-          <h3 className="font-semibold mb-2 text-sm sm:text-base">Resultado</h3>
-          <div
-            className="grid gap-1 mx-auto max-w-[90vw] justify-center"
-            style={{ gridTemplateColumns: `repeat(${result[0].length}, minmax(0, 60px))` }}
-          >
-            {result.map((row, i) =>
-              row.map((val, j) => (
-                <div
-                  key={`result-${i}-${j}`}
-                  className="bg-gray-200 p-2 rounded text-center text-sm"
-                >
-                  {Number(val).toFixed(2)}
-                </div>
-              ))
-            )}
-          </div>
-          {steps.length > 0 && (
-            <div className="mt-4 text-left max-w-md mx-auto">
-              <h3 className="font-semibold mb-2 text-sm sm:text-base">Passos do Cálculo</h3>
-              <ol className="list-decimal pl-5 text-sm sm:text-base">
-                {steps.map((step, i) => (
-                  <li key={i} className="mb-2" dangerouslySetInnerHTML={{ __html: step }} />
-                ))}
-              </ol>
-            </div>
-          )}
+      {renderResult()}
+
+      {steps.length > 0 && (
+        <div className="mt-4 text-left max-w-md mx-auto">
+          <h3 className="font-semibold mb-2 text-sm sm:text-base">Passos do Cálculo</h3>
+          <ol className="list-decimal pl-5 text-sm sm:text-base">
+            {steps.map((step, i) => (
+              <li key={i} className="mb-4">
+                <strong>{step.description}</strong>
+                {step.matrix && renderMatrixStep(step.matrix)}
+              </li>
+            ))}
+          </ol>
         </div>
       )}
 
