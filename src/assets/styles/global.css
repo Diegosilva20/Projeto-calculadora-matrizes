@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 .App {
   text-align: center;
 }
@@ -36,3 +39,8 @@
     transform: rotate(360deg);
   }
 }
+
+.ad-container {
+  min-height: 100px; /* Altura mínima para evitar colapsos */
+  margin: 1rem 0;
+} /*anuncios*/
