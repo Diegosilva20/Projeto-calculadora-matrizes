@@ -65,7 +65,7 @@ const Home = () => {
 
   const renderTutorials = () => (
     <div className="mt-12">
-      <h2 className="text-2xl font-bold mb-6 text-center">Tutoriais de Matrizes</h2>
+      <h2 className="text-2xl font-bold mb-6 text-center">Tutoriais de Matrizes para Iniciantes</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {tutoriais.map((tutorial) => (
           <div key={tutorial.id} className="border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition-shadow">
@@ -84,24 +84,52 @@ const Home = () => {
     </div>
   );
 
+  // Nova seção para conteúdo expandido
+  const renderWhyUseSection = () => (
+    <div className="mt-12">
+      <h2 className="text-2xl font-bold mb-4 text-center">Por que Usar a Calculadora de Matrizes do Matrizes+?</h2>
+      <p className="text-gray-700 mb-4">
+        Nossa calculadora de matrizes online é a ferramenta perfeita para estudantes, professores e profissionais que precisam realizar operações matemáticas complexas de forma rápida e confiável. Com o Matrizes+, você pode calcular a soma, subtração, multiplicação, determinante, inversa, transposição e até a eliminação de Gauss em poucos cliques. 
+      </p>
+      <p className="text-gray-700 mb-4">
+        Além disso, oferecemos tutoriais detalhados para iniciantes e avançados, cobrindo tópicos como o cálculo de determinantes, a inversa de matrizes e a eliminação de Gauss. Seja para estudar álgebra linear ou resolver problemas práticos, nossa calculadora é intuitiva, gratuita e acessível em qualquer dispositivo. Experimente agora e simplifique seus cálculos!
+      </p>
+      <p className="text-gray-700 mb-4">
+        <Link to="/tutorial/1" className="text-blue-600 hover:underline">Aprenda a calcular determinantes</Link> ou explore outras operações com matrizes em nossa calculadora!
+      </p>
+    </div>
+  );
+
   return (
     <div className="p-4 sm:p-6 text-center max-w-4xl mx-auto">
       <Helmet>
-        <title>Calculadora de Matrizes - Matrizes+</title>
-        <meta name="description" content="Use nossa calculadora de matrizes para soma, subtração, multiplicação, determinante, inversa e mais. Explore tutoriais de álgebra linear." />
+        <title>Calculadora de Matrizes Grátis Online - Matrizes+</title>
+        <meta name="description" content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa e mais. Explore tutoriais de álgebra linear!" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://projeto-calculadora-matrizes.vercel.app/" />
-        <meta property="og:title" content="Calculadora de Matrizes - Matrizes+" />
-        <meta property="og:description" content="Use nossa calculadora de matrizes para soma, subtração, multiplicação, determinante, inversa e mais. Explore tutoriais de álgebra linear." />
+        <meta property="og:title" content="Calculadora de Matrizes Grátis Online - Matrizes+" />
+        <meta property="og:description" content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa e mais. Explore tutoriais de álgebra linear!" />
         <meta property="og:url" content="https://projeto-calculadora-matrizes.vercel.app/" />
         <meta property="og:image" content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Calculadora de Matrizes - Matrizes+" />
-        <meta name="twitter:description" content="Use nossa calculadora de matrizes para soma, subtração, multiplicação, determinante, inversa e mais. Explore tutoriais de álgebra linear." />
+        <meta name="twitter:title" content="Calculadora de Matrizes Grátis Online - Matrizes+" />
+        <meta name="twitter:description" content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa e mais. Explore tutoriais de álgebra linear!" />
         <meta name="twitter:image" content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg" />
+        {/* Schema Markup para ferramenta */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Matrizes+ Calculadora de Matrizes",
+            "url": "https://projeto-calculadora-matrizes.vercel.app/",
+            "description": "Uma calculadora online gratuita para realizar operações com matrizes, incluindo soma, subtração, multiplicação, determinante e mais.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "All"
+          })}
+        </script>
       </Helmet>
 
-      <h1 className="text-2xl sm:text-3xl font-bold mb-4">Calculadora de Matrizes</h1>
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4">Calculadora de Matrizes Grátis Online - Matrizes+</h1>
       <p className="mb-4 text-sm sm:text-base">Realize operações com matrizes como soma, subtração, multiplicação, determinante, inversa, transposição, multiplicação por escalar e eliminação de Gauss.</p>
 
       <div className="mb-4">
@@ -145,7 +173,7 @@ const Home = () => {
 
       {steps.length > 0 && (
         <div className="mt-4 text-left max-w-md mx-auto">
-          <h3 className="font-semibold mb-2 text-sm sm:text-base">Passos do Cálculo</h3>
+          <h2 className="font-semibold mb-2 text-sm sm:text-base">Passos do Cálculo</h2>
           <ol className="list-decimal pl-5 text-sm sm:text-base">
             {steps.map((step, i) => (
               <li key={i} className="mb-4">
@@ -157,20 +185,18 @@ const Home = () => {
         </div>
       )}
 
+      {renderWhyUseSection()}
       {renderTutorials()}
 
-      {/* Bloco de anúncios automáticos */}
       <div className="my-8 ad-container">
         <ins
           className="adsbygoogle"
           style={{ display: "block" }}
           data-ad-client="ca-pub-6065257343138670"
-          data-ad-slot="1234567890" // Substitua pelo novo slot do AdSense
+          data-ad-slot="1234567890"
           data-ad-format="auto"
           data-full-width-responsive="true"
         ></ins>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" crossorigin="anonymous"></script>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
     </div>
   );
