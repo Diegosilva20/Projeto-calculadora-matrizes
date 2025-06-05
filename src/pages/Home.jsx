@@ -147,8 +147,13 @@ const Home = () => {
               "@type": "Offer",
               "price": "0",
               "priceCurrency": "USD",
-              "availability": "https://schema.org/InStock"
-            }
+              "availability": "https://schema.org/InStock",
+            },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://projeto-calculadora-matrizes.vercel.app/calculadora{search_term_string}",
+              "query-input": "required name=search_term_string",
+            },
           })}
         </script>
       </Helmet>

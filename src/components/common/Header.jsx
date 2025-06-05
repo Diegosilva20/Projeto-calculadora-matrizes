@@ -1,17 +1,15 @@
-// src/components/common/Header.jsx
-import { Link } from "react-router-dom";
-
-const Header = () => (
-  <header>
-    <nav className="bg-white shadow p-4 flex justify-between">
-      <h1 className="font-bold text-lg">Matrizes+</h1>
-      <div className="space-x-4">
-        <Link to="/" className="hover:underline">
-          Início
+function Header() {
+  return (
+    <header className="bg-blue-600 text-white p-4">
+      <nav aria-label="Navegação principal" className="container mx-auto flex justify-between items-center">
+        <Link to="/" className="text-xl font-bold" aria-label="Página inicial do Matrizes+">
+          Matrizes+
         </Link>
-      </div>
-    </nav>
-  </header>
-);
-
-export default Header;
+        <div className="space-x-4">
+          <Link to="/sobre" aria-label="Sobre o Matrizes+">Sobre</Link>
+          <Link to="/contato" aria-label="Contato">Contato</Link>
+        </div>
+      </nav>
+    </header>
+  );
+}
