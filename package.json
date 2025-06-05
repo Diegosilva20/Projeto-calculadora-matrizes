@@ -35,16 +35,8 @@
     ]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
@@ -52,11 +44,7 @@
     "tailwindcss": "^3.4.1"
   },
   "reactSnap": {
-    "puppeteerArgs": [
-      "--no-sandbox"
-    ],
-    "puppeteer": {
-      "executablePath": "/usr/bin/chromium-browser"
-    }
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
+    "skipThirdPartyRequests": true
   }
 }
