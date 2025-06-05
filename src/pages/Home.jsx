@@ -19,6 +19,7 @@ const Home = () => {
     { id: 1, title: "O que é um Determinante?", description: "Aprenda o que é um determinante e como calculá-lo em matrizes 2x2." },
     { id: 2, title: "Como Encontrar a Inversa de uma Matriz", description: "Descubra os passos para calcular a inversa de uma matriz 2x2." },
     { id: 3, title: "Eliminação de Gauss Explicada", description: "Entenda como usar a eliminação de Gauss para resolver sistemas lineares." },
+    { id: 4, title: "O que é Transposição de Matrizes?", description: "Aprenda como transpor uma matriz com exemplos práticos." },
   ];
 
   const handleSizeChange = (e) => {

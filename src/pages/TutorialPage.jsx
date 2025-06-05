@@ -25,17 +25,30 @@ function TutorialPage() {
               </li>
             </ol>
           </nav>
-          <h1 className="text-3xl font-bold mb-4">O que é um Determinante? Guia Completo</h1>
+          <h1 className="text-3xl font-bold mb-4">
+            O que é um Determinante? Guia Completo
+          </h1>
           <p className="mb-4">
-            O determinante é um valor escalar associado a uma matriz quadrada que fornece informações cruciais, como se a matriz é invertível ou como resolver sistemas lineares. É amplamente utilizado em álgebra linear, física e engenharia. Neste tutorial, exploraremos o conceito, os métodos de cálculo e exemplos práticos.
+            O determinante é um valor escalar associado a uma matriz quadrada
+            que fornece informações cruciais, como se a matriz é invertível ou
+            como resolver sistemas lineares. É amplamente utilizado em álgebra
+            linear, física e engenharia. Neste tutorial, exploraremos o
+            conceito, os métodos de cálculo e exemplos práticos.
           </p>
 
-          <h2 className="text-2xl font-semibold mb-2 mt-6">O que é um Determinante?</h2>
+          <h2 className="text-2xl font-semibold mb-2 mt-6">
+            O que é um Determinante?
+          </h2>
           <p className="mb-4">
-            O determinante de uma matriz indica propriedades como a área ou volume de transformações geométricas. Se o determinante for zero, a matriz não tem inversa, o que é essencial para resolver equações lineares.
+            O determinante de uma matriz indica propriedades como a área ou
+            volume de transformações geométricas. Se o determinante for zero, a
+            matriz não tem inversa, o que é essencial para resolver equações
+            lineares.
           </p>
 
-          <h2 className="text-2xl font-semibold mb-2 mt-6">Cálculo para Matriz 2x2</h2>
+          <h2 className="text-2xl font-semibold mb-2 mt-6">
+            Cálculo para Matriz 2x2
+          </h2>
           <p className="mb-4">
             Para uma matriz 2x2 da forma:
             <pre className="bg-gray-100 p-2 rounded my-2">[[a, b], [c, d]]</pre>
@@ -51,23 +64,37 @@ function TutorialPage() {
             </Link>
           </p>
 
-          <h2 className="text-2xl font-semibold mb-2 mt-6">Cálculo para Matriz 3x3</h2>
+          <h2 className="text-2xl font-semibold mb-2 mt-6">
+            Cálculo para Matriz 3x3
+          </h2>
           <p className="mb-4">
             Para uma matriz 3x3 da forma:
-            <pre className="bg-gray-100 p-2 rounded my-2">[[a, b, c], [d, e, f], [g, h, i]]</pre>
-            Use a Regra de Sarrus: <code>det(A) = a(ei - fh) - b(di - fg) + c(dh - eg)</code>.
+            <pre className="bg-gray-100 p-2 rounded my-2">
+              [[a, b, c], [d, e, f], [g, h, i]]
+            </pre>
+            Use a Regra de Sarrus:{" "}
+            <code>det(A) = a(ei - fh) - b(di - fg) + c(dh - eg)</code>.
           </p>
           <h3 className="text-xl font-semibold mb-2">Exemplo 2: Matriz 3x3</h3>
           <p className="mb-4">
             Matriz:
-            <pre className="bg-gray-100 p-2 rounded my-2">[[1, 2, 3], [4, 5, 6], [7, 8, 9]]</pre>
-            Cálculo: <code>1(5*9 - 6*8) - 2(4*9 - 6*7) + 3(4*8 - 5*7) = 1(45-48) - 2(36-42) + 3(32-35) = -3 + 12 - 3 = 6</code>.
+            <pre className="bg-gray-100 p-2 rounded my-2">
+              [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+            </pre>
+            Cálculo:{" "}
+            <code>
+              1(5*9 - 6*8) - 2(4*9 - 6*7) + 3(4*8 - 5*7) = 1(45-48) - 2(36-42) +
+              3(32-35) = -3 + 12 - 3 = 6
+            </code>
+            .
             <Link to="/" className="text-blue-600 hover:underline">
               Experimente na calculadora!
             </Link>
           </p>
 
-          <h2 className="text-2xl font-semibold mb-2 mt-6">Aplicações Práticas</h2>
+          <h2 className="text-2xl font-semibold mb-2 mt-6">
+            Aplicações Práticas
+          </h2>
           <ul className="list-disc pl-5 mb-4">
             <li>Verificar invertibilidade de matrizes.</li>
             <li>Resolver sistemas lineares com a regra de Cramer.</li>
@@ -99,23 +126,36 @@ function TutorialPage() {
               </li>
               <li className="mx-2">/</li>
               <li>
-                <span className="text-gray-500">Como Encontrar a Inversa de uma Matriz</span>
+                <span className="text-gray-500">
+                  Como Encontrar a Inversa de uma Matriz
+                </span>
               </li>
             </ol>
           </nav>
-          <h1 className="text-3xl font-bold mb-4">Como Encontrar a Inversa de uma Matriz 2x2</h1>
+          <h1 className="text-3xl font-bold mb-4">
+            Como Encontrar a Inversa de uma Matriz 2x2
+          </h1>
           <p className="mb-4">
-            A inversa de uma matriz A (A⁻¹) é aquela que, quando multiplicada por A, resulta na matriz identidade (I). Este conceito é fundamental para resolver sistemas lineares e tem aplicações em diversas áreas.
+            A inversa de uma matriz A (A⁻¹) é aquela que, quando multiplicada
+            por A, resulta na matriz identidade (I). Este conceito é fundamental
+            para resolver sistemas lineares e tem aplicações em diversas áreas.
           </p>
 
-          <h2 className="text-2xl font-semibold mb-2 mt-6">Passos para Calcular a Inversa</h2>
+          <h2 className="text-2xl font-semibold mb-2 mt-6">
+            Passos para Calcular a Inversa
+          </h2>
           <ol className="list-decimal pl-5 mb-4">
             <li>Calcule o determinante (deve ser diferente de zero).</li>
-            <li>Troque os elementos da diagonal principal e inverta os sinais dos outros.</li>
+            <li>
+              Troque os elementos da diagonal principal e inverta os sinais dos
+              outros.
+            </li>
             <li>Multiplique por 1/determinante.</li>
           </ol>
 
-          <h2 className="text-2xl font-semibold mb-2 mt-6">Fórmula para Matriz 2x2</h2>
+          <h2 className="text-2xl font-semibold mb-2 mt-6">
+            Fórmula para Matriz 2x2
+          </h2>
           <p className="mb-4">
             Para uma matriz:
             <pre className="bg-gray-100 p-2 rounded my-2">[[a, b], [c, d]]</pre>
@@ -126,7 +166,11 @@ function TutorialPage() {
             Matriz:
             <pre className="bg-gray-100 p-2 rounded my-2">[[4, 7], [2, 6]]</pre>
             Determinante: <code>(4 * 6) - (7 * 2) = 24 - 14 = 10</code>.
-            Inversa: <code>(1 / 10) * [[6, -7], [-2, 4]] = [[0.6, -0.7], [-0.2, 0.4]]</code>.
+            Inversa:{" "}
+            <code>
+              (1 / 10) * [[6, -7], [-2, 4]] = [[0.6, -0.7], [-0.2, 0.4]]
+            </code>
+            .
             <Link to="/" className="text-blue-600 hover:underline">
               Teste na calculadora!
             </Link>
@@ -167,23 +211,34 @@ function TutorialPage() {
               </li>
             </ol>
           </nav>
-          <h1 className="text-3xl font-bold mb-4">Eliminação de Gauss Explicada</h1>
+          <h1 className="text-3xl font-bold mb-4">
+            Eliminação de Gauss Explicada
+          </h1>
           <p className="mb-4">
-            A eliminação de Gauss é um método algébrico para transformar uma matriz em forma escalonada, facilitando a resolução de sistemas lineares e outras análises.
+            A eliminação de Gauss é um método algébrico para transformar uma
+            matriz em forma escalonada, facilitando a resolução de sistemas
+            lineares e outras análises.
           </p>
 
           <h2 className="text-2xl font-semibold mb-2 mt-6">Passos do Método</h2>
           <ol className="list-decimal pl-5 mb-4">
-            <li>Escolha um pivô e use operações de linha para zerar elementos abaixo dele.</li>
+            <li>
+              Escolha um pivô e use operações de linha para zerar elementos
+              abaixo dele.
+            </li>
             <li>Repita para cada coluna até a forma escalonada.</li>
           </ol>
 
           <h2 className="text-2xl font-semibold mb-2 mt-6">Exemplo Prático</h2>
           <p className="mb-4">
             Matriz:
-            <pre className="bg-gray-100 p-2 rounded my-2">[[2, 1, 5], [4, 3, 7]]</pre>
+            <pre className="bg-gray-100 p-2 rounded my-2">
+              [[2, 1, 5], [4, 3, 7]]
+            </pre>
             Passo 1: Subtrair 2 * linha 1 da linha 2:
-            <pre className="bg-gray-100 p-2 rounded my-2">[[2, 1, 5], [0, 1, -3]]</pre>
+            <pre className="bg-gray-100 p-2 rounded my-2">
+              [[2, 1, 5], [0, 1, -3]]
+            </pre>
             <Link to="/" className="text-blue-600 hover:underline">
               Teste na calculadora!
             </Link>
@@ -204,6 +259,52 @@ function TutorialPage() {
         </div>
       ),
     },
+    {
+      id: 4,
+      title: "O que é Transposição de Matrizes?",
+      description: "Aprenda como transpor uma matriz com exemplos práticos.",
+      content: (
+        <div className="p-6 max-w-4xl mx-auto">
+          <nav className="text-sm mb-4" aria-label="Breadcrumb">
+            <ol className="list-none p-0 inline-flex">
+              <li>
+                <Link to="/" className="text-blue-600 hover:underline">
+                  Home
+                </Link>
+              </li>
+              <li className="mx-2">/</li>
+              <li>
+                <span className="text-gray-500">Transposição de Matrizes</span>
+              </li>
+            </ol>
+          </nav>
+          <h1 className="text-3xl font-bold mb-4">
+            O que é Transposição de Matrizes?
+          </h1>
+          <p className="mb-4">
+            A transposição de uma matriz consiste em inverter suas linhas e
+            colunas, criando uma nova matriz. É uma operação fundamental em
+            álgebra linear.
+          </p>
+          <h2 className="text-2xl font-semibold mb-2 mt-6">Exemplo Prático</h2>
+          <p className="mb-4">
+            Matriz original:
+            <pre className="bg-gray-100 p-2 rounded my-2">[[1, 2], [3, 4]]</pre>
+            Transposta:
+            <pre className="bg-gray-100 p-2 rounded my-2">[[1, 3], [2, 4]]</pre>
+            <Link to="/" className="text-blue-600 hover:underline">
+              Teste na calculadora!
+            </Link>
+          </p>
+          <Link
+            to="/"
+            className="text-blue-600 hover:underline mt-6 inline-block"
+          >
+            Voltar para a página inicial
+          </Link>
+        </div>
+      ),
+    },
   ];
 
   const tutorial = tutoriais.find((t) => t.id === parseInt(id));
@@ -217,9 +318,15 @@ function TutorialPage() {
             name="description"
             content="O tutorial solicitado não foi encontrado no Matrizes+. Volte para a página inicial e explore nossos tutoriais de álgebra linear."
           />
-          <meta name="keywords" content="tutorial não encontrado, matrizes, álgebra linear" />
+          <meta
+            name="keywords"
+            content="tutorial não encontrado, matrizes, álgebra linear"
+          />
           <meta name="robots" content="noindex" />
-          <link rel="canonical" href="https://projeto-calculadora-matrizes.vercel.app/" />
+          <link
+            rel="canonical"
+            href="https://projeto-calculadora-matrizes.vercel.app/"
+          />
         </Helmet>
         <h1 className="text-3xl font-bold mb-4">Tutorial Não Encontrado</h1>
         <p>Desculpe, o tutorial solicitado não existe.</p>
@@ -240,14 +347,27 @@ function TutorialPage() {
         />
         <meta
           name="keywords"
-          content={["matrizes", "álgebra linear", "calculadora de matrizes", tutorial.id === 1 ? "determinante" : tutorial.id === 2 ? "inversa" : "eliminação de gauss", tutorial.title.toLowerCase().replace("?", "")].join(", ")}
+          content={[
+            "matrizes",
+            "álgebra linear",
+            "calculadora de matrizes",
+            tutorial.id === 1
+              ? "determinante"
+              : tutorial.id === 2
+              ? "inversa"
+              : "eliminação de gauss",
+            tutorial.title.toLowerCase().replace("?", ""),
+          ].join(", ")}
         />
         <meta name="robots" content="index, follow" />
         <link
           rel="canonical"
           href={`https://projeto-calculadora-matrizes.vercel.app/tutorial/${id}`}
         />
-        <meta property="og:title" content={`${tutorial.title} | Tutoriais de Matrizes - Matrizes+`} />
+        <meta
+          property="og:title"
+          content={`${tutorial.title} | Tutoriais de Matrizes - Matrizes+`}
+        />
         <meta
           property="og:description"
           content={`${tutorial.description} Acesse exemplos práticos e use nossa calculadora online para matrizes!`}
@@ -277,15 +397,25 @@ function TutorialPage() {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "HowTo",
-            "name": tutorial.title,
-            "description": tutorial.description,
-            "step": [
-              { "@type": "HowToStep", "text": "Leia o tutorial passo a passo." },
-              { "@type": "HowToStep", "text": "Siga os exemplos práticos fornecidos." },
-              { "@type": "HowToStep", "text": "Use nossa calculadora para praticar os cálculos." },
+            name: tutorial.title,
+            description: tutorial.description,
+            step: [
+              { "@type": "HowToStep", text: "Leia o tutorial passo a passo." },
+              {
+                "@type": "HowToStep",
+                text: "Siga os exemplos práticos fornecidos.",
+              },
+              {
+                "@type": "HowToStep",
+                text: "Use nossa calculadora para praticar os cálculos.",
+              },
             ],
-            "supply": { "@type": "HowToSupply", "name": "Calculadora de Matrizes" },
-            "estimatedCost": { "@type": "MonetaryAmount", "value": "0", "currency": "USD" },
+            supply: { "@type": "HowToSupply", name: "Calculadora de Matrizes" },
+            estimatedCost: {
+              "@type": "MonetaryAmount",
+              value: "0",
+              currency: "USD",
+            },
           })}
         </script>
       </Helmet>
