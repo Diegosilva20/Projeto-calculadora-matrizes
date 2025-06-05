@@ -1,45 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://projeto-calculadora-matrizes.vercel.app/</loc>
-    <lastmod>2025-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://projeto-calculadora-matrizes.vercel.app/tutorial/1</loc>
-    <lastmod>2025-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projeto-calculadora-matrizes.vercel.app/tutorial/2</loc>
-    <lastmod>2025-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projeto-calculadora-matrizes.vercel.app/tutorial/3</loc>
-    <lastmod>2025-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projeto-calculadora-matrizes.vercel.app/contato</loc>
-    <lastmod>2025-05-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://projeto-calculadora-matrizes.vercel.app/politica</loc>
-    <lastmod>2025-05-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://projeto-calculadora-matrizes.vercel.app/termos</loc>
-    <lastmod>2025-05-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-</urlset>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Matrizes+ - Calculadora de Matrizes e Tutoriais</title>
+  <meta
+    name="description"
+    content="Use a calculadora de matrizes grátis online do Matrizes+ para soma, subtração, multiplicação, determinante, inversa, transposição e eliminação de Gauss. Explore tutoriais de álgebra linear!"
+  />
+  <meta
+    name="keywords"
+    content="calculadora de matrizes, álgebra linear, determinante, inversa, transposição, eliminação de Gauss, tutoriais de matemática"
+  />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Matrizes+ - Calculadora de Matrizes e Tutoriais" />
+  <meta
+    property="og:description"
+    content="Use a calculadora de matrizes grátis online do Matrizes+ para soma, subtração, multiplicação, determinante, inversa, transposição e eliminação de Gauss. Explore tutoriais de álgebra linear!"
+  />
+  <meta property="og:url" content="https://projeto-calculadora-matrizes.vercel.app/" />
+  <meta
+    property="og:image"
+    content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg"
+  />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" crossorigin="anonymous"></script>
+  <script defer src="/static/js/bundle.js"></script>
+</head>
+<body>
+  <noscript>
+    <h1>Calculadora de Matrizes Grátis Online - Matrizes+</h1>
+    <p>
+      Desculpe, você precisa habilitar o JavaScript para usar esta aplicação. No entanto, você pode visitar nossa página inicial em
+      <a href="https://projeto-calculadora-matrizes.vercel.app/">Matrizes+</a>
+      para aprender mais sobre operações com matrizes e acessar nossos tutoriais de álgebra linear.
+    </p>
+  </noscript>
+  <div id="root"></div>
+</body>
+</html>

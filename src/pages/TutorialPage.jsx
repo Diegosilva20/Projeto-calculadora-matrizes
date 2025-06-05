@@ -7,99 +7,142 @@ function TutorialPage() {
   const tutoriais = [
     {
       id: 1,
-      title: "O que é um Determinante?",
-      description: "Aprenda o que é um determinante e como calculá-lo em matrizes 2x2 e 3x3.",
+      title: "O que é um Determinante? Guia Completo",
+      description:
+        "Aprenda o que é um determinante, como calculá-lo em matrizes 2x2 e 3x3, e suas aplicações práticas em álgebra linear.",
       content: (
-        <div>
-          <h1 className="text-2xl font-bold mb-4">O que é um Determinante? Guia Completo</h1>
+        <div className="p-6 max-w-4xl mx-auto">
+          <nav className="text-sm mb-4" aria-label="Breadcrumb">
+            <ol className="list-none p-0 inline-flex">
+              <li>
+                <Link to="/" className="text-blue-600 hover:underline">
+                  Home
+                </Link>
+              </li>
+              <li className="mx-2">/</li>
+              <li>
+                <span className="text-gray-500">O que é um Determinante?</span>
+              </li>
+            </ol>
+          </nav>
+          <h1 className="text-3xl font-bold mb-4">O que é um Determinante? Guia Completo</h1>
           <p className="mb-4">
-            O determinante é um valor escalar associado a uma matriz quadrada que revela propriedades importantes, como a existência de uma inversa ou a solução de sistemas lineares. Ele é amplamente utilizado em álgebra linear e tem aplicações em física, engenharia e computação. Neste tutorial, você aprenderá como calcular o determinante de matrizes 2x2 e 3x3 com exemplos práticos.
+            O determinante é um valor escalar associado a uma matriz quadrada que fornece informações cruciais, como se a matriz é invertível ou como resolver sistemas lineares. É amplamente utilizado em álgebra linear, física e engenharia. Neste tutorial, exploraremos o conceito, os métodos de cálculo e exemplos práticos.
           </p>
-          <h2 className="text-xl font-semibold mb-2">Como Calcular o Determinante (Matriz 2x2)</h2>
+
+          <h2 className="text-2xl font-semibold mb-2 mt-6">O que é um Determinante?</h2>
+          <p className="mb-4">
+            O determinante de uma matriz indica propriedades como a área ou volume de transformações geométricas. Se o determinante for zero, a matriz não tem inversa, o que é essencial para resolver equações lineares.
+          </p>
+
+          <h2 className="text-2xl font-semibold mb-2 mt-6">Cálculo para Matriz 2x2</h2>
           <p className="mb-4">
             Para uma matriz 2x2 da forma:
             <pre className="bg-gray-100 p-2 rounded my-2">[[a, b], [c, d]]</pre>
-            O determinante é calculado pela fórmula: <code>det(A) = ad - bc</code>.
+            A fórmula é: <code>det(A) = ad - bc</code>.
           </p>
-          <h3 className="text-lg font-semibold mb-2">Exemplo 1: Matriz 2x2</h3>
+          <h3 className="text-xl font-semibold mb-2">Exemplo 1: Matriz 2x2</h3>
           <p className="mb-4">
-            Considere a matriz:
+            Matriz:
             <pre className="bg-gray-100 p-2 rounded my-2">[[1, 2], [3, 4]]</pre>
-            O determinante é: <code>det(A) = (1 * 4) - (2 * 3) = 4 - 6 = -2</code>.
+            Cálculo: <code>(1 * 4) - (2 * 3) = 4 - 6 = -2</code>.
+            <Link to="/" className="text-blue-600 hover:underline">
+              Teste na calculadora!
+            </Link>
           </p>
-          <h3 className="text-lg font-semibold mb-2">Exemplo 2: Matriz 2x2</h3>
-          <p className="mb-4">
-            Para a matriz:
-            <pre className="bg-gray-100 p-2 rounded my-2">[[5, 3], [2, 1]]</pre>
-            O determinante é: <code>det(A) = (5 * 1) - (3 * 2) = 5 - 6 = -1</code>.
-          </p>
-          <h2 className="text-xl font-semibold mb-2">Como Calcular o Determinante (Matriz 3x3)</h2>
+
+          <h2 className="text-2xl font-semibold mb-2 mt-6">Cálculo para Matriz 3x3</h2>
           <p className="mb-4">
             Para uma matriz 3x3 da forma:
             <pre className="bg-gray-100 p-2 rounded my-2">[[a, b, c], [d, e, f], [g, h, i]]</pre>
-            O determinante é calculado usando a Regra de Sarrus ou o método dos cofatores. Pela Regra de Sarrus:
-            <code>det(A) = a(ei - fh) - b(di - fg) + c(dh - eg)</code>.
+            Use a Regra de Sarrus: <code>det(A) = a(ei - fh) - b(di - fg) + c(dh - eg)</code>.
           </p>
-          <h3 className="text-lg font-semibold mb-2">Exemplo: Matriz 3x3</h3>
+          <h3 className="text-xl font-semibold mb-2">Exemplo 2: Matriz 3x3</h3>
           <p className="mb-4">
-            Considere a matriz:
+            Matriz:
             <pre className="bg-gray-100 p-2 rounded my-2">[[1, 2, 3], [4, 5, 6], [7, 8, 9]]</pre>
-            O determinante é: <code>det(A) = 1(5*9 - 6*8) - 2(4*9 - 6*7) + 3(4*8 - 5*7) = 1(45-48) - 2(36-42) + 3(32-35) = -3 + 12 - 3 = 6</code>.
+            Cálculo: <code>1(5*9 - 6*8) - 2(4*9 - 6*7) + 3(4*8 - 5*7) = 1(45-48) - 2(36-42) + 3(32-35) = -3 + 12 - 3 = 6</code>.
+            <Link to="/" className="text-blue-600 hover:underline">
+              Experimente na calculadora!
+            </Link>
           </p>
-          <h2 className="text-xl font-semibold mb-2">Aplicações do Determinante</h2>
+
+          <h2 className="text-2xl font-semibold mb-2 mt-6">Aplicações Práticas</h2>
           <ul className="list-disc pl-5 mb-4">
-            <li>Verificar se uma matriz é invertível (det ≠ 0).</li>
-            <li>Resolver sistemas lineares usando a regra de Cramer.</li>
-            <li>Calcular áreas de paralelogramos em geometria.</li>
+            <li>Verificar invertibilidade de matrizes.</li>
+            <li>Resolver sistemas lineares com a regra de Cramer.</li>
+            <li>Calcular áreas em geometria.</li>
           </ul>
           <p className="mb-4">
-            Quer praticar? Use nossa <Link to="/" className="text-blue-600 hover:underline">calculadora de matrizes grátis</Link> para calcular determinantes de matrizes 2x2, 3x3 e até 4x4!
+            Quer aprender mais? Confira nosso tutorial sobre{" "}
+            <Link to="/tutorial/2" className="text-blue-600 hover:underline">
+              Como Encontrar a Inversa de uma Matriz
+            </Link>
+            .
           </p>
         </div>
       ),
     },
     {
       id: 2,
-      title: "Como Encontrar a Inversa de uma Matriz",
-      description: "Descubra os passos para calcular a inversa de uma matriz 2x2.",
+      title: "Como Encontrar a Inversa de uma Matriz 2x2",
+      description:
+        "Descubra os passos para calcular a inversa de uma matriz 2x2 com exemplos práticos e aplicações em álgebra linear.",
       content: (
-        <div>
-          <h1 className="text-2xl font-bold mb-4">Como Encontrar a Inversa de uma Matriz 2x2</h1>
+        <div className="p-6 max-w-4xl mx-auto">
+          <nav className="text-sm mb-4" aria-label="Breadcrumb">
+            <ol className="list-none p-0 inline-flex">
+              <li>
+                <Link to="/" className="text-blue-600 hover:underline">
+                  Home
+                </Link>
+              </li>
+              <li className="mx-2">/</li>
+              <li>
+                <span className="text-gray-500">Como Encontrar a Inversa de uma Matriz</span>
+              </li>
+            </ol>
+          </nav>
+          <h1 className="text-3xl font-bold mb-4">Como Encontrar a Inversa de uma Matriz 2x2</h1>
           <p className="mb-4">
-            A inversa de uma matriz A é uma matriz A⁻¹ que, quando multiplicada por A, resulta na matriz identidade (I). Ou seja, A * A⁻¹ = I. A inversa só existe se o determinante de A for diferente de zero.
+            A inversa de uma matriz A (A⁻¹) é aquela que, quando multiplicada por A, resulta na matriz identidade (I). Este conceito é fundamental para resolver sistemas lineares e tem aplicações em diversas áreas.
           </p>
-          <h2 className="text-xl font-semibold mb-2">Passos para Matriz 2x2</h2>
+
+          <h2 className="text-2xl font-semibold mb-2 mt-6">Passos para Calcular a Inversa</h2>
           <ol className="list-decimal pl-5 mb-4">
-            <li>Calcule o determinante da matriz.</li>
-            <li>Se det ≠ 0, troque os elementos da diagonal principal (a e d) e inverta o sinal dos elementos fora da diagonal (b e c).</li>
-            <li>Multiplique a matriz resultante por 1/determinante.</li>
+            <li>Calcule o determinante (deve ser diferente de zero).</li>
+            <li>Troque os elementos da diagonal principal e inverta os sinais dos outros.</li>
+            <li>Multiplique por 1/determinante.</li>
           </ol>
-          <h2 className="text-xl font-semibold mb-2">Fórmula</h2>
+
+          <h2 className="text-2xl font-semibold mb-2 mt-6">Fórmula para Matriz 2x2</h2>
           <p className="mb-4">
             Para uma matriz:
             <pre className="bg-gray-100 p-2 rounded my-2">[[a, b], [c, d]]</pre>
-            A inversa é:
-            <pre className="bg-gray-100 p-2 rounded my-2">(1 / (ad - bc)) * [[d, -b], [-c, a]]</pre>
+            A inversa é: <code>(1 / (ad - bc)) * [[d, -b], [-c, a]]</code>.
           </p>
-          <h3 className="text-lg font-semibold mb-2">Exemplo 1</h3>
+          <h3 className="text-xl font-semibold mb-2">Exemplo 1</h3>
           <p className="mb-4">
-            Para a matriz:
-            <pre className="bg-gray-100 p-2 rounded my-2">[[1, 2], [3, 4]]</pre>
-            1. Determinante: <code>(1 * 4) - (2 * 3) = 4 - 6 = -2</code>. 2. Matriz adjunta: <code>[[4, -2], [-3, 1]]</code>. 3. Inversa: <code>(1 / -2) * [[4, -2], [-3, 1]] = [[-2, 1], [1.5, -0.5]]</code>.
-          </p>
-          <h3 className="text-lg font-semibold mb-2">Exemplo 2</h3>
-          <p className="mb-4">
-            Para a matriz:
+            Matriz:
             <pre className="bg-gray-100 p-2 rounded my-2">[[4, 7], [2, 6]]</pre>
-            1. Determinante: <code>(4 * 6) - (7 * 2) = 24 - 14 = 10</code>. 2. Matriz adjunta: <code>[[6, -7], [-2, 4]]</code>. 3. Inversa: <code>(1 / 10) * [[6, -7], [-2, 4]] = [[0.6, -0.7], [-0.2, 0.4]]</code>.
+            Determinante: <code>(4 * 6) - (7 * 2) = 24 - 14 = 10</code>.
+            Inversa: <code>(1 / 10) * [[6, -7], [-2, 4]] = [[0.6, -0.7], [-0.2, 0.4]]</code>.
+            <Link to="/" className="text-blue-600 hover:underline">
+              Teste na calculadora!
+            </Link>
           </p>
-          <h2 className="text-xl font-semibold mb-2">Cuidados</h2>
+
+          <h2 className="text-2xl font-semibold mb-2 mt-6">Aplicações</h2>
           <ul className="list-disc pl-5 mb-4">
-            <li>Se o determinante for zero, a matriz não tem inversa.</li>
-            <li>Para matrizes maiores, use métodos como eliminação de Gauss ou cofatores.</li>
+            <li>Resolver equações lineares.</li>
+            <li>Transformações lineares em gráficos.</li>
           </ul>
           <p className="mb-4">
-            Experimente calcular a inversa com nossa <Link to="/" className="text-blue-600 hover:underline">calculadora de matrizes online</Link>!
+            Explore mais com nosso tutorial sobre{" "}
+            <Link to="/tutorial/3" className="text-blue-600 hover:underline">
+              Eliminação de Gauss
+            </Link>
+            .
           </p>
         </div>
       ),
@@ -107,45 +150,56 @@ function TutorialPage() {
     {
       id: 3,
       title: "Eliminação de Gauss Explicada",
-      description: "Entenda como usar a eliminação de Gauss para resolver sistemas lineares.",
+      description:
+        "Entenda como usar a eliminação de Gauss para resolver sistemas lineares e transformar matrizes.",
       content: (
-        <div>
-          <h1 className="text-2xl font-bold mb-4">Eliminação de Gauss Explicada: Resolva Sistemas Lineares</h1>
+        <div className="p-6 max-w-4xl mx-auto">
+          <nav className="text-sm mb-4" aria-label="Breadcrumb">
+            <ol className="list-none p-0 inline-flex">
+              <li>
+                <Link to="/" className="text-blue-600 hover:underline">
+                  Home
+                </Link>
+              </li>
+              <li className="mx-2">/</li>
+              <li>
+                <span className="text-gray-500">Eliminação de Gauss</span>
+              </li>
+            </ol>
+          </nav>
+          <h1 className="text-3xl font-bold mb-4">Eliminação de Gauss Explicada</h1>
           <p className="mb-4">
-            A eliminação de Gauss é um método para transformar uma matriz em sua forma escalonada por linhas, facilitando a resolução de sistemas lineares ou a análise de propriedades da matriz.
+            A eliminação de Gauss é um método algébrico para transformar uma matriz em forma escalonada, facilitando a resolução de sistemas lineares e outras análises.
           </p>
-          <h2 className="text-xl font-semibold mb-2">Passos do Método</h2>
+
+          <h2 className="text-2xl font-semibold mb-2 mt-6">Passos do Método</h2>
           <ol className="list-decimal pl-5 mb-4">
-            <li>Escolha um pivô (o primeiro elemento não nulo de uma coluna).</li>
-            <li>Use operações de linha para zerar os elementos abaixo do pivô, subtraindo múltiplos da linha do pivô.</li>
-            <li>Repita o processo para as próximas colunas até obter a forma escalonada.</li>
+            <li>Escolha um pivô e use operações de linha para zerar elementos abaixo dele.</li>
+            <li>Repita para cada coluna até a forma escalonada.</li>
           </ol>
-          <h3 className="text-lg font-semibold mb-2">Exemplo 1</h3>
+
+          <h2 className="text-2xl font-semibold mb-2 mt-6">Exemplo Prático</h2>
           <p className="mb-4">
-            Para a matriz:
-            <pre className="bg-gray-100 p-2 rounded my-2">[[1, 2], [3, 4]]</pre>
-            Passo 1: Subtrair 3 * linha 1 da linha 2 para zerar o elemento [2,1]:
-            <pre className="bg-gray-100 p-2 rounded my-2">[[1, 2], [0, -2]]</pre>
-            A matriz está na forma escalonada.
+            Matriz:
+            <pre className="bg-gray-100 p-2 rounded my-2">[[2, 1, 5], [4, 3, 7]]</pre>
+            Passo 1: Subtrair 2 * linha 1 da linha 2:
+            <pre className="bg-gray-100 p-2 rounded my-2">[[2, 1, 5], [0, 1, -3]]</pre>
+            <Link to="/" className="text-blue-600 hover:underline">
+              Teste na calculadora!
+            </Link>
           </p>
-          <h3 className="text-lg font-semibold mb-2">Exemplo 2</h3>
-          <p className="mb-4">
-            Para a matriz:
-            <pre className="bg-gray-100 p-2 rounded my-2">[[2, 1], [4, 3]]</pre>
-            Passo 1: Dividir a linha 1 por 2 para tornar o pivô igual a 1:
-            <pre className="bg-gray-100 p-2 rounded my-2">[[1, 0.5], [4, 3]]</pre>
-            Passo 2: Subtrair 4 * linha 1 da linha 2:
-            <pre className="bg-gray-100 p-2 rounded my-2">[[1, 0.5], [0, 1]]</pre>
-            A matriz está na forma escalonada.
-          </p>
-          <h2 className="text-xl font-semibold mb-2">Aplicações</h2>
+
+          <h2 className="text-2xl font-semibold mb-2 mt-6">Vantagens</h2>
           <ul className="list-disc pl-5 mb-4">
-            <li>Resolver sistemas lineares de equações.</li>
-            <li>Encontrar a inversa de uma matriz.</li>
-            <li>Analisar a independência linear de vetores.</li>
+            <li>Simplicidade para matrizes pequenas.</li>
+            <li>Base para métodos avançados como Gauss-Jordan.</li>
           </ul>
           <p className="mb-4">
-            Para sistemas maiores, a eliminação de Gauss pode ser combinada com a eliminação de Gauss-Jordan para obter a forma reduzida. Teste com nossa <Link to="/" className="text-blue-600 hover:underline">calculadora de matrizes grátis</Link>!
+            Volte ao início com nosso tutorial sobre{" "}
+            <Link to="/tutorial/1" className="text-blue-600 hover:underline">
+              Determinantes
+            </Link>
+            .
           </p>
         </div>
       ),
@@ -159,7 +213,11 @@ function TutorialPage() {
       <main className="p-6 max-w-4xl mx-auto">
         <Helmet>
           <title>Tutorial Não Encontrado - Matrizes+</title>
-          <meta name="description" content="O tutorial solicitado não foi encontrado no Matrizes+. Volte para a página inicial e explore nossos tutoriais de álgebra linear." />
+          <meta
+            name="description"
+            content="O tutorial solicitado não foi encontrado no Matrizes+. Volte para a página inicial e explore nossos tutoriais de álgebra linear."
+          />
+          <meta name="keywords" content="tutorial não encontrado, matrizes, álgebra linear" />
           <meta name="robots" content="noindex" />
           <link rel="canonical" href="https://projeto-calculadora-matrizes.vercel.app/" />
         </Helmet>
@@ -175,19 +233,46 @@ function TutorialPage() {
   return (
     <main className="p-6 max-w-4xl mx-auto">
       <Helmet>
-        <title>{tutorial.title} - Tutorial de Matrizes | Matrizes+</title>
-        <meta name="description" content={`Aprenda ${tutorial.title.toLowerCase()} com nosso tutorial de matrizes. Passo a passo para álgebra linear com exemplos práticos!`} />
+        <title>{tutorial.title} | Tutoriais de Matrizes - Matrizes+</title>
+        <meta
+          name="description"
+          content={`${tutorial.description} Acesse exemplos práticos e use nossa calculadora online para matrizes!`}
+        />
+        <meta
+          name="keywords"
+          content={["matrizes", "álgebra linear", "calculadora de matrizes", tutorial.id === 1 ? "determinante" : tutorial.id === 2 ? "inversa" : "eliminação de gauss", tutorial.title.toLowerCase().replace("?", "")].join(", ")}
+        />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href={`https://projeto-calculadora-matrizes.vercel.app/tutorial/${id}`} />
-        <meta property="og:title" content={`${tutorial.title} - Tutorial de Matrizes | Matrizes+`} />
-        <meta property="og:description" content={`Aprenda ${tutorial.title.toLowerCase()} com nosso tutorial de matrizes. Passo a passo para álgebra linear com exemplos práticos!`} />
-        <meta property="og:url" content={`https://projeto-calculadora-matrizes.vercel.app/tutorial/${id}`} />
-        <meta property="og:image" content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg" />
+        <link
+          rel="canonical"
+          href={`https://projeto-calculadora-matrizes.vercel.app/tutorial/${id}`}
+        />
+        <meta property="og:title" content={`${tutorial.title} | Tutoriais de Matrizes - Matrizes+`} />
+        <meta
+          property="og:description"
+          content={`${tutorial.description} Acesse exemplos práticos e use nossa calculadora online para matrizes!`}
+        />
+        <meta
+          property="og:url"
+          content={`https://projeto-calculadora-matrizes.vercel.app/tutorial/${id}`}
+        />
+        <meta
+          property="og:image"
+          content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg"
+        />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${tutorial.title} - Tutorial de Matrizes | Matrizes+`} />
-        <meta name="twitter:description" content={`Aprenda ${tutorial.title.toLowerCase()} com nosso tutorial de matrizes. Passo a passo para álgebra linear com exemplos práticos!`} />
-        <meta name="twitter:image" content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg" />
-        {/* Schema Markup para HowTo */}
+        <meta
+          name="twitter:title"
+          content={`${tutorial.title} | Tutoriais de Matrizes - Matrizes+`}
+        />
+        <meta
+          name="twitter:description"
+          content={`${tutorial.description} Acesse exemplos práticos e use nossa calculadora online para matrizes!`}
+        />
+        <meta
+          name="twitter:image"
+          content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg"
+        />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -195,19 +280,12 @@ function TutorialPage() {
             "name": tutorial.title,
             "description": tutorial.description,
             "step": [
-              {
-                "@type": "HowToStep",
-                "text": "Leia as instruções detalhadas no tutorial."
-              },
-              {
-                "@type": "HowToStep",
-                "text": "Siga os exemplos práticos fornecidos."
-              },
-              {
-                "@type": "HowToStep",
-                "text": "Use nossa calculadora de matrizes para aplicar os conceitos aprendidos."
-              }
-            ]
+              { "@type": "HowToStep", "text": "Leia o tutorial passo a passo." },
+              { "@type": "HowToStep", "text": "Siga os exemplos práticos fornecidos." },
+              { "@type": "HowToStep", "text": "Use nossa calculadora para praticar os cálculos." },
+            ],
+            "supply": { "@type": "HowToSupply", "name": "Calculadora de Matrizes" },
+            "estimatedCost": { "@type": "MonetaryAmount", "value": "0", "currency": "USD" },
           })}
         </script>
       </Helmet>
@@ -215,16 +293,6 @@ function TutorialPage() {
       <Link to="/" className="text-blue-600 hover:underline mt-6 inline-block">
         Voltar para a página inicial
       </Link>
-      <div className="my-8 ad-container">
-        <ins
-          className="adsbygoogle"
-          style={{ display: "block" }}
-          data-ad-client="ca-pub-6065257343138670"
-          data-ad-slot="1234567890"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        ></ins>
-      </div>
     </main>
   );
 }

@@ -76,7 +76,7 @@ const Home = () => {
               className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm inline-block"
               aria-label={`Saiba mais sobre ${tutorial.title}`}
             >
-              Saiba Mais
+              Ler mais
             </Link>
           </div>
         ))}
@@ -84,18 +84,17 @@ const Home = () => {
     </div>
   );
 
-  // Nova seção para conteúdo expandido
   const renderWhyUseSection = () => (
     <div className="mt-12">
       <h2 className="text-2xl font-bold mb-4 text-center">Por que Usar a Calculadora de Matrizes do Matrizes+?</h2>
       <p className="text-gray-700 mb-4">
-        Nossa calculadora de matrizes online é a ferramenta perfeita para estudantes, professores e profissionais que precisam realizar operações matemáticas complexas de forma rápida e confiável. Com o Matrizes+, você pode calcular a soma, subtração, multiplicação, determinante, inversa, transposição e até a eliminação de Gauss em poucos cliques. 
+        Nossa calculadora de matrizes online é a ferramenta perfeita para estudantes, professores e profissionais que precisam realizar operações matemáticas complexas de forma rápida e confiável. Com o Matrizes+, você pode calcular a soma, subtração, multiplicação, determinante, inversa, transposição e até a eliminação de Gauss em poucos cliques.
       </p>
       <p className="text-gray-700 mb-4">
         Além disso, oferecemos tutoriais detalhados para iniciantes e avançados, cobrindo tópicos como o cálculo de determinantes, a inversa de matrizes e a eliminação de Gauss. Seja para estudar álgebra linear ou resolver problemas práticos, nossa calculadora é intuitiva, gratuita e acessível em qualquer dispositivo. Experimente agora e simplifique seus cálculos!
       </p>
       <p className="text-gray-700 mb-4">
-        <Link to="/tutorial/1" className="text-blue-600 hover:underline">Aprenda a calcular determinantes</Link> ou explore outras operações com matrizes em nossa calculadora!
+        <Link to="/tutorial/1" className="text-blue-600 hover:underline">Aprenda a calcular determinantes</Link> ou explore outras operações como <Link to="/tutorial/2" className="text-blue-600 hover:underline">inversas</Link> e <Link to="/tutorial/3" className="text-blue-600 hover:underline">eliminação de Gauss</Link>!
       </p>
     </div>
   );
@@ -104,27 +103,51 @@ const Home = () => {
     <div className="p-4 sm:p-6 text-center max-w-4xl mx-auto">
       <Helmet>
         <title>Calculadora de Matrizes Grátis Online - Matrizes+</title>
-        <meta name="description" content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa e mais. Explore tutoriais de álgebra linear!" />
+        <meta
+          name="description"
+          content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa, transposição, escalar e eliminação de Gauss. Explore tutoriais de álgebra linear!"
+        />
+        <meta
+          name="keywords"
+          content="calculadora de matrizes, álgebra linear, determinante, inversa, transposição, multiplicação por escalar, eliminação de Gauss, tutoriais de matemática"
+        />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://projeto-calculadora-matrizes.vercel.app/" />
         <meta property="og:title" content="Calculadora de Matrizes Grátis Online - Matrizes+" />
-        <meta property="og:description" content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa e mais. Explore tutoriais de álgebra linear!" />
+        <meta
+          property="og:description"
+          content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa, transposição, escalar e eliminação de Gauss. Explore tutoriais de álgebra linear!"
+        />
         <meta property="og:url" content="https://projeto-calculadora-matrizes.vercel.app/" />
-        <meta property="og:image" content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg" />
+        <meta
+          property="og:image"
+          content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg"
+        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Calculadora de Matrizes Grátis Online - Matrizes+" />
-        <meta name="twitter:description" content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa e mais. Explore tutoriais de álgebra linear!" />
-        <meta name="twitter:image" content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg" />
-        {/* Schema Markup para ferramenta */}
+        <meta
+          name="twitter:description"
+          content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa, transposição, escalar e eliminação de Gauss. Explore tutoriais de álgebra linear!"
+        />
+        <meta
+          name="twitter:image"
+          content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg"
+        />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebApplication",
             "name": "Matrizes+ Calculadora de Matrizes",
             "url": "https://projeto-calculadora-matrizes.vercel.app/",
-            "description": "Uma calculadora online gratuita para realizar operações com matrizes, incluindo soma, subtração, multiplicação, determinante e mais.",
+            "description": "Uma calculadora online gratuita para realizar operações com matrizes, incluindo soma, subtração, multiplicação, determinante, inversa, transposição, multiplicação por escalar e eliminação de Gauss.",
             "applicationCategory": "EducationalApplication",
-            "operatingSystem": "All"
+            "operatingSystem": "All",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            }
           })}
         </script>
       </Helmet>
