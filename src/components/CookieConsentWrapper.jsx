@@ -5,36 +5,43 @@ const CookieConsentWrapper = () => {
     <CookieConsent
       location="bottom"
       buttonText="Aceitar"
+      declineButtonText="Recusar"
       cookieName="matrizesCookieConsent"
+      enableDeclineButton={true}
       style={{
-        background: "#1e40af", // Azul escuro moderno
-        color: "#ffffff",
-        fontFamily: "'Poppins', sans-serif",
-        padding: "15px 30px",
-        borderRadius: "10px",
-        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+        background: "#ffffff",
+        color: "#333333",
+        fontFamily: "'Arial', sans-serif",
+        padding: "10px 20px",
+        borderTop: "1px solid #e5e7eb",
         textAlign: "center",
+        fontSize: "14px",
       }}
       buttonStyle={{
-        background: "#facc15", // Amarelo vibrante
-        color: "#1e40af",
-        padding: "10px 20px",
-        borderRadius: "5px",
+        background: "#4b5563",
+        color: "#ffffff",
+        padding: "5px 15px",
+        borderRadius: "4px",
         border: "none",
-        fontWeight: "600",
-        cursor: "pointer",
-        transition: "background 0.3s",
+        marginLeft: "10px",
+        fontWeight: "500",
       }}
-      buttonClasses="hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-      contentStyle={{ flex: "1 0 auto" }}
+      declineButtonStyle={{
+        background: "#f3f4f6",
+        color: "#4b5563",
+        padding: "5px 15px",
+        borderRadius: "4px",
+        border: "none",
+        marginLeft: "10px",
+        fontWeight: "500",
+      }}
+      contentStyle={{ display: "inline" }}
       expires={365}
     >
-      <span style={{ fontSize: "16px" }}>
-        🍪 Queremos melhorar sua experiência! Usamos cookies para personalizar anúncios e analisar o tráfego. 
-        <a href="/politica" style={{ color: "#facc15", textDecoration: "underline", marginLeft: "5px" }}>
-          Saiba mais
-        </a>.
-      </span>
+      Usamos cookies para melhorar sua experiência. 
+      <a href="/politica" style={{ color: "#4b5563", textDecoration: "underline", marginLeft: "5px" }}>
+        Saiba mais
+      </a>.
     </CookieConsent>
   );
 };
