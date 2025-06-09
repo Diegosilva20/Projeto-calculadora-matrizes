@@ -16,6 +16,7 @@ const Home = () => {
   const [steps, setSteps] = useState([]);
 
   const tutoriais = [
+    { id: 5, title: "Multiplicações de Matrizes", description: "Aprenda passo a passo como fazer a Multiplicação de Matrizes" },
     { id: 1, title: "O que é um Determinante?", description: "Aprenda o que é um determinante e como calculá-lo em matrizes 2x2." },
     { id: 2, title: "Como Encontrar a Inversa de uma Matriz", description: "Descubra os passos para calcular a inversa de uma matriz 2x2." },
     { id: 3, title: "Eliminação de Gauss Explicada", description: "Entenda como usar a eliminação de Gauss para resolver sistemas lineares." },
@@ -106,11 +107,11 @@ const Home = () => {
         <title>Calculadora de Matrizes Grátis Online - Matrizes+</title>
         <meta
           name="description"
-          content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa, transposição, escalar e eliminação de Gauss. Explore tutoriais de álgebra linear!"
+          content="Use a calculadora de matrizes grátis do Matrizes+ para soma, subtração, determinante e mais. Tutoriais de álgebra linear para iniciantes e avançados."
         />
         <meta
           name="keywords"
-          content="calculadora de matrizes, álgebra linear, determinante, inversa, transposição, multiplicação por escalar, eliminação de Gauss, tutoriais de matemática"
+          content="calculadora de matrizes, álgebra linear, determinante, inversa, transposição, multiplicação por escalar, eliminação de Gauss, tutoriais de matemática, "
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://projeto-calculadora-matrizes.vercel.app/" />
