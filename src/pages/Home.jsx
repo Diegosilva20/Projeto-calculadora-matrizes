@@ -15,14 +15,6 @@ const Home = () => {
   const [error, setError] = useState("");
   const [steps, setSteps] = useState([]);
 
-  const tutoriais = [
-    { id: 5, title: "Multiplicações de Matrizes", description: "Aprenda passo a passo como fazer a Multiplicação de Matrizes" },
-    { id: 1, title: "O que é um Determinante?", description: "Aprenda o que é um determinante e como calculá-lo em matrizes 2x2." },
-    { id: 2, title: "Como Encontrar a Inversa de uma Matriz", description: "Descubra os passos para calcular a inversa de uma matriz 2x2." },
-    { id: 3, title: "Eliminação de Gauss Explicada", description: "Entenda como usar a eliminação de Gauss para resolver sistemas lineares." },
-    { id: 4, title: "O que é Transposição de Matrizes?", description: "Aprenda como transpor uma matriz com exemplos práticos." },
-  ];
-
   const handleSizeChange = (e) => {
     const newSize = parseInt(e.target.value);
     setSize(newSize);
@@ -65,27 +57,6 @@ const Home = () => {
     </div>
   );
 
-  const renderTutorials = () => (
-    <div className="mt-12">
-      <h2 className="text-2xl font-bold mb-6 text-center">Tutoriais de Matrizes para Iniciantes</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {tutoriais.map((tutorial) => (
-          <div key={tutorial.id} className="border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition-shadow">
-            <h3 className="text-xl font-semibold mb-2">{tutorial.title}</h3>
-            <p className="text-gray-600 mb-4">{tutorial.description}</p>
-            <Link
-              to={`/tutorial/${tutorial.id}`}
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm inline-block"
-              aria-label={`Saiba mais sobre ${tutorial.title}`}
-            >
-              Ler mais
-            </Link>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-
   const renderWhyUseSection = () => (
     <div className="mt-12">
       <h2 className="text-2xl font-bold mb-4 text-center">Por que Usar a Calculadora de Matrizes do Matrizes+?</h2>
@@ -93,10 +64,10 @@ const Home = () => {
         Nossa calculadora de matrizes online é a ferramenta perfeita para estudantes, professores e profissionais que precisam realizar operações matemáticas complexas de forma rápida e confiável. Com o Matrizes+, você pode calcular a soma, subtração, multiplicação, determinante, inversa, transposição e até a eliminação de Gauss em poucos cliques.
       </p>
       <p className="text-gray-700 mb-4">
-        Além disso, oferecemos tutoriais detalhados para iniciantes e avançados, cobrindo tópicos como o cálculo de determinantes, a inversa de matrizes e a eliminação de Gauss. Seja para estudar álgebra linear ou resolver problemas práticos, nossa calculadora é intuitiva, gratuita e acessível em qualquer dispositivo. Experimente agora e simplifique seus cálculos!
+        Além disso, oferecemos tutoriais detalhados para iniciantes e avançados. Explore-os na seção de <Link to="/tutorials" className="text-blue-600 hover:underline">Tutoriais</Link>!
       </p>
       <p className="text-gray-700 mb-4">
-        <Link to="/tutorial/1" className="text-blue-600 hover:underline">Aprenda a calcular determinantes</Link> ou explore outras operações como <Link to="/tutorial/2" className="text-blue-600 hover:underline">inversas</Link> e <Link to="/tutorial/3" className="text-blue-600 hover:underline">eliminação de Gauss</Link>!
+        Experimente agora e simplifique seus cálculos!
       </p>
     </div>
   );
@@ -107,18 +78,18 @@ const Home = () => {
         <title>Calculadora de Matrizes Grátis Online - Matrizes+</title>
         <meta
           name="description"
-          content="Use a calculadora de matrizes grátis do Matrizes+ para soma, subtração, determinante e mais. Tutoriais de álgebra linear para iniciantes e avançados."
+          content="Use a calculadora de matrizes grátis do Matrizes+ para soma, subtração, determinante e mais. Tutoriais de álgebra linear disponíveis!"
         />
         <meta
           name="keywords"
-          content="calculadora de matrizes, álgebra linear, determinante, inversa, transposição, multiplicação por escalar, eliminação de Gauss, tutoriais de matemática, "
+          content="calculadora de matrizes, álgebra linear, determinante, inversa, transposição, multiplicação por escalar, eliminação de Gauss, tutoriais de matemática"
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://projeto-calculadora-matrizes.vercel.app/" />
         <meta property="og:title" content="Calculadora de Matrizes Grátis Online - Matrizes+" />
         <meta
           property="og:description"
-          content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa, transposição, escalar e eliminação de Gauss. Explore tutoriais de álgebra linear!"
+          content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa, transposição, escalar e eliminação de Gauss. Explore tutoriais!"
         />
         <meta property="og:url" content="https://projeto-calculadora-matrizes.vercel.app/" />
         <meta
@@ -129,7 +100,7 @@ const Home = () => {
         <meta name="twitter:title" content="Calculadora de Matrizes Grátis Online - Matrizes+" />
         <meta
           name="twitter:description"
-          content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa, transposição, escalar e eliminação de Gauss. Explore tutoriais de álgebra linear!"
+          content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa, transposição, escalar e eliminação de Gauss. Explore tutoriais!"
         />
         <meta
           name="twitter:image"
@@ -216,7 +187,6 @@ const Home = () => {
       )}
 
       {renderWhyUseSection()}
-      {renderTutorials()}
 
       <div className="my-8 ad-container">
         <ins

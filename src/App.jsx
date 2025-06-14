@@ -9,6 +9,7 @@ import PoliticaPrivacidade from "./pages/PoliticaPrivacidade";
 import TermosUso from "./pages/TermosUso";
 import Contato from "./pages/Contato";
 import Sobre from "./pages/Sobre";
+import Tutorials from "./pages/Tutorials";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path="/termos" element={<TermosUso />} />
               <Route path="/contato" element={<Contato />} />
               <Route path="/sobre" element={<Sobre />} />
+              <Route path="/tutorials" element={<Tutorials />} />
             </Routes>
           </Suspense>
         </main>
