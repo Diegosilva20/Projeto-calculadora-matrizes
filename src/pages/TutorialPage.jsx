@@ -110,9 +110,7 @@ function TutorialPage() {
 
           <div className="bg-white p-6 rounded-lg shadow-lg mb-6 border border-gray-200">
             <h2 className="text-2xl font-semibold mb-4 text-gray-800 flex items-center">
-              <span className="mr-2">
-                Determinante de ordem 3 (Regra de Sarrus)
-              </span>
+              <span className="mr-2">Determinante de ordem 3 (Regra de Sarrus)</span>
             </h2>
             <p className="text-gray-700 mb-2">Seja a matriz:</p>
             <MatrixDisplay
@@ -1319,7 +1317,7 @@ function TutorialPage() {
 
   if (!tutorial) {
     return (
-      <main className="p-6 max-w-4xl mx-auto">
+      <main className="mt-32 p-6 max-w-4xl mx-auto">
         <Helmet>
           <title>Tutorial Não Encontrado - Matrizes+</title>
           <meta
@@ -1346,7 +1344,7 @@ function TutorialPage() {
   }
 
   return (
-    <main className="p-6 max-w-4xl mx-auto">
+    <main className="mt-32 p-6 max-w-4xl mx-auto">
       <Helmet>
         <title>{tutorial.title} | Tutoriais de Matrizes - Matrizes+</title>
         <meta
