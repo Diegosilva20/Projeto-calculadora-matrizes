@@ -127,21 +127,6 @@ const Home = () => {
     </div>
   );
 
-  const renderWhyUseSection = () => (
-    <div className="mt-12">
-      <h2 className="text-2xl font-bold mb-4 text-center">Por que Usar a Calculadora de Matrizes do Matrizes+?</h2>
-      <p className="text-gray-700 mb-4">
-        Nossa calculadora de matrizes online é a ferramenta perfeita para estudantes, professores e profissionais que precisam realizar operações matemáticas complexas de forma rápida e confiável. Com o Matrizes+, você pode calcular a soma, subtração, multiplicação, determinante, inversa, transposição e até a eliminação de Gauss em poucos cliques.
-      </p>
-      <p className="text-gray-700 mb-4">
-        Além disso, oferecemos tutoriais detalhados para iniciantes e avançados, cobrindo tópicos como o cálculo de determinantes, a inversa de matrizes e a eliminação de Gauss. Seja para estudar álgebra linear ou resolver problemas práticos, nossa calculadora é intuitiva, gratuita e acessível em qualquer dispositivo. Experimente agora e simplifique seus cálculos!
-      </p>
-      <p className="text-gray-700 mb-4">
-        <Link to="/tutorial/1" className="text-blue-600 hover:underline">Aprenda a calcular determinantes</Link> ou explore outras operações como <Link to="/tutorial/2" className="text-blue-600 hover:underline">inversas</Link> e <Link to="/tutorial/3" className="text-blue-600 hover:underline">eliminação de Gauss</Link>!
-      </p>
-    </div>
-  );
-
   const handleCalculate = () => {
     let newError = "";
     const isSquareA = sizeA.rows === sizeA.cols;
@@ -171,9 +156,9 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <div className="mt-32 p-4 sm:p-6 text-center max-w-4xl mx-auto">
+      <div className="mt-16 p-4 sm:p-6 max-w-4xl mx-auto text-center">
         <Helmet>
-          <title>Calculadora de Matrizes Grátis Online - Matrizes+</title>
+          <title>Calculadora de Matrizes</title>
           <meta
             name="description"
             content="Use a calculadora de matrizes grátis do Matrizes+ para soma, subtração, determinante e mais. Tutoriais de álgebra linear para iniciantes e avançados."
@@ -184,7 +169,7 @@ const Home = () => {
           />
           <meta name="robots" content="index, follow" />
           <link rel="canonical" href="https://projeto-calculadora-matrizes.vercel.app/" />
-          <meta property="og:title" content="Calculadora de Matrizes Grátis Online - Matrizes+" />
+          <meta property="og:title" content="Calculadora de Matrizes" />
           <meta
             property="og:description"
             content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa, transposição, escalar e eliminação de Gauss. Explore tutoriais de álgebra linear!"
@@ -195,7 +180,7 @@ const Home = () => {
             content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg"
           />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Calculadora de Matrizes Grátis Online - Matrizes+" />
+          <meta name="twitter:title" content="Calculadora de Matrizes" />
           <meta
             name="twitter:description"
             content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa, transposição, escalar e eliminação de Gauss. Explore tutoriais de álgebra linear!"
@@ -228,10 +213,10 @@ const Home = () => {
           </script>
         </Helmet>
 
-        <h1 className="text-2xl sm:text-3xl font-bold mb-4">Calculadora de Matrizes Grátis Online - Matrizes+</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold mb-2">Calculadora de Matrizes</h1>
         <p className="mb-4 text-sm sm:text-base">Realize operações com matrizes como soma, subtração, multiplicação, determinante, inversa, transposição, multiplicação por escalar e eliminação de Gauss.</p>
 
-        <div className="mb-6">
+        <div className="mb-4">
           <label className="font-semibold mr-2 text-sm sm:text-base">Escolha a operação:</label>
           <select className="border px-2 py-1 rounded text-sm" value={operation} onChange={(e) => setOperation(e.target.value)} aria-label="Escolha a operação">
             <option value="soma">Soma (A + B)</option>
@@ -245,7 +230,7 @@ const Home = () => {
           </select>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-center gap-6 sm:gap-10 mb-6">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mb-4">
           <div>
             {renderSizeInput("Tamanho da Matriz A", sizeA, handleSizeChangeA, "sizeA")}
             <MatrixInput matrix={matrixA} setMatrix={setMatrixA} label="Matriz A" rows={sizeA.rows} cols={sizeA.cols} />
@@ -259,20 +244,20 @@ const Home = () => {
           )}
         </div>
 
-        <button onClick={handleCalculate} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm" aria-label="Calcular">
+        <button onClick={handleCalculate} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm mb-4" aria-label="Calcular">
           Calcular
         </button>
 
-        {error && <p className="text-red-500 mt-4 font-semibold text-sm">{error}</p>}
+        {error && <p className="text-red-500 mt-2 font-semibold text-sm">{error}</p>}
 
         <ResultDisplay result={result} />
 
         {steps.length > 0 && (
-          <div className="mt-4 text-left max-w-md mx-auto">
+          <div className="mt-2 text-left max-w-md mx-auto">
             <h2 className="font-semibold mb-2 text-sm sm:text-base">Passos do Cálculo</h2>
             <ol className="list-decimal pl-5 text-sm sm:text-base">
               {steps.map((step, i) => (
-                <li key={i} className="mb-4">
+                <li key={i} className="mb-2">
                   <strong>{step.description}</strong>
                   {step.matrix && renderMatrixStep(step.matrix)}
                 </li>
@@ -281,10 +266,9 @@ const Home = () => {
           </div>
         )}
 
-        {renderWhyUseSection()}
         {renderTutorials()}
 
-        <div className="my-8 ad-container">
+        <div className="my-6 ad-container">
           <ins
             className="adsbygoogle"
             style={{ display: "block" }}
