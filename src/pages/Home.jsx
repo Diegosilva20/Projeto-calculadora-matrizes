@@ -168,16 +168,16 @@ const Home = () => {
             content="calculadora de matrizes, álgebra linear, determinante, inversa, transposição, multiplicação por escalar, eliminação de Gauss, tutoriais de matemática, "
           />
           <meta name="robots" content="index, follow" />
-          <link rel="canonical" href="https://projeto-calculadora-matrizes.vercel.app/" />
+          <link rel="canonical" href="https://www.matrizcalculator.com/" />
           <meta property="og:title" content="Calculadora de Matrizes" />
           <meta
             property="og:description"
             content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa, transposição, escalar e eliminação de Gauss. Explore tutoriais de álgebra linear!"
           />
-          <meta property="og:url" content="https://projeto-calculadora-matrizes.vercel.app/" />
+          <meta property="og:url" content="https://www.matrizcalculator.com/" />
           <meta
             property="og:image"
-            content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg"
+            content="https://www.matrizcalculator.com/og-image.jpg"
           />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content="Calculadora de Matrizes" />
@@ -187,14 +187,14 @@ const Home = () => {
           />
           <meta
             name="twitter:image"
-            content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg"
+            content="https://www.matrizcalculator.com/og-image.jpg"
           />
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebApplication",
               "name": "Matrizes+ Calculadora de Matrizes",
-              "url": "https://projeto-calculadora-matrizes.vercel.app/",
+              "url": "https://www.matrizcalculator.com/",
               "description": "Uma calculadora online gratuita para realizar operações com matrizes, incluindo soma, subtração, multiplicação, determinante, inversa, transposição, multiplicação por escalar e eliminação de Gauss.",
               "applicationCategory": "EducationalApplication",
               "operatingSystem": "All",
@@ -206,7 +206,7 @@ const Home = () => {
               },
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://projeto-calculadora-matrizes.vercel.app/calculadora{search_term_string}",
+                "target": "https://www.matrizcalculator.com/calculadora{search_term_string}",
                 "query-input": "required name=search_term_string",
               },
             })}

@@ -18,7 +18,7 @@ function TransposeTutorial() {
         <meta name="robots" content="index, follow" />
         <link
           rel="canonical"
-          href="https://projeto-calculadora-matrizes.vercel.app/tutorial/4"
+          href="https://www.matrizcalculator.com/tutorial/4"
         />
         <meta
           property="og:title"
@@ -30,11 +30,11 @@ function TransposeTutorial() {
         />
         <meta
           property="og:url"
-          content="https://projeto-calculadora-matrizes.vercel.app/tutorial/4"
+          content="https://www.matrizcalculator.com/tutorial/4"
         />
         <meta
           property="og:image"
-          content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg"
+          content="https://www.matrizcalculator.com/og-image.jpg"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
@@ -47,7 +47,7 @@ function TransposeTutorial() {
         />
         <meta
           name="twitter:image"
-          content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg"
+          content="https://www.matrizcalculator.com/og-image.jpg"
         />
         <script type="application/ld+json">
           {JSON.stringify({

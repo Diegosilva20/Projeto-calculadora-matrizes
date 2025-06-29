@@ -8,15 +8,15 @@ function PoliticaPrivacidade() {
         <title>Política de Privacidade - Matrizes+</title>
         <meta name="description" content="Saiba como o Matrizes+ coleta, usa e protege suas informações." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://projeto-calculadora-matrizes.vercel.app/politica" />
+        <link rel="canonical" href="https://www.matrizcalculator.com/politica" />
         <meta property="og:title" content="Política de Privacidade - Matrizes+" />
         <meta property="og:description" content="Leia a política de privacidade do Matrizes+ para entender como protegemos seus dados." />
-        <meta property="og:url" content="https://projeto-calculadora-matrizes.vercel.app/politica" />
-        <meta property="og:image" content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg" />
+        <meta property="og:url" content="https://www.matrizcalculator.com/politica" />
+        <meta property="og:image" content="https://www.matrizcalculator.com/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Política de Privacidade - Matrizes+" />
         <meta name="twitter:description" content="Leia a política de privacidade do Matrizes+ para entender como protegemos seus dados." />
-        <meta name="twitter:image" content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg" />
+        <meta name="twitter:image" content="https://www.matrizcalculator.com/og-image.jpg" />
       </Helmet>
       <h1 className="text-3xl font-bold mb-4">Política de Privacidade</h1>
       <p className="mb-2">Esta Política de Privacidade descreve como as informações são coletadas, usadas e protegidas no site "Matrizes+."</p>
@@ -32,4 +32,4 @@ function PoliticaPrivacidade() {
   );
 }
 
-export default PoliticaPrivacidade; 
+export default PoliticaPrivacidade;

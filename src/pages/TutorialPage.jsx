@@ -27,7 +27,7 @@ function TutorialPage() {
           <meta name="robots" content="noindex" />
           <link
             rel="canonical"
-            href="https://projeto-calculadora-matrizes.vercel.app/"
+            href="https://www.matrizcalculator.com/"
           />
         </Helmet>
         <h1 className="text-3xl font-bold mb-4">Tutorial Não Encontrado</h1>
@@ -76,7 +76,7 @@ function TutorialPage() {
         <meta name="robots" content="index, follow" />
         <link
           rel="canonical"
-          href={`https://projeto-calculadora-matrizes.vercel.app/tutorial/${id}`}
+          href={`https://www.matrizcalculator.com/tutorial/${id}`}
         />
         <meta
           property="og:title"
@@ -88,11 +88,11 @@ function TutorialPage() {
         />
         <meta
           property="og:url"
-          content={`https://projeto-calculadora-matrizes.vercel.app/tutorial/${id}`}
+          content={`https://www.matrizcalculator.com/tutorial/${id}`}
         />
         <meta
           property="og:image"
-          content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg"
+          content="https://www.matrizcalculator.com/og-image.jpg"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
@@ -105,7 +105,7 @@ function TutorialPage() {
         />
         <meta
           name="twitter:image"
-          content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg"
+          content="https://www.matrizcalculator.com/og-image.jpg"
         />
         <script type="application/ld+json">
           {JSON.stringify({

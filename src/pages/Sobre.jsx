@@ -17,7 +17,7 @@ function Sobre() {
         <meta name="robots" content="index, follow" />
         <link
           rel="canonical"
-          href="https://projeto-calculadora-matrizes.vercel.app/sobre"
+          href="https://www.matrizcalculator.com/sobre"
         />
         <meta
           property="og:title"
@@ -29,11 +29,11 @@ function Sobre() {
         />
         <meta
           property="og:url"
-          content="https://projeto-calculadora-matrizes.vercel.app/sobre"
+          content="https://www.matrizcalculator.com/sobre"
         />
         <meta
           property="og:image"
-          content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg"
+          content="https://www.matrizcalculator.com/og-image.jpg"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
@@ -46,7 +46,7 @@ function Sobre() {
         />
         <meta
           name="twitter:image"
-          content="https://projeto-calculadora-matrizes.vercel.app/og-image.jpg"
+          content="https://www.matrizcalculator.com/og-image.jpg"
         />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -54,7 +54,7 @@ function Sobre() {
             "@type": "WebPage",
             "name": "Sobre o Matrizes+",
             "description": "O Matrizes+ é uma plataforma educacional gratuita com calculadora de matrizes online e tutoriais de álgebra linear.",
-            "url": "https://projeto-calculadora-matrizes.vercel.app/sobre",
+            "url": "https://www.matrizcalculator.com/sobre",
             "breadcrumb": {
               "@type": "BreadcrumbList",
               "itemListElement": [
@@ -62,13 +62,13 @@ function Sobre() {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://projeto-calculadora-matrizes.vercel.app/"
+                  "item": "https://www.matrizcalculator.com/"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Sobre",
-                  "item": "https://projeto-calculadora-matrizes.vercel.app/sobre"
+                  "item": "https://www.matrizcalculator.com/sobre"
                 }
               ]
             }
