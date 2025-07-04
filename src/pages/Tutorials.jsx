@@ -4,7 +4,7 @@ import { tutorials } from "../data/tutorialsData";
 
 function Tutorials() {
   return (
-    <main className="mt-32 p-6 max-w-4xl mx-auto">
+    <main className="mt-16 p-6 max-w-4xl mx-auto">
       <Helmet>
         <title>Tutoriais de Matrizes - Matrizes+</title>
         <meta

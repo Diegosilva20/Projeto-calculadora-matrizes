@@ -75,22 +75,62 @@ function Sobre() {
           })}
         </script>
       </Helmet>
-      <nav className="text-sm mb-6" aria-label="Breadcrumb">
-        <ol className="list-none p-0 inline-flex">
-          <li>
-            <Link to="/" className="text-blue-600 hover:underline">Home</Link>
-          </li>
-          <li className="mx-2">/</li>
-          <li><span className="text-gray-500">Sobre</span></li>
-        </ol>
-      </nav>
-      <h1 className="text-3xl font-bold mb-6 text-gray-900">Sobre o Matrizes+</h1>
-      <p className="text-gray-700 mb-4">
-        O Matrizes+ é uma plataforma educacional gratuita que simplifica o aprendizado de <strong>álgebra linear</strong>. Oferecemos uma <strong>calculadora de matrizes online</strong> para operações como multiplicação, determinante e transposição, além de <Link to="/tutorials" className="text-blue-600 hover:underline">tutoriais de matrizes</Link> claros e práticos.
-      </p>
-      <p className="text-gray-700">
-        Desenvolvido para estudantes, professores e profissionais, nosso objetivo é tornar a matemática acessível. Para dúvidas ou sugestões, visite nossa página de <Link to="/contato" className="text-blue-600 hover:underline">contato</Link>.
-      </p>
+      
+      <div className="text-center mb-10">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
+          Nossa Missão: Simplificando a Álgebra Linear
+        </h1>
+        <p className="text-lg text-gray-600">
+          Tornando a matemática mais acessível, uma matriz de cada vez.
+        </p>
+      </div>
+
+      <div className="space-y-8 text-gray-700 text-base leading-relaxed">
+        <section>
+          <h2 className="text-2xl font-semibold mb-3 text-gray-800 border-b pb-2">Por Que Criamos a MatrizCalculator?</h2>
+          <p>
+            Nascemos da paixão pela educação e da percepção de uma necessidade real: a álgebra linear, embora fundamental em diversas áreas da ciência e tecnologia, muitas vezes é vista como um campo complexo e intimidador. Fórmulas abstratas e cálculos trabalhosos podem se tornar barreiras para o aprendizado.
+          </p>
+          <p className="mt-4">
+            A MatrizCalculator foi criada para quebrar essas barreiras. Nosso objetivo é oferecer uma ponte entre a teoria e a prática, fornecendo uma ferramenta que não apenas entrega resultados, mas que também ajuda a visualizar o processo, permitindo que estudantes e profissionais solidifiquem seu conhecimento.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-3 text-gray-800 border-b pb-2">O Que Oferecemos?</h2>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>
+              <strong>Calculadoras Precisas:</strong> Ferramentas fáceis de usar para uma variedade de operações com matrizes, desde as mais básicas até as mais complexas.
+            </li>
+            <li>
+              <strong>Tutoriais Detalhados:</strong> Guias passo a passo que explicam a teoria por trás dos cálculos, ideais para quem está aprendendo ou precisa relembrar um conceito.
+            </li>
+            <li>
+              <strong>Acesso Gratuito e Universal:</strong> Acreditamos que o conhecimento deve ser livre. Por isso, mantemos a plataforma 100% gratuita, suportada por anúncios para cobrir os custos de manutenção e desenvolvimento.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-3 text-gray-800 border-b pb-2">Nossa Visão</h2>
+          <p>
+            Almejamos ser a principal ferramenta de apoio online para o estudo de matrizes em língua portuguesa. Estamos em constante evolução, trabalhando para adicionar novas calculadoras, aprofundar nossos tutoriais e garantir que a plataforma continue sendo rápida, confiável e, acima de tudo, útil para a nossa comunidade de usuários.
+          </p>
+        </section>
+
+        <div className="text-center pt-6">
+          <p className="text-gray-800 text-lg">
+            Agradecemos por usar a MatrizCalculator!
+          </p>
+          <p className="text-gray-600 mt-2">
+            Se tiver qualquer sugestão ou dúvida, não hesite em{" "}
+            <Link to="/contato" className="text-blue-600 hover:underline">
+              entrar em contato
+            </Link>
+            .
+          </p>
+        </div>
+      </div>
     </main>
   );
 }

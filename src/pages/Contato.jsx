@@ -38,16 +38,47 @@ function Contato() {
           content="https://www.matrizcalculator.com/og-image.jpg"
         />
       </Helmet>
-      <h1 className="text-3xl font-bold mb-4">Contato</h1>
-      <p className="text-sm">
-        Se você tiver dúvidas, sugestões ou precisar de suporte, entre em
-        contato:
-      </p>
-      <ul className="mt-4 space-y-2 text-sm">
-        <li>
-          <strong>📧 E-mail:</strong> suporte@matrizesmais.com
-        </li>
-      </ul>
+      
+      <div className="text-center">
+        <h1 className="text-3xl font-bold mb-4 text-gray-800">
+          Entre em Contato
+        </h1>
+        <p className="text-lg text-gray-600 mb-8">
+          Sua opinião é muito importante para nós!
+        </p>
+      </div>
+
+      <div className="space-y-6 text-gray-700">
+        <p>
+          Se você tem alguma dúvida sobre nossas ferramentas, encontrou um erro
+          nos cálculos, tem sugestões para novas funcionalidades ou simplesmente
+          deseja nos dar um feedback, não hesite em nos contatar. Estamos em
+          constante desenvolvimento e a sua colaboração é fundamental para
+          melhorar a MatrizCalculator.
+        </p>
+
+        <div className="text-center bg-gray-50 p-6 rounded-lg">
+          <h2 className="text-xl font-semibold mb-2 text-gray-800">
+            Nosso Canal de Suporte
+          </h2>
+          <p className="mb-4">
+            Para todas as comunicações, por favor, envie um e-mail para:
+          </p>
+          <a
+            href="mailto:suporte@matrizcalculator.com"
+            className="text-blue-600 text-lg font-medium hover:underline break-words"
+          >
+            suporte@matrizcalculator.com
+          </a>
+        </div>
+
+        <p>
+          Faremos o nosso melhor para analisar e responder a todas as mensagens
+          o mais rápido possível. Agradecemos sua contribuição para tornar a
+          MatrizCalculator uma ferramenta cada vez mais precisa e útil para
+          todos.
+        </p>
+      </div>
     </main>
   );
 }

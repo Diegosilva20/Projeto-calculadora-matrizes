@@ -17,7 +17,7 @@ function App() {
       <div className="flex flex-col min-h-screen bg-gray-100 text-gray-800">
         <Header />
         <CookieConsentWrapper />
-        <main className="flex-grow">
+        <main className="flex-grow container mx-auto p-4 pt-20">
           <Suspense fallback={<div className="text-center p-4">Carregando...</div>}>
             <Routes>
               <Route path="/" element={<Home />} />

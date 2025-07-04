@@ -156,7 +156,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <div className="mt-16 p-4 sm:p-6 max-w-4xl mx-auto text-center">
+      <div className="p-4 sm:p-6 max-w-4xl mx-auto text-center">
         <Helmet>
           <title>Calculadora de Matrizes</title>
           <meta
