@@ -10,10 +10,12 @@ import TermosUso from "./pages/TermosUso";
 import Contato from "./pages/Contato";
 import Sobre from "./pages/Sobre";
 import Tutorials from "./pages/Tutorials";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-gray-100 text-gray-800">
         <Header />
         <CookieConsentWrapper />
