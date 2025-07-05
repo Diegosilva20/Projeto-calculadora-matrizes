@@ -495,7 +495,7 @@ function DeterminantTutorial() {
                 <strong>Fórmula do determinante de Vandermonde:</strong> Para
                 uma matriz de Vandermonde <code>[1, xᵢ, xᵢ²]</code> com{" "}
                 <code>n</code> linhas, o determinante é dado por{" "}
-                <code>∏(xⱼ - xᵢ)</code> para <code>j > i</code>.
+                <code>∏(xⱼ - xᵢ)</code> para <code>j {">"} i</code>.
               </li>
               <li>
                 <strong>Calcular diferenças:</strong>
