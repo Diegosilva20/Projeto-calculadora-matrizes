@@ -8,15 +8,15 @@ function PoliticaPrivacidade() {
         <title>Política de Privacidade - Matrizes+</title>
         <meta name="description" content="Saiba como o Matrizes+ coleta, usa e protege suas informações." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.matrizcalculator.com/politica" />
+        <link rel="canonical" href="https://matrizcalculator.com/politica" />
         <meta property="og:title" content="Política de Privacidade - Matrizes+" />
         <meta property="og:description" content="Leia a política de privacidade do Matrizes+ para entender como protegemos seus dados." />
-        <meta property="og:url" content="https://www.matrizcalculator.com/politica" />
-        <meta property="og:image" content="https://www.matrizcalculator.com/og-image.jpg" />
+        <meta property="og:url" content="https://matrizcalculator.com/politica" />
+        <meta property="og:image" content="https://matrizcalculator.com/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Política de Privacidade - Matrizes+" />
         <meta name="twitter:description" content="Leia a política de privacidade do Matrizes+ para entender como protegemos seus dados." />
-        <meta name="twitter:image" content="https://www.matrizcalculator.com/og-image.jpg" />
+        <meta name="twitter:image" content="https://matrizcalculator.com/og-image.jpg" />
       </Helmet>
       
       <h1 className="text-3xl font-bold mb-2 text-gray-800">

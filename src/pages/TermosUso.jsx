@@ -13,7 +13,7 @@ function TermosUso() {
         <meta name="robots" content="index, follow" />
         <link
           rel="canonical"
-          href="https://www.matrizcalculator.com/termos"
+          href="https://matrizcalculator.com/termos"
         />
         <meta property="og:title" content="Termos de Uso - Matrizes+" />
         <meta
@@ -22,11 +22,11 @@ function TermosUso() {
         />
         <meta
           property="og:url"
-          content="https://www.matrizcalculator.com/termos"
+          content="https://matrizcalculator.com/termos"
         />
         <meta
           property="og:image"
-          content="https://www.matrizcalculator.com/og-image.jpg"
+          content="https://matrizcalculator.com/og-image.jpg"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Termos de Uso - Matrizes+" />
@@ -36,7 +36,7 @@ function TermosUso() {
         />
         <meta
           name="twitter:image"
-          content="https://www.matrizcalculator.com/og-image.jpg"
+          content="https://matrizcalculator.com/og-image.jpg"
         />
       </Helmet>
       

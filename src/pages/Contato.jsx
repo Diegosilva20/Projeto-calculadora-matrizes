@@ -12,7 +12,7 @@ function Contato() {
         <meta name="robots" content="index, follow" />
         <link
           rel="canonical"
-          href="https://www.matrizcalculator.com/contato"
+          href="https://matrizcalculator.com/contato"
         />
         <meta property="og:title" content="Contato - Matrizes+" />
         <meta
@@ -21,11 +21,11 @@ function Contato() {
         />
         <meta
           property="og:url"
-          content="https://www.matrizcalculator.com/contato"
+          content="https://matrizcalculator.com/contato"
         />
         <meta
           property="og:image"
-          content="https://www.matrizcalculator.com/og-image.jpg"
+          content="https://matrizcalculator.com/og-image.jpg"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contato - Matrizes+" />
@@ -35,7 +35,7 @@ function Contato() {
         />
         <meta
           name="twitter:image"
-          content="https://www.matrizcalculator.com/og-image.jpg"
+          content="https://matrizcalculator.com/og-image.jpg"
         />
       </Helmet>
       

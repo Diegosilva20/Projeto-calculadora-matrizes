@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import MatrixInput from "../components/common/MatrixInput";
 import ResultDisplay from "../components/ui/ResultDisplay";
 import { createEmptyMatrix, calculate } from "../utils/matrixCalculations";
-import Header from "../components/common/Header"; // Confirme se o caminho está correto
+import Header from "../components/common/Header";
 
 const Home = () => {
   const [sizeA, setSizeA] = useState({ rows: 2, cols: 2 });
@@ -155,64 +155,69 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>Calculadora de Matrizes - Matrizes+</title>
+        <meta
+          name="description"
+          content="Calcule soma, multiplicação, determinante, inversa e mais com nossa calculadora online gratuita."
+        />
+        <meta
+          name="keywords"
+          content="calculadora de matrizes, álgebra linear, determinante, inversa, transposição, eliminação de Gauss"
+        />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://matrizcalculator.com/" />
+        <meta property="og:title" content="Calculadora de Matrizes - Matrizes+" />
+        <meta
+          property="og:description"
+          content="Use nossa calculadora de matrizes grátis para soma, multiplicação, determinante, inversa e mais. Explore tutoriais de álgebra linear!"
+        />
+        <meta property="og:url" content="https://matrizcalculator.com/" />
+        <meta
+          property="og:image"
+          content="https://matrizcalculator.com/og-image.jpg"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Calculadora de Matrizes - Matrizes+" />
+        <meta
+          name="twitter:description"
+          content="Use nossa calculadora de matrizes grátis para soma, multiplicação, determinante, inversa e mais. Explore tutoriais de álgebra linear!"
+        />
+        <meta
+          name="twitter:image"
+          content="https://matrizcalculator.com/og-image.jpg"
+        />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Matrizes+ Calculadora de Matrizes",
+            "url": "https://matrizcalculator.com/",
+            "description": "Uma calculadora online gratuita para operações com matrizes, como soma, multiplicação, determinante, inversa e mais.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "All",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+            },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://matrizcalculator.com/calculadora{search_term_string}",
+              "query-input": "required name=search_term_string",
+            },
+          })}
+        </script>
+      </Helmet>
+      <noscript>
+        <div className="text-center p-4">
+          <h1>Calculadora de Matrizes - Matrizes+</h1>
+          <p>Calcule soma, multiplicação, determinante, inversa e mais com nossa calculadora online gratuita. Veja <a href="https://matrizcalculator.com">Matrizes+</a> para tutoriais de álgebra linear.</p>
+        </div>
+      </noscript>
       <Header />
       <div className="p-4 sm:p-6 max-w-4xl mx-auto text-center">
-        <Helmet>
-          <title>Calculadora de Matrizes</title>
-          <meta
-            name="description"
-            content="Use a calculadora de matrizes grátis do Matrizes+ para soma, subtração, determinante e mais. Tutoriais de álgebra linear para iniciantes e avançados."
-          />
-          <meta
-            name="keywords"
-            content="calculadora de matrizes, álgebra linear, determinante, inversa, transposição, multiplicação por escalar, eliminação de Gauss, tutoriais de matemática, "
-          />
-          <meta name="robots" content="index, follow" />
-          <link rel="canonical" href="https://www.matrizcalculator.com/" />
-          <meta property="og:title" content="Calculadora de Matrizes" />
-          <meta
-            property="og:description"
-            content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa, transposição, escalar e eliminação de Gauss. Explore tutoriais de álgebra linear!"
-          />
-          <meta property="og:url" content="https://www.matrizcalculator.com/" />
-          <meta
-            property="og:image"
-            content="https://www.matrizcalculator.com/og-image.jpg"
-          />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Calculadora de Matrizes" />
-          <meta
-            name="twitter:description"
-            content="Use nossa calculadora de matrizes grátis online para soma, subtração, multiplicação, determinante, inversa, transposição, escalar e eliminação de Gauss. Explore tutoriais de álgebra linear!"
-          />
-          <meta
-            name="twitter:image"
-            content="https://www.matrizcalculator.com/og-image.jpg"
-          />
-          <script type="application/ld+json">
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebApplication",
-              "name": "Matrizes+ Calculadora de Matrizes",
-              "url": "https://www.matrizcalculator.com/",
-              "description": "Uma calculadora online gratuita para realizar operações com matrizes, incluindo soma, subtração, multiplicação, determinante, inversa, transposição, multiplicação por escalar e eliminação de Gauss.",
-              "applicationCategory": "EducationalApplication",
-              "operatingSystem": "All",
-              "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD",
-                "availability": "https://schema.org/InStock",
-              },
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://www.matrizcalculator.com/calculadora{search_term_string}",
-                "query-input": "required name=search_term_string",
-              },
-            })}
-          </script>
-        </Helmet>
-
         <h1 className="text-2xl sm:text-3xl font-bold mb-2">Calculadora de Matrizes</h1>
         <p className="mb-4 text-sm sm:text-base">Realize operações com matrizes como soma, subtração, multiplicação, determinante, inversa, transposição, multiplicação por escalar e eliminação de Gauss.</p>
 
