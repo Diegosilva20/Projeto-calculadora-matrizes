@@ -90,10 +90,6 @@ function TutorialPage() {
           property="og:url"
           content={`https://matrizcalculator.com/tutorial/${id}`}
         />
-        <meta
-          property="og:image"
-          content="https://matrizcalculator.com/og-image.jpg"
-        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
@@ -102,10 +98,6 @@ function TutorialPage() {
         <meta
           name="twitter:description"
           content={`${tutorial.description} Acesse exemplos práticos e use nossa calculadora online para matrizes!`}
-        />
-        <meta
-          name="twitter:image"
-          content="https://matrizcalculator.com/og-image.jpg"
         />
         <script type="application/ld+json">
           {JSON.stringify({

@@ -173,19 +173,11 @@ const Home = () => {
           content="Use nossa calculadora de matrizes grátis para soma, multiplicação, determinante, inversa e mais. Explore tutoriais de álgebra linear!"
         />
         <meta property="og:url" content="https://matrizcalculator.com/" />
-        <meta
-          property="og:image"
-          content="https://matrizcalculator.com/og-image.jpg"
-        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Calculadora de Matrizes - Matrizes+" />
         <meta
           name="twitter:description"
           content="Use nossa calculadora de matrizes grátis para soma, multiplicação, determinante, inversa e mais. Explore tutoriais de álgebra linear!"
-        />
-        <meta
-          name="twitter:image"
-          content="https://matrizcalculator.com/og-image.jpg"
         />
         <script type="application/ld+json">
           {JSON.stringify({
