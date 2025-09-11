@@ -1,35 +1,32 @@
-export const tutorials = [
-  {
-    id: 1,
-    title: "O que é um Determinante?",
-    description:
-      "Aprenda o que é um determinante e como calculá-lo em matrizes 2x2.",
-    component: "DeterminantTutorial",
-  },
-  {
-    id: 2,
-    title: "Como Encontrar a Inversa de uma Matriz",
-    description:
-      "Descubra os passos para calcular a inversa de uma matriz 2x2.",
-    component: "InverseTutorial",
-  },
-  {
-    id: 3,
-    title: "Eliminação de Gauss Explicada",
-    description:
-      "Entenda como usar a eliminação de Gauss para resolver sistemas lineares.",
-    component: "GaussTutorial",
-  },
+export const tutoriais = [
   {
     id: 4,
-    title: "O que é Transposição de Matrizes?",
-    description: "Aprenda como transpor uma matriz com exemplos práticos.",
-    component: "TransposeTutorial",
+    title: "Matriz Transposta",
+    description: "Entenda a operação de virar as linhas de uma matriz por colunas.",
   },
   {
     id: 5,
-    title: "Multiplicações de Matrizes",
-    description: "Aprenda passo a passo como fazer a Multiplicação de Matrizes",
-    component: "MultiplicationTutorial",
+    title: "Como Multiplicar Matrizes",
+    description: "Aprenda o método linha-por-coluna com um guia passo a passo.",
   },
-];
+  {
+    id: 1,
+    title: "Determinante de Matrizes",
+    description: "Descubra o que é e para que serve o determinante de uma matriz.",
+  },
+  {
+    id: 3,
+    title: "Escalonamento (Método de Gauss)",
+    description: "Simplifique sistemas de equações transformando a matriz em escada.",
+  },
+  {
+    id: 2,
+    title: "Como Calcular a Inversa",
+    description: "Domine o método de Gauss-Jordan para encontrar a matriz inversa.",
+  },
+  {
+    id: 6, // Novo ID
+    title: "Sistemas de Equações Lineares",
+    description: "Resolva sistemas usando matrizes e veja como tudo se conecta.",
+  },
+]; 

@@ -1,137 +1,59 @@
-import { useParams, Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
-import { tutorials } from "../data/tutorialsData";
-import DeterminantTutorial from "./tutorials/DeterminantTutorial";
-import InverseTutorial from "./tutorials/InverseTutorial";
-import GaussTutorial from "./tutorials/GaussTutorial";
-import TransposeTutorial from "./tutorials/TransposeTutorial";
-import MultiplicationTutorial from "./tutorials/MultiplicationTutorial";
+import React from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
-function TutorialPage() {
+// Importe a lista de tutoriais do seu novo arquivo de dados
+import { tutoriais } from '../data/tutorialsData'; 
+
+// Importe o novo componente do tutorial que você criou
+import DeterminantTutorial from './tutorials/DeterminantTutorial';
+import InverseTutorial from './tutorials/InverseTutorial';
+import GaussTutorial from './tutorials/GaussTutorial';
+import TransposeTutorial from './tutorials/TransposeTutorial';
+import MultiplicationTutorial from './tutorials/MultiplicationTutorial';
+import LinearSystemsTutorial from './tutorials/LinearSystemsTutorial'; // <-- 1. IMPORTE O NOVO TUTORIAL
+
+const TutorialPage = () => {
   const { id } = useParams();
-  const tutorial = tutorials.find((t) => t.id === parseInt(id));
+  const tutorialId = parseInt(id, 10);
+  
+  // Encontra o tutorial atual para usar o título e a descrição
+  const tutorial = tutoriais.find(t => t.id === tutorialId);
 
-  if (!tutorial) {
+  // Mapeia o ID para o componente do tutorial correspondente
+  const tutorialComponents = {
+    1: <DeterminantTutorial />,
+    2: <InverseTutorial />,
+    3: <GaussTutorial />,
+    4: <TransposeTutorial />,
+    5: <MultiplicationTutorial />,
+    6: <LinearSystemsTutorial />, // <-- 2. ADICIONE O NOVO TUTORIAL AQUI
+  };
+
+  const currentTutorialComponent = tutorialComponents[tutorialId];
+
+  if (!tutorial || !currentTutorialComponent) {
     return (
-      <main className="mt-32 p-6 max-w-4xl mx-auto">
-        <Helmet>
-          <title>Tutorial Não Encontrado - Matrizes+</title>
-          <meta
-            name="description"
-            content="O tutorial solicitado não foi encontrado no Matrizes+. Volte para a página inicial e explore nossos tutoriais de álgebra linear."
-          />
-          <meta
-            name="keywords"
-            content="tutorial não encontrado, matrizes, álgebra linear"
-          />
-          <meta name="robots" content="noindex" />
-          <link
-            rel="canonical"
-            href="https://matrizcalculator.com/"
-          />
-        </Helmet>
+      <div className="p-6 max-w-4xl mx-auto text-center">
         <h1 className="text-3xl font-bold mb-4">Tutorial Não Encontrado</h1>
-        <p>Desculpe, o tutorial solicitado não existe.</p>
-        <Link to="/" className="text-blue-600 hover:underline">
-          Voltar para a página inicial
+        <p>O tutorial que você está procurando não existe.</p>
+        <Link to="/tutorials" className="text-blue-600 hover:underline mt-4 inline-block">
+          Voltar para a lista de tutoriais
         </Link>
-      </main>
+      </div>
     );
   }
 
-  const TutorialComponent = {
-    DeterminantTutorial,
-    InverseTutorial,
-    GaussTutorial,
-    TransposeTutorial,
-    MultiplicationTutorial,
-  }[tutorial.component];
-
   return (
-    <main className="mt-32 p-6 max-w-4xl mx-auto">
+    <div>
       <Helmet>
-        <title>{tutorial.title} | Tutoriais de Matrizes - Matrizes+</title>
-        <meta
-          name="description"
-          content={`${tutorial.description} Acesse exemplos práticos e use nossa calculadora online para matrizes!`}
-        />
-        <meta
-          name="keywords"
-          content={[
-            "matrizes",
-            "álgebra linear",
-            "calculadora de matrizes",
-            tutorial.id === 1
-              ? "determinante"
-              : tutorial.id === 2
-              ? "inversa"
-              : tutorial.id === 3
-              ? "eliminação de gauss"
-              : tutorial.id === 4
-              ? "transposição"
-              : "multiplicação",
-            tutorial.title.toLowerCase().replace("?", ""),
-          ].join(", ")}
-        />
-        <meta name="robots" content="index, follow" />
-        <link
-          rel="canonical"
-          href={`https://matrizcalculator.com/tutorial/${id}`}
-        />
-        <meta
-          property="og:title"
-          content={`${tutorial.title} | Tutoriais de Matrizes - Matrizes+`}
-        />
-        <meta
-          property="og:description"
-          content={`${tutorial.description} Acesse exemplos práticos e use nossa calculadora online para matrizes!`}
-        />
-        <meta
-          property="og:url"
-          content={`https://matrizcalculator.com/tutorial/${id}`}
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content={`${tutorial.title} | Tutoriais de Matrizes - Matrizes+`}
-        />
-        <meta
-          name="twitter:description"
-          content={`${tutorial.description} Acesse exemplos práticos e use nossa calculadora online para matrizes!`}
-        />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "HowTo",
-            name: tutorial.title,
-            description: tutorial.description,
-            step: [
-              { "@type": "HowToStep", text: "Leia o tutorial passo a passo." },
-              {
-                "@type": "HowToStep",
-                text: "Siga os exemplos práticos fornecidos.",
-              },
-              {
-                "@type": "HowToStep",
-                text: "Use nossa calculadora para praticar os cálculos.",
-              },
-            ],
-            supply: { "@type": "HowToSupply", name: "Calculadora de Matrizes" },
-            estimatedCost: {
-              "@type": "MonetaryAmount",
-              value: "0",
-              currency: "USD",
-            },
-          })}
-        </script>
+        <title>{`${tutorial.title} | Tutoriais Matrizes+`}</title>
+        <meta name="description" content={tutorial.description} />
+        <link rel="canonical" href={`https://www.matrizcalculator.com/tutorial/${tutorial.id}`} />
       </Helmet>
-
-      <TutorialComponent />
-      <Link to="/" className="text-blue-600 hover:underline mt-6 inline-block">
-        Voltar para a página inicial
-      </Link>
-    </main>
+      {currentTutorialComponent}
+    </div>
   );
-}
+};
 
 export default TutorialPage;

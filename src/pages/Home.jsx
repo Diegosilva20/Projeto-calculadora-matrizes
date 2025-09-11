@@ -6,16 +6,10 @@ import ResultDisplay from "../components/ui/ResultDisplay";
 import { createEmptyMatrix, calculate } from "../utils/matrixCalculations";
 import Header from "../components/common/Header";
 
-// 1. DADOS ESTÁTICOS FORA DO COMPONENTE: O array é criado apenas uma vez.
-const tutoriais = [
-  { id: 5, title: "Como Multiplicar Matrizes", description: "Aprenda o método linha-por-coluna com um guia passo a passo." },
-  { id: 1, title: "Determinante de Matrizes", description: "Descubra o que é e para que serve o determinante de uma matriz." },
-  { id: 2, title: "Como Calcular a Inversa", description: "Domine o método de Gauss-Jordan para encontrar a matriz inversa." },
-  { id: 3, title: "Escalonamento (Método de Gauss)", description: "Simplifique sistemas de equações transformando a matriz em escada." },
-  { id: 4, title: "Matriz Transposta", description: "Entenda a operação de virar as linhas de uma matriz por colunas." },
-];
+// 1. IMPORTA a lista central de tutoriais do arquivo de dados
+import { tutoriais } from '../data/tutorialsData';
 
-// 2. LÓGICA DE EXIBIÇÃO SIMPLIFICADA: Lista de operações que usam a Matriz B.
+// Lista de operações que usam a Matriz B
 const operationsWithMatrixB = ["soma", "subtracao", "multiplicacao"];
 
 const Home = () => {
@@ -29,11 +23,12 @@ const Home = () => {
   const [error, setError] = useState("");
   const [steps, setSteps] = useState([]);
 
-  // 3. HANDLER UNIFICADO: Uma função para lidar com ambas as matrizes.
+  // A lista de tutoriais que ficava aqui foi removida, pois agora ela é importada.
+
   const handleSizeChange = (matrixId, e) => {
     const { name, value } = e.target;
     const currentSize = matrixId === 'A' ? sizeA : sizeB;
-    const newSize = { ...currentSize, [name]: parseInt(value) || 1 }; // Garante que o valor seja no mínimo 1
+    const newSize = { ...currentSize, [name]: parseInt(value) || 1 };
     
     if (matrixId === 'A') {
       setSizeA(newSize);
@@ -110,12 +105,12 @@ const Home = () => {
       <h2 className="text-2xl font-bold mb-6 text-center">Aprenda o Essencial 🧠</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {tutoriais.map((tutorial) => (
-          <div key={tutorial.id} className="border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition-shadow">
+          <div key={tutorial.id} className="border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition-shadow flex flex-col">
             <h3 className="text-xl font-semibold mb-2">{tutorial.title}</h3>
-            <p className="text-gray-600 mb-4">{tutorial.description}</p>
+            <p className="text-gray-600 mb-4 flex-grow">{tutorial.description}</p>
             <Link
               to={`/tutorial/${tutorial.id}`}
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm inline-block"
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm inline-block mt-auto self-center"
               aria-label={`Saiba mais sobre ${tutorial.title}`}
             >
               Ler Tutorial
