@@ -22,14 +22,14 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.matrizcalculator.com" }],
-      "destination": "https://matrizcalculator.com/:path*",
+      "has": [{ "type": "host", "value": "matrizcalculator.com" }],
+      "destination": "https://www.matrizcalculator.com/:path*",
       "permanent": true
     },
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "projeto-calculadora-matrizes.vercel.app" }],
-      "destination": "https://matrizcalculator.com/:path*",
+      "destination": "https://www.matrizcalculator.com/:path*",
       "permanent": true
     }
   ]
