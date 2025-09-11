@@ -18,19 +18,5 @@
         }
       ]
     }
-  ],
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "matrizcalculator.com" }],
-      "destination": "https://www.matrizcalculator.com/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "projeto-calculadora-matrizes.vercel.app" }],
-      "destination": "https://www.matrizcalculator.com/:path*",
-      "permanent": true
-    }
   ]
 }
