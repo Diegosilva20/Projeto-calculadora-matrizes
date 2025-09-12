@@ -8,7 +8,7 @@ function TermosUso() {
         <title>Termos de Uso - Matrizes+</title>
         <meta
           name="description"
-          content="Conheça os termos de uso do Matrizes+, site educacional gratuito."
+          content="Conheça os termos e condições de uso do Matrizes+, seu site para cálculos e aprendizado de álgebra linear."
         />
         <meta name="robots" content="index, follow" />
         <link
@@ -24,116 +24,50 @@ function TermosUso() {
           property="og:url"
           content="https://matrizcalculator.com/termos"
         />
-        <meta
-          property="og:image"
-          content="https://matrizcalculator.com/og-image.jpg"
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Termos de Uso - Matrizes+" />
-        <meta
-          name="twitter:description"
-          content="Leia os termos de uso do Matrizes+, site gratuito para aprendizado de matrizes."
-        />
-        <meta
-          name="twitter:image"
-          content="https://matrizcalculator.com/og-image.jpg"
-        />
       </Helmet>
       
       <h1 className="text-3xl font-bold mb-2 text-gray-800">
         Termos e Condições de Uso
       </h1>
-      <p className="text-sm text-gray-500 mb-6">Última atualização: 04 de julho de 2025</p>
+      <p className="text-sm text-gray-500 mb-6">Última atualização: 12 de Setembro de 2025</p>
 
       <div className="space-y-6 text-gray-700">
         <p>
-          Bem-vindo à MatrizCalculator! Estes termos e condições descrevem as
-          regras para usar nosso site, localizado em{" "}
-          <Link className="text-blue-600 hover:underline" to="/">
-            www.matrizcalculator.com
-          </Link>
-          . Ao acessar este site, presumimos que você aceita estes termos em sua
-          totalidade.
+          Ao acessar ao site Matrizes+, você concorda em cumprir estes termos de serviço, todas as leis e regulamentos aplicáveis. Se você não concordar com algum desses termos, está proibido de usar ou acessar este site.
         </p>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-3 text-gray-800">1. Definição do Serviço</h2>
+          <h2 className="text-2xl font-semibold mb-3 text-gray-800">1. Uso de Licença</h2>
           <p>
-            A MatrizCalculator ("nós", "nosso") oferece uma plataforma online
-            gratuita com ferramentas de cálculo, tutoriais interativos e
-            exemplos práticos destinados a auxiliar estudantes e entusiastas no
-            aprendizado e na resolução de operações com matrizes.
+            É concedida permissão para usar as ferramentas e materiais no site Matrizes+, apenas para fins pessoais, educacionais e não comerciais. Esta é a concessão de uma licença, não uma transferência de título e, sob esta licença, você não pode: modificar ou copiar os materiais; usar os materiais para qualquer finalidade comercial ou para exibição pública; tentar descompilar ou fazer engenharia reversa de qualquer software contido no site; remover quaisquer direitos autorais ou outras notações de propriedade dos materiais.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-3 text-gray-800">2. Propriedade Intelectual</h2>
+          <h2 className="text-2xl font-semibold mb-3 text-gray-800">2. Isenção de Responsabilidade</h2>
           <p>
-            Todo o conteúdo presente neste site – incluindo o design, layout,
-            código-fonte, textos, tutoriais, imagens e a marca "MatrizCalculator"
-            – é de nossa propriedade intelectual e protegido por leis de
-            direitos autorais. A reprodução, distribuição ou uso comercial de
-            qualquer material sem nossa permissão expressa por escrito é
-            estritamente proibida.
+            Os materiais no site da Matrizes+ são fornecidos 'como estão'. O Matrizes+ não oferece garantias, expressas ou implícitas, e, por este meio, isenta e nega todas as outras garantias, incluindo, sem limitação, garantias implícitas ou condições de adequação a um fim específico ou não violação de propriedade intelectual.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-3 text-gray-800">3. Precisão e Isenção de Garantias</h2>
+          <h2 className="text-2xl font-semibold mb-3 text-gray-800">3. Limitações</h2>
           <p>
-            Nosso compromisso é manter a mais alta precisão em todas as
-            calculadoras e tutoriais. Contudo, o conteúdo da MatrizCalculator é
-            disponibilizado para fins educacionais e de referência. Por essa
-            natureza, não fornecemos garantias, expressas ou implícitas,
-            quanto à absoluta exatidão ou completude das informações. O
-            usuário deve utilizar a plataforma como uma ferramenta de apoio,
-            ciente de que a validação dos resultados em fontes acadêmicas é
-            recomendada.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-3 text-gray-800">4. Limitação de Responsabilidade</h2>
-          <p>
-            Em nenhuma circunstância a MatrizCalculator ou seus
-            desenvolvedores serão responsabilizados por quaisquer perdas ou
-            danos, diretos ou indiretos, decorrentes do uso ou da incapacidade
-            de usar este site, incluindo, mas não se limitando a, erros em
-            cálculos, perda de dados ou prejuízos acadêmicos.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-3 text-gray-800">5. Anúncios de Terceiros</h2>
-          <p>
-            Para manter a gratuidade do serviço, exibimos anúncios gerenciados
-            por redes de publicidade de terceiros, como o Google AdSense. Não
-            temos controle sobre o conteúdo desses anúncios e não endossamos os
-            produtos ou serviços anunciados. Sua interação com qualquer anúncio
-            é de sua inteira responsabilidade e regida pelos termos do
--            anunciante.
+            Em nenhum caso o Matrizes+ ou seus fornecedores serão responsáveis por quaisquer danos (incluindo, sem limitação, danos por perda de dados ou lucro ou devido a interrupção dos negócios) decorrentes do uso ou da incapacidade de usar os materiais em nosso site.
           </p>
         </section>
         
         <section>
-          <h2 className="text-2xl font-semibold mb-3 text-gray-800">6. Links para Outros Sites</h2>
+          <h2 className="text-2xl font-semibold mb-3 text-gray-800">4. Links</h2>
           <p>
-            Nosso site pode conter links para outros sites que não são operados
-            por nós. Se você clicar em um link de terceiro, será direcionado
-            para o site desse terceiro. Aconselhamos vivamente que reveja os
-            Termos de Uso de todos os sites que visitar. Não temos controle e
-            não assumimos qualquer responsabilidade pelo conteúdo ou práticas
-            de quaisquer sites ou serviços de terceiros.
+            O Matrizes+ não analisou todos os sites vinculados ao seu site e não é responsável pelo conteúdo de nenhum site vinculado. A inclusão de qualquer link não implica endosso por parte do Matrizes+. O uso de qualquer site vinculado é por conta e risco do usuário.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-3 text-gray-800">7. Alterações nos Termos</h2>
+          <h2 className="text-2xl font-semibold mb-3 text-gray-800">5. Modificações</h2>
           <p>
-            Reservamo-nos o direito de modificar estes termos a qualquer
-            momento. As alterações entrarão em vigor imediatamente após sua
-            publicação nesta página. Recomendamos que os usuários a revisitem
-            periodicamente para se manterem informados.
+            O Matrizes+ pode revisar estes termos de serviço do site a qualquer momento, sem aviso prévio. Ao usar este site, você concorda em ficar vinculado à versão atual desses termos de serviço.
           </p>
         </section>
       </div>
