@@ -41,77 +41,99 @@ function TermosUso() {
       </Helmet>
       
       <h1 className="text-3xl font-bold mb-2 text-gray-800">
-        Termos de Uso
+        Termos e Condições de Uso
       </h1>
-      <p className="text-sm text-gray-500 mb-6">Última atualização: 11 de setembro de 2025</p>
+      <p className="text-sm text-gray-500 mb-6">Última atualização: 04 de julho de 2025</p>
 
       <div className="space-y-6 text-gray-700">
+        <p>
+          Bem-vindo à MatrizCalculator! Estes termos e condições descrevem as
+          regras para usar nosso site, localizado em{" "}
+          <Link className="text-blue-600 hover:underline" to="/">
+            www.matrizcalculator.com
+          </Link>
+          . Ao acessar este site, presumimos que você aceita estes termos em sua
+          totalidade.
+        </p>
+
         <section>
-          <h2 className="text-2xl font-semibold mb-3 text-gray-800">1. Termos</h2>
+          <h2 className="text-2xl font-semibold mb-3 text-gray-800">1. Definição do Serviço</h2>
           <p>
-            Ao acessar o site <Link to="/" className="text-blue-600 hover:underline">Matrizes+</Link>, você concorda em cumprir estes termos de serviço, todas as leis e regulamentos aplicáveis e concorda que é responsável pelo cumprimento de todas as leis locais aplicáveis. Se você não concordar com algum desses termos, está proibido de usar ou acessar este site. Os materiais contidos neste site são protegidos pelas leis de direitos autorais e marcas comerciais aplicáveis.
+            A MatrizCalculator ("nós", "nosso") oferece uma plataforma online
+            gratuita com ferramentas de cálculo, tutoriais interativos e
+            exemplos práticos destinados a auxiliar estudantes e entusiastas no
+            aprendizado e na resolução de operações com matrizes.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-3 text-gray-800">2. Uso de Licença</h2>
-          <p className="mb-2">
-            É concedida permissão para baixar temporariamente uma cópia dos materiais (informações ou software) no site Matrizes+, apenas para visualização transitória pessoal e não comercial. Esta é a concessão de uma licença, não uma transferência de título e, sob esta licença, você não pode:
-          </p>
-          <ul className="list-disc pl-6 space-y-1">
-            <li>modificar ou copiar os materiais;</li>
-            <li>usar os materiais para qualquer finalidade comercial ou para exibição pública (comercial ou não comercial);</li>
-            <li>tentar descompilar ou fazer engenharia reversa de qualquer software contido no site Matrizes+;</li>
-            <li>remover quaisquer direitos autorais ou outras notações de propriedade dos materiais; ou</li>
-            <li>transferir os materiais para outra pessoa ou 'espelhar' os materiais em qualquer outro servidor.</li>
-          </ul>
-          <p className="mt-2">
-            Esta licença será automaticamente rescindida se você violar alguma dessas restrições e poderá ser rescindida por Matrizes+ a qualquer momento. Ao encerrar a visualização desses materiais ou após o término desta licença, você deve apagar todos os materiais baixados em sua posse, seja em formato eletrônico ou impresso.
+          <h2 className="text-2xl font-semibold mb-3 text-gray-800">2. Propriedade Intelectual</h2>
+          <p>
+            Todo o conteúdo presente neste site – incluindo o design, layout,
+            código-fonte, textos, tutoriais, imagens e a marca "MatrizCalculator"
+            – é de nossa propriedade intelectual e protegido por leis de
+            direitos autorais. A reprodução, distribuição ou uso comercial de
+            qualquer material sem nossa permissão expressa por escrito é
+            estritamente proibida.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-3 text-gray-800">3. Isenção de Responsabilidade</h2>
-          <p className="mb-2">
-            Os materiais no site da Matrizes+ são fornecidos 'como estão'. Matrizes+ não oferece garantias, expressas ou implícitas, e, por este meio, isenta e nega todas as outras garantias, incluindo, sem limitação, garantias implícitas ou condições de comercialização, adequação a um fim específico ou não violação de propriedade intelectual ou outra violação de direitos.
-          </p>
+          <h2 className="text-2xl font-semibold mb-3 text-gray-800">3. Precisão e Isenção de Garantias</h2>
           <p>
-            Além disso, o Matrizes+ não garante ou faz qualquer representação relativa à precisão, aos resultados prováveis ou à confiabilidade do uso dos materiais em seu site ou de outra forma relacionado a esses materiais ou em sites vinculados a este site.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-3 text-gray-800">4. Limitações</h2>
-          <p>
-            Em nenhum caso o Matrizes+ ou seus fornecedores serão responsáveis por quaisquer danos (incluindo, sem limitação, danos por perda de dados ou lucro ou devido a interrupção dos negócios) decorrentes do uso ou da incapacidade de usar os materiais em Matrizes+, mesmo que Matrizes+ ou um representante autorizado da Matrizes+ tenha sido notificado oralmente ou por escrito da possibilidade de tais danos. Como algumas jurisdições não permitem limitações em garantias implícitas, ou limitações de responsabilidade por danos consequentes ou incidentais, essas limitações podem não se aplicar a você.
+            Nosso compromisso é manter a mais alta precisão em todas as
+            calculadoras e tutoriais. Contudo, o conteúdo da MatrizCalculator é
+            disponibilizado para fins educacionais e de referência. Por essa
+            natureza, não fornecemos garantias, expressas ou implícitas,
+            quanto à absoluta exatidão ou completude das informações. O
+            usuário deve utilizar a plataforma como uma ferramenta de apoio,
+            ciente de que a validação dos resultados em fontes acadêmicas é
+            recomendada.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-3 text-gray-800">5. Precisão dos Materiais</h2>
+          <h2 className="text-2xl font-semibold mb-3 text-gray-800">4. Limitação de Responsabilidade</h2>
           <p>
-            Os materiais exibidos no site da Matrizes+ podem incluir erros técnicos, tipográficos ou fotográficos. Matrizes+ não garante que qualquer material em seu site seja preciso, completo ou atual. Matrizes+ pode fazer alterações nos materiais contidos em seu site a qualquer momento, sem aviso prévio. No entanto, Matrizes+ não se compromete a atualizar os materiais.
+            Em nenhuma circunstância a MatrizCalculator ou seus
+            desenvolvedores serão responsabilizados por quaisquer perdas ou
+            danos, diretos ou indiretos, decorrentes do uso ou da incapacidade
+            de usar este site, incluindo, mas não se limitando a, erros em
+            cálculos, perda de dados ou prejuízos acadêmicos.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-3 text-gray-800">6. Links</h2>
+          <h2 className="text-2xl font-semibold mb-3 text-gray-800">5. Anúncios de Terceiros</h2>
           <p>
-            O Matrizes+ não analisou todos os sites vinculados ao seu site e não é responsável pelo conteúdo de nenhum site vinculado. A inclusão de qualquer link não implica endosso por Matrizes+ do site. O uso de qualquer site vinculado é por conta e risco do usuário.
+            Para manter a gratuidade do serviço, exibimos anúncios gerenciados
+            por redes de publicidade de terceiros, como o Google AdSense. Não
+            temos controle sobre o conteúdo desses anúncios e não endossamos os
+            produtos ou serviços anunciados. Sua interação com qualquer anúncio
+            é de sua inteira responsabilidade e regida pelos termos do
+-            anunciante.
           </p>
         </section>
         
         <section>
-          <h2 className="text-2xl font-semibold mb-3 text-gray-800">7. Modificações</h2>
+          <h2 className="text-2xl font-semibold mb-3 text-gray-800">6. Links para Outros Sites</h2>
           <p>
-            O Matrizes+ pode revisar estes termos de serviço do site a qualquer momento, sem aviso prévio. Ao usar este site, você concorda em ficar vinculado à versão atual desses termos de serviço.
+            Nosso site pode conter links para outros sites que não são operados
+            por nós. Se você clicar em um link de terceiro, será direcionado
+            para o site desse terceiro. Aconselhamos vivamente que reveja os
+            Termos de Uso de todos os sites que visitar. Não temos controle e
+            não assumimos qualquer responsabilidade pelo conteúdo ou práticas
+            de quaisquer sites ou serviços de terceiros.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-3 text-gray-800">8. Lei Aplicável</h2>
+          <h2 className="text-2xl font-semibold mb-3 text-gray-800">7. Alterações nos Termos</h2>
           <p>
-            Estes termos e condições são regidos e interpretados de acordo com as leis do Brasil e você se submete irrevogavelmente à jurisdição exclusiva dos tribunais naquele estado ou localidade.
+            Reservamo-nos o direito de modificar estes termos a qualquer
+            momento. As alterações entrarão em vigor imediatamente após sua
+            publicação nesta página. Recomendamos que os usuários a revisitem
+            periodicamente para se manterem informados.
           </p>
         </section>
       </div>
