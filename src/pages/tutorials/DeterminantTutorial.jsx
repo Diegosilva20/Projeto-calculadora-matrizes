@@ -2,27 +2,55 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
 
-// Adicionando um componente para formatação de LaTeX para clareza
-// Se você já usa uma biblioteca como KaTeX, substitua este componente.
+// Componente para formatação de LaTeX
 const Latex = ({ children }) => <span className="font-serif italic">{children}</span>;
 
-function DeterminantTutorialRefactored() {
+// O nome da função voltou a ser o original "DeterminantTutorial"
+function DeterminantTutorial() {
+  // Centralizando o título e a descrição para reutilização nas meta tags
+  const pageTitle = "Determinante de Matrizes: O Guia Definitivo";
+  const pageDescription = "Aprenda a calcular determinantes de matrizes 2x2, 3x3 e 4x4 com métodos passo a passo como Sarrus, Cofatores e Eliminação Gaussiana.";
+
   return (
     <div className="p-6 max-w-4xl mx-auto text-gray-800">
       <Helmet>
-        {/* As tags de SEO estão excelentes, nenhuma alteração necessária. */}
-        <title>
-          Determinante de Matrizes: Tutorial Completo com Exemplos | Matrizes+
-        </title>
-        <meta
-          name="description"
-          content="Aprenda a calcular determinantes de matrizes 2x2, 3x3 e 4x4 com métodos passo a passo como Sarrus, Cofatores e Eliminação Gaussiana. Tutorial com exemplos práticos."
-        />
-        <meta
-          name="keywords"
-          content="determinante de matriz, regra de sarrus, método dos cofatores, eliminação gaussiana, álgebra linear, tutorial de matrizes, matriz 2x2, matriz 3x3, matriz 4x4"
-        />
-        {/* ... restante das suas ótimas meta tags ... */}
+        {/* --- SEO Básico e Meta Tags --- */}
+        <title>{`${pageTitle} | Matrizes+`}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content="determinante de matriz, regra de sarrus, método dos cofatores, eliminação gaussiana, álgebra linear, tutorial de matrizes, matriz 2x2, matriz 3x3, matriz 4x4" />
+        <link rel="canonical" href="https://www.matrizcalculator.com/tutorial/1" />
+
+        {/* --- Open Graph / Facebook Tags --- */}
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content="https://www.matrizcalculator.com/tutorial/1" />
+        <meta property="og:image" content="https://www.matrizcalculator.com/og-image.jpg" />
+
+        {/* --- Twitter Card Tags --- */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content="https://www.matrizcalculator.com/og-image.jpg" />
+
+        {/* --- Schema.org para Rich Snippets --- */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": pageTitle,
+            "author": {
+              "@type": "Organization",
+              "name": "Matrizes+"
+            },
+            "datePublished": "2025-06-14", // Data de criação que você forneceu
+            "dateModified": "2025-06-14",  // No momento da criação, é a mesma data
+            "description": pageDescription,
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://www.matrizcalculator.com/tutorial/1"
+            }
+          })}
+        </script>
       </Helmet>
 
       <nav className="text-sm mb-4" aria-label="Breadcrumb">
@@ -36,10 +64,9 @@ function DeterminantTutorialRefactored() {
       </nav>
 
       <h1 className="text-3xl font-bold mb-4 text-gray-900">
-        Determinante de Matrizes: O Guia Definitivo
+        {pageTitle}
       </h1>
       
-      {/* 1. O que é e por que é importante (Seção Resumida) */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-3">O que é e Para que Serve um Determinante?</h2>
         <p className="mb-4">
@@ -64,11 +91,9 @@ function DeterminantTutorialRefactored() {
         </div>
       </div>
 
-      {/* 2. Como Calcular Determinantes (Seção Principal com Métodos) */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-4">Como Calcular Determinantes: Métodos e Exemplos</h2>
 
-        {/* Método 1: Matriz 2x2 */}
         <div className="mb-8">
           <h3 className="text-xl font-semibold border-b pb-2 mb-3">Método 1: Matriz 2x2 (O Básico)</h3>
           <p className="mb-2">Para uma matriz 2x2, a fórmula é a diferença entre o produto da diagonal principal e o da diagonal secundária.</p>
@@ -78,7 +103,6 @@ function DeterminantTutorialRefactored() {
           <p><Latex>det(A) = (6 × 2) - (-3 × 4) = 12 - (-12) = 24</Latex></p>
         </div>
 
-        {/* Método 2: Matriz 3x3 (Regra de Sarrus) */}
         <div className="mb-8">
           <h3 className="text-xl font-semibold border-b pb-2 mb-3">Método 2: Matriz 3x3 (Regra de Sarrus)</h3>
           <p className="mb-2">A Regra de Sarrus é um método rápido para matrizes 3x3. Some os produtos das diagonais principais e subtraia a soma dos produtos das diagonais secundárias.</p>
@@ -89,7 +113,6 @@ function DeterminantTutorialRefactored() {
           <p><strong>Resultado:</strong> <Latex>det(A) = 6 - 8 = -2</Latex></p>
         </div>
         
-        {/* Método 3: Teorema de Laplace (Expansão por Cofatores) */}
         <div className="mb-8">
           <h3 className="text-xl font-semibold border-b pb-2 mb-3">Método 3: Teorema de Laplace (Expansão por Cofatores)</h3>
           <p className="mb-2">Ideal para matrizes com muitos zeros. O determinante é a soma dos elementos de uma fila (linha ou coluna) multiplicados por seus respectivos cofatores.</p>
@@ -104,7 +127,6 @@ function DeterminantTutorialRefactored() {
           <p className="mt-2"><strong>Resultado:</strong> <Latex>det(A) = 2·(1) + 1·(-1) = 2 - 1 = 1</Latex></p>
         </div>
 
-        {/* Método 4: Eliminação Gaussiana */}
         <div>
           <h3 className="text-xl font-semibold border-b pb-2 mb-3">Método 4: Eliminação Gaussiana (Para Matrizes Maiores)</h3>
           <p className="mb-2">Transforme a matriz em uma matriz triangular superior. O determinante será o produto dos elementos da diagonal principal. <strong>É o método mais eficiente para matrizes grandes.</strong></p>
@@ -126,7 +148,6 @@ function DeterminantTutorialRefactored() {
         </div>
       </div>
       
-      {/* 3. Propriedades Fundamentais */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-3">Propriedades Fundamentais</h2>
         <ul className="list-disc pl-5 space-y-2">
@@ -138,7 +159,6 @@ function DeterminantTutorialRefactored() {
         </ul>
       </div>
 
-      {/* 4. Conclusão */}
       <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
         <h2 className="text-2xl font-semibold mb-3">Conclusão e Próximos Passos</h2>
         <p>Dominar o cálculo de determinantes é um passo essencial na Álgebra Linear. Com ele, você pode analisar a inversibilidade de matrizes, resolver sistemas e entender transformações geométricas.</p>
@@ -153,4 +173,4 @@ function DeterminantTutorialRefactored() {
   );
 }
 
-export default DeterminantTutorialRefactored;
+export default DeterminantTutorial;
