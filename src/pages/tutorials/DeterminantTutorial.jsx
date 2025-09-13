@@ -5,7 +5,6 @@ import MatrixDisplay from "../../components/common/MatrixDisplay";
 // Componente para formatação de LaTeX
 const Latex = ({ children }) => <span className="font-serif italic">{children}</span>;
 
-// O nome da função voltou a ser o original "DeterminantTutorial"
 function DeterminantTutorial() {
   // Centralizando o título e a descrição para reutilização nas meta tags
   const pageTitle = "Determinante de Matrizes: O Guia Definitivo";
@@ -36,14 +35,14 @@ function DeterminantTutorial() {
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Article",
+            "@type": "EducationalResource",
             "headline": pageTitle,
             "author": {
               "@type": "Organization",
               "name": "Matrizes+"
             },
-            "datePublished": "2025-06-14", // Data de criação que você forneceu
-            "dateModified": "2025-06-14",  // No momento da criação, é a mesma data
+            "datePublished": "2025-06-14", 
+            "dateModified": "2025-06-14", 
             "description": pageDescription,
             "mainEntityOfPage": {
               "@type": "WebPage",
