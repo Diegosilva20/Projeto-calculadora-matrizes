@@ -23,7 +23,32 @@ const Home = () => {
   const [error, setError] = useState("");
   const [steps, setSteps] = useState([]);
 
-  // A lista de tutoriais que ficava aqui foi removida, pois agora ela é importada.
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "Quais operações a calculadora de matrizes suporta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nossa calculadora suporta diversas operações, incluindo soma, subtração, multiplicação, cálculo de determinante, matriz inversa, transposição, multiplicação por escalar e eliminação de Gauss."
+      }
+    },{
+      "@type": "Question",
+      "name": "A calculadora de matrizes é gratuita?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim, a Calculadora de Matrizes+ é uma ferramenta completamente gratuita e online, projetada para ajudar estudantes e profissionais com seus cálculos matriciais."
+      }
+    },{
+      "@type": "Question",
+      "name": "Como calcular a multiplicação de matrizes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para multiplicar duas matrizes, o número de colunas da primeira matriz deve ser igual ao número de linhas da segunda. Insira os valores nas matrizes A e B, selecione a operação 'Multiplicação (A × B)' e clique em 'Calcular' para ver o resultado e o passo a passo."
+      }
+    }]
+  };
 
   const handleSizeChange = (matrixId, e) => {
     const { name, value } = e.target;
@@ -152,7 +177,10 @@ const Home = () => {
       <Helmet>
         <title>Calculadora de Matrizes - Matrizes+</title>
         <meta name="description" content="Calcule soma, multiplicação, determinante, inversa e mais com nossa calculadora online gratuita." />
-        {/* ... restante do seu Helmet ... */}
+        <link rel="canonical" href="https://www.matrizcalculator.com/" />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
       </Helmet>
       
       <Header />

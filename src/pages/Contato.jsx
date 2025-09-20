@@ -26,7 +26,7 @@ function Contato() {
         <title>Contato - Matrizes+</title>
         <meta name="description" content="Entre em contato com a equipe Matrizes+ para enviar sugestões, reportar erros ou tirar dúvidas." />
         {/* O restante das suas meta tags está ótimo */}
-        <link rel="canonical" href="https://matrizcalculator.com/contato" />
+        <link rel="canonical" href="https://www.matrizcalculator.com/contato" />
       </Helmet>
       
       <div className="text-center mb-12">

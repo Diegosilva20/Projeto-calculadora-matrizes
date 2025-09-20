@@ -25,7 +25,7 @@ function Sobre() {
           content="Conheça a missão do Matrizes+: simplificar a Álgebra Linear com uma calculadora de matrizes poderosa e tutoriais didáticos para todos."
         />
         {/* O restante das suas meta tags está ótimo! */}
-        <link rel="canonical" href="https://matrizcalculator.com/sobre" />
+        <link rel="canonical" href="https://www.matrizcalculator.com/sobre" />
       </Helmet>
       
       <div className="text-center mb-12">

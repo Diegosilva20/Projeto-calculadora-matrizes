@@ -13,7 +13,7 @@ function TermosUso() {
         <meta name="robots" content="index, follow" />
         <link
           rel="canonical"
-          href="https://matrizcalculator.com/termos"
+          href="https://www.matrizcalculator.com/termos"
         />
         <meta property="og:title" content="Termos de Uso - Matrizes+" />
         <meta

@@ -8,7 +8,7 @@ function PoliticaPrivacidade() {
         <title>Política de Privacidade - Matrizes+</title>
         <meta name="description" content="Saiba como o Matrizes+ coleta, usa e protege suas informações." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://matrizcalculator.com/politica" />
+        <link rel="canonical" href="https://www.matrizcalculator.com/politica" />
         <meta property="og:title" content="Política de Privacidade - Matrizes+" />
         <meta property="og:description" content="Leia a política de privacidade do Matrizes+ para entender como protegemos seus dados." />
         <meta property="og:url" content="https://matrizcalculator.com/politica" />
