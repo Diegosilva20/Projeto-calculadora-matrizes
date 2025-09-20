@@ -73,7 +73,7 @@ function Contato() {
         </div>
       </div>
 
-      <div className="text-center bg-blue-50 p-8 rounded-lg">
+      <div className="text-center bg-blue-50 p-8 rounded-lg flex flex-col items-center">
         <h2 className="text-2xl font-bold mb-3 text-gray-900">
           Nosso Canal de Comunicação
         </h2>
@@ -82,7 +82,7 @@ function Contato() {
         </p>
         <a
           href="mailto:suporte@matrizcalculator.com"
-          className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors text-lg font-medium shadow"
+          className="inline-block bg-blue-600 text-white px-4 sm:px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors text-base sm:text-lg font-medium shadow"
         >
           suporte@matrizcalculator.com
         </a>

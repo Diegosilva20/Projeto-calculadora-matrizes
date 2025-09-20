@@ -4,7 +4,7 @@ const Footer = () => (
   <footer className="mt-12 border-t pt-6 bg-gray-100">
     <div className="container mx-auto text-center">
       <p className="text-sm text-gray-600">© 2025 MatrizCalculator. Todos os direitos reservados.</p>
-      <div className="flex justify-center space-x-4 mt-2">
+      <div className="flex flex-col sm:flex-row justify-center items-center mt-2 space-y-2 sm:space-y-0 sm:space-x-4">
         <Link to="/sobre" className="text-blue-600 hover:underline text-sm">
           Sobre
         </Link>

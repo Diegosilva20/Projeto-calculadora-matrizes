@@ -175,7 +175,7 @@ const Home = () => {
           </select>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-center items-start gap-4 sm:gap-6 mb-4">
+        <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-4 sm:gap-6 mb-4">
           <div>
             {renderSizeInput("Tamanho da Matriz A", sizeA, (e) => handleSizeChange('A', e))}
             <MatrixInput matrix={matrixA} setMatrix={setMatrixA} label="Matriz A" rows={sizeA.rows} cols={sizeA.cols} />

@@ -46,13 +46,15 @@ footer a:hover {
 }
 
 /* Media Queries para Responsividade */
-@media (max-width: 640px) { /* Tailwind breakpoint 'sm' */
+/* 
+@media (max-width: 640px) { 
   footer .flex {
     flex-direction: column;
     gap: 0.5rem;
   }
 
   footer a {
-    font-size: 0.875rem; /* Ajusta tamanho do texto para mobile */
+    font-size: 0.875rem; 
   }
-}
+} 
+*/
