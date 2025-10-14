@@ -1,38 +1,17 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-
-// Importe a lista de tutoriais do seu novo arquivo de dados
-import { tutoriais } from '../data/tutorialsData'; 
-
-// Importe o novo componente do tutorial que você criou
-import DeterminantTutorial from './tutorials/DeterminantTutorial';
-import InverseTutorial from './tutorials/InverseTutorial';
-import GaussTutorial from './tutorials/GaussTutorial';
-import TransposeTutorial from './tutorials/TransposeTutorial';
-import MultiplicationTutorial from './tutorials/MultiplicationTutorial';
-import LinearSystemsTutorial from './tutorials/LinearSystemsTutorial'; // <-- 1. IMPORTE O NOVO TUTORIAL
+import { tutoriais } from '../data/tutorialsData'; // Importe a lista de tutoriais
 
 const TutorialPage = () => {
-  const { id } = useParams();
-  const tutorialId = parseInt(id, 10);
-  
-  // Encontra o tutorial atual para usar o título e a descrição
-  const tutorial = tutoriais.find(t => t.id === tutorialId);
+  // 1. Pega o 'slug' da URL (ex: "matriz-transposta")
+  const { slug } = useParams();
 
-  // Mapeia o ID para o componente do tutorial correspondente
-  const tutorialComponents = {
-    1: <DeterminantTutorial />,
-    2: <InverseTutorial />,
-    3: <GaussTutorial />,
-    4: <TransposeTutorial />,
-    5: <MultiplicationTutorial />,
-    6: <LinearSystemsTutorial />, // <-- 2. ADICIONE O NOVO TUTORIAL AQUI
-  };
+  // 2. Encontra o tutorial correspondente no array procurando pelo slug
+  const tutorial = tutoriais.find(t => t.slug === slug);
 
-  const currentTutorialComponent = tutorialComponents[tutorialId];
-
-  if (!tutorial || !currentTutorialComponent) {
+  // Se nenhum tutorial for encontrado, mostra a mensagem de erro
+  if (!tutorial) {
     return (
       <div className="p-6 max-w-4xl mx-auto text-center">
         <h1 className="text-3xl font-bold mb-4">Tutorial Não Encontrado</h1>
@@ -47,11 +26,14 @@ const TutorialPage = () => {
   return (
     <div>
       <Helmet>
-        <title>{`${tutorial.title} | Tutoriais Matrizes+`}</title>
+        <title>{`${tutorial.title} | Tutoriais MatrizCalculadora`}</title>
         <meta name="description" content={tutorial.description} />
-        <link rel="canonical" href={`https://www.matrizcalculator.com/tutorial/${tutorial.id}`} />
+        {/* 3. Atualiza o link canônico para usar o slug */}
+        <link rel="canonical" href={`https://www.matrizcalculator.com/tutorial/${tutorial.slug}`} />
       </Helmet>
-      {currentTutorialComponent}
+      
+      {/* 4. Renderiza o componente diretamente do objeto encontrado */}
+      {tutorial.component}
     </div>
   );
 };

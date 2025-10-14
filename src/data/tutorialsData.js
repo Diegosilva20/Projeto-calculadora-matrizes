@@ -1,32 +1,51 @@
+import DeterminantTutorial from '../pages/tutorials/DeterminantTutorial';
+import InverseTutorial from '../pages/tutorials/InverseTutorial';
+import GaussTutorial from '../pages/tutorials/GaussTutorial';
+import TransposeTutorial from '../pages/tutorials/TransposeTutorial';
+import MultiplicationTutorial from '../pages/tutorials/MultiplicationTutorial';
+import LinearSystemsTutorial from '../pages/tutorials/LinearSystemsTutorial';
+
 export const tutoriais = [
-  {
-    id: 4,
-    title: "Matriz Transposta",
-    description: "Entenda a operação de virar as linhas de uma matriz por colunas.",
-  },
-  {
-    id: 5,
-    title: "Como Multiplicar Matrizes",
-    description: "Aprenda o método linha-por-coluna com um guia passo a passo.",
-  },
-  {
+    {
     id: 1,
-    title: "Determinante de Matrizes",
-    description: "Descubra o que é e para que serve o determinante de uma matriz.",
-  },
-  {
-    id: 3,
-    title: "Escalonamento (Método de Gauss)",
-    description: "Simplifique sistemas de equações transformando a matriz em escada.",
+    slug: 'determinante-de-matrizes',
+    title: "Cálculo de Determinantes",
+    description: "Descubra o que é, para que serve e aprenda a calcular o determinante de uma matriz.",
+    component: <DeterminantTutorial />
   },
   {
     id: 2,
-    title: "Como Calcular a Inversa",
-    description: "Domine o método de Gauss-Jordan para encontrar a matriz inversa.",
+    slug: 'matriz-inversa',
+    title: "Matriz Inversa",
+    description: "Aprenda o que é uma matriz inversa e como calcular passo a passo pelos métodos 2x2 e Gauss-Jordan.",
+    component: <InverseTutorial />
   },
   {
-    id: 6, // Novo ID
-    title: "Sistemas de Equações Lineares",
-    description: "Resolva sistemas usando matrizes e veja como tudo se conecta.",
+    id: 3,
+    slug: 'escalonamento-gauss-jordan',
+    title: 'Escalonamento (Gauss-Jordan)',
+    description: "Domine o método de escalonamento de matrizes para resolver sistemas lineares.",
+    component: <GaussTutorial />
+  },
+  {
+    id: 4,
+    slug: 'matriz-transposta',
+    title: "Matriz Transposta",
+    description: "Entenda o que é a matriz transposta, como calculá-la e suas principais propriedades.",
+    component: <TransposeTutorial />
+  },
+  {
+    id: 5,
+    slug: 'multiplicacao-de-matrizes',
+    title: "Como Multiplicar Matrizes",
+    description: "Aprenda como multiplicar matrizes passo a passo. Veja exemplos práticos e aplicações.",
+    component: <MultiplicationTutorial />
+  },
+  {
+    id: 6, 
+    slug: 'sistemas-lineares',
+    title: 'Sistemas Lineares',
+    description: "Veja como matrizes podem ser usadas para representar e resolver sistemas de equações lineares.",
+    component: <LinearSystemsTutorial />
   },
 ]; 

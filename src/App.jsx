@@ -23,7 +23,7 @@ function App() {
           <Suspense fallback={<div className="text-center p-4">Carregando...</div>}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/tutorial/:id" element={<TutorialPage />} />
+              <Route path="/tutorial/:slug" element={<TutorialPage />} />
               <Route path="/politica" element={<PoliticaPrivacidade />} />
               <Route path="/termos" element={<TermosUso />} />
               <Route path="/contato" element={<Contato />} />

@@ -38,12 +38,12 @@ const Tutorials = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* O código agora lê a lista ordenada do arquivo de dados */}
-        {tutoriais.map((tutorial) => (
+        {tutoriais.map((tutorial) => (  
           <div key={tutorial.id} className="border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition-shadow flex flex-col">
             <h3 className="text-xl font-semibold mb-2">{tutorial.title}</h3>
             <p className="text-gray-600 mb-4 flex-grow">{tutorial.description}</p>
             <Link
-              to={`/tutorial/${tutorial.id}`}
+              to={`/tutorial/${tutorial.slug}`}
               className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm inline-block mt-auto self-start"
               aria-label={`Saiba mais sobre ${tutorial.title}`}
             >
