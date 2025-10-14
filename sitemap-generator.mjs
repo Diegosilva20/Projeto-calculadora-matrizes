@@ -1,51 +1,48 @@
-import { SitemapStream, streamToPromise } from 'sitemap';
-import { Readable } from 'stream';
-import { tutoriais } from './src/data/tutorialsData.js'; // Agora podemos usar 'import'
+// sitemap-generator.mjs - VERSÃO CORRIGIDA
+
 import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+// Importa do novo arquivo de dados puros
+import { tutorialsInfo as tutoriais } from './src/data/tutorialsInfo.js';
 
-// Helper para obter o diretório correto com módulos ES
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const baseUrl = "https://www.matrizcalculator.com";
 
-async function generateSitemap() {
-  try {
-    const baseUrl = 'https://www.matrizcalculator.com';
+const staticPages = [
+  { url: '/', changefreq: 'daily', priority: '1.0' },
+  { url: '/tutorials', changefreq: 'weekly', priority: '0.8' },
+  { url: '/sobre', changefreq: 'monthly', priority: '0.5' },
+  { url: '/contato', changefreq: 'monthly', priority: '0.5' },
+  { url: '/politica-privacidade', changefreq: 'yearly', priority: '0.3' },
+  { url: '/termos-uso', changefreq: 'yearly', priority: '0.3' },
+];
 
-    // Rotas estáticas com prioridade e frequência de mudança
-    const staticLinks = [
-      { url: '/', changefreq: 'daily', priority: 1.0 },
-      { url: '/tutorials', changefreq: 'weekly', priority: 0.8 },
-      { url: '/sobre', changefreq: 'monthly', priority: 0.5 },
-      { url: '/contato', changefreq: 'monthly', priority: 0.5 },
-      { url: '/politica-privacidade', changefreq: 'yearly', priority: 0.3 },
-      { url: '/termos-uso', changefreq: 'yearly', priority: 0.3 },
-    ];
+const createSitemap = () => {
+  let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
 
-    // Rotas dinâmicas dos tutoriais
-    const tutorialLinks = tutoriais.map(tutorial => ({
-      url: `/tutorial/${tutorial.id}`,
-      changefreq: 'weekly',
-      priority: 0.7,
-    }));
+  staticPages.forEach(page => {
+    sitemap += `
+  <url>
+    <loc>${baseUrl}${page.url}</loc>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`;
+  });
 
-    const allLinks = [...staticLinks, ...tutorialLinks];
+  // AQUI ESTÁ A CORREÇÃO: trocamos tutorial.id por tutorial.slug
+  tutoriais.forEach(tutorial => {
+    sitemap += `
+  <url>
+    <loc>${baseUrl}/tutorial/${tutorial.slug}</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>`;
+  });
 
-    // Cria o sitemap
-    const stream = new SitemapStream({ hostname: baseUrl });
-    const sitemapXml = await streamToPromise(Readable.from(allLinks).pipe(stream)).then(data => data.toString());
+  sitemap += `
+</urlset>`;
 
-    // Define o caminho de saída
-    const sitemapPath = path.resolve(__dirname, 'public', 'sitemap.xml');
+  fs.writeFileSync('public/sitemap.xml', sitemap);
+};
 
-    // Salva o arquivo
-    fs.writeFileSync(sitemapPath, sitemapXml);
-
-    console.log('✅ sitemap.xml gerado com sucesso usando o novo método!');
-
-  } catch (error) {
-    console.error('❌ Erro ao gerar o sitemap:', error);
-  }
-}
-
-generateSitemap();
+createSitemap();
+console.log('Sitemap gerado com sucesso!');
