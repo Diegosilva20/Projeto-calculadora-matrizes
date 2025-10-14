@@ -134,7 +134,7 @@ const Home = () => {
             <h3 className="text-xl font-semibold mb-2">{tutorial.title}</h3>
             <p className="text-gray-600 mb-4 flex-grow">{tutorial.description}</p>
             <Link
-              to={`/tutorial/${tutorial.id}`}
+              to={`/tutorial/${tutorial.slug}`}
               className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm inline-block mt-auto self-center"
               aria-label={`Saiba mais sobre ${tutorial.title}`}
             >
