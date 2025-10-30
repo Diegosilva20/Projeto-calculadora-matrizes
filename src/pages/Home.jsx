@@ -38,7 +38,7 @@ const Home = () => {
       "name": "A calculadora de matrizes é gratuita?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sim, a Calculadora de Matrizes+ é uma ferramenta completamente gratuita e online, projetada para ajudar estudantes e profissionais com seus cálculos matriciais."
+        "text": "Sim, a Calculadora de Matrizes é uma ferramenta completamente gratuita e online, projetada para ajudar estudantes e profissionais com seus cálculos matriciais."
       }
     },{
       "@type": "Question",
@@ -175,7 +175,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       <Helmet>
-        <title>Calculadora de Matrizes - Matrizes+</title>
+        <title>Calculadora de Matrizes e Tutoriais</title>
         <meta name="description" content="Calcule soma, multiplicação, determinante, inversa e mais com nossa calculadora online gratuita." />
         <link rel="canonical" href="https://www.matrizcalculator.com/" />
         <script type="application/ld+json">
