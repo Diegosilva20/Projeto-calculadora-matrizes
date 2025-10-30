@@ -18,5 +18,53 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/matrizcalculator.com",
+      "destination": "https://www.matrizcalculator.com",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "destination": "https://www.matrizcalculator.com/$1",
+      "has": [
+        {
+          "type": "host",
+          "value": "matrizcalculator.com"
+        }
+      ],
+      "permanent": true
+    },
+    {
+      "source": "/tutorial/1",
+      "destination": "/tutorial/determinante-de-matrizes",
+      "permanent": true
+    },
+    {
+      "source": "/tutorial/2",
+      "destination": "/tutorial/matriz-inversa",
+      "permanent": true
+    },
+    {
+      "source": "/tutorial/3",
+      "destination": "/tutorial/escalonamento-gauss-jordan",
+      "permanent": true
+    },
+    {
+      "source": "/tutorial/4",
+      "destination": "/tutorial/matriz-transposta",
+      "permanent": true
+    },
+    {
+      "source": "/tutorial/5",
+      "destination": "/tutorial/multiplicacao-de-matrizes",
+      "permanent": true
+    },
+    {
+      "source": "/tutorial/6",
+      "destination": "/tutorial/sistemas-lineares",
+      "permanent": true
+    }
   ]
 }

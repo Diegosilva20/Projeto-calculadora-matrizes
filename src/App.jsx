@@ -20,12 +20,14 @@ function App() {
         <Header />
         <CookieConsentWrapper />
         <main className="flex-grow container mx-auto p-4 pt-20">
-          <Suspense fallback={<div className="text-center p-4">Carregando...</div>}>
+          <Suspense
+            fallback={<div className="text-center p-4">Carregando...</div>}
+          >
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/tutorial/:slug" element={<TutorialPage />} />
-              <Route path="/politica" element={<PoliticaPrivacidade />} />
-              <Route path="/termos" element={<TermosUso />} />
+              <Route path="/politica-privacidade" element={<PoliticaPrivacidade />} />
+              <Route path="/termos-uso" element={<TermosUso />} />
               <Route path="/contato" element={<Contato />} />
               <Route path="/sobre" element={<Sobre />} />
               <Route path="/tutorials" element={<Tutorials />} />
