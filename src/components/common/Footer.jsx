@@ -11,10 +11,10 @@ const Footer = () => (
         <Link to="/contato" className="text-blue-600 hover:underline text-sm">
           Contato
         </Link>
-        <Link to="/politica" className="text-blue-600 hover:underline text-sm">
+        <Link to="/politica-privacidade" className="text-blue-600 hover:underline text-sm">
           Política de Privacidade
         </Link>
-        <Link to="/termos" className="text-blue-600 hover:underline text-sm">
+        <Link to="/termos-uso" className="text-blue-600 hover:underline text-sm">
           Termos de Uso
         </Link>
       </div>
