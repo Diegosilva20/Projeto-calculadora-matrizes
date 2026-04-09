@@ -7,7 +7,7 @@ import { createEmptyMatrix, calculate } from "../utils/matrixCalculations";
 import Header from "../components/common/Header";
 
 // 1. IMPORTA a lista central de tutoriais do arquivo de dados
-import { tutoriais } from '../data/tutorialsData';
+import { tutoriais } from '../data/tutorialsData.jsx';  
 
 // Lista de operações que usam a Matriz B
 const operationsWithMatrixB = ["soma", "subtracao", "multiplicacao"];
