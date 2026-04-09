@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import MatrixInput from "../components/common/MatrixInput";
 import ResultDisplay from "../components/ui/ResultDisplay";
 import { createEmptyMatrix, calculate } from "../utils/matrixCalculations";
-import Header from "../components/common/Header";
 
 // 1. IMPORTA a lista central de tutoriais do arquivo de dados
 import { tutoriais } from "../data/tutorialsData.jsx";
@@ -235,8 +234,6 @@ const Home = () => {
           content="Resolva matrizes passo a passo. Calcule determinante, matriz inversa, transposta, multiplicação e escalonamento pelo método de Gauss-Jordan online e grátis."
         />
       </Helmet>
-
-      <Header />
 
       <main className="p-4 sm:p-6 max-w-4xl mx-auto text-center">
         <h1 className="text-2xl sm:text-3xl font-bold mb-2">
