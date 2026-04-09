@@ -7,7 +7,7 @@ import { createEmptyMatrix, calculate } from "../utils/matrixCalculations";
 import Header from "../components/common/Header";
 
 // 1. IMPORTA a lista central de tutoriais do arquivo de dados
-import { tutoriais } from '../data/tutorialsData.jsx';  
+import { tutoriais } from "../data/tutorialsData.jsx";
 
 // Lista de operações que usam a Matriz B
 const operationsWithMatrixB = ["soma", "subtracao", "multiplicacao"];
@@ -15,8 +15,12 @@ const operationsWithMatrixB = ["soma", "subtracao", "multiplicacao"];
 const Home = () => {
   const [sizeA, setSizeA] = useState({ rows: 2, cols: 2 });
   const [sizeB, setSizeB] = useState({ rows: 2, cols: 2 });
-  const [matrixA, setMatrixA] = useState(createEmptyMatrix(sizeA.rows, sizeA.cols));
-  const [matrixB, setMatrixB] = useState(createEmptyMatrix(sizeB.rows, sizeB.cols));
+  const [matrixA, setMatrixA] = useState(
+    createEmptyMatrix(sizeA.rows, sizeA.cols),
+  );
+  const [matrixB, setMatrixB] = useState(
+    createEmptyMatrix(sizeB.rows, sizeB.cols),
+  );
   const [scalar, setScalar] = useState("");
   const [result, setResult] = useState(null);
   const [operation, setOperation] = useState("soma");
@@ -26,36 +30,40 @@ const Home = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [{
-      "@type": "Question",
-      "name": "Quais operações a calculadora de matrizes suporta?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Nossa calculadora suporta diversas operações, incluindo soma, subtração, multiplicação, cálculo de determinante, matriz inversa, transposição, multiplicação por escalar e eliminação de Gauss."
-      }
-    },{
-      "@type": "Question",
-      "name": "A calculadora de matrizes é gratuita?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sim, a Calculadora de Matrizes é uma ferramenta completamente gratuita e online, projetada para ajudar estudantes e profissionais com seus cálculos matriciais."
-      }
-    },{
-      "@type": "Question",
-      "name": "Como calcular a multiplicação de matrizes?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Para multiplicar duas matrizes, o número de colunas da primeira matriz deve ser igual ao número de linhas da segunda. Insira os valores nas matrizes A e B, selecione a operação 'Multiplicação (A × B)' e clique em 'Calcular' para ver o resultado e o passo a passo."
-      }
-    }]
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Quais operações a calculadora de matrizes suporta?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Nossa calculadora suporta diversas operações, incluindo soma, subtração, multiplicação, cálculo de determinante, matriz inversa, transposição, multiplicação por escalar e eliminação de Gauss.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "A calculadora de matrizes é gratuita?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sim, a Calculadora de Matrizes é uma ferramenta completamente gratuita e online, projetada para ajudar estudantes e profissionais com seus cálculos matriciais.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Como calcular a multiplicação de matrizes?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Para multiplicar duas matrizes, o número de colunas da primeira matriz deve ser igual ao número de linhas da segunda. Insira os valores nas matrizes A e B, selecione a operação 'Multiplicação (A × B)' e clique em 'Calcular' para ver o resultado e o passo a passo.",
+        },
+      },
+    ],
   };
 
   const handleSizeChange = (matrixId, e) => {
     const { name, value } = e.target;
-    const currentSize = matrixId === 'A' ? sizeA : sizeB;
+    const currentSize = matrixId === "A" ? sizeA : sizeB;
     const newSize = { ...currentSize, [name]: parseInt(value) || 1 };
-    
-    if (matrixId === 'A') {
+
+    if (matrixId === "A") {
       setSizeA(newSize);
       setMatrixA(createEmptyMatrix(newSize.rows, newSize.cols));
     } else {
@@ -70,7 +78,9 @@ const Home = () => {
 
   const renderSizeInput = (label, state, onChangeHandler) => (
     <div className="mb-2 text-center">
-      <label className="font-semibold mr-2 text-sm sm:text-base">{label}:</label>
+      <label className="font-semibold mr-2 text-sm sm:text-base">
+        {label}:
+      </label>
       <div className="inline-flex gap-2">
         <select
           name="rows"
@@ -79,7 +89,11 @@ const Home = () => {
           className="border px-2 py-1 rounded text-sm"
           aria-label={`${label} linhas`}
         >
-          {[1, 2, 3, 4].map((n) => <option key={n} value={n}>{n}</option>)}
+          {[1, 2, 3, 4].map((n) => (
+            <option key={n} value={n}>
+              {n}
+            </option>
+          ))}
         </select>
         <select
           name="cols"
@@ -88,7 +102,11 @@ const Home = () => {
           className="border px-2 py-1 rounded text-sm"
           aria-label={`${label} colunas`}
         >
-          {[1, 2, 3, 4].map((n) => <option key={n} value={n}>{n}</option>)}
+          {[1, 2, 3, 4].map((n) => (
+            <option key={n} value={n}>
+              {n}
+            </option>
+          ))}
         </select>
       </div>
     </div>
@@ -97,7 +115,10 @@ const Home = () => {
   const renderScalarInput = () => (
     <div className="mb-4">
       <h3 className="font-semibold mb-2 text-sm sm:text-base">Escalar</h3>
-      <div className="grid gap-1 justify-center" style={{ gridTemplateColumns: "minmax(0, 60px)" }}>
+      <div
+        className="grid gap-1 justify-center"
+        style={{ gridTemplateColumns: "minmax(0, 60px)" }}
+      >
         <input
           type="text"
           value={scalar}
@@ -113,26 +134,38 @@ const Home = () => {
   const renderMatrixStep = (matrix) => (
     <div
       className="grid gap-1 mx-auto max-w-[90vw] justify-center"
-      style={{ gridTemplateColumns: `repeat(${matrix[0].length}, minmax(0, 60px))` }}
+      style={{
+        gridTemplateColumns: `repeat(${matrix[0].length}, minmax(0, 60px))`,
+      }}
     >
       {matrix.map((row, i) =>
         row.map((val, j) => (
-          <div key={`step-matrix-${i}-${j}`} className="bg-gray-200 p-2 rounded text-center text-sm">
+          <div
+            key={`step-matrix-${i}-${j}`}
+            className="bg-gray-200 p-2 rounded text-center text-sm"
+          >
             {Number(val).toFixed(2)}
           </div>
-        ))
+        )),
       )}
     </div>
   );
 
   const renderTutorials = () => (
     <div className="mt-12">
-      <h2 className="text-2xl font-bold mb-6 text-center">Aprenda o Essencial 🧠</h2>
+      <h2 className="text-2xl font-bold mb-6 text-center">
+        Aprenda o Essencial 🧠
+      </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {tutoriais.map((tutorial) => (
-          <div key={tutorial.id} className="border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition-shadow flex flex-col">
+          <div
+            key={tutorial.id}
+            className="border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition-shadow flex flex-col"
+          >
             <h3 className="text-xl font-semibold mb-2">{tutorial.title}</h3>
-            <p className="text-gray-600 mb-4 flex-grow">{tutorial.description}</p>
+            <p className="text-gray-600 mb-4 flex-grow">
+              {tutorial.description}
+            </p>
             <Link
               to={`/tutorial/${tutorial.slug}`}
               className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm inline-block mt-auto self-center"
@@ -151,13 +184,20 @@ const Home = () => {
     const isSquareA = sizeA.rows === sizeA.cols;
 
     if (operation === "multiplicacao" && sizeA.cols !== sizeB.rows) {
-      newError = "Erro: O número de colunas da Matriz A deve ser igual ao número de linhas da Matriz B para multiplicação.";
+      newError =
+        "Erro: O número de colunas da Matriz A deve ser igual ao número de linhas da Matriz B para multiplicação.";
     } else if (operation === "inversa" && !isSquareA) {
-      newError = "Erro: A inversa só pode ser calculada para matrizes quadradas.";
+      newError =
+        "Erro: A inversa só pode ser calculada para matrizes quadradas.";
     } else if (operation === "determinanteA" && !isSquareA) {
-      newError = "Erro: O determinante só pode ser calculado para matrizes quadradas.";
+      newError =
+        "Erro: O determinante só pode ser calculado para matrizes quadradas.";
     } else if (operation === "gauss" && !isSquareA) {
-      if (!window.confirm("Aviso: A eliminação de Gauss é tipicamente aplicada a matrizes quadradas. Deseja prosseguir mesmo assim?")) {
+      if (
+        !window.confirm(
+          "Aviso: A eliminação de Gauss é tipicamente aplicada a matrizes quadradas. Deseja prosseguir mesmo assim?",
+        )
+      ) {
         return;
       }
     }
@@ -169,29 +209,54 @@ const Home = () => {
       return;
     }
 
-    calculate(matrixA, matrixB, scalar, operation, { rows: sizeA.rows, cols: sizeA.cols }, setResult, setError, setSteps);
+    calculate(
+      matrixA,
+      matrixB,
+      scalar,
+      operation,
+      { rows: sizeA.rows, cols: sizeA.cols },
+      setResult,
+      setError,
+      setSteps,
+    );
   };
 
   return (
     <div className="min-h-screen">
       <Helmet>
-        <title>Calculadora de Matrizes e Tutoriais</title>
-        <meta name="description" content="Calcule soma, multiplicação, determinante, inversa e mais com nossa calculadora online gratuita." />
-        <link rel="canonical" href="https://www.matrizcalculator.com/" />
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
+        {/* O título chamativo que vai aparecer em azul no Google */}
+        <title>
+          Calculadora de Matrizes Online | Inversa, Determinante e Gauss
+        </title>
+
+        {/* O texto cinza que aparece embaixo do título no Google explicando a ferramenta */}
+        <meta
+          name="description"
+          content="Resolva matrizes passo a passo. Calcule determinante, matriz inversa, transposta, multiplicação e escalonamento pelo método de Gauss-Jordan online e grátis."
+        />
       </Helmet>
-      
+
       <Header />
-      
+
       <main className="p-4 sm:p-6 max-w-4xl mx-auto text-center">
-        <h1 className="text-2xl sm:text-3xl font-bold mb-2">Calculadora de Matrizes</h1>
-        <p className="mb-4 text-sm sm:text-base">Realize operações como soma, multiplicação, determinante, inversa, transposição e mais.</p>
+        <h1 className="text-2xl sm:text-3xl font-bold mb-2">
+          Calculadora de Matrizes
+        </h1>
+        <p className="mb-4 text-sm sm:text-base">
+          Realize operações como soma, multiplicação, determinante, inversa,
+          transposição e mais.
+        </p>
 
         <div className="mb-4">
-          <label className="font-semibold mr-2 text-sm sm:text-base">Escolha a operação:</label>
-          <select className="border px-2 py-1 rounded text-sm" value={operation} onChange={(e) => setOperation(e.target.value)} aria-label="Escolha a operação">
+          <label className="font-semibold mr-2 text-sm sm:text-base">
+            Escolha a operação:
+          </label>
+          <select
+            className="border px-2 py-1 rounded text-sm"
+            value={operation}
+            onChange={(e) => setOperation(e.target.value)}
+            aria-label="Escolha a operação"
+          >
             <option value="soma">Soma (A + B)</option>
             <option value="subtracao">Subtração (A - B)</option>
             <option value="multiplicacao">Multiplicação (A × B)</option>
@@ -205,31 +270,55 @@ const Home = () => {
 
         <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-4 sm:gap-6 mb-4">
           <div>
-            {renderSizeInput("Tamanho da Matriz A", sizeA, (e) => handleSizeChange('A', e))}
-            <MatrixInput matrix={matrixA} setMatrix={setMatrixA} label="Matriz A" rows={sizeA.rows} cols={sizeA.cols} />
+            {renderSizeInput("Tamanho da Matriz A", sizeA, (e) =>
+              handleSizeChange("A", e),
+            )}
+            <MatrixInput
+              matrix={matrixA}
+              setMatrix={setMatrixA}
+              label="Matriz A"
+              rows={sizeA.rows}
+              cols={sizeA.cols}
+            />
           </div>
 
           {operation === "escalar" && renderScalarInput()}
-          
+
           {operationsWithMatrixB.includes(operation) && (
             <div>
-              {renderSizeInput("Tamanho da Matriz B", sizeB, (e) => handleSizeChange('B', e))}
-              <MatrixInput matrix={matrixB} setMatrix={setMatrixB} label="Matriz B" rows={sizeB.rows} cols={sizeB.cols} />
+              {renderSizeInput("Tamanho da Matriz B", sizeB, (e) =>
+                handleSizeChange("B", e),
+              )}
+              <MatrixInput
+                matrix={matrixB}
+                setMatrix={setMatrixB}
+                label="Matriz B"
+                rows={sizeB.rows}
+                cols={sizeB.cols}
+              />
             </div>
           )}
         </div>
 
-        <button onClick={handleCalculate} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm mb-4" aria-label="Calcular">
+        <button
+          onClick={handleCalculate}
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm mb-4"
+          aria-label="Calcular"
+        >
           Calcular
         </button>
 
-        {error && <p className="text-red-500 mt-2 font-semibold text-sm">{error}</p>}
+        {error && (
+          <p className="text-red-500 mt-2 font-semibold text-sm">{error}</p>
+        )}
 
         <ResultDisplay result={result} />
 
         {steps.length > 0 && (
           <div className="mt-2 text-left max-w-md mx-auto">
-            <h2 className="font-semibold mb-2 text-sm sm:text-base text-center">Passos do Cálculo</h2>
+            <h2 className="font-semibold mb-2 text-sm sm:text-base text-center">
+              Passos do Cálculo
+            </h2>
             <ol className="list-decimal pl-5 text-sm sm:text-base">
               {steps.map((step, i) => (
                 <li key={i} className="mb-2">
@@ -242,7 +331,6 @@ const Home = () => {
         )}
 
         {renderTutorials()}
-        
       </main>
     </div>
   );
