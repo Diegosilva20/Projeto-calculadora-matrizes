@@ -27,7 +27,7 @@
     "sitemap": "node ./sitemap-generator.mjs",
     "build": "npm run sitemap && vite build",
     "preview": "vite preview",
-    "postbuild": "react-snap"
+    "seo": "react-snap"
   },
   "eslintConfig": {
     "extends": [
