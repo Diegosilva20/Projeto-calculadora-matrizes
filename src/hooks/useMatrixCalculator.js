@@ -85,14 +85,6 @@ export const useMatrixCalculator = () => {
         return;
       }
     }
-    const handleClear = () => {
-      setMatrixA(createEmptyMatrix(sizeA.rows, sizeA.cols));
-      setMatrixB(createEmptyMatrix(sizeB.rows, sizeB.cols));
-      setScalar("");
-      setResult(null);
-      setError("");
-      setSteps([]);
-    };
 
     if (newError) {
       setError(newError);
@@ -112,6 +104,15 @@ export const useMatrixCalculator = () => {
       setSteps,
     );
   };
+
+  const handleClear = () => {
+      setMatrixA(createEmptyMatrix(sizeA.rows, sizeA.cols));
+      setMatrixB(createEmptyMatrix(sizeB.rows, sizeB.cols));
+      setScalar("");
+      setResult(null);
+      setError("");
+      setSteps([]);
+    };
 
   return {
     sizeA,
