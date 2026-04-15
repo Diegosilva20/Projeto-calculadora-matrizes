@@ -211,7 +211,7 @@ function MatrixTransposeTutorial() {
         </p>
         <p className="mt-4">
           O próximo passo natural é entender como a transposta interage com a{" "}
-          <Link to="/tutorial/5" className="text-blue-600 hover:underline">
+          <Link to="/tutorial/multiplicacao-de-matrizes" className="text-blue-600 hover:underline">
             Multiplicação de Matrizes
           </Link>
           .

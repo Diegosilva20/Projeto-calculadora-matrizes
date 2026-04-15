@@ -333,7 +333,7 @@ function InverseMatrixTutorial() {
         <p className="mt-4">
           Agora que você sabe encontrar a inversa, veja como aplicá-la na
           resolução de sistemas em nosso tutorial sobre o{" "}
-          <Link to="/tutorial/3" className="text-blue-600 hover:underline">
+          <Link to="/tutorial/sistemas-lineares" className="text-blue-600 hover:underline">
             Método de Gauss
           </Link>
           .

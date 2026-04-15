@@ -163,7 +163,7 @@ function DeterminantTutorial() {
         <p>Dominar o cálculo de determinantes é um passo essencial na Álgebra Linear. Com ele, você pode analisar a inversibilidade de matrizes, resolver sistemas e entender transformações geométricas.</p>
         <p className="mt-4">
           Pratique com nossa calculadora e avance seus estudos aprendendo sobre a{" "}
-          <Link to="/tutorial/2" className="text-blue-600 hover:underline">
+          <Link to="/tutorial/matriz-inversa" className="text-blue-600 hover:underline">
             inversa de uma matriz
           </Link>.
         </p>

@@ -265,7 +265,7 @@ function GaussEscalonamentoTutorial() {
         <p className="mt-4">
           O próximo passo é entender como o escalonamento pode ser usado para
           calcular{" "}
-          <Link to="/tutorial/5" className="text-blue-600 hover:underline">
+          <Link to="/tutorial/determinante-de-matrizes" className="text-blue-600 hover:underline">
             determinantes
           </Link>{" "}
           de matrizes grandes de forma eficiente.

@@ -345,7 +345,7 @@ function MatrixMultiplicationTutorial() {
         </p>
         <p className="mt-4">
           Continue seus estudos com nosso tutorial sobre a{" "}
-          <Link to="/tutorial/4" className="text-blue-600 hover:underline">
+          <Link to="/tutorial/matriz-transposta" className="text-blue-600 hover:underline">
             Transposição de Matrizes
           </Link>
           .
