@@ -36,16 +36,16 @@ A lógica de negócio foi rigorosamente separada da interface. O estado é gerid
    git clone [https://github.com/diegosilva20/projeto-calculadora-matrizes.git](https://github.com/diegosilva20/projeto-calculadora-matrizes.git)
 
 2. Entre no diretório do projeto:
-    cd projeto-calculadora-matrizes
+    ```bash cd projeto-calculadora-matrizes
 
 3. Instale as dependências:
-    npm install
+    ```bash npm install
 
 4. Inicie o servidor de desenvolvimento:
-    npm run dev
+    ```bash npm run dev
 
-5.Para simular o build de produção com a pré-renderização estática (SEO):
-    npm run build && npm run seo
+5. Para simular o build de produção com a pré-renderização estática (SEO):
+    ```bash npm run build && npm run seo
 
 ## 📄 Licença
 Este projeto é de uso educacional. Os direitos de conteúdo e marca estão reservados ao domínio matrizcalculator.com.
