@@ -32,20 +32,31 @@ A lógica de negócio foi rigorosamente separada da interface. O estado é gerid
 ## 🚀 Como Executar Localmente
 
 1. Clone este repositório:
-   ```bash
-   git clone [https://github.com/diegosilva20/projeto-calculadora-matrizes.git](https://github.com/diegosilva20/projeto-calculadora-matrizes.git)
+```bash
+git clone [https://github.com/diegosilva20/projeto-calculadora-matrizes.git](https://github.com/diegosilva20/projeto-calculadora-matrizes.git)
+```
 
 2. Entre no diretório do projeto:
-    ```bash cd projeto-calculadora-matrizes
+```bash
+cd projeto-calculadora-matrizes
+```
 
 3. Instale as dependências:
-    ```bash npm install
+```bash
+npm install
+```
 
 4. Inicie o servidor de desenvolvimento:
-    ```bash npm run dev
+```bash
+npm run dev
+```
 
 5. Para simular o build de produção com a pré-renderização estática (SEO):
-    ```bash npm run build && npm run seo
+```bash
+npm run build && npm run seo
+```
+
+---
 
 ## 📄 Licença
 Este projeto é de uso educacional. Os direitos de conteúdo e marca estão reservados ao domínio matrizcalculator.com.
