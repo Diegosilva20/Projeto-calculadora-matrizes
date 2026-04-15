@@ -94,7 +94,7 @@ const TutorialPage = () => {
           
           {/* Renderiza o conteúdo (texto, imagens, fórmulas) que vem do seu arquivo de dados */}
           <div className="prose prose-blue max-w-none text-gray-800 leading-loose">
-            {tutorial.content}
+            {tutorial.component}
           </div>
         </article>
 
