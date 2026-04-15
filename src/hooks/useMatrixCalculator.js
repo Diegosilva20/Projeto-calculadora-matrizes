@@ -4,7 +4,7 @@ import { createEmptyMatrix, calculate } from "../utils/matrixCalculations";
 // 1. Função inteligente que puxa os dados guardados ANTES de desenhar o ecrã
 const loadSavedState = (key, defaultValue) => {
   try {
-    const saved = localStorage.getItem('matrixState_v1');
+    const saved = localStorage.getItem("matrixState_v1");
     if (saved) {
       const parsed = JSON.parse(saved);
       if (parsed[key] !== undefined) return parsed[key];
@@ -17,13 +17,23 @@ const loadSavedState = (key, defaultValue) => {
 
 export const useMatrixCalculator = () => {
   // 2. Os estados agora nascem com a memória do LocalStorage (ou com o padrão se for a primeira visita)
-  const [sizeA, setSizeA] = useState(() => loadSavedState('sizeA', { rows: 2, cols: 2 }));
-  const [sizeB, setSizeB] = useState(() => loadSavedState('sizeB', { rows: 2, cols: 2 }));
-  const [matrixA, setMatrixA] = useState(() => loadSavedState('matrixA', createEmptyMatrix(2, 2)));
-  const [matrixB, setMatrixB] = useState(() => loadSavedState('matrixB', createEmptyMatrix(2, 2)));
-  const [scalar, setScalar] = useState(() => loadSavedState('scalar', ""));
-  const [operation, setOperation] = useState(() => loadSavedState('operation', "soma"));
-  
+  const [sizeA, setSizeA] = useState(() =>
+    loadSavedState("sizeA", { rows: 2, cols: 2 }),
+  );
+  const [sizeB, setSizeB] = useState(() =>
+    loadSavedState("sizeB", { rows: 2, cols: 2 }),
+  );
+  const [matrixA, setMatrixA] = useState(() =>
+    loadSavedState("matrixA", createEmptyMatrix(2, 2)),
+  );
+  const [matrixB, setMatrixB] = useState(() =>
+    loadSavedState("matrixB", createEmptyMatrix(2, 2)),
+  );
+  const [scalar, setScalar] = useState(() => loadSavedState("scalar", ""));
+  const [operation, setOperation] = useState(() =>
+    loadSavedState("operation", "soma"),
+  );
+
   // Resultados e erros não são guardados, pois queremos a ecrã limpo ao voltar
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
@@ -32,15 +42,15 @@ export const useMatrixCalculator = () => {
   // 3. O "Olheiro": Sempre que o utilizador digitar algo novo, gravamos em milissegundos
   useEffect(() => {
     const stateToSave = { sizeA, sizeB, matrixA, matrixB, scalar, operation };
-    localStorage.setItem('matrixState_v1', JSON.stringify(stateToSave));
+    localStorage.setItem("matrixState_v1", JSON.stringify(stateToSave));
   }, [sizeA, sizeB, matrixA, matrixB, scalar, operation]);
 
   const handleSizeChange = (matrixId, e) => {
     const { name, value } = e.target;
-    const currentSize = matrixId === 'A' ? sizeA : sizeB;
+    const currentSize = matrixId === "A" ? sizeA : sizeB;
     const newSize = { ...currentSize, [name]: parseInt(value) || 1 };
-    
-    if (matrixId === 'A') {
+
+    if (matrixId === "A") {
       setSizeA(newSize);
       setMatrixA(createEmptyMatrix(newSize.rows, newSize.cols));
     } else {
@@ -58,16 +68,31 @@ export const useMatrixCalculator = () => {
     const isSquareA = sizeA.rows === sizeA.cols;
 
     if (operation === "multiplicacao" && sizeA.cols !== sizeB.rows) {
-      newError = "Erro: O número de colunas da Matriz A deve ser igual ao número de linhas da Matriz B para multiplicação.";
+      newError =
+        "Erro: O número de colunas da Matriz A deve ser igual ao número de linhas da Matriz B para multiplicação.";
     } else if (operation === "inversa" && !isSquareA) {
-      newError = "Erro: A inversa só pode ser calculada para matrizes quadradas.";
+      newError =
+        "Erro: A inversa só pode ser calculada para matrizes quadradas.";
     } else if (operation === "determinanteA" && !isSquareA) {
-      newError = "Erro: O determinante só pode ser calculado para matrizes quadradas.";
+      newError =
+        "Erro: O determinante só pode ser calculado para matrizes quadradas.";
     } else if (operation === "gauss" && !isSquareA) {
-      if (!window.confirm("Aviso: A eliminação de Gauss é tipicamente aplicada a matrizes quadradas. Deseja prosseguir mesmo assim?")) {
+      if (
+        !window.confirm(
+          "Aviso: A eliminação de Gauss é tipicamente aplicada a matrizes quadradas. Deseja prosseguir mesmo assim?",
+        )
+      ) {
         return;
       }
     }
+    const handleClear = () => {
+      setMatrixA(createEmptyMatrix(sizeA.rows, sizeA.cols));
+      setMatrixB(createEmptyMatrix(sizeB.rows, sizeB.cols));
+      setScalar("");
+      setResult(null);
+      setError("");
+      setSteps([]);
+    };
 
     if (newError) {
       setError(newError);
@@ -76,19 +101,34 @@ export const useMatrixCalculator = () => {
       return;
     }
 
-    calculate(matrixA, matrixB, scalar, operation, { rows: sizeA.rows, cols: sizeA.cols }, setResult, setError, setSteps);
+    calculate(
+      matrixA,
+      matrixB,
+      scalar,
+      operation,
+      { rows: sizeA.rows, cols: sizeA.cols },
+      setResult,
+      setError,
+      setSteps,
+    );
   };
 
   return {
-    sizeA, sizeB,
-    matrixA, setMatrixA,
-    matrixB, setMatrixB,
-    scalar, setScalar,
+    sizeA,
+    sizeB,
+    matrixA,
+    setMatrixA,
+    matrixB,
+    setMatrixB,
+    scalar,
+    setScalar,
     result,
-    operation, setOperation,
+    operation,
+    setOperation,
     error,
     steps,
     handleSizeChange,
-    handleCalculate
+    handleCalculate,
+    handleClear,
   };
 };
