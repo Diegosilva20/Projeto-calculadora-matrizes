@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# 🧮 Matriz Calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Uma aplicação web de alta performance focada na resolução e explicação passo a passo de operações complexas de álgebra linear e matrizes. Construída com foco em **Clean Architecture**, **UX Acadêmica** e **SEO Técnico Avançado**.
 
-## Available Scripts
+🌍 **Live Demo:** [matrizcalculator.com](https://www.matrizcalculator.com/)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ✨ Principais Funcionalidades
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* **Motor Matemático de Precisão:** Operações estruturadas para lidar com frações exatas, evitando problemas clássicos de ponto flutuante do JavaScript (powered by `mathjs`).
+* **Resolução Passo a Passo:** Algoritmo customizado de Eliminação de Gauss-Jordan que documenta cada transformação de linha (ex: `L2 → L2 - (3) × L1`) em uma interface minimalista.
+* **Persistência de Dados (Memória):** Implementação de Custom Hooks com sincronização em `LocalStorage`. O usuário não perde os dados da matriz ao atualizar a página ou navegar para os tutoriais.
+* **Tutoriais Interligados:** Dicionário de SEO contextual que renderiza artigos dinamicamente e os conecta diretamente com as operações do motor matemático.
+* **Arquitetura Otimizada para SEO:** Utilização de `react-helmet` para meta tags dinâmicas, injeção de JSON-LD Schema e `react-snap` para pré-renderização estática das rotas, garantindo indexação perfeita no Google.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠️ Tecnologias e Arquitetura
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* **Core:** React.js, Vite
+* **Estilização:** Tailwind CSS (Mobile-first e layout responsivo)
+* **Roteamento:** React Router DOM
+* **Matemática:** Math.js
+* **SEO & SSR Estático:** React Helmet, React Snap
 
-### `npm run build`
+### Estrutura de Destaque (Clean Code)
+A lógica de negócio foi rigorosamente separada da interface. O estado é gerido globalmente por um Custom Hook (`useMatrixCalculator.js`), e algoritmos pesados, como o de Gauss-Jordan, possuem seus próprios módulos (`src/algorithms/gaussJordan.js`), seguindo o princípio de *Separation of Concerns*.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 Como Executar Localmente
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone este repositório:
+   ```bash
+   git clone [https://github.com/diegosilva20/projeto-calculadora-matrizes.git](https://github.com/diegosilva20/projeto-calculadora-matrizes.git)
 
-### `npm run eject`
+2. Entre no diretório do projeto:
+    cd projeto-calculadora-matrizes
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Instale as dependências:
+    npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Inicie o servidor de desenvolvimento:
+    npm run dev
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5.Para simular o build de produção com a pré-renderização estática (SEO):
+    npm run build && npm run seo
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📄 Licença
+Este projeto é de uso educacional. Os direitos de conteúdo e marca estão reservados ao domínio matrizcalculator.com.
