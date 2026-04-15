@@ -1,5 +1,6 @@
 // src/utils/matrixCalculations.js
-import { matrix, add, subtract, multiply, det, inv, transpose, fraction, number, divide } from "mathjs";
+import { matrix, add, subtract, multiply, det, inv, transpose, fraction, number } from "mathjs";
+import { calculateGaussJordan } from "../algorithms/gaussJordan";
 
 export const createEmptyMatrix = (rows, cols) =>
   Array.from({ length: rows }, () => Array(cols).fill(""));
@@ -9,12 +10,11 @@ export const validateMatrix = (mat) =>
     row.every((val) => val === "" || (!isNaN(parseFloat(val)) && isFinite(parseFloat(val))))
   );
 
-// Converter todas as entradas para Frações Exatas para evitar falhas do JavaScript
 const parseMatrix = (mat) =>
   mat.map((row) => row.map((val) => (val === "" ? fraction(0) : fraction(val))));
 
-// Helper para converter Frações de volta para decimais limpos apenas na renderização
-const formatValue = (val) => Number(number(val).toFixed(2));
+// Exportadas para uso em algoritmos externos
+export const formatValue = (val) => Number(number(val).toFixed(2));
 
 export const toArray = (result) => {
   if (result && typeof result.toArray === 'function') return result.toArray();
@@ -22,8 +22,7 @@ export const toArray = (result) => {
   throw new Error("O resultado não é uma matriz válida");
 };
 
-// Formata a matriz inteira de frações para números puros para a UI
-const formatMatrix = (mat) => {
+export const formatMatrix = (mat) => {
   const arr = toArray(mat);
   return arr.map(row => row.map(val => formatValue(val)));
 };
@@ -48,7 +47,6 @@ export const isRowEchelonForm = (mat) => {
   return true;
 };
 
-// Dicionário de Estratégias operando puramente com Frações
 const operationsMap = {
   soma: (a, b) => {
     if (a.size()[0] !== b.size()[0] || a.size()[1] !== b.size()[1])
@@ -104,73 +102,9 @@ export const calculate = (matrixA, matrixB, scalar, operation, size, setResult, 
     const matrixBObj = parsedB ? matrix(parsedB) : null;
 
     if (operation === "gauss") {
-      let m = matrix(parsedA);
-      let steps = [];
-      let n = rowsA;
-
-      if (isRowEchelonForm(parsedA)) {
-        steps.push({
-          description: "A matriz já está na forma escalonada por linhas.",
-          mat: formatMatrix(parsedA),
-        });
-        setResult(formatMatrix(parsedA));
-        setSteps(steps);
-        return;
-      }
-
-      steps.push({
-        description: "Matriz inicial",
-        mat: formatMatrix(m),
-      });
-
-      for (let i = 0; i < n; i++) {
-        let pivot = m.get([i, i]);
-        let pivotNum = number(pivot);
-
-        if (Math.abs(pivotNum) < 1e-10) {
-          setError("A matriz não pode ser reduzida (pivô zero ou muito pequeno).");
-          return;
-        }
-
-        if (Math.abs(pivotNum - 1) > 1e-10) {
-          steps.push({
-            description: `Tornar o pivô [${i + 1},${i + 1}] igual a 1: Dividir a Linha ${i + 1} por ${formatValue(pivot)}.`,
-            mat: null,
-          });
-          for (let j = i; j < n; j++) {
-            // Usa as funções protegidas do mathjs para calcular frações
-            m.set([i, j], divide(m.get([i, j]), pivot));
-          }
-          steps.push({
-            description: "Nova matriz",
-            mat: formatMatrix(m),
-          });
-        }
-
-        for (let k = i + 1; k < n; k++) {
-          let factor = m.get([k, i]);
-          let factorNum = number(factor);
-          
-          if (Math.abs(factorNum) < 1e-10) continue;
-
-          steps.push({
-            description: `Zerar o elemento [${k + 1},${i + 1}]: Subtrair ${formatValue(factor)} × Linha ${i + 1} da Linha ${k + 1}.`,
-            mat: null,
-          });
-
-          for (let j = i; j < n; j++) {
-            let sub = multiply(factor, m.get([i, j]));
-            m.set([k, j], subtract(m.get([k, j]), sub));
-          }
-          steps.push({
-            description: "Nova matriz",
-            mat: formatMatrix(m),
-          });
-        }
-      }
-      
-      setResult(formatMatrix(m));
-      setSteps(steps);
+      const { result: gaussResult, steps: gaussSteps } = calculateGaussJordan(parsedA, rowsA);
+      setResult(gaussResult);
+      setSteps(gaussSteps);
       return;
     }
 

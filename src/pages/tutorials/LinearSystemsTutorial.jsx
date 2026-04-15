@@ -17,12 +17,12 @@ function LinearSystemsTutorial() {
         <title>{`${pageTitle} | Matrizes+`}</title>
         <meta name="description" content={pageDescription} />
         <meta name="keywords" content="sistemas de equações lineares, resolução de sistemas, método de gauss, matriz inversa, ax=b, álgebra linear, spd, spi, si" />
-        <link rel="canonical" href="https://www.matrizcalculator.com/tutorial/6" />
+        <link rel="canonical" href="https://www.matrizcalculator.com/tutorial/sistemas-lineares" />
 
         {/* --- Open Graph / Facebook e Twitter Tags --- */}
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:url" content="https://www.matrizcalculator.com/tutorial/6" />
+        <meta property="og:url" content="https://www.matrizcalculator.com/tutorial/sistemas-lineares" />
         <meta property="og:image" content="https://www.matrizcalculator.com/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
@@ -44,7 +44,7 @@ function LinearSystemsTutorial() {
             "description": pageDescription,
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": "https://www.matrizcalculator.com/tutorial/6"
+              "@id": "https://www.matrizcalculator.com/tutorial/sistemas-lineares"
             },
             "educationalLevel": "Ensino Superior"
           })}
@@ -100,7 +100,7 @@ function LinearSystemsTutorial() {
         <h2 className="text-2xl font-semibold mb-3">Os Três Tipos de Solução</h2>
         <p className="mb-4">
           Um sistema linear pode ter uma, infinitas ou nenhuma solução. O {" "}
-          <Link to="/tutorial/1" className="text-blue-600 hover:underline">determinante</Link> da matriz de coeficientes (A) nos dá uma grande pista:
+          <Link to="/tutorial/determinante-de-matrizes" className="text-blue-600 hover:underline">determinante</Link> da matriz de coeficientes (A) nos dá uma grande pista:
         </p>
         <ul className="list-disc pl-5 space-y-2">
             <li><strong>Sistema Possível e Determinado (SPD):</strong> Possui uma única solução. Geralmente ocorre quando <Latex>det(A) ≠ 0</Latex>.</li>
@@ -122,7 +122,7 @@ function LinearSystemsTutorial() {
               <li><strong>Verificar o Determinante de A:</strong> <br/>
                 <Latex>det(A) = (2)(-2) - (1)(3) = -4 - 3 = -7</Latex>. Como é diferente de 0, podemos prosseguir.
               </li>
-              <li><strong>Calcular a <Link to="/tutorial/2" className="text-blue-600 hover:underline">Matriz Inversa</Link> (A⁻¹):</strong><br/>
+              <li><strong>Calcular a <Link to="/tutorial/matriz-inversa" className="text-blue-600 hover:underline">Matriz Inversa</Link> (A⁻¹):</strong><br/>
                 Para uma matriz 2x2, usamos a fórmula rápida: <br/>
                 <Latex>A⁻¹ = (1/det(A)) · [[d, -b], [-c, a]] = (-1/7) · [[-2, -1], [-3, 2]]</Latex> <br/>
                 <div className="my-2"><MatrixDisplay matrix={[['2/7', '1/7'], ['3/7', '-2/7']]} /></div>
@@ -142,7 +142,7 @@ function LinearSystemsTutorial() {
         {/* Método 2: Escalonamento de Gauss */}
         <div>
           <h3 className="text-xl font-semibold border-b pb-2 mb-3">Método 2: Escalonamento de Gauss (O Método Universal)</h3>
-          <p className="mb-3">Este método funciona sempre e é o mais recomendado para sistemas maiores. Ele utiliza o processo de <Link to="/tutorial/3" className="text-blue-600 hover:underline">escalonamento</Link>.</p>
+          <p className="mb-3">Este método funciona sempre e é o mais recomendado para sistemas maiores. Ele utiliza o processo de <Link to="/tutorial/escalonamento-gauss-jordan" className="text-blue-600 hover:underline">escalonamento</Link>.</p>
           <ol className="list-decimal list-inside space-y-2">
               <li><strong>Montar a Matriz Aumentada [A | b]:</strong>
                 <div className="my-2"><MatrixDisplay matrix={[[2, 1, 5], [3, -2, 4]]} /></div>
