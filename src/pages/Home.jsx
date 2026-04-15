@@ -247,38 +247,63 @@ const Home = () => {
           <ResultDisplay result={result} />
 
           {steps.length > 0 && (
-            <div className="mt-8 text-left bg-gray-50 p-6 rounded-xl border border-gray-200">
-              <h2 className="text-xl font-bold mb-4 text-center text-gray-700 underline decoration-blue-300">
+            <div className="mt-16 bg-white p-6 sm:p-12 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 max-w-4xl mx-auto text-left">
+              <h2 className="text-2xl font-bold mb-12 text-center text-gray-800 tracking-tight">
                 Resolução Passo a Passo
               </h2>
-              <ol className="space-y-6">
+
+              <div className="space-y-10">
                 {steps.map((step, i) => (
-                  <li key={i} className="border-l-4 border-blue-400 pl-4 py-1">
-                    <p className="font-semibold text-gray-800 mb-2">
-                      {step.description}
-                    </p>
-                    {step.matrix && (
-                      <div
-                        className="grid gap-1 justify-start overflow-x-auto pb-2"
-                        style={{
-                          gridTemplateColumns: `repeat(${step.matrix[0].length}, 50px)`,
-                        }}
-                      >
-                        {step.matrix.map((row) =>
-                          row.map((val, idx) => (
-                            <div
-                              key={idx}
-                              className="bg-white border p-1 rounded text-center text-xs font-mono"
-                            >
-                              {val}
-                            </div>
-                          )),
-                        )}
+                  <div
+                    key={i}
+                    className="flex flex-col sm:flex-row gap-6 sm:gap-12 items-start"
+                  >
+                    {/* Indicador do Passo & Descrição */}
+                    <div className="sm:w-1/3 flex-shrink-0">
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="flex items-center justify-center w-7 h-7 rounded-full bg-gray-900 text-white text-xs font-bold font-mono">
+                          {i + 1}
+                        </span>
+                        <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider">
+                          {step.title}
+                        </h3>
                       </div>
-                    )}
-                  </li>
+                      <p className="ml-10 text-gray-500 font-mono text-sm bg-gray-50 inline-block px-3 py-1 rounded border border-gray-200">
+                        {step.description}
+                      </p>
+                    </div>
+
+                    {/* Renderização da Matriz */}
+                    <div className="sm:w-2/3 flex justify-center sm:justify-start w-full overflow-x-auto pb-4">
+                      {step.matrix && (
+                        <div className="relative inline-block px-5 py-2">
+                          {/* Colchetes Minimalistas (2px) */}
+                          <div className="absolute top-0 bottom-0 left-0 w-3 border-l-[2px] border-t-[2px] border-b-[2px] border-gray-800 rounded-l"></div>
+                          <div className="absolute top-0 bottom-0 right-0 w-3 border-r-[2px] border-t-[2px] border-b-[2px] border-gray-800 rounded-r"></div>
+
+                          <div
+                            className="grid gap-x-8 gap-y-3 px-2"
+                            style={{
+                              gridTemplateColumns: `repeat(${step.matrix[0].length}, minmax(30px, auto))`,
+                            }}
+                          >
+                            {step.matrix.map((row, rIndex) =>
+                              row.map((val, cIndex) => (
+                                <div
+                                  key={`${rIndex}-${cIndex}`}
+                                  className="text-center font-mono text-gray-800 font-medium text-lg sm:text-xl tracking-tight"
+                                >
+                                  {val}
+                                </div>
+                              )),
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 ))}
-              </ol>
+              </div>
             </div>
           )}
         </div>

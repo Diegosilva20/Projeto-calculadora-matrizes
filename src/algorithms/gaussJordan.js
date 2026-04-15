@@ -6,18 +6,19 @@ export const calculateGaussJordan = (parsedA, rowsA) => {
   let steps = [];
   let n = rowsA;
 
-  // Usa as funções auxiliares que agora são exportadas do arquivo principal
   if (isRowEchelonForm(parsedA)) {
     steps.push({
-      description: "A matriz já está na forma escalonada por linhas.",
-      mat: formatMatrix(parsedA),
+      title: "Matriz Original",
+      description: "A matriz já se encontra na forma escalonada.",
+      matrix: formatMatrix(parsedA),
     });
     return { result: formatMatrix(parsedA), steps };
   }
 
   steps.push({
-    description: "Matriz inicial",
-    mat: formatMatrix(m),
+    title: "Matriz Inicial",
+    description: "Configuração original da matriz.",
+    matrix: formatMatrix(m),
   });
 
   for (let i = 0; i < n; i++) {
@@ -25,21 +26,18 @@ export const calculateGaussJordan = (parsedA, rowsA) => {
     let pivotNum = number(pivot);
 
     if (Math.abs(pivotNum) < 1e-10) {
-      // Em vez de mexer na interface (setError), o algoritmo atira um erro matemático. O try/catch vai apanhá-lo.
-      throw new Error("A matriz não pode ser reduzida (pivô zero ou muito pequeno).");
+      throw new Error("A matriz possui um pivô zero e necessita de troca de linhas.");
     }
 
     if (Math.abs(pivotNum - 1) > 1e-10) {
-      steps.push({
-        description: `Tornar o pivô [${i + 1},${i + 1}] igual a 1: Dividir a Linha ${i + 1} por ${formatValue(pivot)}.`,
-        mat: null,
-      });
+      let factorStr = formatValue(pivot);
       for (let j = i; j < n; j++) {
         m.set([i, j], divide(m.get([i, j]), pivot));
       }
       steps.push({
-        description: "Nova matriz",
-        mat: formatMatrix(m),
+        title: `Pivô (Linha ${i + 1})`,
+        description: `L${i + 1} → L${i + 1} ÷ (${factorStr})`,
+        matrix: formatMatrix(m),
       });
     }
 
@@ -49,18 +47,16 @@ export const calculateGaussJordan = (parsedA, rowsA) => {
       
       if (Math.abs(factorNum) < 1e-10) continue;
 
-      steps.push({
-        description: `Zerar o elemento [${k + 1},${i + 1}]: Subtrair ${formatValue(factor)} × Linha ${i + 1} da Linha ${k + 1}.`,
-        mat: null,
-      });
-
+      let factorStr = formatValue(factor);
       for (let j = i; j < n; j++) {
         let sub = multiply(factor, m.get([i, j]));
         m.set([k, j], subtract(m.get([k, j]), sub));
       }
+      
       steps.push({
-        description: "Nova matriz",
-        mat: formatMatrix(m),
+        title: `Eliminação (Linha ${k + 1})`,
+        description: `L${k + 1} → L${k + 1} - (${factorStr}) × L${i + 1}`,
+        matrix: formatMatrix(m),
       });
     }
   }
