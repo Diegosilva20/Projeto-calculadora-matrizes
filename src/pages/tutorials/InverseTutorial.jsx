@@ -24,7 +24,7 @@ function InverseMatrixTutorial() {
         />
         <link
           rel="canonical"
-          href="https://www.matrizcalculator.com/tutorial/2"
+          href="https://www.matrizcalculator.com/tutorial/matriz-inversa"
         />
 
         {/* --- Open Graph / Facebook e Twitter Tags --- */}
@@ -32,7 +32,7 @@ function InverseMatrixTutorial() {
         <meta property="og:description" content={pageDescription} />
         <meta
           property="og:url"
-          content="https://www.matrizcalculator.com/tutorial/2"
+          content="https://www.matrizcalculator.com/tutorial/matriz-inversa"
         />
         <meta
           property="og:image"
@@ -61,7 +61,7 @@ function InverseMatrixTutorial() {
             description: pageDescription,
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": "https://www.matrizcalculator.com/tutorial/2",
+              "@id": "https://www.matrizcalculator.com/tutorial/matriz-inversa",
             },
             educationalLevel: "Ensino Superior",
           })}

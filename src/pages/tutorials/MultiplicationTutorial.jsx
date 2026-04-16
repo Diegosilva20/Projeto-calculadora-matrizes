@@ -23,7 +23,7 @@ function MatrixMultiplicationTutorial() {
         />
         <link
           rel="canonical"
-          href="https://www.matrizcalculator.com/tutorial/5"
+          href="https://www.matrizcalculator.com/tutorial/multiplicacao-de-matrizes"
         />
 
         {/* --- Open Graph / Facebook e Twitter Tags --- */}
@@ -31,7 +31,7 @@ function MatrixMultiplicationTutorial() {
         <meta property="og:description" content={pageDescription} />
         <meta
           property="og:url"
-          content="https://www.matrizcalculator.com/tutorial/5"
+          content="https://www.matrizcalculator.com/tutorial/multiplicacao-de-matrizes"
         />
         <meta
           property="og:image"
@@ -60,7 +60,7 @@ function MatrixMultiplicationTutorial() {
             description: pageDescription,
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": "https://www.matrizcalculator.com/tutorial/5",
+              "@id": "https://www.matrizcalculator.com/tutorial/multiplicacao-de-matrizes",
             },
             educationalLevel: "Ensino Superior",
           })}

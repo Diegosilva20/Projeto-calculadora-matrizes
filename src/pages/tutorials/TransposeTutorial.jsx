@@ -25,7 +25,7 @@ function MatrixTransposeTutorial() {
         />
         <link
           rel="canonical"
-          href="https://www.matrizcalculator.com/tutorial/4"
+          href="https://www.matrizcalculator.com/tutorial/matriz-transposta"
         />
 
         {/* --- Open Graph / Facebook e Twitter Tags --- */}
@@ -33,7 +33,7 @@ function MatrixTransposeTutorial() {
         <meta property="og:description" content={pageDescription} />
         <meta
           property="og:url"
-          content="https://www.matrizcalculator.com/tutorial/4"
+          content="https://www.matrizcalculator.com/tutorial/matriz-transposta"
         />
         <meta
           property="og:image"
@@ -62,7 +62,7 @@ function MatrixTransposeTutorial() {
             description: pageDescription,
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": "https://www.matrizcalculator.com/tutorial/4",
+              "@id": "https://www.matrizcalculator.com/tutorial/matriz-transposta",
             },
             educationalLevel: "Ensino Superior",
           })}

@@ -17,12 +17,12 @@ function DeterminantTutorial() {
         <title>{`${pageTitle} | Matrizes+`}</title>
         <meta name="description" content={pageDescription} />
         <meta name="keywords" content="determinante de matriz, regra de sarrus, método dos cofatores, eliminação gaussiana, álgebra linear, tutorial de matrizes, matriz 2x2, matriz 3x3, matriz 4x4" />
-        <link rel="canonical" href="https://www.matrizcalculator.com/tutorial/1" />
+        <link rel="canonical" href="https://www.matrizcalculator.com/tutorial/determinante-de-matrizes" />
 
         {/* --- Open Graph / Facebook Tags --- */}
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:url" content="https://www.matrizcalculator.com/tutorial/1" />
+        <meta property="og:url" content="https://www.matrizcalculator.com/tutorial/determinante-de-matrizes" />
         <meta property="og:image" content="https://www.matrizcalculator.com/og-image.jpg" />
 
         {/* --- Twitter Card Tags --- */}
@@ -46,7 +46,7 @@ function DeterminantTutorial() {
             "description": pageDescription,
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": "https://www.matrizcalculator.com/tutorial/1"
+              "@id": "https://www.matrizcalculator.com/tutorial/determinante-de-matrizes"
             }
           })}
         </script>

@@ -23,7 +23,7 @@ function GaussEscalonamentoTutorial() {
         />
         <link
           rel="canonical"
-          href="https://www.matrizcalculator.com/tutorial/3"
+          href="https://www.matrizcalculator.com/tutorial/escalonamento-gauss-jordan"
         />
 
         {/* --- Open Graph / Facebook e Twitter Tags --- */}
@@ -31,7 +31,7 @@ function GaussEscalonamentoTutorial() {
         <meta property="og:description" content={pageDescription} />
         <meta
           property="og:url"
-          content="https://www.matrizcalculator.com/tutorial/3"
+          content="https://www.matrizcalculator.com/tutorial/escalonamento-gauss-jordan"
         />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
@@ -53,7 +53,7 @@ function GaussEscalonamentoTutorial() {
             description: pageDescription,
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": "https://www.matrizcalculator.com/tutorial/3",
+              "@id": "https://www.matrizcalculator.com/tutorial/escalonamento-gauss-jordan",
             },
           })}
         </script>
