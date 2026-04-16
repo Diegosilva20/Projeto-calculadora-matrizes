@@ -67,27 +67,7 @@ function MatrixMultiplicationTutorial() {
         </script>
       </Helmet>
 
-      <nav className="text-sm mb-4" aria-label="Breadcrumb">
-        <ol className="list-none p-0 inline-flex">
-          <li>
-            <Link to="/" className="text-blue-600 hover:underline">
-              Home
-            </Link>
-          </li>
-          <li className="mx-2">/</li>
-          <li>
-            <Link to="/tutorials" className="text-blue-600 hover:underline">
-              Tutoriais
-            </Link>
-          </li>
-          <li className="mx-2">/</li>
-          <li className="text-gray-500">Multiplicação de Matrizes</li>
-        </ol>
-      </nav>
-
-      <h1 className="text-3xl font-bold mb-4 text-gray-900">
-        Como Multiplicar Matrizes: Um Guia Passo a Passo
-      </h1>
+      
       <p className="mb-6">
         A multiplicação de matrizes é uma das operações mais importantes da
         álgebra linear, mas sua regra pode parecer confusa no início. Este guia

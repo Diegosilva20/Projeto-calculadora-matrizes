@@ -68,27 +68,9 @@ function InverseMatrixTutorial() {
         </script>
       </Helmet>
 
-      <nav className="text-sm mb-4" aria-label="Breadcrumb">
-        <ol className="list-none p-0 inline-flex">
-          <li>
-            <Link to="/" className="text-blue-600 hover:underline">
-              Home
-            </Link>
-          </li>
-          <li className="mx-2">/</li>
-          <li>
-            <Link to="/tutorials" className="text-blue-600 hover:underline">
-              Tutoriais
-            </Link>
-          </li>
-          <li className="mx-2">/</li>
-          <li className="text-gray-500">Inversa de uma Matriz</li>
-        </ol>
-      </nav>
+      
 
-      <h1 className="text-3xl font-bold mb-4 text-gray-900">
-        Como Calcular a Inversa de uma Matriz
-      </h1>
+  
 
       {/* 1. O que é e Quando Existe? */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">

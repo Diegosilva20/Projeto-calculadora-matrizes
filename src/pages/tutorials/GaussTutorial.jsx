@@ -59,28 +59,6 @@ function GaussEscalonamentoTutorial() {
         </script>
       </Helmet>
 
-      <nav className="text-sm mb-4" aria-label="Breadcrumb">
-        <ol className="list-none p-0 inline-flex">
-          <li>
-            <Link to="/" className="text-blue-600 hover:underline">
-              Home
-            </Link>
-          </li>
-          <li className="mx-2">/</li>
-          <li>
-            <Link to="/tutorials" className="text-blue-600 hover:underline">
-              Tutoriais
-            </Link>
-          </li>
-          <li className="mx-2">/</li>
-          <li className="text-gray-500">Escalonamento de Matrizes</li>
-        </ol>
-      </nav>
-
-      <h1 className="text-3xl font-bold mb-4 text-gray-900">
-        Escalonamento de Matrizes: O Guia do Método de Gauss
-      </h1>
-
       {/* 1. O que é o Escalonamento de Gauss? */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-3">
