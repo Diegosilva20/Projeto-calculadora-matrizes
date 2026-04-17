@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
-import 'katex/dist/katex.min.css';
-import { InlineMath, BlockMath } from 'react-katex';
 
 function DeterminantTutorial() {
   const pageTitle = "Determinante de Matrizes: O Guia Definitivo";
