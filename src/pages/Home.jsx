@@ -115,7 +115,7 @@ const Home = () => {
   );
 
   return (
-    <>
+    <div className="w-full">
       <Helmet>
         {/* Título focado nos termos de maior busca do Search Console */}
         <title>
@@ -336,7 +336,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

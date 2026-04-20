@@ -5,8 +5,10 @@ import Footer from "./components/common/Footer";
 import CookieConsentWrapper from "./components/CookieConsentWrapper";
 import ScrollToTop from "./components/common/ScrollToTop";
 
-// IMPORTAÇÃO DINÂMICA (Aumenta a velocidade do primeiro carregamento drastically!)
-const Home = lazy(() => import("./pages/Home"));
+// 1. IMPORTAÇÃO DIRETA PARA A HOME (Corrige bugs visuais e SEO)
+import Home from "./pages/Home";
+
+// 2. LAZY LOADING (Apenas para as outras páginas)
 const TutorialPage = lazy(() => import("./pages/TutorialPage"));
 const PoliticaPrivacidade = lazy(() => import("./pages/PoliticaPrivacidade"));
 const TermosUso = lazy(() => import("./pages/TermosUso"));
@@ -28,6 +30,7 @@ function App() {
             </div>
           }>
             <Routes>
+              {/* O Elemento Home agora carrega instantaneamente */}
               <Route path="/" element={<Home />} />
               <Route path="/tutorial/:slug" element={<TutorialPage />} />
               <Route path="/politica-privacidade" element={<PoliticaPrivacidade />} />
