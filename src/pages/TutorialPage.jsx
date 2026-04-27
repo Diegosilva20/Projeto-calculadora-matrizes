@@ -46,12 +46,35 @@ const TutorialPage = () => {
   };
 
   const tutorial = tutoriais.find((t) => t.slug === slug);
+  const tutorialStructuredData = tutorial
+    ? {
+        "@context": "https://schema.org",
+        "@type": "EducationalResource",
+        headline: tutorial.title,
+        description: tutorial.description,
+        author: {
+          "@type": "Organization",
+          name: "Matriz Calculator",
+        },
+        inLanguage: "pt-BR",
+        isAccessibleForFree: true,
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `https://www.matrizcalculator.com/tutorial/${slug}`,
+        },
+      }
+    : null;
 
   if (!tutorial) {
     return (
       <div className="max-w-3xl mx-auto py-24 px-6 text-center min-h-[60vh]">
         <Helmet>
           <title>Página não encontrada | Matriz Calculator</title>
+          <meta
+            name="description"
+            content="O tutorial solicitado não foi encontrado. Volte para a calculadora de matrizes ou explore os guias disponíveis."
+          />
+          <meta name="robots" content="noindex, follow" />
         </Helmet>
         <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
           Tutorial não encontrado
@@ -70,7 +93,7 @@ const TutorialPage = () => {
   }
 
   return (
-    <main className="bg-white sm:bg-slate-50 min-h-screen pb-12">
+    <div className="bg-white sm:bg-slate-50 min-h-screen pb-12">
       <Helmet>
         <title>{seo.title}</title>
         <meta name="description" content={seo.description} />
@@ -85,6 +108,9 @@ const TutorialPage = () => {
           property="og:url"
           content={`https://www.matrizcalculator.com/tutorial/${slug}`}
         />
+        <script type="application/ld+json">
+          {JSON.stringify(tutorialStructuredData)}
+        </script>
       </Helmet>
 
       {/* Container mais estreito (max-w-3xl) e sem caixa no mobile (bg-white direto) */}
@@ -111,7 +137,6 @@ const TutorialPage = () => {
             <li>
               <span className="text-slate-300 select-none">/</span>
             </li>
-            {}
             <li
               className="text-slate-800 truncate max-w-[150px] sm:max-w-md"
               aria-current="page"
@@ -130,13 +155,11 @@ const TutorialPage = () => {
           </p>
         </header>
 
-        {}
         <div className="prose prose-lg prose-slate max-w-none text-slate-800">
           {tutorial.component}
         </div>
       </article>
 
-      {}
       <section className="max-w-3xl mx-auto px-5 sm:px-8 mt-12 sm:mt-16">
         <div className="text-center bg-blue-600 p-8 sm:p-12 rounded-3xl shadow-lg">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
@@ -154,7 +177,7 @@ const TutorialPage = () => {
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 };
 

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
 
 // Componente para formatação de LaTeX para clareza e consistência
@@ -8,70 +7,8 @@ const Latex = ({ children }) => (
 );
 
 function InverseMatrixTutorial() {
-  const pageTitle = "Como Calcular a Inversa de uma Matriz: Guia Completo";
-  const pageDescription =
-    "Aprenda passo a passo como encontrar a inversa de uma matriz 2x2 e 3x3 com o método de Gauss-Jordan. Tutorial completo com fórmulas e exemplos práticos.";
-
   return (
     <div className="p-6 max-w-4xl mx-auto text-gray-800">
-      <Helmet>
-        {/* --- SEO Básico e Meta Tags --- */}
-        <title>{`${pageTitle} | Matrizes+`}</title>
-        <meta name="description" content={pageDescription} />
-        <meta
-          name="keywords"
-          content="matriz inversa, como calcular matriz inversa, inversa de uma matriz, método de gauss-jordan, matriz 2x2, matriz 3x3, álgebra linear"
-        />
-        <link
-          rel="canonical"
-          href="https://www.matrizcalculator.com/tutorial/matriz-inversa"
-        />
-
-        {/* --- Open Graph / Facebook e Twitter Tags --- */}
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta
-          property="og:url"
-          content="https://www.matrizcalculator.com/tutorial/matriz-inversa"
-        />
-        <meta
-          property="og:image"
-          content="https://www.matrizcalculator.com/og-image.jpg"
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta
-          name="twitter:image"
-          content="https://www.matrizcalculator.com/og-image.jpg"
-        />
-
-        {/* --- Schema.org para Rich Snippets --- */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "EducationalResource",
-            headline: pageTitle,
-            author: {
-              "@type": "Organization",
-              name: "Matrizes+",
-            },
-            datePublished: "2025-06-16", // Sugestão de data de criação
-            dateModified: "2025-06-16",
-            description: pageDescription,
-            mainEntityOfPage: {
-              "@type": "WebPage",
-              "@id": "https://www.matrizcalculator.com/tutorial/matriz-inversa",
-            },
-            educationalLevel: "Ensino Superior",
-          })}
-        </script>
-      </Helmet>
-
-      
-
-  
-
       {/* 1. O que é e Quando Existe? */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-3">

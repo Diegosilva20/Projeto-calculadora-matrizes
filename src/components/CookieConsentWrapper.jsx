@@ -1,4 +1,5 @@
 import CookieConsent from "react-cookie-consent";
+import { Link } from "react-router-dom";
 
 const CookieConsentWrapper = () => {
   return (
@@ -39,9 +40,9 @@ const CookieConsentWrapper = () => {
       expires={365}
     >
       Usamos cookies para melhorar sua experiência. 
-      <a href="/politica" style={{ color: "#4b5563", textDecoration: "underline", marginLeft: "5px" }}>
+      <Link to="/politica-privacidade" style={{ color: "#4b5563", textDecoration: "underline", marginLeft: "5px" }}>
         Saiba mais
-      </a>.
+      </Link>.
     </CookieConsent>
   );
 };

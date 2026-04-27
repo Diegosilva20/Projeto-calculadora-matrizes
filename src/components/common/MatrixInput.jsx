@@ -91,8 +91,10 @@ const MatrixInput = ({ matrix, setMatrix, label, rows, cols }) => {
   };
 
   return (
-    <div className="mb-4">
-      <h3 className="font-semibold mb-2 text-sm sm:text-base">{label}</h3>
+    <fieldset className="mb-4">
+      <legend className="font-semibold mb-2 text-sm sm:text-base">
+        {label}
+      </legend>
       <div
         className="grid gap-1 justify-center"
         style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 60px))` }}
@@ -102,8 +104,8 @@ const MatrixInput = ({ matrix, setMatrix, label, rows, cols }) => {
             <input
               key={`${label}-${i}-${j}`}
               id={`input-${label}-${i}-${j}`} 
-              type="tel"
-              inputMode="numeric"
+              type="text"
+              inputMode="decimal"
               pattern="-?[0-9]*\.?[0-9]*"
               value={val}
               onChange={(e) => handleInputChange(i, j, e.target.value)}
@@ -116,7 +118,7 @@ const MatrixInput = ({ matrix, setMatrix, label, rows, cols }) => {
           ))
         )}
       </div>
-    </div>
+    </fieldset>
   );
 };
 

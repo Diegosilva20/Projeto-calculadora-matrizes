@@ -81,14 +81,15 @@ const Home = () => {
 
   const renderSizeInput = (label, state, onChangeHandler) => (
     <div className="mb-2 text-center">
-      <label className="font-semibold mr-2 text-sm sm:text-base">
+      <span className="font-semibold mr-2 text-sm sm:text-base">
         {label}:
-      </label>
+      </span>
       <div className="inline-flex gap-2">
         <select
           name="rows"
           value={state.rows}
           onChange={onChangeHandler}
+          aria-label={`${label} - linhas`}
           className="border px-2 py-1 rounded text-sm outline-none focus:ring-2 focus:ring-blue-500"
         >
           {[1, 2, 3, 4].map((n) => (
@@ -102,6 +103,7 @@ const Home = () => {
           name="cols"
           value={state.cols}
           onChange={onChangeHandler}
+          aria-label={`${label} - colunas`}
           className="border px-2 py-1 rounded text-sm outline-none focus:ring-2 focus:ring-blue-500"
         >
           {[1, 2, 3, 4].map((n) => (
@@ -138,17 +140,21 @@ const Home = () => {
           </h1>
           <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto">
             A ferramenta definitiva para resolver álgebra linear. Calcule
-            derteminantes, inversas e realize escalonamento Gauss-Jordan com
+            determinantes, inversas e realize escalonamento Gauss-Jordan com
             precisão absoluta.
           </p>
         </header>
 
         <div className="bg-white p-4 sm:p-8 rounded-xl shadow-lg border border-gray-100 mb-12">
           <div className="mb-6">
-            <label className="block font-bold mb-2 text-gray-700">
+            <label
+              htmlFor="operation-select"
+              className="block font-bold mb-2 text-gray-700"
+            >
               O que você deseja calcular?
             </label>
             <select
+              id="operation-select"
               className="border-2 border-blue-100 p-3 rounded-lg w-full max-w-md text-center bg-blue-50 focus:border-blue-500 outline-none transition-colors"
               value={operation}
               onChange={(e) => setOperation(e.target.value)}

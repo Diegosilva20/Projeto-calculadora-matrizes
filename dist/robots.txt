@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /politica/
-Disallow: /termos/
 Sitemap: https://www.matrizcalculator.com/sitemap.xml

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function TermosUso() {
   return (
-    <main className="p-6 max-w-4xl mx-auto">
+    <div className="p-6 max-w-4xl mx-auto">
       <Helmet>
         <title>Termos de Uso - Matrizes+</title>
         <meta
@@ -13,7 +13,7 @@ function TermosUso() {
         <meta name="robots" content="index, follow" />
         <link
           rel="canonical"
-          href="https://www.matrizcalculator.com/termos"
+          href="https://www.matrizcalculator.com/termos-uso"
         />
         <meta property="og:title" content="Termos de Uso - Matrizes+" />
         <meta
@@ -22,7 +22,7 @@ function TermosUso() {
         />
         <meta
           property="og:url"
-          content="https://matrizcalculator.com/termos"
+          content="https://www.matrizcalculator.com/termos-uso"
         />
       </Helmet>
       
@@ -74,12 +74,12 @@ function TermosUso() {
 
       <p className="mt-8 text-sm">
         Para entender como coletamos e usamos seus dados, veja também nossa{" "}
-        <Link to="/politica" className="text-blue-600 hover:underline">
+        <Link to="/politica-privacidade" className="text-blue-600 hover:underline">
           Política de Privacidade
         </Link>
         .
       </p>
-    </main>
+    </div>
   );
 }
 

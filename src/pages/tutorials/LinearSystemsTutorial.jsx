@@ -1,55 +1,12 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
 
 // Componente para formatação de LaTeX
 const Latex = ({ children }) => <span className="font-serif italic">{children}</span>;
 
 function LinearSystemsTutorial() {
-  // Centralizando o título e a descrição para reutilização
-  const pageTitle = "Sistemas de Equações Lineares com Matrizes: O Guia Completo";
-  const pageDescription = "Aprenda a resolver sistemas de equações lineares usando matrizes. Domine os métodos da matriz inversa (x=A⁻¹b) e Escalonamento de Gauss.";
-
   return (
     <div className="p-6 max-w-4xl mx-auto text-gray-800">
-      <Helmet>
-        {/* --- SEO Básico e Meta Tags --- */}
-        <title>{`${pageTitle} | Matrizes+`}</title>
-        <meta name="description" content={pageDescription} />
-        <meta name="keywords" content="sistemas de equações lineares, resolução de sistemas, método de gauss, matriz inversa, ax=b, álgebra linear, spd, spi, si" />
-        <link rel="canonical" href="https://www.matrizcalculator.com/tutorial/sistemas-lineares" />
-
-        {/* --- Open Graph / Facebook e Twitter Tags --- */}
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:url" content="https://www.matrizcalculator.com/tutorial/sistemas-lineares" />
-        <meta property="og:image" content="https://www.matrizcalculator.com/og-image.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content="https://www.matrizcalculator.com/og-image.jpg" />
-
-        {/* --- Schema.org para Rich Snippets --- */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "EducationalResource",
-            "headline": pageTitle,
-            "author": {
-              "@type": "Organization",
-              "name": "Matrizes+"
-            },
-            "datePublished": "2025-06-17", // Sugestão de data de criação
-            "dateModified": "2025-06-17",
-            "description": pageDescription,
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": "https://www.matrizcalculator.com/tutorial/sistemas-lineares"
-            },
-            "educationalLevel": "Ensino Superior"
-          })}
-        </script>
-      </Helmet>
       <p className="mb-6">
         Você já aprendeu sobre as operações fundamentais com matrizes. Agora, vamos usar todo esse conhecimento para resolver um dos problemas mais clássicos da matemática e da ciência: os sistemas de equações lineares.
       </p>

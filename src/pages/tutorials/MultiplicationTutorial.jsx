@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
 
 // Componente para formatação de LaTeX para clareza e consistência
@@ -8,66 +7,8 @@ const Latex = ({ children }) => (
 );
 
 function MatrixMultiplicationTutorial() {
-  const pageTitle = "Como Multiplicar Matrizes: Guia Passo a Passo";
-  const pageDescription =
-    "Aprenda a multiplicar matrizes com um guia passo a passo. Entenda a regra de compatibilidade, o método linha-por-coluna e veja exemplos práticos.";
   return (
     <div className="p-6 max-w-4xl mx-auto text-gray-800">
-      <Helmet>
-        {/* --- SEO Básico e Meta Tags --- */}
-        <title>{`${pageTitle} | Matrizes+`}</title>
-        <meta name="description" content={pageDescription} />
-        <meta
-          name="keywords"
-          content="multiplicação de matrizes, como multiplicar matrizes, regra da multiplicação de matrizes, exemplo de multiplicação, álgebra linear"
-        />
-        <link
-          rel="canonical"
-          href="https://www.matrizcalculator.com/tutorial/multiplicacao-de-matrizes"
-        />
-
-        {/* --- Open Graph / Facebook e Twitter Tags --- */}
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta
-          property="og:url"
-          content="https://www.matrizcalculator.com/tutorial/multiplicacao-de-matrizes"
-        />
-        <meta
-          property="og:image"
-          content="https://www.matrizcalculator.com/og-image.jpg"
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta
-          name="twitter:image"
-          content="https://www.matrizcalculator.com/og-image.jpg"
-        />
-
-        {/* --- Schema.org para Rich Snippets --- */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "EducationalResource",
-            headline: pageTitle,
-            author: {
-              "@type": "Organization",
-              name: "Matrizes+",
-            },
-            datePublished: "2025-06-18", // Sugestão de data de criação
-            dateModified: "2025-06-18",
-            description: pageDescription,
-            mainEntityOfPage: {
-              "@type": "WebPage",
-              "@id": "https://www.matrizcalculator.com/tutorial/multiplicacao-de-matrizes",
-            },
-            educationalLevel: "Ensino Superior",
-          })}
-        </script>
-      </Helmet>
-
-      
       <p className="mb-6">
         A multiplicação de matrizes é uma das operações mais importantes da
         álgebra linear, mas sua regra pode parecer confusa no início. Este guia

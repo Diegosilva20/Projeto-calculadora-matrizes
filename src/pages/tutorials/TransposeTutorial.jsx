@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
 
 // Componente para formatação de LaTeX para clareza e consistência
@@ -8,69 +7,8 @@ const Latex = ({ children }) => (
 );
 
 function MatrixTransposeTutorial() {
-  const pageTitle =
-    "Matriz Transposta: O Guia Rápido Para Inverter Linhas e Colunas";
-  const pageDescription =
-    "Aprenda de forma rápida e visual o que é a matriz transposta. Veja como inverter linhas por colunas, suas propriedades e onde ela é aplicada.";
-
   return (
     <div className="p-6 max-w-4xl mx-auto text-gray-800">
-      <Helmet>
-        {/* --- SEO Básico e Meta Tags --- */}
-        <title>{`${pageTitle} | Matrizes+`}</title>
-        <meta name="description" content={pageDescription} />
-        <meta
-          name="keywords"
-          content="matriz transposta, transpor matriz, o que é matriz transposta, propriedades da transposta, álgebra linear"
-        />
-        <link
-          rel="canonical"
-          href="https://www.matrizcalculator.com/tutorial/matriz-transposta"
-        />
-
-        {/* --- Open Graph / Facebook e Twitter Tags --- */}
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta
-          property="og:url"
-          content="https://www.matrizcalculator.com/tutorial/matriz-transposta"
-        />
-        <meta
-          property="og:image"
-          content="https://www.matrizcalculator.com/og-image.jpg"
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta
-          name="twitter:image"
-          content="https://www.matrizcalculator.com/og-image.jpg"
-        />
-
-        {/* --- Schema.org para Rich Snippets --- */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "EducationalResource",
-            headline: pageTitle,
-            author: {
-              "@type": "Organization",
-              name: "Matrizes+",
-            },
-            datePublished: "2025-06-19", // Sugestão de data de criação
-            dateModified: "2025-06-19",
-            description: pageDescription,
-            mainEntityOfPage: {
-              "@type": "WebPage",
-              "@id": "https://www.matrizcalculator.com/tutorial/matriz-transposta",
-            },
-            educationalLevel: "Ensino Superior",
-          })}
-        </script>
-      </Helmet>
-
-
-      
       <p className="mb-6">
         A transposição é uma das operações mais simples e visuais da álgebra
         linear. A ideia é simplesmente "virar" a matriz, transformando cada

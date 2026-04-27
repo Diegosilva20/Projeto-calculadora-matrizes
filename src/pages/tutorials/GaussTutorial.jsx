@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
 
 // Componente para formatação de LaTeX para clareza e consistência
@@ -8,57 +7,8 @@ const Latex = ({ children }) => (
 );
 
 function GaussEscalonamentoTutorial() {
-  const pageTitle = "Determinante de Matrizes: O Guia Definitivo";
-  const pageDescription =
-    "Aprenda a calcular determinantes de matrizes 2x2, 3x3 e 4x4 com métodos passo a passo como Sarrus, Cofatores e Eliminação Gaussiana.";
-
   return (
     <div className="p-6 max-w-4xl mx-auto text-gray-800">
-      <Helmet>
-        <title>{`${pageTitle} | Matrizes+`}</title>
-        <meta name="description" content={pageDescription} />
-        <meta
-          name="keywords"
-          content="escalonamento de matrizes, método de gauss, eliminação gaussiana, resolver sistemas lineares, matriz escalonada, álgebra linear, tutorial de matrizes"
-        />
-        <link
-          rel="canonical"
-          href="https://www.matrizcalculator.com/tutorial/escalonamento-gauss-jordan"
-        />
-
-        {/* --- Open Graph / Facebook e Twitter Tags --- */}
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta
-          property="og:url"
-          content="https://www.matrizcalculator.com/tutorial/escalonamento-gauss-jordan"
-        />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        {/* Adicione as outras tags OG e Twitter se desejar (como a de imagem) */}
-
-        {/* --- NOVO: Schema.org para Rich Snippets --- */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "EducationalResource",
-            headline: pageTitle,
-            author: {
-              "@type": "Organization",
-              name: "Matrizes+",
-            },
-            // Use a data de criação deste tutorial específico
-            datePublished: "2025-06-15", // Exemplo de data
-            dateModified: "2025-06-15",
-            description: pageDescription,
-            mainEntityOfPage: {
-              "@type": "WebPage",
-              "@id": "https://www.matrizcalculator.com/tutorial/escalonamento-gauss-jordan",
-            },
-          })}
-        </script>
-      </Helmet>
-
       {/* 1. O que é o Escalonamento de Gauss? */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-3">

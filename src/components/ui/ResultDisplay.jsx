@@ -26,7 +26,7 @@ const ResultDisplay = ({ result }) => {
 
   return (
     <div className="mt-6">
-      <h3 className="font-semibold mb-2 text-sm sm:text-base">Resultado</h3>
+      <h2 className="font-semibold mb-2 text-sm sm:text-base">Resultado</h2>
       <div
         className="grid gap-1 mx-auto max-w-[90vw] justify-center"
         style={{

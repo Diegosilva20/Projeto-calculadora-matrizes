@@ -33,7 +33,7 @@ A lógica de negócio foi rigorosamente separada da interface. O estado é gerid
 
 1. Clone este repositório:
 ```bash
-git clone [https://github.com/diegosilva20/projeto-calculadora-matrizes.git](https://github.com/diegosilva20/projeto-calculadora-matrizes.git)
+git clone https://github.com/diegosilva20/projeto-calculadora-matrizes.git
 ```
 
 2. Entre no diretório do projeto:
@@ -51,9 +51,19 @@ npm install
 npm run dev
 ```
 
-5. Para simular o build de produção com a pré-renderização estática (SEO):
+Também é possível iniciar o servidor com:
 ```bash
-npm run build && npm run seo
+npm start
+```
+
+5. Gere o build de produção:
+```bash
+npm run build
+```
+
+6. Para simular a pré-renderização estática (SEO):
+```bash
+npm run seo
 ```
 
 ---

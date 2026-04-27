@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 
 function PoliticaPrivacidade() {
   return (
-    <main className="p-6 max-w-4xl mx-auto">
+    <div className="p-6 max-w-4xl mx-auto">
       <Helmet>
         <title>Política de Privacidade - Matrizes+</title>
         <meta name="description" content="Saiba como o Matrizes+ coleta, usa e protege suas informações." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.matrizcalculator.com/politica" />
+        <link rel="canonical" href="https://www.matrizcalculator.com/politica-privacidade" />
         <meta property="og:title" content="Política de Privacidade - Matrizes+" />
         <meta property="og:description" content="Leia a política de privacidade do Matrizes+ para entender como protegemos seus dados." />
-        <meta property="og:url" content="https://matrizcalculator.com/politica" />
+        <meta property="og:url" content="https://www.matrizcalculator.com/politica-privacidade" />
       </Helmet>
       
       <h1 className="text-3xl font-bold mb-2 text-gray-800">
@@ -73,12 +73,12 @@ function PoliticaPrivacidade() {
 
        <p className="mt-8 text-sm">
         Ao utilizar nosso site, você concorda com nossa Política de Privacidade. Leia também nossos{" "}
-        <Link to="/termos" className="text-blue-600 hover:underline">
+        <Link to="/termos-uso" className="text-blue-600 hover:underline">
           Termos de Uso
         </Link>
         .
       </p>
-    </main>
+    </div>
   );
 }
 

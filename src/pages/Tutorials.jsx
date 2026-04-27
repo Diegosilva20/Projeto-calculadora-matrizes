@@ -22,16 +22,15 @@ const Tutorials = () => {
           </p>
         </header>
 
-        {}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {tutoriais.map((tutorial) => (
             <article
               key={tutorial.id}
               className="group bg-white border border-gray-200 rounded-xl p-6 hover:border-blue-400 transition-all hover:shadow-xl flex flex-col text-left"
             >
-              <h3 className="text-lg font-bold mb-2 group-hover:text-blue-600 transition-colors">
+              <h2 className="text-lg font-bold mb-2 group-hover:text-blue-600 transition-colors">
                 {tutorial.title}
-              </h3>
+              </h2>
               <p className="text-gray-500 text-sm mb-6 flex-grow leading-relaxed">
                 {tutorial.description}
               </p>

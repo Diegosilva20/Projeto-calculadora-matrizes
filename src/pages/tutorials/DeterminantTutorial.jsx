@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
 
 // Micro-componente profissional para estilizar matemática (substitui o KaTeX pesado)
@@ -10,30 +9,8 @@ const Formula = ({ children }) => (
 );
 
 function DeterminantTutorial() {
-  const pageTitle = "Determinante de Matrizes: O Guia Definitivo";
-  const pageDescription = "Aprenda a calcular determinantes de matrizes 2x2, 3x3 e 4x4 com métodos passo a passo como Sarrus, Cofatores e Eliminação Gaussiana.";
-
   return (
     <div className="p-6 max-w-4xl mx-auto text-gray-800">
-      <Helmet>
-        <title>{`${pageTitle} | Matrizes+`}</title>
-        <meta name="description" content={pageDescription} />
-        <meta name="keywords" content="determinante de matriz, regra de sarrus, método dos cofatores, eliminação gaussiana, álgebra linear, tutorial de matrizes, matriz 2x2, matriz 3x3, matriz 4x4" />
-        <link rel="canonical" href="https://www.matrizcalculator.com/tutorial/determinante-de-matrizes" />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:url" content="https://www.matrizcalculator.com/tutorial/determinante-de-matrizes" />
-        <meta property="og:image" content="https://www.matrizcalculator.com/og-image.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content="https://www.matrizcalculator.com/og-image.jpg" />
-      </Helmet>
-      
-      <h1 className="text-3xl font-bold mb-4 text-gray-900 tracking-tight">
-        {pageTitle}
-      </h1>
-      
       <div className="bg-white p-6 rounded-xl shadow-sm mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-3 text-slate-800">O que é e Para que Serve um Determinante?</h2>
         <p className="mb-4 leading-relaxed">
