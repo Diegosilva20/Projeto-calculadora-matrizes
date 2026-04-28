@@ -223,32 +223,36 @@ const Home = () => {
             )}
           </div>
 
-          <button
-            onClick={handleCalculate}
-            className="bg-blue-600 text-white px-12 py-3 rounded-full font-bold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-md"
-          >
-            Calcular Agora
-          </button>
+          <div className="mt-2 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+            <button
+              onClick={handleCalculate}
+              className="w-full bg-blue-600 text-white px-12 py-3 rounded-full font-bold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-md sm:w-auto"
+            >
+              Calcular Agora
+            </button>
 
-          <button
-            onClick={handleClear}
-            className="bg-gray-100 text-gray-700 border border-gray-300 px-8 py-3 rounded-full font-bold hover:bg-gray-200 transition-all shadow-sm"
-          >
-            Limpar Dados
-          </button>
+            <button
+              onClick={handleClear}
+              className="w-full bg-gray-100 text-gray-700 border border-gray-300 px-8 py-3 rounded-full font-bold hover:bg-gray-200 transition-all shadow-sm sm:w-auto"
+            >
+              Limpar Dados
+            </button>
+          </div>
 
           {/* SEO e UX: Link dinâmico para tutorial contextual */}
           {operationToSlug[operation] && (
-            <div className="mt-6 p-3 bg-yellow-50 rounded-lg inline-block border border-yellow-100">
-              <p className="text-sm text-yellow-800">
-                💡 Dúvida no cálculo?{" "}
-                <Link
-                  to={`/tutorial/${operationToSlug[operation]}`}
-                  className="font-bold underline hover:text-yellow-900"
-                >
-                  Ver tutorial de {operationLabels[operation]}
-                </Link>
-              </p>
+            <div className="mt-5 flex justify-center">
+              <div className="max-w-full p-3 bg-yellow-50 rounded-lg border border-yellow-100">
+                <p className="text-sm text-yellow-800">
+                  💡 Dúvida no cálculo?{" "}
+                  <Link
+                    to={`/tutorial/${operationToSlug[operation]}`}
+                    className="font-bold underline hover:text-yellow-900"
+                  >
+                    Ver tutorial de {operationLabels[operation]}
+                  </Link>
+                </p>
+              </div>
             </div>
           )}
 

@@ -49,7 +49,7 @@ function Sobre() {
           {pillars.map((pillar) => (
             <article
               key={pillar.title}
-              className="group bg-white border border-gray-200 rounded-xl p-6 sm:p-8 hover:border-blue-400 transition-all hover:shadow-xl flex flex-col text-left"
+              className="group bg-white border border-gray-200 rounded-xl p-6 sm:p-8 hover:border-blue-400 transition-all hover:shadow-xl flex flex-col items-center text-center"
             >
               <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                 {pillar.icon}
@@ -62,7 +62,7 @@ function Sobre() {
               </p>
               <Link
                 to={pillar.to}
-                className="inline-flex self-start bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-md"
+                className="inline-flex justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-md"
               >
                 {pillar.action}
               </Link>
@@ -70,12 +70,12 @@ function Sobre() {
           ))}
         </div>
 
-        <section className="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-gray-100 text-left">
-          <div className="flex flex-col sm:flex-row gap-5 sm:items-center">
+        <section className="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-gray-100 text-center">
+          <div className="flex flex-col items-center gap-5">
             <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
               <FaComments className="h-8 w-8" aria-hidden="true" />
             </div>
-            <div>
+            <div className="max-w-2xl">
               <h2 className="text-2xl font-bold mb-3 text-gray-800">
                 Próximos Passos & Contato
               </h2>
