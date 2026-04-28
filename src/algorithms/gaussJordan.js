@@ -2,9 +2,11 @@ import { matrix, number, divide, multiply, subtract } from "mathjs";
 import { formatMatrix, formatValue, isRowEchelonForm } from "../utils/matrixCalculations";
 
 export const calculateGaussJordan = (parsedA, rowsA) => {
-  let m = matrix(parsedA);
-  let steps = [];
-  let n = rowsA;
+  const m = matrix(parsedA);
+  const steps = [];
+  const rowCount = rowsA;
+  const colCount = parsedA[0]?.length || 0;
+  const pivotLimit = Math.min(rowCount, colCount);
 
   if (isRowEchelonForm(parsedA)) {
     steps.push({
@@ -21,17 +23,47 @@ export const calculateGaussJordan = (parsedA, rowsA) => {
     matrix: formatMatrix(m),
   });
 
-  for (let i = 0; i < n; i++) {
-    let pivot = m.get([i, i]);
+  for (let i = 0; i < pivotLimit; i++) {
+    let pivotRow = i;
+    let pivot = m.get([pivotRow, i]);
     let pivotNum = number(pivot);
 
     if (Math.abs(pivotNum) < 1e-10) {
-      throw new Error("A matriz possui um pivô zero e necessita de troca de linhas.");
+      for (let candidate = i + 1; candidate < rowCount; candidate++) {
+        const candidatePivot = m.get([candidate, i]);
+        if (Math.abs(number(candidatePivot)) > 1e-10) {
+          pivotRow = candidate;
+          pivot = candidatePivot;
+          pivotNum = number(candidatePivot);
+          break;
+        }
+      }
+    }
+
+    if (Math.abs(pivotNum) < 1e-10) {
+      continue;
+    }
+
+    if (pivotRow !== i) {
+      for (let j = 0; j < colCount; j++) {
+        const current = m.get([i, j]);
+        m.set([i, j], m.get([pivotRow, j]));
+        m.set([pivotRow, j], current);
+      }
+
+      steps.push({
+        title: "Troca de Linhas",
+        description: `L${i + 1} ↔ L${pivotRow + 1} para evitar pivô zero.`,
+        matrix: formatMatrix(m),
+      });
+
+      pivot = m.get([i, i]);
+      pivotNum = number(pivot);
     }
 
     if (Math.abs(pivotNum - 1) > 1e-10) {
-      let factorStr = formatValue(pivot);
-      for (let j = i; j < n; j++) {
+      const factorStr = formatValue(pivot);
+      for (let j = 0; j < colCount; j++) {
         m.set([i, j], divide(m.get([i, j]), pivot));
       }
       steps.push({
@@ -41,21 +73,21 @@ export const calculateGaussJordan = (parsedA, rowsA) => {
       });
     }
 
-    for (let k = i + 1; k < n; k++) {
-      let factor = m.get([k, i]);
-      let factorNum = number(factor);
-      
+    for (let k = i + 1; k < rowCount; k++) {
+      const factor = m.get([k, i]);
+      const factorNum = number(factor);
+
       if (Math.abs(factorNum) < 1e-10) continue;
 
-      let factorStr = formatValue(factor);
-      for (let j = i; j < n; j++) {
-        let sub = multiply(factor, m.get([i, j]));
+      const factorStr = formatValue(factor);
+      for (let j = 0; j < colCount; j++) {
+        const sub = multiply(factor, m.get([i, j]));
         m.set([k, j], subtract(m.get([k, j]), sub));
       }
-      
+
       steps.push({
         title: `Eliminação (Linha ${k + 1})`,
-        description: `L${k + 1} → L${k + 1} - (${factorStr}) × L${i + 1}`,
+        description: `L${k + 1} → L${k + 1} - (${factorStr}) x L${i + 1}`,
         matrix: formatMatrix(m),
       });
     }

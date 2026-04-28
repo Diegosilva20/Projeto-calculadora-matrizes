@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaBars, FaCalculator, FaTimes } from "react-icons/fa";
 
 const navItems = [
@@ -10,6 +10,26 @@ const navItems = [
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCalculatorClicked, setIsCalculatorClicked] = useState(false);
+  const clickTimeoutRef = useRef(null);
+  const { pathname } = useLocation();
+
+  const handleCalculatorClick = () => {
+    setIsMenuOpen(false);
+    setIsCalculatorClicked(true);
+    window.clearTimeout(clickTimeoutRef.current);
+    clickTimeoutRef.current = window.setTimeout(() => {
+      setIsCalculatorClicked(false);
+    }, 350);
+
+    if (pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    return () => window.clearTimeout(clickTimeoutRef.current);
+  }, []);
 
   const linkClasses = ({ isActive }) =>
     [
@@ -24,9 +44,14 @@ function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link
           to="/"
-          className="inline-flex items-center gap-3 rounded-full focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-blue-600"
+          className={[
+            "inline-flex items-center gap-3 rounded-full px-2 py-1",
+            "transition-all duration-200 hover:bg-white/10 active:scale-[0.98]",
+            "focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-600",
+            isCalculatorClicked ? "scale-[0.98] bg-white/15 shadow-inner" : "",
+          ].join(" ")}
           aria-label="Ir para a calculadora"
-          onClick={() => setIsMenuOpen(false)}
+          onClick={handleCalculatorClick}
         >
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white text-blue-600 shadow-sm">
             <FaCalculator className="h-5 w-5" aria-hidden="true" />

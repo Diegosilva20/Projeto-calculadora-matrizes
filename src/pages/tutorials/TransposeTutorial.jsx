@@ -1,35 +1,80 @@
-import { Link } from "react-router-dom";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
-
-// Componente para formatação de LaTeX para clareza e consistência
-const Latex = ({ children }) => (
-  <span className="font-serif italic">{children}</span>
-);
+import Formula from "../../components/tutorial/Formula";
+import TipBox from "../../components/tutorial/TipBox";
+import TutorialCTA from "../../components/tutorial/TutorialCTA";
+import UseExampleButton from "../../components/tutorial/UseExampleButton";
 
 function MatrixTransposeTutorial() {
   return (
     <div className="p-6 max-w-4xl mx-auto text-gray-800">
-      <p className="mb-6">
-        A transposição é uma das operações mais simples e visuais da álgebra
-        linear. A ideia é simplesmente "virar" a matriz, transformando cada
-        linha em uma coluna.
+      <p className="mb-6 text-lg leading-relaxed">
+        A matriz transposta é uma das operações mais visuais da álgebra linear.
+        A ideia é simples: tudo que está em uma linha passa a ficar em uma
+        coluna. Por isso, ela é um ótimo primeiro passo para entender como as
+        matrizes mudam de formato.
       </p>
 
-      {/* 1. O que é e Como Fazer? */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-3">
-          O que é e Como Fazer? (A Regra do Espelho)
+          A Intuição: Virar Linhas em Colunas
         </h2>
-        <p className="mb-4">
-          A transposta de uma matriz A, indicada por <Latex>Aᵀ</Latex>, é criada
-          trocando suas linhas por suas colunas. A primeira linha vira a
-          primeira coluna, a segunda linha vira a segunda coluna, e assim por
-          diante.
+        <p className="mb-4 leading-relaxed">
+          Imagine que você está lendo uma tabela. Na matriz original, os valores
+          aparecem organizados por linhas. Ao transpor, você reorganiza a mesma
+          informação por colunas. Nenhum número muda de valor; apenas muda de
+          posição.
+        </p>
+        <TipBox>
+          <strong>Resumo rápido:</strong> na transposta, o elemento que estava
+          na posição <Formula>(i, j)</Formula> vai para a posição{" "}
+          <Formula>(j, i)</Formula>.
+        </TipBox>
+      </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-3">
+          O Que Acontece com o Tamanho da Matriz?
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Se a matriz A tem <strong>m linhas</strong> e{" "}
+          <strong>n colunas</strong>, a matriz transposta terá{" "}
+          <strong>n linhas</strong> e <strong>m colunas</strong>.
+        </p>
+        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg">
+          A (<Formula>m x n</Formula>) vira A^T (<Formula>n x m</Formula>)
+        </div>
+        <p className="mt-4 text-sm text-gray-600 leading-relaxed">
+          Uma matriz 2x3 vira 3x2. Uma matriz 4x1 vira 1x4. Se a matriz for
+          quadrada, como 3x3, ela continua 3x3, mas os elementos trocam de
+          lugar em relação à diagonal principal.
+        </p>
+      </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-3">
+          Como Calcular a Matriz Transposta Passo a Passo
+        </h2>
+        <ol className="list-decimal pl-5 space-y-3 leading-relaxed">
+          <li>Observe o tamanho da matriz original.</li>
+          <li>Crie uma nova matriz com as dimensões invertidas.</li>
+          <li>Pegue a primeira linha da matriz original.</li>
+          <li>Escreva essa linha como a primeira coluna da transposta.</li>
+          <li>Repita o processo para todas as linhas.</li>
+        </ol>
+      </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-4">
+          Exemplo Resolvido: Transposta de uma Matriz 2x3
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Vamos transpor a matriz A abaixo. Ela tem 2 linhas e 3 colunas, então
+          sua transposta terá 3 linhas e 2 colunas.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-6 items-center text-center">
+        <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <h3 className="font-semibold mb-2">Matriz Original (A) - 2x3</h3>
+            <p className="font-semibold mb-2">Matriz original A (2x3)</p>
             <MatrixDisplay
               matrix={[
                 [1, 2, 3],
@@ -38,7 +83,7 @@ function MatrixTransposeTutorial() {
             />
           </div>
           <div>
-            <h3 className="font-semibold mb-2">Matriz Transposta (Aᵀ) - 3x2</h3>
+            <p className="font-semibold mb-2">Matriz transposta A^T (3x2)</p>
             <MatrixDisplay
               matrix={[
                 [1, 4],
@@ -48,94 +93,107 @@ function MatrixTransposeTutorial() {
             />
           </div>
         </div>
+        <UseExampleButton
+          operation="transposicao"
+          matrixA={[
+            [1, 2, 3],
+            [4, 5, 6],
+          ]}
+        />
 
-        <p className="mt-6 text-sm text-center bg-gray-50 p-3 rounded">
-          <strong>Definição Formal:</strong> Se a matriz original A tem dimensão{" "}
-          <Latex>m x n</Latex>, sua transposta <Latex>Aᵀ</Latex> terá dimensão{" "}
-          <Latex>n x m</Latex>. O elemento da posição <Latex>(i, j)</Latex> em A
-          vai para a posição <Latex>(j, i)</Latex> em <Latex>Aᵀ</Latex>.
-        </p>
+        <div className="mt-6 space-y-4">
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <h3 className="text-lg font-semibold mb-2">
+              Primeira linha vira primeira coluna
+            </h3>
+            <p className="font-mono text-sm sm:text-base break-words">
+              [1, 2, 3] vira a coluna [1, 2, 3]^T.
+            </p>
+          </div>
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <h3 className="text-lg font-semibold mb-2">
+              Segunda linha vira segunda coluna
+            </h3>
+            <p className="font-mono text-sm sm:text-base break-words">
+              [4, 5, 6] vira a coluna [4, 5, 6]^T.
+            </p>
+          </div>
+        </div>
       </div>
 
-      {/* 2. Propriedades Essenciais */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
-        <h2 className="text-2xl font-semibold mb-3">Propriedades Essenciais</h2>
-        <p className="mb-4">
-          A transposição segue algumas regras úteis que simplificam muitos
-          cálculos:
-        </p>
-        <ul className="list-disc pl-5 space-y-3">
+        <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
+        <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
-            <strong>Dupla Transposição:</strong> Transpor duas vezes retorna à
-            matriz original. <br />
-            <Latex>(Aᵀ)ᵀ = A</Latex>
+            <strong>Achar que os números mudam:</strong> a transposta não altera
+            os valores, apenas troca suas posições.
           </li>
           <li>
-            <strong>Soma:</strong> A transposta da soma é a soma das
-            transpostas. <br />
-            <Latex>(A + B)ᵀ = Aᵀ + Bᵀ</Latex>
+            <strong>Esquecer de inverter o tamanho:</strong> uma matriz 2x3 não
+            continua 2x3; ela vira 3x2.
           </li>
           <li>
-            <strong>Multiplicação de Matrizes:</strong> A transposta do produto
-            inverte a ordem da multiplicação.{" "}
-            <strong>(Essa é a mais importante!)</strong>
-            <br />
-            <Latex>(A · B)ᵀ = Bᵀ · Aᵀ</Latex>
+            <strong>Confundir com matriz inversa:</strong> transposta e inversa
+            são operações diferentes. A transposta troca linhas e colunas; a
+            inversa “desfaz” a ação de uma matriz.
           </li>
           <li>
-            <strong>Determinante:</strong> A transposição não altera o
-            determinante de uma matriz quadrada. <br />
-            <Latex>det(Aᵀ) = det(A)</Latex>
+            <strong>Errar a posição:</strong> o elemento da posição{" "}
+            <Formula>(i, j)</Formula> sempre vai para <Formula>(j, i)</Formula>.
           </li>
         </ul>
       </div>
 
-      {/* 3. Onde a Transposta é Usada? */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-3">
-          Onde a Transposta é Usada?
+          Propriedades Importantes
         </h2>
-        <p className="mb-4">
-          Embora pareça uma operação simples, a transposição é fundamental em
-          várias áreas:
-        </p>
-        <ul className="list-disc pl-5 space-y-2">
+        <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
-            <strong>Estatística e Machine Learning:</strong> Essencial para
-            calcular a matriz de covariância e para equações de regressão
-            linear, como <Latex>β = (XᵀX)⁻¹XᵀY</Latex>.
+            <strong>Transpor duas vezes volta ao começo:</strong>{" "}
+            <Formula>(A^T)^T = A</Formula>.
           </li>
           <li>
-            <strong>Computação Gráfica:</strong> Usada para calcular a inversa
-            de matrizes de rotação (que são ortogonais), simplificando a tarefa
-            de "desfazer" uma rotação.
+            <strong>A transposta da soma:</strong>{" "}
+            <Formula>(A + B)^T = A^T + B^T</Formula>.
           </li>
           <li>
-            <strong>Álgebra Linear:</strong> Ajuda a definir conceitos como
-            matrizes simétricas (<Latex>A = Aᵀ</Latex>) e a calcular o produto
-            escalar entre vetores.
+            <strong>A transposta do produto inverte a ordem:</strong>{" "}
+            <Formula>(A x B)^T = B^T x A^T</Formula>.
+          </li>
+          <li>
+            <strong>Determinante:</strong> se A for quadrada,{" "}
+            <Formula>det(A^T) = det(A)</Formula>.
           </li>
         </ul>
       </div>
 
-      {/* 4. Conclusão */}
-      <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-        <h2 className="text-2xl font-semibold mb-3">Conclusão</h2>
-        <p>
-          A transposição é uma ferramenta elegante e poderosa. Sua simplicidade
-          esconde uma grande utilidade, permitindo a manipulação de dados e a
-          simplificação de fórmulas complexas em diversas áreas da ciência e
-          tecnologia. Entendê-la bem é um passo crucial para aprofundar seus
-          conhecimentos em Álgebra Linear.
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-3">
+          Onde a Transposta Aparece na Prática?
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          A transposta aparece quando precisamos mudar a orientação de dados. Em
+          estatística e machine learning, ela ajuda a organizar tabelas de dados
+          e fórmulas de regressão. Em álgebra linear, ela é essencial para
+          entender matrizes simétricas, produtos entre vetores e propriedades da
+          multiplicação.
         </p>
-        <p className="mt-4">
-          O próximo passo natural é entender como a transposta interage com a{" "}
-          <Link to="/tutorial/multiplicacao-de-matrizes" className="text-blue-600 hover:underline">
-            Multiplicação de Matrizes
-          </Link>
-          .
-        </p>
+        <TipBox>
+          Se uma matriz representa dados em linhas, a transposta permite olhar
+          para os mesmos dados por colunas. É a mesma informação, reorganizada.
+        </TipBox>
       </div>
+
+      <TutorialCTA
+        title="Pratique com a Calculadora"
+        secondaryTo="/tutorial/multiplicacao-de-matrizes"
+        secondaryLabel="Ver multiplicação de matrizes"
+      >
+        Escolha “Transposição de A”, preencha sua matriz e veja como cada
+          posição muda no passo a passo. É uma boa forma de conferir se você
+          entendeu a regra sem decorar.
+      </TutorialCTA>
     </div>
   );
 }

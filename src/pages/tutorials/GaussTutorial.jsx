@@ -1,86 +1,85 @@
-import { Link } from "react-router-dom";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
-
-// Componente para formatação de LaTeX para clareza e consistência
-const Latex = ({ children }) => (
-  <span className="font-serif italic">{children}</span>
-);
+import Formula from "../../components/tutorial/Formula";
+import TipBox from "../../components/tutorial/TipBox";
+import TutorialCTA from "../../components/tutorial/TutorialCTA";
+import UseExampleButton from "../../components/tutorial/UseExampleButton";
 
 function GaussEscalonamentoTutorial() {
   return (
     <div className="p-6 max-w-4xl mx-auto text-gray-800">
-      {/* 1. O que é o Escalonamento de Gauss? */}
+      <p className="mb-6 text-lg leading-relaxed">
+        Escalonar uma matriz é transformar seus números em uma “escada” usando
+        operações de linha. Essa forma facilita resolver sistemas lineares,
+        identificar o tipo de solução e simplificar cálculos com matrizes.
+      </p>
+
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-3">
-          O que é Escalonar uma Matriz?
+          A Intuição: Criar uma Escada de Zeros
         </h2>
-        <p className="mb-4">
-          O <strong>escalonamento</strong>, conhecido formalmente como{" "}
-          <strong>Eliminação de Gauss</strong>, é um método poderoso para
-          simplificar e resolver sistemas de equações lineares.
+        <p className="mb-4 leading-relaxed">
+          A ideia do método de Gauss é escolher um número principal, chamado
+          pivô, e usar esse número para zerar os elementos abaixo dele. Repetindo
+          isso coluna por coluna, a matriz fica em forma de escada.
         </p>
-        <p>
-          O objetivo é transformar a matriz que representa o sistema em uma{" "}
-          <strong>"forma de escada"</strong> (matriz escalonada), onde os
-          elementos abaixo da diagonal principal são todos zeros. Isso torna a
-          solução do sistema trivial através de substituição.
-        </p>
+        <TipBox>
+          <strong>Resumo rápido:</strong> pivô é o número usado como referência.
+          Abaixo de cada pivô, queremos criar zeros.
+        </TipBox>
       </div>
 
-      {/* 2. A Receita do Método: Passos e Ferramentas */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
-        <h2 className="text-2xl font-semibold mb-4">
-          A Receita do Método: Passos e Ferramentas
+        <h2 className="text-2xl font-semibold mb-3">
+          As Operações Que Podemos Fazer
         </h2>
-
-        <h3 className="text-xl font-semibold mb-2">
-          Ingrediente Principal: A Matriz Aumentada
-        </h3>
-        <p className="mb-4">
-          Primeiro, convertemos o sistema de equações em uma única matriz,
-          chamada <strong>matriz aumentada</strong>, que une os coeficientes das
-          variáveis e os resultados.
+        <p className="mb-4 leading-relaxed">
+          No escalonamento, usamos operações que não mudam a solução do sistema:
         </p>
-
-        <h3 className="text-xl font-semibold mb-2">
-          As Ferramentas: Operações Elementares
-        </h3>
-        <p className="mb-2">
-          Para escalonar, podemos usar três operações que não alteram a solução
-          do sistema:
-        </p>
-        <ul className="list-disc pl-5 space-y-2">
+        <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
-            <strong>Trocar:</strong> Permutar a posição de duas linhas (
-            <Latex>Lᵢ ↔ Lⱼ</Latex>).
+            <strong>Trocar duas linhas:</strong> útil quando o pivô é zero.
           </li>
           <li>
-            <strong>Multiplicar:</strong> Multiplicar uma linha inteira por um
-            número diferente de zero (<Latex>Lᵢ ← k·Lᵢ</Latex>).
+            <strong>Multiplicar uma linha por número diferente de zero:</strong>{" "}
+            ajuda a simplificar pivôs.
           </li>
           <li>
-            <strong>Somar:</strong> Somar a uma linha um múltiplo de outra linha
-            (<Latex>Lᵢ ← Lᵢ + k·Lⱼ</Latex>). Esta é a operação principal do
-            escalonamento.
+            <strong>Somar a uma linha um múltiplo de outra:</strong> é a operação
+            mais usada para criar zeros.
           </li>
         </ul>
       </div>
 
-      {/* 3. Exemplo Prático: Resolvendo um Sistema 3x3 */}
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-3">
+          Como Escalonar uma Matriz Passo a Passo
+        </h2>
+        <ol className="list-decimal pl-5 space-y-3 leading-relaxed">
+          <li>Escolha o primeiro pivô, geralmente o primeiro número não nulo da primeira coluna.</li>
+          <li>Use esse pivô para zerar os números abaixo dele.</li>
+          <li>Passe para a próxima linha e próxima coluna.</li>
+          <li>Escolha o novo pivô.</li>
+          <li>Repita até formar uma escada de zeros.</li>
+          <li>Se estiver resolvendo um sistema, faça substituição reversa.</li>
+        </ol>
+      </div>
+
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-4">
-          Exemplo Prático: Resolvendo um Sistema 3x3
+          Exemplo Resolvido: Escalonamento de um Sistema 3x3
         </h2>
-        <p className="mb-2">Vamos resolver o sistema:</p>
-        <div className="p-3 bg-gray-100 rounded mb-4 font-mono">
-          2x + 3y - z = 5<br />
-          4x + 4y - 3z = 3<br />
+        <p className="mb-4 leading-relaxed">
+          Vamos resolver o sistema:
+        </p>
+        <div className="p-4 bg-gray-100 rounded mb-5 font-mono leading-8">
+          2x + 3y - z = 5
+          <br />
+          4x + 4y - 3z = 3
+          <br />
           -2x + 3y + 2z = 7
         </div>
 
-        <h3 className="text-xl font-semibold mt-4 mb-2">
-          Etapa 1: Criar a Matriz Aumentada
-        </h3>
+        <p className="mb-3 leading-relaxed">A matriz aumentada é:</p>
         <MatrixDisplay
           matrix={[
             [2, 3, -1, 5],
@@ -88,117 +87,158 @@ function GaussEscalonamentoTutorial() {
             [-2, 3, 2, 7],
           ]}
         />
-
-        <h3 className="text-xl font-semibold mt-4 mb-2">
-          Etapa 2: Escalonar a Matriz
-        </h3>
-        <p className="mb-2">
-          <strong>Objetivo:</strong> Usar o pivô da primeira linha (
-          <Latex>a₁₁=2</Latex>) para zerar os elementos abaixo dele.
-        </p>
-        <ul className="list-disc pl-5 mb-3">
-          <li>
-            Para zerar o '4' da Linha 2: <Latex>L₂ ← L₂ - 2·L₁</Latex>
-          </li>
-          <li>
-            Para zerar o '-2' da Linha 3: <Latex>L₃ ← L₃ + L₁</Latex>
-          </li>
-        </ul>
-        <p className="mb-2">A matriz se torna:</p>
-        <MatrixDisplay
-          matrix={[
+        <UseExampleButton
+          operation="gauss"
+          matrixA={[
             [2, 3, -1, 5],
-            [0, -2, -1, -7],
-            [0, 6, 1, 12],
+            [4, 4, -3, 3],
+            [-2, 3, 2, 7],
           ]}
         />
 
-        <p className="mt-4 mb-2">
-          <strong>Próximo Objetivo:</strong> Usar o pivô da segunda linha (
-          <Latex>a₂₂=-2</Latex>) para zerar o elemento abaixo dele.
-        </p>
-        <ul className="list-disc pl-5 mb-3">
-          <li>
-            Para zerar o '6' da Linha 3: <Latex>L₃ ← L₃ + 3·L₂</Latex>
-          </li>
-        </ul>
-        <p className="mb-2">
-          <strong>Matriz Escalonada Final:</strong>
-        </p>
-        <MatrixDisplay
-          matrix={[
-            [2, 3, -1, 5],
-            [0, -2, -1, -7],
-            [0, 0, -2, -9],
-          ]}
-        />
+        <div className="mt-6 space-y-5">
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <h3 className="text-lg font-semibold mb-2">
+              Passo 1: usar o primeiro pivô
+            </h3>
+            <p className="mb-3 leading-relaxed">
+              O primeiro pivô é <Formula>2</Formula>. Vamos zerar o{" "}
+              <Formula>4</Formula> da segunda linha e o <Formula>-2</Formula> da
+              terceira linha.
+            </p>
+            <p className="font-mono text-sm sm:text-base break-words">
+              L2 ← L2 - 2L1
+              <br />
+              L3 ← L3 + L1
+            </p>
+          </div>
 
-        <h3 className="text-xl font-semibold mt-4 mb-2">
-          Etapa 3: Substituição Reversa
-        </h3>
-        <p className="mb-2">
-          Agora, reescrevemos a matriz como equações e resolvemos de baixo para
-          cima.
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <h3 className="text-lg font-semibold mb-2">
+              Resultado parcial
+            </h3>
+            <MatrixDisplay
+              matrix={[
+                [2, 3, -1, 5],
+                [0, -2, -1, -7],
+                [0, 6, 1, 12],
+              ]}
+            />
+          </div>
+
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <h3 className="text-lg font-semibold mb-2">
+              Passo 2: usar o segundo pivô
+            </h3>
+            <p className="mb-3 leading-relaxed">
+              Agora o pivô é <Formula>-2</Formula>. Vamos zerar o{" "}
+              <Formula>6</Formula> que está abaixo dele.
+            </p>
+            <p className="font-mono text-sm sm:text-base break-words">
+              L3 ← L3 + 3L2
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <h3 className="text-lg font-semibold mb-2">
+              Matriz escalonada
+            </h3>
+            <MatrixDisplay
+              matrix={[
+                [2, 3, -1, 5],
+                [0, -2, -1, -7],
+                [0, 0, -2, -9],
+              ]}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-3">
+          Substituição Reversa
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Depois que a matriz está em forma de escada, resolvemos de baixo para
+          cima:
         </p>
-        <ol className="list-decimal list-inside space-y-2">
+        <ol className="list-decimal pl-5 space-y-3 leading-relaxed">
           <li>
-            <strong>Da Linha 3:</strong> <Latex>-2z = -9 ⇒ z = 9/2</Latex>
+            Da terceira linha: <Formula>-2z = -9 → z = 9/2</Formula>.
           </li>
           <li>
-            <strong>Da Linha 2:</strong>{" "}
-            <Latex>-2y - z = -7 ⇒ -2y - (9/2) = -7 ⇒ y = 5/4</Latex>
+            Da segunda linha:{" "}
+            <Formula>-2y - z = -7 → -2y - 9/2 = -7 → y = 5/4</Formula>.
           </li>
           <li>
-            <strong>Da Linha 1:</strong>{" "}
-            <Latex>2x + 3y - z = 5 ⇒ 2x + 3(5/4) - (9/2) = 5 ⇒ x = 23/8</Latex>
+            Da primeira linha:{" "}
+            <Formula>2x + 3y - z = 5 → x = 23/8</Formula>.
           </li>
         </ol>
       </div>
 
-      {/* 4. Interpretando os Resultados */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-3">
-          Interpretando a Matriz Escalonada
+          O Que a Calculadora Faz?
         </h2>
-        <p className="mb-3">
-          Ao final do escalonamento, a forma da matriz revela o tipo de solução:
+        <p className="mb-4 leading-relaxed">
+          A calculadora aplica a Eliminação de Gauss: ela zera os elementos
+          abaixo dos pivôs até chegar à forma escalonada. Depois, em sistemas
+          lineares, você pode usar substituição reversa para encontrar as
+          variáveis.
         </p>
-        <ul className="list-disc pl-5 space-y-2">
+        <TipBox>
+          Em outras palavras: aqui o foco é escalonamento por Eliminação de
+          Gauss, não a forma reduzida completa.
+        </TipBox>
+      </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
+        <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
-            <strong>Sistema Possível e Determinado (SPD):</strong> Uma única
-            solução. A matriz escalonada não possui linhas zeradas
-            contraditórias (ex: <Latex>0 = 5</Latex>).
+            <strong>Esquecer de aplicar a operação na linha inteira:</strong> a
+            operação vale para todos os elementos da linha.
           </li>
           <li>
-            <strong>Sistema Possível e Indeterminado (SPI):</strong> Infinitas
-            soluções. Surge uma linha de zeros, resultando em uma identidade
-            verdadeira como <Latex>0 = 0</Latex>.
+            <strong>Não trocar linha quando o pivô é zero:</strong> se possível,
+            traga uma linha com pivô não nulo para cima.
           </li>
           <li>
-            <strong>Sistema Impossível (SI):</strong> Nenhuma solução. Surge uma
-            linha com uma contradição, como <Latex>0 = k</Latex> (onde k ≠ 0).
+            <strong>Perder sinais negativos:</strong> esse é o erro mais comum
+            em escalonamento.
+          </li>
+          <li>
+            <strong>Parar antes da substituição reversa:</strong> a matriz
+            escalonada ainda precisa ser interpretada para achar as variáveis.
           </li>
         </ul>
       </div>
 
-      {/* 5. Conclusão */}
-      <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-        <h2 className="text-2xl font-semibold mb-3">Conclusão</h2>
-        <p>
-          O Método de Gauss é uma técnica sistemática e fundamental na Álgebra
-          Linear. Ele não apenas resolve sistemas, mas também nos ajuda a
-          entender a natureza de suas soluções. Por ser um algoritmo, é a base
-          para muitos softwares de cálculo numérico.
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-3">
+          Onde o Escalonamento Aparece?
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          O escalonamento aparece em sistemas lineares, cálculo de posto,
+          análise de dependência entre linhas, determinantes e métodos numéricos.
+          Ele é uma das técnicas mais importantes para trabalhar com matrizes.
         </p>
-        <p className="mt-4">
-          O próximo passo é entender como o escalonamento pode ser usado para
-          calcular{" "}
-          <Link to="/tutorial/determinante-de-matrizes" className="text-blue-600 hover:underline">
-            determinantes
-          </Link>{" "}
-          de matrizes grandes de forma eficiente.
-        </p>
+        <TipBox>
+          Quando uma matriz parece grande demais para resolver “de cabeça”, o
+          escalonamento transforma o problema em passos repetitivos.
+        </TipBox>
       </div>
+
+      <TutorialCTA
+        title="Pratique com a Calculadora"
+        secondaryTo="/tutorial/sistemas-lineares"
+        secondaryLabel="Ver sistemas lineares"
+      >
+        Escolha “Eliminação de Gauss”, preencha a matriz e acompanhe cada
+          operação de linha. Use os passos exibidos para treinar a leitura de
+          pivôs, zeros e substituição reversa.
+      </TutorialCTA>
     </div>
   );
 }

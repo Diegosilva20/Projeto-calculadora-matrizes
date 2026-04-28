@@ -76,14 +76,6 @@ export const useMatrixCalculator = () => {
     } else if (operation === "determinanteA" && !isSquareA) {
       newError =
         "Erro: O determinante só pode ser calculado para matrizes quadradas.";
-    } else if (operation === "gauss" && !isSquareA) {
-      if (
-        !window.confirm(
-          "Aviso: A eliminação de Gauss é tipicamente aplicada a matrizes quadradas. Deseja prosseguir mesmo assim?",
-        )
-      ) {
-        return;
-      }
     }
 
     if (newError) {

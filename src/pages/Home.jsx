@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import MatrixDisplay from "../components/common/MatrixDisplay";
 import MatrixInput from "../components/common/MatrixInput";
 import ResultDisplay from "../components/ui/ResultDisplay";
 import { tutoriais } from "../data/tutorialsData";
@@ -14,6 +15,15 @@ const operationToSlug = {
   multiplicacao: "multiplicacao-de-matrizes",
   transposicao: "matriz-transposta",
   sistemas: "sistemas-lineares",
+};
+
+const operationLabels = {
+  inversa: "matriz inversa",
+  gauss: "escalonamento de matrizes",
+  determinanteA: "determinante de matrizes",
+  multiplicacao: "multiplicação de matrizes",
+  transposicao: "matriz transposta",
+  sistemas: "sistemas lineares",
 };
 
 const operationsWithMatrixB = ["soma", "subtracao", "multiplicacao"];
@@ -53,7 +63,7 @@ const Home = () => {
         priceCurrency: "BRL",
       },
       featureList:
-        "Matriz Inversa, Determinante por Escalonamento, Multiplicação de Matrizes, Gauss-Jordan, Sistemas Lineares",
+        "Matriz Inversa, Determinante, Multiplicação de Matrizes, Escalonamento de Matrizes, Sistemas Lineares",
     },
     {
       "@context": "https://schema.org",
@@ -61,18 +71,18 @@ const Home = () => {
       mainEntity: [
         {
           "@type": "Question",
-          name: "Como calcular determinante por escalonamento?",
+          name: "Como ver o escalonamento de uma matriz?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Selecione a operação Eliminação de Gauss, insira os valores da sua matriz e nossa calculadora exibirá o passo a passo do escalonamento até chegar ao resultado.",
+            text: "Selecione a operação Eliminação de Gauss, insira os valores da matriz e a calculadora exibirá as etapas do escalonamento até chegar à forma escalonada.",
           },
         },
         {
           "@type": "Question",
-          name: "A matriz inversa calculadora mostra o passo a passo?",
+          name: "Como calcular matriz inversa online?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Sim, ao calcular a inversa de uma matriz 2x2, 3x3 ou 4x4, a ferramenta processa os cálculos usando frações exatas para garantir precisão total.",
+            text: "Selecione a operação Inversa de A, preencha uma matriz quadrada e clique em calcular. A ferramenta valida se a matriz é invertível e mostra o resultado.",
           },
         },
       ],
@@ -121,11 +131,11 @@ const Home = () => {
       <Helmet>
         {/* Título focado nos termos de maior busca do Search Console */}
         <title>
-          Calculadora de Matrizes Online | Inversa, Determinante e Gauss
+          Calculadora de Matrizes Online | Inversa, Determinante e Escalonamento
         </title>
         <meta
           name="description"
-          content="Resolva matrizes passo a passo. Use nossa Matriz Calculator para calcular determinante por escalonamento, matriz inversa, multiplicação e sistemas lineares."
+          content="Use a calculadora de matrizes online para resolver determinante, matriz inversa, multiplicação, transposta e escalonamento com explicações didáticas."
         />
         <link rel="canonical" href="https://www.matrizcalculator.com/" />
         <script type="application/ld+json">
@@ -140,7 +150,7 @@ const Home = () => {
           </h1>
           <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto">
             A ferramenta definitiva para resolver álgebra linear. Calcule
-            determinantes, inversas e realize escalonamento Gauss-Jordan com
+            determinantes, inversas e realize eliminação de Gauss com
             precisão absoluta.
           </p>
         </header>
@@ -236,7 +246,7 @@ const Home = () => {
                   to={`/tutorial/${operationToSlug[operation]}`}
                   className="font-bold underline hover:text-yellow-900"
                 >
-                  Ver passo a passo de {operation}
+                  Ver tutorial de {operationLabels[operation]}
                 </Link>
               </p>
             </div>
@@ -274,37 +284,18 @@ const Home = () => {
                           {step.title}
                         </h3>
                       </div>
-                      <p className="ml-10 text-gray-500 font-mono text-sm bg-gray-50 inline-block px-3 py-1 rounded border border-gray-200">
+                      <p className="ml-10 text-gray-500 font-mono text-sm bg-gray-50 px-3 py-2 rounded border border-gray-200 whitespace-pre-wrap break-words">
                         {step.description}
                       </p>
                     </div>
 
                     {/* Renderização da Matriz */}
-                    <div className="sm:w-2/3 flex justify-center sm:justify-start w-full overflow-x-auto pb-4">
+                    <div className="sm:w-2/3 flex justify-center sm:justify-start w-full pb-4">
                       {step.matrix && (
-                        <div className="relative inline-block px-5 py-2">
-                          {/* Colchetes Minimalistas (2px) */}
-                          <div className="absolute top-0 bottom-0 left-0 w-3 border-l-[2px] border-t-[2px] border-b-[2px] border-gray-800 rounded-l"></div>
-                          <div className="absolute top-0 bottom-0 right-0 w-3 border-r-[2px] border-t-[2px] border-b-[2px] border-gray-800 rounded-r"></div>
-
-                          <div
-                            className="grid gap-x-8 gap-y-3 px-2"
-                            style={{
-                              gridTemplateColumns: `repeat(${step.matrix[0].length}, minmax(30px, auto))`,
-                            }}
-                          >
-                            {step.matrix.map((row, rIndex) =>
-                              row.map((val, cIndex) => (
-                                <div
-                                  key={`${rIndex}-${cIndex}`}
-                                  className="text-center font-mono text-gray-800 font-medium text-lg sm:text-xl tracking-tight"
-                                >
-                                  {val}
-                                </div>
-                              )),
-                            )}
-                          </div>
-                        </div>
+                        <MatrixDisplay
+                          matrix={step.matrix}
+                          emptyPlaceholder="·"
+                        />
                       )}
                     </div>
                   </div>

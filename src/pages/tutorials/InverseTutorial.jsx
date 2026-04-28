@@ -1,263 +1,220 @@
-import { Link } from "react-router-dom";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
-
-// Componente para formatação de LaTeX para clareza e consistência
-const Latex = ({ children }) => (
-  <span className="font-serif italic">{children}</span>
-);
+import Formula from "../../components/tutorial/Formula";
+import TipBox from "../../components/tutorial/TipBox";
+import TutorialCTA from "../../components/tutorial/TutorialCTA";
+import UseExampleButton from "../../components/tutorial/UseExampleButton";
 
 function InverseMatrixTutorial() {
   return (
     <div className="p-6 max-w-4xl mx-auto text-gray-800">
-      {/* 1. O que é e Quando Existe? */}
+      <p className="mb-6 text-lg leading-relaxed">
+        A matriz inversa é a matriz que desfaz o efeito de outra matriz. Ela é
+        muito usada para resolver sistemas lineares e para reverter
+        transformações, mas só existe em alguns casos. A boa notícia: dá para
+        entender a ideia antes de decorar qualquer fórmula.
+      </p>
+
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-3">
-          O que é uma Matriz Inversa?
+          A Intuição: A Matriz Que Desfaz
         </h2>
-        <p className="mb-4">
-          Na álgebra, o inverso de um número '5' é '1/5', pois{" "}
-          <Latex>5 × (1/5) = 1</Latex>. A <strong>matriz inversa</strong> é o
-          conceito análogo para matrizes. A inversa da matriz A, denotada como{" "}
-          <Latex>A⁻¹</Latex>, é a matriz que, quando multiplicada por A, resulta
-          na <strong>matriz identidade</strong> (I).
+        <p className="mb-4 leading-relaxed">
+          Com números comuns, o inverso de 5 é <Formula>1/5</Formula>, porque{" "}
+          <Formula>5 × 1/5 = 1</Formula>. Com matrizes, a lógica é parecida: a
+          inversa de <Formula>A</Formula> é uma matriz <Formula>A⁻¹</Formula>{" "}
+          que, ao multiplicar <Formula>A</Formula>, gera a matriz identidade.
         </p>
-        <p className="text-center font-mono text-lg p-3 bg-gray-100 rounded">
-          <Latex>A · A⁻¹ = A⁻¹ · A = I</Latex>
+        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg">
+          <Formula>A × A⁻¹ = A⁻¹ × A = I</Formula>
+        </div>
+        <p className="mt-4 text-sm text-gray-600 leading-relaxed">
+          A matriz identidade funciona como o número 1 na multiplicação: ela não
+          altera a matriz quando aparece em um produto.
         </p>
-
-        <h3 className="text-xl font-semibold mt-4 mb-2">Quando ela existe?</h3>
-        <p>Para uma matriz possuir inversa, duas condições são obrigatórias:</p>
-        <ul className="list-disc pl-5 mt-2 space-y-1">
-          <li>
-            A matriz deve ser <strong>quadrada</strong> (ex: 2x2, 3x3, etc.).
-          </li>
-          <li>
-            Seu <strong>determinante</strong> deve ser{" "}
-            <strong>diferente de zero</strong> (<Latex>det(A) ≠ 0</Latex>). Se o
-            determinante for zero, a matriz é chamada de "singular" e não tem
-            inversa.
-          </li>
-        </ul>
       </div>
 
-      {/* 2. Métodos de Cálculo: Passo a Passo */}
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-3">
+          Quando uma Matriz Tem Inversa?
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Antes de calcular, verifique duas condições:
+        </p>
+        <ul className="list-disc pl-5 space-y-3 leading-relaxed">
+          <li>
+            A matriz precisa ser <strong>quadrada</strong>, como 2x2, 3x3 ou
+            4x4.
+          </li>
+          <li>
+            O determinante precisa ser <strong>diferente de zero</strong>:{" "}
+            <Formula>det(A) ≠ 0</Formula>.
+          </li>
+        </ul>
+        <TipBox>
+          Se <Formula>det(A) = 0</Formula>, a matriz é chamada de singular e não
+          possui inversa.
+        </TipBox>
+      </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-3">
+          Como Calcular a Matriz Inversa 2x2 Passo a Passo
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Para uma matriz 2x2, existe uma fórmula rápida. Se:
+        </p>
+        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg mb-4">
+          <Formula>A = [[a, b], [c, d]]</Formula>
+        </div>
+        <p className="mb-4 leading-relaxed">então:</p>
+        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg">
+          <Formula>A⁻¹ = 1/det(A) × [[d, -b], [-c, a]]</Formula>
+        </div>
+        <ol className="list-decimal pl-5 space-y-3 leading-relaxed mt-5">
+          <li>Calcule o determinante.</li>
+          <li>Troque os elementos da diagonal principal.</li>
+          <li>Inverta o sinal dos outros dois elementos.</li>
+          <li>Multiplique tudo por <Formula>1/det(A)</Formula>.</li>
+        </ol>
+      </div>
+
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-4">
-          Métodos de Cálculo: Passo a Passo
+          Exemplo Resolvido: Inversa de uma Matriz 2x2
         </h2>
+        <p className="mb-4 leading-relaxed">
+          Vamos encontrar a inversa da matriz:
+        </p>
+        <MatrixDisplay
+          matrix={[
+            [2, 5],
+            [1, 3],
+          ]}
+        />
+        <UseExampleButton
+          operation="inversa"
+          matrixA={[
+            [2, 5],
+            [1, 3],
+          ]}
+        />
 
-        {/* Método 1: Matriz 2x2 */}
-        <div className="mb-8">
-          <h3 className="text-xl font-semibold border-b pb-2 mb-3">
-            Método 1: A Fórmula Rápida para Matrizes 2x2
-          </h3>
-          <p className="mb-3">
-            Para uma matriz 2x2, existe uma fórmula direta e eficiente:
-          </p>
-          <p className="text-center font-mono text-lg p-3 bg-gray-100 rounded">
-            <Latex>A⁻¹ = (1/det(A)) · [[d, -b], [-c, a]]</Latex>
-          </p>
-          <p className="mt-4 mb-2">
-            <strong>Exemplo:</strong> Encontre a inversa da Matriz A.
-          </p>
-          <MatrixDisplay
-            matrix={[
-              [2, 5],
-              [1, 3],
-            ]}
-          />
-          <ol className="list-decimal list-inside space-y-2 mt-3">
-            <li>
-              <strong>Calcular o determinante:</strong>{" "}
-              <Latex>det(A) = (2·3) - (5·1) = 1</Latex>. Como é diferente de 0,
-              a inversa existe.
-            </li>
-            <li>
-              <strong>Aplicar a fórmula:</strong> Troque 'a' e 'd' de lugar,
-              inverta o sinal de 'b' e 'c'.
-            </li>
-            <p>
-              <Latex>A⁻¹ = (1/1) · [[3, -5], [-1, 2]]</Latex>
+        <div className="mt-6 space-y-5">
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <h3 className="text-lg font-semibold mb-2">
+              Passo 1: calcular o determinante
+            </h3>
+            <p className="font-mono text-sm sm:text-base break-words">
+              det(A) = (2 × 3) - (5 × 1) = 6 - 5 = 1
             </p>
-            <li>
-              <strong>Resultado Final:</strong>
-            </li>
+            <p className="mt-3 leading-relaxed">
+              Como o determinante é diferente de zero, a inversa existe.
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <h3 className="text-lg font-semibold mb-2">
+              Passo 2: montar a matriz ajustada
+            </h3>
+            <p className="mb-3 leading-relaxed">
+              Trocamos <Formula>2</Formula> com <Formula>3</Formula> e mudamos o
+              sinal de <Formula>5</Formula> e <Formula>1</Formula>.
+            </p>
             <MatrixDisplay
               matrix={[
                 [3, -5],
                 [-1, 2],
               ]}
             />
-          </ol>
-        </div>
+          </div>
 
-        {/* Método 2: Gauss-Jordan */}
-        <div>
-          <h3 className="text-xl font-semibold border-b pb-2 mb-3">
-            Método 2: Gauss-Jordan (O Método Universal)
-          </h3>
-          <p className="mb-3">
-            Este método funciona para qualquer matriz quadrada e é a base para
-            os cálculos computacionais. O processo consiste em:
-          </p>
-          <ol className="list-decimal list-inside space-y-1 mb-4">
-            <li>
-              Criar uma matriz aumentada no formato <Latex>[A | I]</Latex>.
-            </li>
-            <li>
-              Usar as operações elementares de linha (escalonamento) para
-              transformar a parte <Latex>A</Latex> na matriz identidade{" "}
-              <Latex>I</Latex>.
-            </li>
-            <li>
-              A matriz que surgir no lado direito será a inversa{" "}
-              <Latex>A⁻¹</Latex>. O formato final será <Latex>[I | A⁻¹]</Latex>.
-            </li>
-          </ol>
-          <p className="mb-2">
-            <strong>Exemplo:</strong> Encontre a inversa da Matriz A.
-          </p>
-          <MatrixDisplay
-            matrix={[
-              [1, 1, 0],
-              [1, 0, 1],
-              [0, 1, 1],
-            ]}
-          />
-
-          <p className="mt-3">
-            <strong>
-              1. Monte a matriz <Latex>[A | I]</Latex>:
-            </strong>
-          </p>
-          <MatrixDisplay
-            matrix={[
-              [1, 1, 0, 1, 0, 0],
-              [1, 0, 1, 0, 1, 0],
-              [0, 1, 1, 0, 0, 1],
-            ]}
-          />
-
-          <p className="mt-3">
-            <strong>
-              2. Aplique o escalonamento até obter <Latex>[I | A⁻¹]</Latex>:
-            </strong>
-          </p>
-          <p className="text-sm text-gray-600">
-            <Latex>L₂ ← L₂ - L₁</Latex>
-          </p>
-          <MatrixDisplay
-            matrix={[
-              [1, 1, 0, 1, 0, 0],
-              [0, -1, 1, -1, 1, 0],
-              [0, 1, 1, 0, 0, 1],
-            ]}
-          />
-          <p className="text-sm text-gray-600 mt-2">
-            <Latex>L₃ ← L₃ + L₂</Latex>
-          </p>
-          <MatrixDisplay
-            matrix={[
-              [1, 1, 0, 1, 0, 0],
-              [0, -1, 1, -1, 1, 0],
-              [0, 0, 2, -1, 1, 1],
-            ]}
-          />
-          <p className="text-sm text-gray-600 mt-2">
-            <Latex>L₂ ← -1 · L₂</Latex> e <Latex>L₃ ← (1/2) · L₃</Latex>
-          </p>
-          <MatrixDisplay
-            matrix={[
-              [1, 1, 0, 1, 0, 0],
-              [0, 1, -1, 1, -1, 0],
-              [0, 0, 1, -0.5, 0.5, 0.5],
-            ]}
-          />
-          <p className="text-sm text-gray-600 mt-2">
-            <Latex>L₂ ← L₂ + L₃</Latex> e <Latex>L₁ ← L₁ - L₂</Latex> (agora
-            zerando acima da diagonal)
-          </p>
-          <MatrixDisplay
-            matrix={[
-              [1, 0, 0, 0.5, 0.5, -0.5],
-              [0, 1, 0, 0.5, -0.5, 0.5],
-              [0, 0, 1, -0.5, 0.5, 0.5],
-            ]}
-          />
-
-          <p className="mt-4">
-            <strong>3. A matriz à direita é a inversa:</strong>
-          </p>
-          <MatrixDisplay
-            matrix={[
-              [0.5, 0.5, -0.5],
-              [0.5, -0.5, 0.5],
-              [-0.5, 0.5, 0.5],
-            ]}
-          />
-        </div>
-      </div>
-
-      {/* 3. Propriedades e Aplicações */}
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
-        <h2 className="text-2xl font-semibold mb-4">
-          Propriedades e Aplicações
-        </h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div>
-            <h3 className="text-xl font-semibold mb-2">
-              Propriedades Importantes
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <h3 className="text-lg font-semibold mb-2">
+              Passo 3: multiplicar por 1/determinante
             </h3>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>
-                <Latex>(A⁻¹)⁻¹ = A</Latex>
-              </li>
-              <li>
-                <Latex>(A·B)⁻¹ = B⁻¹·A⁻¹</Latex> (a ordem é invertida)
-              </li>
-              <li>
-                <Latex>(Aᵀ)⁻¹ = (A⁻¹)ᵀ</Latex>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold mb-2">Aplicações Práticas</h3>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>
-                <strong>Resolver sistemas lineares:</strong> Se{" "}
-                <Latex>A·X = B</Latex>, então <Latex>X = A⁻¹·B</Latex>.
-              </li>
-              <li>
-                <strong>Computação Gráfica:</strong> Para reverter
-                transformações (rotação, escala).
-              </li>
-              <li>
-                <strong>Criptografia:</strong> Para decodificar mensagens
-                baseadas em matrizes.
-              </li>
-            </ul>
+            <p className="font-mono text-sm sm:text-base break-words">
+              A⁻¹ = 1/1 × [[3, -5], [-1, 2]]
+            </p>
           </div>
         </div>
+
+        <h3 className="text-xl font-semibold mt-6">Resultado Final</h3>
+        <MatrixDisplay
+          matrix={[
+            [3, -5],
+            [-1, 2],
+          ]}
+        />
       </div>
 
-      {/* 4. Conclusão */}
-      <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-        <h2 className="text-2xl font-semibold mb-3">Conclusão</h2>
-        <p>
-          A matriz inversa é uma ferramenta essencial que "desfaz" a operação de
-          uma matriz. Embora existam fórmulas para casos simples como 2x2, o
-          método de Gauss-Jordan é a abordagem universal que reforça a
-          importância do escalonamento na Álgebra Linear.
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-3">
+          Escalonamento para Matrizes Maiores
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Para matrizes 3x3 ou maiores, o método mais comum é montar a matriz
+          aumentada <Formula>[A | I]</Formula>. Depois, usamos operações de linha
+          para transformar o lado esquerdo em identidade.
         </p>
-        <p className="mt-4">
-          Agora que você sabe encontrar a inversa, veja como aplicá-la na
-          resolução de sistemas em nosso tutorial sobre o{" "}
-          <Link to="/tutorial/escalonamento-gauss-jordan" className="text-blue-600 hover:underline">
-            Método de Gauss
-          </Link>
-          .
-        </p>
+        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg mb-4">
+          <Formula>[A | I] → [I | A⁻¹]</Formula>
+        </div>
+        <ol className="list-decimal pl-5 space-y-3 leading-relaxed">
+          <li>Escreva a matriz original à esquerda.</li>
+          <li>Coloque a matriz identidade do mesmo tamanho à direita.</li>
+          <li>Faça operações de linha até a esquerda virar identidade.</li>
+          <li>Leia a inversa no lado direito.</li>
+        </ol>
       </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
+        <ul className="list-disc pl-5 space-y-3 leading-relaxed">
+          <li>
+            <strong>Tentar inverter matriz não quadrada:</strong> matriz 2x3 ou
+            3x2 não tem inversa comum.
+          </li>
+          <li>
+            <strong>Esquecer de verificar o determinante:</strong> se ele for
+            zero, a inversa não existe.
+          </li>
+          <li>
+            <strong>Aplicar a fórmula 2x2 em matriz 3x3:</strong> a fórmula
+            rápida só vale para 2x2.
+          </li>
+          <li>
+            <strong>Trocar a ordem na multiplicação:</strong> em matrizes, a
+            ordem importa.
+          </li>
+        </ul>
+      </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-3">
+          Onde a Matriz Inversa Aparece?
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          A inversa aparece quando precisamos desfazer uma transformação ou
+          isolar variáveis. Em sistemas lineares, se <Formula>A × x = b</Formula>,
+          então podemos escrever <Formula>x = A⁻¹ × b</Formula>, desde que a
+          inversa exista.
+        </p>
+        <TipBox>
+          Na prática, a inversa é útil em sistemas lineares, computação gráfica,
+          análise de dados, engenharia e modelos que usam transformações
+          matriciais.
+        </TipBox>
+      </div>
+
+      <TutorialCTA
+        title="Pratique com a Calculadora"
+        secondaryTo="/tutorial/determinante-de-matrizes"
+        secondaryLabel="Ver determinantes"
+      >
+        Escolha a opção “Inversa de A”, preencha uma matriz quadrada e confira
+          o resultado. Se a matriz não tiver inversa, a calculadora avisa o
+          motivo.
+      </TutorialCTA>
     </div>
   );
 }

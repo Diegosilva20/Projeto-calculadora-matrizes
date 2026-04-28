@@ -1,117 +1,216 @@
-import { Link } from "react-router-dom";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
-
-// Componente para formatação de LaTeX
-const Latex = ({ children }) => <span className="font-serif italic">{children}</span>;
+import Formula from "../../components/tutorial/Formula";
+import TipBox from "../../components/tutorial/TipBox";
+import TutorialCTA from "../../components/tutorial/TutorialCTA";
+import UseExampleButton from "../../components/tutorial/UseExampleButton";
 
 function LinearSystemsTutorial() {
   return (
     <div className="p-6 max-w-4xl mx-auto text-gray-800">
-      <p className="mb-6">
-        Você já aprendeu sobre as operações fundamentais com matrizes. Agora, vamos usar todo esse conhecimento para resolver um dos problemas mais clássicos da matemática e da ciência: os sistemas de equações lineares.
+      <p className="mb-6 text-lg leading-relaxed">
+        Resolver um sistema linear significa encontrar valores que deixam todas
+        as equações verdadeiras ao mesmo tempo. Com matrizes, esse processo fica
+        mais organizado: você transforma as equações em uma tabela de números e
+        resolve seguindo uma sequência de passos.
       </p>
 
-      {/* 1. Representação Matricial */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
-        <h2 className="text-2xl font-semibold mb-3">Transformando Equações em Matrizes (Forma Ax = b)</h2>
-        <p className="mb-4">
-          Qualquer sistema de equações lineares pode ser reescrito de forma compacta e elegante usando matrizes. Considere o sistema:
+        <h2 className="text-2xl font-semibold mb-3">
+          A Intuição: Equações Viram uma Tabela
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Em um sistema, cada equação tem coeficientes, variáveis e resultado. A
+          matriz serve para guardar apenas os números importantes, sem repetir
+          toda a escrita com <Formula>x</Formula>, <Formula>y</Formula> e sinais
+          de igualdade a cada linha.
         </p>
-        <div className="p-3 bg-gray-100 rounded mb-4 font-mono text-center">
-          2x + y = 5 <br />
+        <TipBox>
+          <strong>Resumo rápido:</strong> a matriz de coeficientes guarda os
+          números que multiplicam as variáveis. A matriz aumentada também guarda
+          os resultados das equações na última coluna.
+        </TipBox>
+      </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-3">
+          Como Montar a Matriz Aumentada
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Vamos começar com um sistema simples:
+        </p>
+        <div className="p-4 bg-gray-100 rounded mb-5 font-mono text-center leading-8">
+          2x + y = 5
+          <br />
           3x - 2y = 4
         </div>
-        <p>Ele pode ser representado pela equação matricial <Latex>A · x = b</Latex>, onde:</p>
-        <div className="grid md:grid-cols-3 gap-4 items-center text-center mt-4">
-            <div>
-                <h3 className="font-semibold mb-1">A: Matriz de Coeficientes</h3>
-                <MatrixDisplay matrix={[[2, 1], [3, -2]]} />
-            </div>
-            <div>
-                <h3 className="font-semibold mb-1">x: Vetor de Variáveis</h3>
-                <MatrixDisplay matrix={[['x'], ['y']]} />
-            </div>
-            <div>
-                <h3 className="font-semibold mb-1">b: Vetor de Constantes</h3>
-                <MatrixDisplay matrix={[[5], [4]]} />
-            </div>
-        </div>
-      </div>
-      
-      {/* 2. Classificação de Sistemas */}
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
-        <h2 className="text-2xl font-semibold mb-3">Os Três Tipos de Solução</h2>
-        <p className="mb-4">
-          Um sistema linear pode ter uma, infinitas ou nenhuma solução. O {" "}
-          <Link to="/tutorial/determinante-de-matrizes" className="text-blue-600 hover:underline">determinante</Link> da matriz de coeficientes (A) nos dá uma grande pista:
+        <p className="mb-4 leading-relaxed">
+          Como a ordem das variáveis é <Formula>x</Formula> e depois{" "}
+          <Formula>y</Formula>, colocamos os coeficientes nessa mesma ordem. A
+          última coluna recebe os resultados.
         </p>
-        <ul className="list-disc pl-5 space-y-2">
-            <li><strong>Sistema Possível e Determinado (SPD):</strong> Possui uma única solução. Geralmente ocorre quando <Latex>det(A) ≠ 0</Latex>.</li>
-            <li><strong>Sistema Possível e Indeterminado (SPI):</strong> Possui infinitas soluções. Ocorre quando <Latex>det(A) = 0</Latex> e, durante o escalonamento, encontramos uma linha do tipo <Latex>0 = 0</Latex>.</li>
-            <li><strong>Sistema Impossível (SI):</strong> Não possui solução. Ocorre quando, durante o escalonamento, encontramos uma contradição, como <Latex>0 = 5</Latex>.</li>
+        <MatrixDisplay
+          matrix={[
+            [2, 1, 5],
+            [3, -2, 4],
+          ]}
+        />
+        <p className="mt-4 text-sm text-gray-600 leading-relaxed">
+          Essa matriz representa <Formula>[A | b]</Formula>: a parte da esquerda
+          contém os coeficientes e a última coluna contém os resultados.
+        </p>
+      </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-3">
+          Como Resolver Sistemas Lineares Passo a Passo
+        </h2>
+        <ol className="list-decimal pl-5 space-y-3 leading-relaxed">
+          <li>Escreva todas as equações com as variáveis na mesma ordem.</li>
+          <li>Monte a matriz aumentada com coeficientes e resultados.</li>
+          <li>Escolha o primeiro pivô, normalmente o primeiro número da primeira linha.</li>
+          <li>Use operações de linha para criar zeros abaixo do pivô.</li>
+          <li>Repita o processo até a matriz ficar em forma de escada.</li>
+          <li>Volte de baixo para cima para encontrar as variáveis.</li>
+        </ol>
+      </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-4">
+          Exemplo Resolvido: Sistema 2x2 por Escalonamento
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Vamos resolver o sistema anterior. A matriz aumentada inicial é:
+        </p>
+        <MatrixDisplay
+          matrix={[
+            [2, 1, 5],
+            [3, -2, 4],
+          ]}
+        />
+        <UseExampleButton
+          operation="gauss"
+          matrixA={[
+            [2, 1, 5],
+            [3, -2, 4],
+          ]}
+        />
+
+        <div className="mt-6 space-y-5">
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <h3 className="text-lg font-semibold mb-2">
+              Passo 1: zerar o número abaixo do pivô
+            </h3>
+            <p className="mb-3 leading-relaxed">
+              O pivô é o <Formula>2</Formula> da primeira linha. Queremos zerar
+              o <Formula>3</Formula> que está abaixo dele. Uma forma direta é:
+            </p>
+            <p className="font-mono text-sm sm:text-base break-words">
+              L2 ← L2 - (3/2)L1
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <h3 className="text-lg font-semibold mb-2">
+              Passo 2: escrever a nova matriz
+            </h3>
+            <MatrixDisplay
+              matrix={[
+                [2, 1, 5],
+                [0, -3.5, -3.5],
+              ]}
+            />
+            <p className="mt-3 leading-relaxed">
+              Agora a segunda linha ficou mais simples: ela só tem{" "}
+              <Formula>y</Formula>.
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <h3 className="text-lg font-semibold mb-2">
+              Passo 3: resolver de baixo para cima
+            </h3>
+            <p className="font-mono text-sm sm:text-base break-words mb-2">
+              -3,5y = -3,5 → y = 1
+            </p>
+            <p className="font-mono text-sm sm:text-base break-words">
+              2x + 1 = 5 → 2x = 4 → x = 2
+            </p>
+          </div>
+        </div>
+
+        <p className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg text-center">
+          <strong>Resultado:</strong> <Formula>x = 2</Formula> e{" "}
+          <Formula>y = 1</Formula>.
+        </p>
+      </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-3">
+          Como Saber o Tipo de Solução?
+        </h2>
+        <ul className="list-disc pl-5 space-y-3 leading-relaxed">
+          <li>
+            <strong>Uma solução:</strong> ao final, cada variável fica bem
+            determinada.
+          </li>
+          <li>
+            <strong>Infinitas soluções:</strong> aparece uma linha verdadeira,
+            como <Formula>0 = 0</Formula>, e sobra pelo menos uma variável livre.
+          </li>
+          <li>
+            <strong>Nenhuma solução:</strong> aparece uma contradição, como{" "}
+            <Formula>0 = 5</Formula>.
+          </li>
         </ul>
       </div>
 
-      {/* 3. Métodos de Solução */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
-        <h2 className="text-2xl font-semibold mb-4">Como Resolver: Dois Métodos Poderosos</h2>
-        <p className="mb-4">Vamos resolver o sistema anterior usando dois métodos diferentes.</p>
-
-        {/* Método 1: Matriz Inversa */}
-        <div className="mb-8">
-          <h3 className="text-xl font-semibold border-b pb-2 mb-3">Método 1: Usando a Matriz Inversa (x = A⁻¹b)</h3>
-          <p className="mb-3">Este método é muito elegante e funciona se a matriz A for quadrada e seu determinante for diferente de zero.</p>
-          <ol className="list-decimal list-inside space-y-2">
-              <li><strong>Verificar o Determinante de A:</strong> <br/>
-                <Latex>det(A) = (2)(-2) - (1)(3) = -4 - 3 = -7</Latex>. Como é diferente de 0, podemos prosseguir.
-              </li>
-              <li><strong>Calcular a <Link to="/tutorial/matriz-inversa" className="text-blue-600 hover:underline">Matriz Inversa</Link> (A⁻¹):</strong><br/>
-                Para uma matriz 2x2, usamos a fórmula rápida: <br/>
-                <Latex>A⁻¹ = (1/det(A)) · [[d, -b], [-c, a]] = (-1/7) · [[-2, -1], [-3, 2]]</Latex> <br/>
-                <div className="my-2"><MatrixDisplay matrix={[['2/7', '1/7'], ['3/7', '-2/7']]} /></div>
-              </li>
-              <li><strong>Multiplicar A⁻¹ por b para achar x:</strong><br/>
-                <Latex>x = A⁻¹ · b</Latex> <br/>
-                <div className="flex items-center justify-center gap-4 my-2">
-                    <MatrixDisplay matrix={[['2/7', '1/7'], ['3/7', '-2/7']]} /> <span>×</span> <MatrixDisplay matrix={[[5], [4]]} />
-                </div>
-                <Latex>x = [(2/7)·5 + (1/7)·4] = [14/7] = [2]</Latex><br/>
-                <Latex>y = [(3/7)·5 + (-2/7)·4] = [7/7] = [1]</Latex>
-              </li>
-          </ol>
-          <p className="mt-4 p-3 bg-green-50 border border-green-200 rounded text-center"><strong>Solução:</strong> <Latex>x = 2</Latex> e <Latex>y = 1</Latex>.</p>
-        </div>
-
-        {/* Método 2: Escalonamento de Gauss */}
-        <div>
-          <h3 className="text-xl font-semibold border-b pb-2 mb-3">Método 2: Escalonamento de Gauss (O Método Universal)</h3>
-          <p className="mb-3">Este método funciona sempre e é o mais recomendado para sistemas maiores. Ele utiliza o processo de <Link to="/tutorial/escalonamento-gauss-jordan" className="text-blue-600 hover:underline">escalonamento</Link>.</p>
-          <ol className="list-decimal list-inside space-y-2">
-              <li><strong>Montar a Matriz Aumentada [A | b]:</strong>
-                <div className="my-2"><MatrixDisplay matrix={[[2, 1, 5], [3, -2, 4]]} /></div>
-              </li>
-              <li><strong>Zerar o elemento abaixo do primeiro pivô:</strong><br/>
-                A operação é <Latex>L₂ ← L₂ - (3/2)·L₁</Latex>.
-                <div className="my-2"><MatrixDisplay matrix={[[2, 1, 5], [0, '-3.5', '-3.5']]} /></div>
-              </li>
-              <li><strong>Resolver por substituição reversa:</strong><br/>
-                A segunda linha nos diz: <Latex>-3.5y = -3.5 ⇒ y = 1</Latex>. <br/>
-                Substituindo y=1 na primeira linha: <Latex>2x + 1(1) = 5 ⇒ 2x = 4 ⇒ x = 2</Latex>.
-              </li>
-          </ol>
-          <p className="mt-4 p-3 bg-green-50 border border-green-200 rounded text-center"><strong>Solução:</strong> <Latex>x = 2</Latex> e <Latex>y = 1</Latex> (o mesmo resultado, como esperado!).</p>
-        </div>
+        <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
+        <ul className="list-disc pl-5 space-y-3 leading-relaxed">
+          <li>
+            <strong>Mudar a ordem das variáveis:</strong> se a primeira coluna é
+            de <Formula>x</Formula>, mantenha isso em todas as linhas.
+          </li>
+          <li>
+            <strong>Esquecer coeficiente 1:</strong> em <Formula>x + y = 5</Formula>,
+            o coeficiente de <Formula>x</Formula> é 1, não vazio.
+          </li>
+          <li>
+            <strong>Perder sinais negativos:</strong> um sinal trocado muda toda
+            a resposta.
+          </li>
+          <li>
+            <strong>Não mexer na coluna dos resultados:</strong> toda operação
+            feita na linha também vale para o último número da linha.
+          </li>
+        </ul>
       </div>
-      
-      {/* 4. Conclusão */}
-      <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-        <h2 className="text-2xl font-semibold mb-3">Conclusão: Qual Método Usar?</h2>
-        <p className="mb-2"><strong>Use o método da Inversa</strong> quando a matriz de coeficientes for quadrada, pequena (2x2 ou 3x3) e você tiver certeza que ela é invertível. É um método rápido e elegante para esses casos.</p>
-        <p><strong>Use o Escalonamento de Gauss</strong> para todas as outras situações. É um método robusto, universal, que funciona para qualquer tipo de sistema (quadrado ou não) e ainda te ajuda a identificar se o sistema tem infinitas ou nenhuma solução.</p>
-        <p className="mt-4">
-          Dominar a resolução de sistemas lineares é a chave para aplicar a Álgebra Linear em problemas do mundo real!
+
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-3">
+          Onde Sistemas Lineares Aparecem?
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Sistemas lineares aparecem quando várias condições precisam ser
+          satisfeitas ao mesmo tempo: preços de produtos, mistura de substâncias,
+          equilíbrio de forças, circuitos elétricos, economia, computação gráfica
+          e ajuste de dados.
         </p>
+        <TipBox>
+          Se um problema tem várias incógnitas e várias informações conectadas,
+          há uma boa chance de ele virar um sistema linear.
+        </TipBox>
       </div>
+
+      <TutorialCTA
+        title="Pratique com a Calculadora"
+        secondaryTo="/tutorial/escalonamento-gauss-jordan"
+        secondaryLabel="Ver escalonamento"
+      >
+        Monte a matriz aumentada do seu sistema, escolha a opção de
+          escalonamento e veja a matriz mudando passo a passo. Depois compare o
+          resultado com a substituição de baixo para cima.
+      </TutorialCTA>
     </div>
   );
 }

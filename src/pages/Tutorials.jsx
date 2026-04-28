@@ -8,7 +8,7 @@ const Tutorials = () => {
     <>
       <Helmet>
         <title>Tutoriais de Álgebra Linear e Matrizes | Matriz Calculator</title>
-        <meta name="description" content="Aprenda passo a passo como calcular determinantes, matriz inversa, transposta, multiplicação e escalonamento de Gauss-Jordan." />
+        <meta name="description" content="Aprenda passo a passo como calcular determinantes, matriz inversa, transposta, multiplicação e escalonamento pelo método de Gauss." />
         <link rel="canonical" href="https://www.matrizcalculator.com/tutorials" />
       </Helmet>
 
