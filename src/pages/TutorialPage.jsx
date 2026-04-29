@@ -55,6 +55,16 @@ const seoDictionary = {
     description:
       "Entenda como multiplicar uma matriz por um número, veja a regra para cada elemento e teste com passo a passo na calculadora.",
   },
+  "o-que-e-uma-matriz": {
+    title: "O que é uma Matriz? Definição, Linhas e Colunas",
+    description:
+      "Aprenda o que é uma matriz, entenda notação, linhas e colunas, veja exemplos práticos e descubra por que matrizes são importantes.",
+  },
+  "matriz-identidade": {
+    title: "Matriz Identidade: O 'Um' da Multiplicação de Matrizes",
+    description:
+      "Compreenda a matriz identidade, a propriedade A × I = A, exemplos 2x2 e 3x3, e por que é crucial para inversa e Gauss.",
+  },
 };
 
 const faqDictionary = {
@@ -226,6 +236,50 @@ const faqDictionary = {
       question: "O que acontece se o escalar for negativo?",
       answer:
         "Todos os elementos são multiplicados pelo número negativo, então os sinais dos elementos não nulos mudam.",
+    },
+  ],
+  "o-que-e-uma-matriz": [
+    {
+      question: "O que é uma matriz?",
+      answer:
+        "Uma matriz é uma tabela com números organizados em linhas e colunas. É uma forma prática de guardar e trabalhar com dados estruturados.",
+    },
+    {
+      question: "Como identifico o tamanho de uma matriz?",
+      answer:
+        "O tamanho é sempre descrito como linhas × colunas. Por exemplo, uma matriz 2x3 tem 2 linhas e 3 colunas.",
+    },
+    {
+      question: "Qual é a notação de um elemento de matriz?",
+      answer:
+        "Usamos A(i, j) ou a_ij, onde i é o número da linha e j é o número da coluna. Por exemplo, A(2,3) é o elemento na linha 2, coluna 3.",
+    },
+    {
+      question: "Por que matrizes são importantes?",
+      answer:
+        "Matrizes aparecem em resolver sistemas de equações, transformações geométricas, processamento de dados, imagens e muitas áreas da engenharia e ciência.",
+    },
+  ],
+  "matriz-identidade": [
+    {
+      question: "O que é a matriz identidade?",
+      answer:
+        "É a matriz 'um' da multiplicação. Quando você multiplica qualquer matriz A pela identidade, obtém A novamente: A × I = A.",
+    },
+    {
+      question: "Como é a forma da matriz identidade?",
+      answer:
+        "Tem 1 na diagonal principal e 0 em todas as outras posições. É sempre quadrada (2x2, 3x3, 4x4, etc.).",
+    },
+    {
+      question: "Por que a matriz identidade é importante?",
+      answer:
+        "Porque define o conceito de inversa (A × A⁻¹ = I) e é fundamental em Gauss, escalonamento e resolução de sistemas lineares.",
+    },
+    {
+      question: "Cada tamanho tem uma matriz identidade diferente?",
+      answer:
+        "Sim, existe uma identidade 2x2, uma 3x3, uma 4x4, e assim por diante. Mas todas seguem o mesmo padrão: 1 na diagonal, 0 no resto.",
     },
   ],
 };

@@ -59,4 +59,16 @@ export const tutorialsInfo = [
     title: "Determinante 3x3 pela Regra de Sarrus",
     description: "Aprenda quando usar Sarrus, como montar as diagonais principais e secundárias e veja um exemplo resolvido.",
   },
+  {
+    id: 11,
+    slug: 'o-que-e-uma-matriz',
+    title: "O que é uma Matriz? Definição e Exemplos",
+    description: "Aprenda o que é uma matriz, entenda linhas e colunas, notação, e veja exemplos práticos do dia a dia.",
+  },
+  {
+    id: 12,
+    slug: 'matriz-identidade',
+    title: "Matriz Identidade: O 'Um' das Matrizes",
+    description: "Compreenda a matriz identidade, a propriedade A × I = A, e por que é crucial para inversa e Gauss.",
+  },
 ];

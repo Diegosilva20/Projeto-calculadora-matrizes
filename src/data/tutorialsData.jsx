@@ -13,6 +13,8 @@ import AdditionTutorial from '../pages/tutorials/AdditionTutorial';
 import SubtractionTutorial from '../pages/tutorials/SubtractionTutorial';
 import ScalarMultiplicationTutorial from '../pages/tutorials/ScalarMultiplicationTutorial';
 import SarrusTutorial from '../pages/tutorials/SarrusTutorial';
+import WhatIsMatrixTutorial from '../pages/tutorials/WhatIsMatrixTutorial';
+import IdentityMatrixTutorial from '../pages/tutorials/IdentityMatrixTutorial';
 
 // Mapeia o ID para o componente correspondente
 const componentMap = {
@@ -26,6 +28,8 @@ const componentMap = {
   8: <SubtractionTutorial />,
   9: <ScalarMultiplicationTutorial />,
   10: <SarrusTutorial />,
+  11: <WhatIsMatrixTutorial />,
+  12: <IdentityMatrixTutorial />,
 };
 
 // Adiciona a propriedade 'component' a cada tutorial
