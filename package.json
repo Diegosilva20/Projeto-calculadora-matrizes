@@ -77,10 +77,14 @@
       "/tutorials",
       "/tutorial/determinante-de-matrizes",
       "/tutorial/matriz-inversa",
-      "/tutorial/escalonamento-gauss-jordan",
+      "/tutorial/escalonamento-gauss",
       "/tutorial/sistemas-lineares",
       "/tutorial/matriz-transposta",
-      "/tutorial/multiplicacao-de-matrizes"
+      "/tutorial/multiplicacao-de-matrizes",
+      "/tutorial/soma-de-matrizes",
+      "/tutorial/subtracao-de-matrizes",
+      "/tutorial/multiplicacao-por-escalar",
+      "/tutorial/determinante-3x3-regra-de-sarrus"
     ]
   }
 }

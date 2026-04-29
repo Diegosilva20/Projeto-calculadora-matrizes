@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const TutorialCTA = ({ title, children, primaryTo = "/", primaryLabel = "Usar a calculadora", secondaryTo, secondaryLabel }) => (
+const TutorialCTA = ({ title, children, primaryTo = "/", primaryLabel = "Abrir calculadora", secondaryTo, secondaryLabel }) => (
   <div className="bg-blue-600 text-white p-6 rounded-lg shadow-md">
     <h2 className="text-2xl font-semibold mb-3">{title}</h2>
     <p className="mb-5 text-blue-50 leading-relaxed">{children}</p>

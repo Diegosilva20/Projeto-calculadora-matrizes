@@ -13,7 +13,7 @@ const UseExampleButton = ({
   matrixA,
   matrixB,
   scalar = "",
-  children = "Usar este exemplo na calculadora",
+  children = "Testar este exemplo preenchido",
 }) => {
   const navigate = useNavigate();
 

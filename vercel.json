@@ -48,7 +48,12 @@
     },
     {
       "source": "/tutorial/3",
-      "destination": "/tutorial/escalonamento-gauss-jordan",
+      "destination": "/tutorial/escalonamento-gauss",
+      "permanent": true
+    },
+    {
+      "source": "/tutorial/escalonamento-gauss-jordan",
+      "destination": "/tutorial/escalonamento-gauss",
       "permanent": true
     },
     {

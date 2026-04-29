@@ -41,7 +41,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.matrizcalculator.com/tutorial/escalonamento-gauss-jordan</loc>
+    <loc>https://www.matrizcalculator.com/tutorial/escalonamento-gauss</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -57,6 +57,26 @@
   </url>
   <url>
     <loc>https://www.matrizcalculator.com/tutorial/sistemas-lineares</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.matrizcalculator.com/tutorial/soma-de-matrizes</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.matrizcalculator.com/tutorial/subtracao-de-matrizes</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.matrizcalculator.com/tutorial/multiplicacao-por-escalar</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.matrizcalculator.com/tutorial/determinante-3x3-regra-de-sarrus</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

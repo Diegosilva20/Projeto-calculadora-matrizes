@@ -10,12 +10,17 @@ const seoDictionary = {
     description:
       "Aprenda a calcular determinantes de matrizes 2x2 e 3x3 de forma simples, usando a regra de Sarrus e nossa calculadora de matrizes online.",
   },
+  "determinante-3x3-regra-de-sarrus": {
+    title: "Determinante 3x3 pela Regra de Sarrus Passo a Passo",
+    description:
+      "Aprenda a calcular determinante 3x3 pela Regra de Sarrus, veja diagonais principais e secundárias, exemplo resolvido e calculadora online.",
+  },
   "matriz-inversa": {
     title: "Matriz Inversa: Fórmula, Exemplo e Calculadora Online",
     description:
       "Entenda o que é matriz inversa, veja a fórmula para matrizes 2x2, aprenda como o escalonamento ajuda em matrizes maiores e teste na calculadora online.",
   },
-  "escalonamento-gauss-jordan": {
+  "escalonamento-gauss": {
     title: "Escalonamento de Matrizes: Eliminação de Gauss Passo a Passo",
     description:
       "Aprenda o método de eliminação de Gauss, veja como transformar uma matriz em forma escalonada e resolva sistemas lineares.",
@@ -34,6 +39,21 @@ const seoDictionary = {
     title: "Como Multiplicar Matrizes Passo a Passo | Calculadora Online",
     description:
       "Aprenda como multiplicar matrizes passo a passo, entenda a regra linha por coluna, veja erros comuns e teste na calculadora online.",
+  },
+  "soma-de-matrizes": {
+    title: "Soma de Matrizes: Como Calcular Passo a Passo",
+    description:
+      "Aprenda como somar matrizes de mesmo tamanho, entenda a regra posição por posição, veja exemplo resolvido e teste na calculadora online.",
+  },
+  "subtracao-de-matrizes": {
+    title: "Subtração de Matrizes: Como Calcular Passo a Passo",
+    description:
+      "Aprenda como subtrair matrizes, entenda por que as dimensões precisam ser iguais, veja erros comuns e pratique na calculadora.",
+  },
+  "multiplicacao-por-escalar": {
+    title: "Multiplicação de Matriz por Escalar Passo a Passo",
+    description:
+      "Entenda como multiplicar uma matriz por um número, veja a regra para cada elemento e teste com passo a passo na calculadora.",
   },
 };
 
@@ -72,7 +92,7 @@ const faqDictionary = {
         "Não. A fórmula rápida vale apenas para matrizes 2x2. Para matrizes maiores, usamos operações de linha ou outros métodos algébricos.",
     },
   ],
-  "escalonamento-gauss-jordan": [
+  "escalonamento-gauss": [
     {
       question: "O que é escalonamento de matrizes?",
       answer:
@@ -140,18 +160,91 @@ const faqDictionary = {
         "Sim. Em geral, A x B não é igual a B x A. A ordem das matrizes muda o cálculo e pode até tornar a multiplicação impossível.",
     },
   ],
+  "determinante-3x3-regra-de-sarrus": [
+    {
+      question: "O que é a Regra de Sarrus?",
+      answer:
+        "É um método visual para calcular determinantes de matrizes 3x3 usando produtos de diagonais principais e secundárias.",
+    },
+    {
+      question: "A Regra de Sarrus serve para matriz 4x4?",
+      answer:
+        "Não. A Regra de Sarrus vale apenas para matrizes 3x3. Para 4x4 ou maiores, use cofatores ou eliminação.",
+    },
+    {
+      question: "Como calcular o resultado final em Sarrus?",
+      answer:
+        "Some os produtos das diagonais principais e subtraia a soma dos produtos das diagonais secundárias.",
+    },
+  ],
+  "soma-de-matrizes": [
+    {
+      question: "Quando posso somar duas matrizes?",
+      answer:
+        "Você pode somar duas matrizes quando elas têm exatamente o mesmo número de linhas e colunas.",
+    },
+    {
+      question: "Como calcular cada elemento da soma?",
+      answer:
+        "Some os elementos que estão na mesma posição: o elemento (i, j) de A com o elemento (i, j) de B.",
+    },
+    {
+      question: "A ordem da soma de matrizes importa?",
+      answer:
+        "Não. Quando a soma existe, A + B e B + A dão o mesmo resultado.",
+    },
+  ],
+  "subtracao-de-matrizes": [
+    {
+      question: "Quando posso subtrair duas matrizes?",
+      answer:
+        "A subtração só existe quando as duas matrizes têm o mesmo tamanho.",
+    },
+    {
+      question: "A ordem da subtração de matrizes importa?",
+      answer:
+        "Sim. Em geral, A - B é diferente de B - A, porque os sinais mudam.",
+    },
+    {
+      question: "Como lidar com números negativos na subtração?",
+      answer:
+        "Mantenha a regra posição por posição e cuide dos sinais. Por exemplo, subtrair um número negativo equivale a somar.",
+    },
+  ],
+  "multiplicacao-por-escalar": [
+    {
+      question: "O que é escalar em matrizes?",
+      answer:
+        "Escalar é um número comum que multiplica todos os elementos da matriz.",
+    },
+    {
+      question: "Multiplicar por escalar muda o tamanho da matriz?",
+      answer:
+        "Não. A matriz resultado mantém o mesmo número de linhas e colunas da matriz original.",
+    },
+    {
+      question: "O que acontece se o escalar for negativo?",
+      answer:
+        "Todos os elementos são multiplicados pelo número negativo, então os sinais dos elementos não nulos mudam.",
+    },
+  ],
+};
+
+const slugAliases = {
+  "escalonamento-gauss-jordan": "escalonamento-gauss",
 };
 
 const TutorialPage = () => {
   const { slug } = useParams();
+  const canonicalSlug = slugAliases[slug] || slug;
 
-  const seo = seoDictionary[slug] || {
+  const seo = seoDictionary[canonicalSlug] || {
     title: "Tutorial de Operações com Matrizes | Matriz Calculator",
     description:
       "Aprenda passo a passo como realizar cálculos complexos com matrizes de forma simples e rápida.",
   };
 
-  const tutorial = tutoriais.find((t) => t.slug === slug);
+  const tutorial = tutoriais.find((t) => t.slug === canonicalSlug);
   const tutorialStructuredData = tutorial
     ? {
         "@context": "https://schema.org",
@@ -166,11 +259,11 @@ const TutorialPage = () => {
         isAccessibleForFree: true,
         mainEntityOfPage: {
           "@type": "WebPage",
-          "@id": `https://www.matrizcalculator.com/tutorial/${slug}`,
+          "@id": `https://www.matrizcalculator.com/tutorial/${canonicalSlug}`,
         },
       }
     : null;
-  const faqItems = faqDictionary[slug];
+  const faqItems = faqDictionary[canonicalSlug];
   const faqStructuredData = faqItems
     ? {
         "@context": "https://schema.org",
@@ -220,14 +313,14 @@ const TutorialPage = () => {
         <meta name="description" content={seo.description} />
         <link
           rel="canonical"
-          href={`https://www.matrizcalculator.com/tutorial/${slug}`}
+          href={`https://www.matrizcalculator.com/tutorial/${canonicalSlug}`}
         />
         <meta property="og:title" content={seo.title} />
         <meta property="og:description" content={seo.description} />
         <meta property="og:type" content="article" />
         <meta
           property="og:url"
-          content={`https://www.matrizcalculator.com/tutorial/${slug}`}
+          content={`https://www.matrizcalculator.com/tutorial/${canonicalSlug}`}
         />
         <script type="application/ld+json">
           {JSON.stringify(tutorialStructuredData)}

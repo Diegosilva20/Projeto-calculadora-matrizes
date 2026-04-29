@@ -9,6 +9,10 @@ import GaussTutorial from '../pages/tutorials/GaussTutorial';
 import TransposeTutorial from '../pages/tutorials/TransposeTutorial';
 import MultiplicationTutorial from '../pages/tutorials/MultiplicationTutorial';
 import LinearSystemsTutorial from '../pages/tutorials/LinearSystemsTutorial';
+import AdditionTutorial from '../pages/tutorials/AdditionTutorial';
+import SubtractionTutorial from '../pages/tutorials/SubtractionTutorial';
+import ScalarMultiplicationTutorial from '../pages/tutorials/ScalarMultiplicationTutorial';
+import SarrusTutorial from '../pages/tutorials/SarrusTutorial';
 
 // Mapeia o ID para o componente correspondente
 const componentMap = {
@@ -18,6 +22,10 @@ const componentMap = {
   4: <TransposeTutorial />,
   5: <MultiplicationTutorial />,
   6: <LinearSystemsTutorial />,
+  7: <AdditionTutorial />,
+  8: <SubtractionTutorial />,
+  9: <ScalarMultiplicationTutorial />,
+  10: <SarrusTutorial />,
 };
 
 // Adiciona a propriedade 'component' a cada tutorial

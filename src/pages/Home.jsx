@@ -9,24 +9,41 @@ import { useMatrixCalculator } from "../hooks/useMatrixCalculator";
 
 // Mapeamento para SEO Contextual e Linkagem Interna
 const operationToSlug = {
+  soma: "soma-de-matrizes",
+  subtracao: "subtracao-de-matrizes",
   inversa: "matriz-inversa",
-  gauss: "escalonamento-gauss-jordan",
+  gauss: "escalonamento-gauss",
   determinanteA: "determinante-de-matrizes",
   multiplicacao: "multiplicacao-de-matrizes",
   transposicao: "matriz-transposta",
-  sistemas: "sistemas-lineares",
+  escalar: "multiplicacao-por-escalar",
 };
 
 const operationLabels = {
+  soma: "soma de matrizes",
+  subtracao: "subtração de matrizes",
   inversa: "matriz inversa",
   gauss: "escalonamento de matrizes",
   determinanteA: "determinante de matrizes",
   multiplicacao: "multiplicação de matrizes",
   transposicao: "matriz transposta",
-  sistemas: "sistemas lineares",
+  escalar: "multiplicação por escalar",
 };
 
 const operationsWithMatrixB = ["soma", "subtracao", "multiplicacao"];
+
+const featuredTutorialSlugs = [
+  "multiplicacao-de-matrizes",
+  "determinante-de-matrizes",
+  "matriz-inversa",
+  "escalonamento-gauss",
+  "sistemas-lineares",
+  "soma-de-matrizes",
+];
+
+const featuredTutorials = featuredTutorialSlugs
+  .map((slug) => tutoriais.find((tutorial) => tutorial.slug === slug))
+  .filter(Boolean);
 
 const Home = () => {
   const {
@@ -63,7 +80,7 @@ const Home = () => {
         priceCurrency: "BRL",
       },
       featureList:
-        "Matriz Inversa, Determinante, Multiplicação de Matrizes, Escalonamento de Matrizes, Sistemas Lineares",
+        "Soma de Matrizes, Subtração de Matrizes, Multiplicação por Escalar, Matriz Inversa, Determinante, Multiplicação de Matrizes, Escalonamento de Matrizes, Sistemas Lineares",
     },
     {
       "@context": "https://schema.org",
@@ -263,59 +280,80 @@ const Home = () => {
           )}
         </div>
 
-        <div className="max-w-2xl mx-auto mb-16">
+        <div className="max-w-5xl mx-auto mb-16">
           <ResultDisplay result={result} />
 
           {steps.length > 0 && (
-            <div className="mt-16 bg-white p-6 sm:p-12 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 max-w-4xl mx-auto text-left">
+            <div className="mt-16 bg-white p-5 sm:p-8 lg:p-10 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 max-w-5xl mx-auto text-left">
               <h2 className="text-2xl font-bold mb-12 text-center text-gray-800 tracking-tight">
                 Resolução Passo a Passo
               </h2>
 
               <div className="space-y-10">
-                {steps.map((step, i) => (
-                  <div
-                    key={i}
-                    className="flex flex-col sm:flex-row gap-6 sm:gap-12 items-start"
-                  >
-                    {/* Indicador do Passo & Descrição */}
-                    <div className="sm:w-1/3 flex-shrink-0">
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="flex items-center justify-center w-7 h-7 rounded-full bg-gray-900 text-white text-xs font-bold font-mono">
-                          {i + 1}
-                        </span>
-                        <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider">
-                          {step.title}
-                        </h3>
-                      </div>
-                      <p className="ml-10 text-gray-500 font-mono text-sm bg-gray-50 px-3 py-2 rounded border border-gray-200 whitespace-pre-wrap break-words">
-                        {step.description}
-                      </p>
-                    </div>
+                {steps.map((step, i) => {
+                  const hasMatrix = Boolean(step.matrix);
 
-                    {/* Renderização da Matriz */}
-                    <div className="sm:w-2/3 flex justify-center sm:justify-start w-full pb-4">
-                      {step.matrix && (
+                  return (
+                    <div
+                      key={i}
+                      className={[
+                        "flex flex-col gap-6 items-start",
+                        hasMatrix ? "lg:flex-row lg:gap-10" : "",
+                      ].join(" ")}
+                    >
+                      {/* Indicador do Passo & Descrição */}
+                      <div
+                        className={
+                          hasMatrix
+                            ? "w-full lg:w-5/12 lg:flex-shrink-0"
+                            : "w-full"
+                        }
+                      >
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-gray-900 text-white text-xs font-bold font-mono">
+                            {i + 1}
+                          </span>
+                          <h3 className="min-w-0 text-sm font-bold text-gray-900 uppercase tracking-wider break-words">
+                            {step.title}
+                          </h3>
+                        </div>
+                        <p className="sm:ml-10 text-gray-500 font-mono text-sm bg-gray-50 px-3 py-2 rounded border border-gray-200 whitespace-pre-wrap break-words">
+                          {step.description}
+                        </p>
+                      </div>
+
+                      {hasMatrix && (
+                        <div className="w-full lg:w-7/12 flex justify-center lg:justify-start pb-4">
                         <MatrixDisplay
                           matrix={step.matrix}
                           emptyPlaceholder="·"
                         />
+                        </div>
                       )}
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           )}
         </div>
 
-        {/* Seção de Tutoriais (Grid de SEO) */}
+        {/* Seção de Tutoriais Recomendados */}
         <div className="mt-20 border-t pt-12">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-gray-800">
-            Aprenda com nossos Guias de Álgebra Linear
-          </h2>
+          <div className="mx-auto mb-8 max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-wider text-blue-600">
+              Tutoriais recomendados
+            </p>
+            <h2 className="mt-2 text-2xl sm:text-3xl font-bold text-gray-800">
+              Comece pelos guias mais importantes
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed">
+              Esta é uma seleção para quem está aprendendo matrizes. O catálogo
+              completo fica na página de tutoriais.
+            </p>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {tutoriais.map((tutorial) => (
+            {featuredTutorials.map((tutorial) => (
               <article
                 key={tutorial.id}
                 className="group bg-white border border-gray-200 rounded-xl p-6 hover:border-blue-400 transition-all hover:shadow-xl flex flex-col text-left"
@@ -334,6 +372,14 @@ const Home = () => {
                 </Link>
               </article>
             ))}
+          </div>
+          <div className="mt-8 flex justify-center">
+            <Link
+              to="/tutorials"
+              className="inline-flex w-full justify-center rounded-full border border-blue-200 bg-white px-6 py-3 text-sm font-bold text-blue-700 transition-colors hover:bg-blue-50 sm:w-auto"
+            >
+              Ver todos os tutoriais
+            </Link>
           </div>
         </div>
       </section>

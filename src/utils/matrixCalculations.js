@@ -1,6 +1,6 @@
 // src/utils/matrixCalculations.js
-import { matrix, add, subtract, multiply, det, inv, transpose, fraction, number } from "mathjs";
-import { calculateGaussJordan } from "../algorithms/gaussJordan";
+import { matrix, add, subtract, multiply, divide, det, inv, transpose, fraction, number } from "mathjs";
+import { calculateGaussianElimination } from "../algorithms/gaussianElimination";
 
 export const createEmptyMatrix = (rows, cols) =>
   Array.from({ length: rows }, () => Array(cols).fill(""));
@@ -28,6 +28,25 @@ export const formatMatrix = (mat) => {
 };
 
 const cloneMatrix = (mat) => mat.map((row) => [...row]);
+
+const isZero = (value) => Math.abs(number(value)) < 1e-10;
+
+const isOne = (value) => Math.abs(number(value) - 1) < 1e-10;
+
+const formatWorkingMatrix = (mat) =>
+  mat.map((row) => row.map((cell) => formatValue(cell)));
+
+const createIdentityMatrix = (size) =>
+  Array.from({ length: size }, (_, i) =>
+    Array.from({ length: size }, (_, j) => fraction(i === j ? 1 : 0)),
+  );
+
+const formatAugmentedMatrix = (mat, leftSize) =>
+  mat.map((row) => [
+    ...row.slice(0, leftSize).map((cell) => formatValue(cell)),
+    "|",
+    ...row.slice(leftSize).map((cell) => formatValue(cell)),
+  ]);
 
 const buildMultiplicationSteps = (parsedA, parsedB, formattedResult) => {
   const rowsA = parsedA.length;
@@ -242,18 +261,84 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
     ];
   }
 
-  return [
+  const working = parsedA.map((row) => [...row]);
+  const steps = [
     {
-      title: "Matriz quadrada",
-      description: `A matriz tem tamanho ${n}x${n}. Para matrizes maiores, o determinante é calculado por um algoritmo numérico equivalente aos métodos de eliminação.`,
-      matrix: a,
-    },
-    {
-      title: "Resultado",
-      description: `det(A) = ${value}.`,
-      matrix: [[value]],
+      title: "Matriz inicial",
+      description: `Para calcular det(A) em uma matriz ${n}x${n}, transformamos A em matriz triangular superior. Operações do tipo Lk -> Lk - m x Li não mudam o determinante.`,
+      matrix: formatWorkingMatrix(working),
     },
   ];
+  let sign = 1;
+
+  for (let pivotIndex = 0; pivotIndex < n - 1; pivotIndex++) {
+    let pivotRow = pivotIndex;
+
+    while (pivotRow < n && isZero(working[pivotRow][pivotIndex])) {
+      pivotRow += 1;
+    }
+
+    if (pivotRow === n) {
+      steps.push({
+        title: "Coluna sem pivô",
+        description: `Não há pivô não nulo na coluna ${pivotIndex + 1}. A matriz fica com uma diagonal nula, então det(A) = 0.`,
+        matrix: formatWorkingMatrix(working),
+      });
+      break;
+    }
+
+    if (pivotRow !== pivotIndex) {
+      [working[pivotIndex], working[pivotRow]] = [
+        working[pivotRow],
+        working[pivotIndex],
+      ];
+      sign *= -1;
+
+      steps.push({
+        title: "Troca de linhas",
+        description: `Trocamos L${pivotIndex + 1} com L${pivotRow + 1}. Cada troca de linhas muda o sinal do determinante.`,
+        matrix: formatWorkingMatrix(working),
+      });
+    }
+
+    const pivot = working[pivotIndex][pivotIndex];
+
+    for (let row = pivotIndex + 1; row < n; row++) {
+      const factor = divide(working[row][pivotIndex], pivot);
+
+      if (isZero(factor)) continue;
+
+      for (let col = pivotIndex; col < n; col++) {
+        const updatedValue = subtract(
+          working[row][col],
+          multiply(factor, working[pivotIndex][col]),
+        );
+        working[row][col] = isZero(updatedValue) ? fraction(0) : updatedValue;
+      }
+
+      steps.push({
+        title: `Zerar A${row + 1}${pivotIndex + 1}`,
+        description: `Usamos L${row + 1} -> L${row + 1} - (${formatValue(factor)}) x L${pivotIndex + 1}. Essa operação cria zero abaixo do pivô e mantém o determinante.`,
+        matrix: formatWorkingMatrix(working),
+      });
+    }
+  }
+
+  const diagonalValues = working.map((row, i) => row[i]);
+  const diagonalProduct = diagonalValues.reduce(
+    (acc, item) => multiply(acc, item),
+    fraction(sign),
+  );
+  const diagonalText = diagonalValues.map((item) => formatValue(item)).join(" x ");
+  const signText = sign === -1 ? "-1 x " : "";
+
+  steps.push({
+    title: "Multiplicar a diagonal",
+    description: `Como a matriz está triangular, det(A) = ${signText}${diagonalText} = ${formatValue(diagonalProduct)}. Resultado final: det(A) = ${value}.`,
+    matrix: [[value]],
+  });
+
+  return steps;
 };
 
 const buildInverseSteps = (parsedA, formattedResult) => {
@@ -262,18 +347,97 @@ const buildInverseSteps = (parsedA, formattedResult) => {
   const a = parsedA.map((row) => row.map((cell) => formatValue(cell)));
 
   if (n !== 2) {
-    return [
+    const identity = createIdentityMatrix(n);
+    const augmented = parsedA.map((row, i) => [
+      ...row,
+      ...identity[i],
+    ]);
+    const steps = [
       {
-        title: "Verificação",
+        title: "Verificar determinante",
         description: `A matriz é quadrada e det(A) = ${determinant}. Como o determinante é diferente de zero, a inversa existe.`,
         matrix: a,
       },
       {
-        title: "Resultado",
-        description: "Para matrizes maiores que 2x2, a inversa é calculada por operações de linha a partir da matriz aumentada [A | I].",
-        matrix: formattedResult,
+        title: "Montar [A | I]",
+        description: "Colocamos a matriz A à esquerda e a matriz identidade à direita. O objetivo é transformar o lado esquerdo em identidade.",
+        matrix: formatAugmentedMatrix(augmented, n),
       },
     ];
+
+    for (let pivotIndex = 0; pivotIndex < n; pivotIndex++) {
+      let pivotRow = pivotIndex;
+
+      while (pivotRow < n && isZero(augmented[pivotRow][pivotIndex])) {
+        pivotRow += 1;
+      }
+
+      if (pivotRow === n) {
+        steps.push({
+          title: "Pivô não encontrado",
+          description: "Não foi possível encontrar um pivô não nulo nesta coluna. Confira se a matriz é invertível.",
+          matrix: formatAugmentedMatrix(augmented, n),
+        });
+        return steps;
+      }
+
+      if (pivotRow !== pivotIndex) {
+        [augmented[pivotIndex], augmented[pivotRow]] = [
+          augmented[pivotRow],
+          augmented[pivotIndex],
+        ];
+
+        steps.push({
+          title: "Troca de linhas",
+          description: `Trocamos L${pivotIndex + 1} com L${pivotRow + 1} para colocar um pivô não nulo na posição (${pivotIndex + 1}, ${pivotIndex + 1}).`,
+          matrix: formatAugmentedMatrix(augmented, n),
+        });
+      }
+
+      const pivot = augmented[pivotIndex][pivotIndex];
+
+      if (!isOne(pivot)) {
+        for (let col = 0; col < 2 * n; col++) {
+          augmented[pivotIndex][col] = divide(augmented[pivotIndex][col], pivot);
+        }
+
+        steps.push({
+          title: `Normalizar pivô ${pivotIndex + 1}`,
+          description: `Dividimos L${pivotIndex + 1} por ${formatValue(pivot)} para transformar o pivô em 1.`,
+          matrix: formatAugmentedMatrix(augmented, n),
+        });
+      }
+
+      for (let row = 0; row < n; row++) {
+        if (row === pivotIndex) continue;
+
+        const factor = augmented[row][pivotIndex];
+
+        if (isZero(factor)) continue;
+
+        for (let col = 0; col < 2 * n; col++) {
+          const updatedValue = subtract(
+            augmented[row][col],
+            multiply(factor, augmented[pivotIndex][col]),
+          );
+          augmented[row][col] = isZero(updatedValue) ? fraction(0) : updatedValue;
+        }
+
+        steps.push({
+          title: `Zerar coluna ${pivotIndex + 1}`,
+          description: `Usamos L${row + 1} -> L${row + 1} - (${formatValue(factor)}) x L${pivotIndex + 1} para criar zero fora do pivô.`,
+          matrix: formatAugmentedMatrix(augmented, n),
+        });
+      }
+    }
+
+    steps.push({
+      title: "Ler a inversa",
+      description: "Quando o lado esquerdo vira identidade, o lado direito é a matriz inversa A⁻¹.",
+      matrix: formattedResult,
+    });
+
+    return steps;
   }
 
   const adjusted = [
@@ -379,7 +543,7 @@ export const calculate = (matrixA, matrixB, scalar, operation, size, setResult, 
     const matrixBObj = parsedB ? matrix(parsedB) : null;
 
     if (operation === "gauss") {
-      const { result: gaussResult, steps: gaussSteps } = calculateGaussJordan(parsedA, rowsA);
+      const { result: gaussResult, steps: gaussSteps } = calculateGaussianElimination(parsedA, rowsA);
       setResult(gaussResult);
       setSteps(gaussSteps);
       return;

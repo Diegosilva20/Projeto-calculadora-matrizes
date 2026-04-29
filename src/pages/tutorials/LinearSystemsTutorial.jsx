@@ -29,6 +29,12 @@ function LinearSystemsTutorial() {
           números que multiplicam as variáveis. A matriz aumentada também guarda
           os resultados das equações na última coluna.
         </TipBox>
+        <p className="mt-4 text-sm text-gray-600 leading-relaxed">
+          Na calculadora, sistemas lineares continuam como um uso educacional do
+          escalonamento: monte a matriz aumentada e escolha “Eliminação de
+          Gauss”. Assim a ferramenta mostra as operações de linha sem criar uma
+          operação separada para sistemas.
+        </p>
       </div>
 
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
@@ -204,12 +210,12 @@ function LinearSystemsTutorial() {
 
       <TutorialCTA
         title="Pratique com a Calculadora"
-        secondaryTo="/tutorial/escalonamento-gauss-jordan"
+        secondaryTo="/tutorial/escalonamento-gauss"
         secondaryLabel="Ver escalonamento"
       >
-        Monte a matriz aumentada do seu sistema, escolha a opção de
-          escalonamento e veja a matriz mudando passo a passo. Depois compare o
-          resultado com a substituição de baixo para cima.
+        Monte a matriz aumentada do seu sistema, escolha “Eliminação de Gauss”
+        e veja a matriz mudando passo a passo. Depois compare o resultado com a
+        substituição de baixo para cima.
       </TutorialCTA>
     </div>
   );
