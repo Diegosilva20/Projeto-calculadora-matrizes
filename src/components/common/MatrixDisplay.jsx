@@ -1,8 +1,59 @@
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 
-const MatrixDisplay = React.memo(({ matrix, emptyPlaceholder = "" }) => {
+const toCellKey = (row, col) => `${row}:${col}`;
+
+const createCellSet = (cells = []) =>
+  new Set(cells.map(([row, col]) => toCellKey(row, col)));
+
+const MatrixDisplay = React.memo(({ matrix, emptyPlaceholder = "", highlight = {} }) => {
   const [visibleRows, setVisibleRows] = useState(5);
   const columnCount = matrix[0]?.length || 0;
+
+  const highlightSets = useMemo(
+    () => ({
+      cells: createCellSet(highlight.cells),
+      resultCells: createCellSet(highlight.resultCells),
+      pivotCells: createCellSet(highlight.pivotCells),
+      secondaryCells: createCellSet(highlight.secondaryCells),
+      rows: new Set(highlight.rows || []),
+      cols: new Set(highlight.cols || []),
+    }),
+    [highlight],
+  );
+
+  const getCellClasses = useCallback((row, col, value) => {
+    if (value === "|") {
+      return "min-w-3 px-0 text-slate-400";
+    }
+
+    const key = toCellKey(row, col);
+
+    if (highlightSets.pivotCells.has(key)) {
+      return "bg-rose-100 text-rose-900 ring-2 ring-rose-400";
+    }
+
+    if (highlightSets.resultCells.has(key)) {
+      return "bg-blue-100 text-blue-900 ring-2 ring-blue-400";
+    }
+
+    if (highlightSets.cells.has(key)) {
+      return "bg-amber-100 text-amber-950 ring-2 ring-amber-400";
+    }
+
+    if (highlightSets.secondaryCells.has(key)) {
+      return "bg-orange-100 text-orange-950 ring-2 ring-orange-400";
+    }
+
+    if (highlightSets.rows.has(row)) {
+      return "bg-sky-50 text-sky-900";
+    }
+
+    if (highlightSets.cols.has(col)) {
+      return "bg-emerald-50 text-emerald-900";
+    }
+
+    return value === "" ? "text-slate-300" : "text-slate-900";
+  }, [highlightSets]);
 
   const renderCells = useMemo(() => {
     return matrix.slice(0, visibleRows).flatMap((row, i) =>
@@ -11,15 +62,15 @@ const MatrixDisplay = React.memo(({ matrix, emptyPlaceholder = "" }) => {
           key={`matrix-${i}-${j}`}
           className={[
             "flex h-9 min-w-10 items-center justify-center rounded-md px-2",
-            "text-center font-mono text-sm leading-none sm:text-base",
-            val === "" ? "text-slate-300" : "text-slate-900",
+            "text-center font-mono text-sm leading-none transition-colors sm:text-base",
+            getCellClasses(i, j, val),
           ].join(" ")}
         >
           {val === "" ? emptyPlaceholder : val}
         </div>
       )),
     );
-  }, [emptyPlaceholder, matrix, visibleRows]);
+  }, [emptyPlaceholder, getCellClasses, matrix, visibleRows]);
 
   return (
     <div className="my-3 w-full overflow-x-auto py-1">

@@ -13,6 +13,9 @@ export const calculateGaussianElimination = (parsedA, rowsA) => {
       title: "Matriz Original",
       description: "A matriz já se encontra na forma escalonada.",
       matrix: formatMatrix(parsedA),
+      highlight: {
+        cells: [[0, 0]],
+      },
     });
     return { result: formatMatrix(parsedA), steps };
   }
@@ -21,6 +24,9 @@ export const calculateGaussianElimination = (parsedA, rowsA) => {
     title: "Matriz Inicial",
     description: "Configuração original da matriz.",
     matrix: formatMatrix(m),
+    highlight: {
+      pivotCells: [[0, 0]],
+    },
   });
 
   for (let i = 0; i < pivotLimit; i++) {
@@ -55,6 +61,10 @@ export const calculateGaussianElimination = (parsedA, rowsA) => {
         title: "Troca de Linhas",
         description: `L${i + 1} ↔ L${pivotRow + 1} para evitar pivô zero.`,
         matrix: formatMatrix(m),
+        highlight: {
+          rows: [i, pivotRow],
+          pivotCells: [[i, i]],
+        },
       });
 
       pivot = m.get([i, i]);
@@ -70,6 +80,10 @@ export const calculateGaussianElimination = (parsedA, rowsA) => {
         title: `Pivô (Linha ${i + 1})`,
         description: `L${i + 1} → L${i + 1} ÷ (${factorStr})`,
         matrix: formatMatrix(m),
+        highlight: {
+          rows: [i],
+          pivotCells: [[i, i]],
+        },
       });
     }
 
@@ -89,6 +103,11 @@ export const calculateGaussianElimination = (parsedA, rowsA) => {
         title: `Eliminação (Linha ${k + 1})`,
         description: `L${k + 1} → L${k + 1} - (${factorStr}) x L${i + 1}`,
         matrix: formatMatrix(m),
+        highlight: {
+          rows: [k],
+          pivotCells: [[i, i]],
+          resultCells: [[k, i]],
+        },
       });
     }
   }

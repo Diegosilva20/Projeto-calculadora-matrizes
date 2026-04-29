@@ -327,6 +327,7 @@ const Home = () => {
                         <MatrixDisplay
                           matrix={step.matrix}
                           emptyPlaceholder="·"
+                          highlight={step.highlight}
                         />
                         </div>
                       )}

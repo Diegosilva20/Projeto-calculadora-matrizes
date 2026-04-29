@@ -48,6 +48,44 @@ const formatAugmentedMatrix = (mat, leftSize) =>
     ...row.slice(leftSize).map((cell) => formatValue(cell)),
   ]);
 
+const allCellCoordinates = (rows, cols) =>
+  Array.from({ length: rows }, (_, row) =>
+    Array.from({ length: cols }, (_, col) => [row, col]),
+  ).flat();
+
+const diagonalCells = (size) =>
+  Array.from({ length: size }, (_, index) => [index, index]);
+
+const secondaryDiagonalCells = (size) =>
+  Array.from({ length: size }, (_, index) => [index, size - 1 - index]);
+
+const buildSarrusDisplayMatrix = (formattedMatrix) =>
+  formattedMatrix.map((row) => [...row, row[0], row[1]]);
+
+const sarrusMainDiagonalCells = [
+  [0, 0],
+  [1, 1],
+  [2, 2],
+  [0, 1],
+  [1, 2],
+  [2, 3],
+  [0, 2],
+  [1, 3],
+  [2, 4],
+];
+
+const sarrusSecondaryDiagonalCells = [
+  [2, 0],
+  [1, 1],
+  [0, 2],
+  [2, 1],
+  [1, 2],
+  [0, 3],
+  [2, 2],
+  [1, 3],
+  [0, 4],
+];
+
 const buildMultiplicationSteps = (parsedA, parsedB, formattedResult) => {
   const rowsA = parsedA.length;
   const colsA = parsedA[0]?.length || 0;
@@ -84,6 +122,9 @@ const buildMultiplicationSteps = (parsedA, parsedB, formattedResult) => {
         title: `Elemento C${i + 1}${j + 1}`,
         description: `Linha ${i + 1} de A x coluna ${j + 1} de B: ${terms.join(" + ")} = ${products.join(" + ")} = ${formattedResult[i][j]}.`,
         matrix: cloneMatrix(partialResult),
+        highlight: {
+          resultCells: [[i, j]],
+        },
       });
     }
   }
@@ -113,6 +154,9 @@ const buildTransposeSteps = (parsedA, formattedResult) => {
         title: `Elemento A${i + 1}${j + 1}`,
         description: `O valor ${formatValue(parsedA[i][j])}, que estava na posição (${i + 1}, ${j + 1}), vai para a posição (${j + 1}, ${i + 1}) na transposta.`,
         matrix: cloneMatrix(partialResult),
+        highlight: {
+          resultCells: [[j, i]],
+        },
       });
     }
   }
@@ -148,6 +192,9 @@ const buildElementWiseSteps = (
         title: `Elemento C${i + 1}${j + 1}`,
         description: `Posição (${i + 1}, ${j + 1}): ${aValue} ${symbol} ${bValue} = ${formattedResult[i][j]}.`,
         matrix: cloneMatrix(partialResult),
+        highlight: {
+          resultCells: [[i, j]],
+        },
       });
     }
   }
@@ -177,6 +224,9 @@ const buildScalarSteps = (parsedA, scalar, formattedResult) => {
         title: `Elemento C${i + 1}${j + 1}`,
         description: `Posição (${i + 1}, ${j + 1}): ${scalarValue} x ${aValue} = ${formattedResult[i][j]}.`,
         matrix: cloneMatrix(partialResult),
+        highlight: {
+          resultCells: [[i, j]],
+        },
       });
     }
   }
@@ -195,6 +245,9 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
         title: "Matriz 1x1",
         description: `O determinante de uma matriz 1x1 é o próprio elemento: det(A) = ${value}.`,
         matrix: [[value]],
+        highlight: {
+          resultCells: [[0, 0]],
+        },
       },
     ];
   }
@@ -208,19 +261,34 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
         title: "Fórmula 2x2",
         description: "Para uma matriz 2x2, usamos det(A) = (a x d) - (b x c).",
         matrix: a,
+        highlight: {
+          cells: diagonalCells(2),
+          secondaryCells: secondaryDiagonalCells(2),
+        },
       },
       {
         title: "Diagonal principal",
         description: `${a[0][0]} x ${a[1][1]} = ${mainDiagonal}.`,
+        matrix: a,
+        highlight: {
+          cells: diagonalCells(2),
+        },
       },
       {
         title: "Diagonal secundária",
         description: `${a[0][1]} x ${a[1][0]} = ${secondaryDiagonal}.`,
+        matrix: a,
+        highlight: {
+          secondaryCells: secondaryDiagonalCells(2),
+        },
       },
       {
         title: "Resultado",
         description: `det(A) = ${mainDiagonal} - (${secondaryDiagonal}) = ${value}.`,
         matrix: [[value]],
+        highlight: {
+          resultCells: [[0, 0]],
+        },
       },
     ];
   }
@@ -238,25 +306,37 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
     ].map(formatValue);
     const downSum = downProducts.reduce((sum, item) => sum + item, 0);
     const upSum = upProducts.reduce((sum, item) => sum + item, 0);
+    const sarrusMatrix = buildSarrusDisplayMatrix(a);
 
     return [
       {
         title: "Regra de Sarrus",
         description: "Para matriz 3x3, somamos as diagonais que descem e subtraímos as diagonais que sobem.",
-        matrix: a,
+        matrix: sarrusMatrix,
       },
       {
         title: "Diagonais principais",
         description: `${downProducts.join(" + ")} = ${downSum}.`,
+        matrix: sarrusMatrix,
+        highlight: {
+          cells: sarrusMainDiagonalCells,
+        },
       },
       {
         title: "Diagonais secundárias",
         description: `${upProducts.join(" + ")} = ${upSum}.`,
+        matrix: sarrusMatrix,
+        highlight: {
+          secondaryCells: sarrusSecondaryDiagonalCells,
+        },
       },
       {
         title: "Resultado",
         description: `det(A) = ${downSum} - (${upSum}) = ${value}.`,
         matrix: [[value]],
+        highlight: {
+          resultCells: [[0, 0]],
+        },
       },
     ];
   }
@@ -267,6 +347,9 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
       title: "Matriz inicial",
       description: `Para calcular det(A) em uma matriz ${n}x${n}, transformamos A em matriz triangular superior. Operações do tipo Lk -> Lk - m x Li não mudam o determinante.`,
       matrix: formatWorkingMatrix(working),
+      highlight: {
+        pivotCells: [[0, 0]],
+      },
     },
   ];
   let sign = 1;
@@ -283,6 +366,9 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
         title: "Coluna sem pivô",
         description: `Não há pivô não nulo na coluna ${pivotIndex + 1}. A matriz fica com uma diagonal nula, então det(A) = 0.`,
         matrix: formatWorkingMatrix(working),
+        highlight: {
+          cols: [pivotIndex],
+        },
       });
       break;
     }
@@ -298,6 +384,10 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
         title: "Troca de linhas",
         description: `Trocamos L${pivotIndex + 1} com L${pivotRow + 1}. Cada troca de linhas muda o sinal do determinante.`,
         matrix: formatWorkingMatrix(working),
+        highlight: {
+          rows: [pivotIndex, pivotRow],
+          pivotCells: [[pivotIndex, pivotIndex]],
+        },
       });
     }
 
@@ -320,6 +410,11 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
         title: `Zerar A${row + 1}${pivotIndex + 1}`,
         description: `Usamos L${row + 1} -> L${row + 1} - (${formatValue(factor)}) x L${pivotIndex + 1}. Essa operação cria zero abaixo do pivô e mantém o determinante.`,
         matrix: formatWorkingMatrix(working),
+        highlight: {
+          rows: [row],
+          pivotCells: [[pivotIndex, pivotIndex]],
+          resultCells: [[row, pivotIndex]],
+        },
       });
     }
   }
@@ -335,7 +430,10 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
   steps.push({
     title: "Multiplicar a diagonal",
     description: `Como a matriz está triangular, det(A) = ${signText}${diagonalText} = ${formatValue(diagonalProduct)}. Resultado final: det(A) = ${value}.`,
-    matrix: [[value]],
+    matrix: formatWorkingMatrix(working),
+    highlight: {
+      cells: diagonalCells(n),
+    },
   });
 
   return steps;
@@ -357,11 +455,20 @@ const buildInverseSteps = (parsedA, formattedResult) => {
         title: "Verificar determinante",
         description: `A matriz é quadrada e det(A) = ${determinant}. Como o determinante é diferente de zero, a inversa existe.`,
         matrix: a,
+        highlight: {
+          cells: diagonalCells(n),
+        },
       },
       {
         title: "Montar [A | I]",
         description: "Colocamos a matriz A à esquerda e a matriz identidade à direita. O objetivo é transformar o lado esquerdo em identidade.",
         matrix: formatAugmentedMatrix(augmented, n),
+        highlight: {
+          resultCells: allCellCoordinates(n, n).map(([row, col]) => [
+            row,
+            col + n + 1,
+          ]),
+        },
       },
     ];
 
@@ -377,6 +484,9 @@ const buildInverseSteps = (parsedA, formattedResult) => {
           title: "Pivô não encontrado",
           description: "Não foi possível encontrar um pivô não nulo nesta coluna. Confira se a matriz é invertível.",
           matrix: formatAugmentedMatrix(augmented, n),
+          highlight: {
+            cols: [pivotIndex],
+          },
         });
         return steps;
       }
@@ -391,6 +501,10 @@ const buildInverseSteps = (parsedA, formattedResult) => {
           title: "Troca de linhas",
           description: `Trocamos L${pivotIndex + 1} com L${pivotRow + 1} para colocar um pivô não nulo na posição (${pivotIndex + 1}, ${pivotIndex + 1}).`,
           matrix: formatAugmentedMatrix(augmented, n),
+          highlight: {
+            rows: [pivotIndex, pivotRow],
+            pivotCells: [[pivotIndex, pivotIndex]],
+          },
         });
       }
 
@@ -405,6 +519,10 @@ const buildInverseSteps = (parsedA, formattedResult) => {
           title: `Normalizar pivô ${pivotIndex + 1}`,
           description: `Dividimos L${pivotIndex + 1} por ${formatValue(pivot)} para transformar o pivô em 1.`,
           matrix: formatAugmentedMatrix(augmented, n),
+          highlight: {
+            rows: [pivotIndex],
+            pivotCells: [[pivotIndex, pivotIndex]],
+          },
         });
       }
 
@@ -427,6 +545,11 @@ const buildInverseSteps = (parsedA, formattedResult) => {
           title: `Zerar coluna ${pivotIndex + 1}`,
           description: `Usamos L${row + 1} -> L${row + 1} - (${formatValue(factor)}) x L${pivotIndex + 1} para criar zero fora do pivô.`,
           matrix: formatAugmentedMatrix(augmented, n),
+          highlight: {
+            rows: [row],
+            pivotCells: [[pivotIndex, pivotIndex]],
+            resultCells: [[row, pivotIndex]],
+          },
         });
       }
     }
@@ -435,6 +558,9 @@ const buildInverseSteps = (parsedA, formattedResult) => {
       title: "Ler a inversa",
       description: "Quando o lado esquerdo vira identidade, o lado direito é a matriz inversa A⁻¹.",
       matrix: formattedResult,
+      highlight: {
+        resultCells: allCellCoordinates(n, n),
+      },
     });
 
     return steps;
@@ -450,11 +576,18 @@ const buildInverseSteps = (parsedA, formattedResult) => {
       title: "Verificar determinante",
       description: `det(A) = (${a[0][0]} x ${a[1][1]}) - (${a[0][1]} x ${a[1][0]}) = ${determinant}. Como é diferente de zero, a inversa existe.`,
       matrix: a,
+      highlight: {
+        cells: diagonalCells(2),
+        secondaryCells: secondaryDiagonalCells(2),
+      },
     },
     {
       title: "Trocar e inverter sinais",
       description: "Trocamos os elementos da diagonal principal e invertemos o sinal dos outros dois elementos.",
       matrix: adjusted,
+      highlight: {
+        resultCells: allCellCoordinates(2, 2),
+      },
     },
     {
       title: "Multiplicar por 1/det(A)",
@@ -464,6 +597,9 @@ const buildInverseSteps = (parsedA, formattedResult) => {
       title: "Resultado",
       description: "Esta é a matriz inversa A⁻¹.",
       matrix: formattedResult,
+      highlight: {
+        resultCells: allCellCoordinates(2, 2),
+      },
     },
   ];
 };
