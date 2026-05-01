@@ -79,16 +79,16 @@ const tutorialCategories = [
 ];
 
 const TutorialCard = ({ tutorial }) => (
-  <article className="group bg-white border border-gray-200 rounded-xl p-6 hover:border-blue-400 transition-all hover:shadow-xl flex flex-col text-left">
-    <h3 className="text-lg font-bold mb-2 group-hover:text-blue-600 transition-colors">
+  <article className="group flex flex-col rounded-xl border border-gray-200 bg-white p-6 text-left transition-all hover:border-blue-400 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500">
+    <h3 className="text-lg font-bold mb-2 transition-colors group-hover:text-blue-600 dark:text-slate-100 dark:group-hover:text-blue-400">
       {tutorial.title}
     </h3>
-    <p className="text-gray-500 text-sm mb-6 flex-grow leading-relaxed">
+    <p className="text-gray-500 text-sm mb-6 flex-grow leading-relaxed dark:text-slate-300">
       {tutorial.description}
     </p>
     <Link
       to={`/tutorial/${tutorial.slug}`}
-      className="text-blue-600 font-bold text-sm flex items-center group-hover:translate-x-2 transition-transform"
+      className="flex items-center text-sm font-bold text-blue-600 transition-transform group-hover:translate-x-2 dark:text-blue-400"
     >
       Ler Tutorial Completo <span className="ml-1">→</span>
     </Link>
@@ -96,21 +96,21 @@ const TutorialCard = ({ tutorial }) => (
 );
 
 const SequenceCard = ({ tutorial, sequenceNumber }) => (
-  <article className="group bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-6 hover:border-blue-500 transition-all hover:shadow-xl flex flex-col text-left">
+  <article className="group flex flex-col rounded-xl border-2 border-blue-300 bg-gradient-to-br from-blue-50 to-indigo-50 p-6 text-left transition-all hover:border-blue-500 hover:shadow-xl dark:border-blue-900 dark:from-slate-900 dark:to-blue-950/50 dark:hover:border-blue-500">
     <div className="flex items-center gap-3 mb-3">
       <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
         {sequenceNumber}
       </div>
-      <h3 className="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors flex-grow">
+      <h3 className="flex-grow text-lg font-bold text-gray-800 transition-colors group-hover:text-blue-600 dark:text-slate-100 dark:group-hover:text-blue-400">
         {tutorial.title}
       </h3>
     </div>
-    <p className="text-gray-600 text-sm mb-6 flex-grow leading-relaxed">
+    <p className="text-gray-600 text-sm mb-6 flex-grow leading-relaxed dark:text-slate-300">
       {tutorial.description}
     </p>
     <Link
       to={`/tutorial/${tutorial.slug}`}
-      className="text-blue-600 font-bold text-sm flex items-center group-hover:translate-x-2 transition-transform"
+      className="flex items-center text-sm font-bold text-blue-600 transition-transform group-hover:translate-x-2 dark:text-blue-400"
     >
       Começar <span className="ml-1">→</span>
     </Link>
@@ -169,10 +169,10 @@ const Tutorials = () => {
 
       <section className="p-4 sm:p-6 max-w-5xl mx-auto text-center min-h-[70vh]">
         <header className="mb-12">
-          <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-gray-800">
+          <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-gray-800 dark:text-slate-100">
             Catálogo de Tutoriais de Álgebra Linear
           </h1>
-          <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto">
+          <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto dark:text-slate-300">
             Explore todos os guias disponíveis, organizados por nível de
             dificuldade e tipo de operação.
           </p>
@@ -182,10 +182,10 @@ const Tutorials = () => {
           {allCategories.map((category) => (
             <section key={category.title} className="text-left">
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-gray-800">
+                <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-100">
                   {category.title}
                 </h2>
-                <p className="mt-2 max-w-2xl text-sm sm:text-base text-gray-600 leading-relaxed">
+                <p className="mt-2 max-w-2xl text-sm sm:text-base text-gray-600 leading-relaxed dark:text-slate-300">
                   {category.description}
                 </p>
               </div>

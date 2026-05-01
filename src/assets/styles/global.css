@@ -45,6 +45,124 @@ footer a:hover {
   text-decoration: underline;
 }
 
+.dark footer a {
+  color: #60a5fa;
+}
+
+.dark body {
+  background-color: #020617;
+}
+
+.dark .legal-page {
+  color: #cbd5e1;
+}
+
+.dark .legal-page .text-gray-800,
+.dark .legal-page .text-gray-900 {
+  color: #f1f5f9;
+}
+
+.dark .legal-page .text-gray-700,
+.dark .legal-page .text-gray-600 {
+  color: #cbd5e1;
+}
+
+.dark .legal-page .text-gray-500 {
+  color: #94a3b8;
+}
+
+.dark .legal-page .text-blue-600 {
+  color: #60a5fa;
+}
+
+.dark .tutorial-content {
+  color: #cbd5e1;
+}
+
+.dark .tutorial-content div.bg-white {
+  background-color: #0f172a;
+  border-color: #334155;
+  box-shadow: none;
+}
+
+.dark .tutorial-content .bg-gray-50,
+.dark .tutorial-content .bg-gray-100,
+.dark .tutorial-content .bg-slate-50 {
+  background-color: #111827;
+  border-color: #334155;
+}
+
+.dark .tutorial-content .bg-blue-50 {
+  background-color: rgba(30, 58, 138, 0.35);
+  border-color: #1e40af;
+}
+
+.dark .tutorial-content .bg-green-50 {
+  background-color: rgba(20, 83, 45, 0.55);
+}
+
+.dark .tutorial-content .bg-red-50 {
+  background-color: rgba(127, 29, 29, 0.55);
+}
+
+.dark .tutorial-content .border-gray-200,
+.dark .tutorial-content .border-gray-300,
+.dark .tutorial-content .border-slate-200,
+.dark .tutorial-content .border-blue-200 {
+  border-color: #334155;
+}
+
+.dark .tutorial-content .border-green-200 {
+  border-color: #166534;
+}
+
+.dark .tutorial-content .border-red-200 {
+  border-color: #991b1b;
+}
+
+.dark .tutorial-content .text-gray-800,
+.dark .tutorial-content .text-gray-900,
+.dark .tutorial-content .text-slate-800,
+.dark .tutorial-content .text-slate-900 {
+  color: #f1f5f9;
+}
+
+.dark .tutorial-content .text-gray-700,
+.dark .tutorial-content .text-gray-600,
+.dark .tutorial-content .text-gray-500,
+.dark .tutorial-content .text-slate-700,
+.dark .tutorial-content .text-slate-600 {
+  color: #cbd5e1;
+}
+
+.dark .tutorial-content .text-blue-700,
+.dark .tutorial-content .text-blue-900,
+.dark .tutorial-content .text-blue-950 {
+  color: #bfdbfe;
+}
+
+.dark .tutorial-content .text-green-900 {
+  color: #bbf7d0;
+}
+
+.dark .tutorial-content .text-red-900,
+.dark .tutorial-content .text-red-700 {
+  color: #fecaca;
+}
+
+.dark .tutorial-content .tutorial-cta {
+  color: #ffffff;
+}
+
+.dark .tutorial-content .tutorial-cta p {
+  color: #dbeafe;
+}
+
+.dark .tutorial-content .tutorial-cta-primary {
+  color: #1d4ed8;
+  text-shadow: none;
+}
+
 /* Media Queries para Responsividade */
 /* 
 @media (max-width: 640px) { 

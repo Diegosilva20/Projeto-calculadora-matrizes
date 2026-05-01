@@ -108,7 +108,7 @@ const Home = () => {
 
   const renderSizeInput = (label, state, onChangeHandler) => (
     <div className="mb-2 text-center">
-      <span className="font-semibold mr-2 text-sm sm:text-base">
+      <span className="font-semibold mr-2 text-sm sm:text-base dark:text-slate-200">
         {label}:
       </span>
       <div className="inline-flex gap-2">
@@ -117,7 +117,7 @@ const Home = () => {
           value={state.rows}
           onChange={onChangeHandler}
           aria-label={`${label} - linhas`}
-          className="border px-2 py-1 rounded text-sm outline-none focus:ring-2 focus:ring-blue-500"
+          className="rounded border border-gray-200 px-2 py-1 text-sm outline-none focus:ring-2 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
         >
           {[1, 2, 3, 4].map((n) => (
             <option key={n} value={n}>
@@ -125,13 +125,13 @@ const Home = () => {
             </option>
           ))}
         </select>
-        <span className="self-center text-gray-400">×</span>
+        <span className="self-center text-gray-400 dark:text-slate-500">×</span>
         <select
           name="cols"
           value={state.cols}
           onChange={onChangeHandler}
           aria-label={`${label} - colunas`}
-          className="border px-2 py-1 rounded text-sm outline-none focus:ring-2 focus:ring-blue-500"
+          className="rounded border border-gray-200 px-2 py-1 text-sm outline-none focus:ring-2 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
         >
           {[1, 2, 3, 4].map((n) => (
             <option key={n} value={n}>
@@ -162,27 +162,27 @@ const Home = () => {
 
       <section className="p-4 sm:p-6 max-w-5xl mx-auto text-center">
         <header className="mb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold mb-2 text-gray-800">
+          <h1 className="text-3xl sm:text-4xl font-extrabold mb-2 text-gray-800 dark:text-slate-100">
             Calculadora de Matrizes
           </h1>
-          <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto">
+          <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto dark:text-slate-300">
             A ferramenta definitiva para resolver álgebra linear. Calcule
             determinantes, inversas e realize eliminação de Gauss com
             precisão absoluta.
           </p>
         </header>
 
-        <div className="bg-white p-4 sm:p-8 rounded-xl shadow-lg border border-gray-100 mb-12">
+        <div className="mb-12 rounded-xl border border-gray-100 bg-white p-4 shadow-lg transition-colors dark:border-slate-800 dark:bg-slate-900 sm:p-8">
           <div className="mb-6">
             <label
               htmlFor="operation-select"
-              className="block font-bold mb-2 text-gray-700"
+              className="block font-bold mb-2 text-gray-700 dark:text-slate-200"
             >
               O que você deseja calcular?
             </label>
             <select
               id="operation-select"
-              className="border-2 border-blue-100 p-3 rounded-lg w-full max-w-md text-center bg-blue-50 focus:border-blue-500 outline-none transition-colors"
+              className="w-full max-w-md rounded-lg border-2 border-blue-100 bg-blue-50 p-3 text-center outline-none transition-colors focus:border-blue-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
               value={operation}
               onChange={(e) => setOperation(e.target.value)}
             >
@@ -213,12 +213,12 @@ const Home = () => {
 
             {operation === "escalar" && (
               <div className="flex flex-col items-center justify-center pt-8">
-                <span className="font-bold mb-2">Escalar</span>
+                <span className="font-bold mb-2 dark:text-slate-200">Escalar</span>
                 <input
                   type="text"
                   value={scalar}
                   onChange={(e) => setScalar(e.target.value)}
-                  className="border-2 p-2 rounded-lg w-20 text-center focus:border-blue-500 outline-none"
+                  className="w-20 rounded-lg border-2 border-gray-200 p-2 text-center outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
                   placeholder="k"
                 />
               </div>
@@ -243,14 +243,14 @@ const Home = () => {
           <div className="mt-2 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
             <button
               onClick={handleCalculate}
-              className="w-full bg-blue-600 text-white px-12 py-3 rounded-full font-bold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-md sm:w-auto"
+              className="w-full rounded-full bg-blue-600 px-12 py-3 font-bold text-white shadow-md transition-all hover:scale-105 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 sm:w-auto"
             >
               Calcular Agora
             </button>
 
             <button
               onClick={handleClear}
-              className="w-full bg-gray-100 text-gray-700 border border-gray-300 px-8 py-3 rounded-full font-bold hover:bg-gray-200 transition-all shadow-sm sm:w-auto"
+              className="w-full rounded-full border border-gray-300 bg-gray-100 px-8 py-3 font-bold text-gray-700 shadow-sm transition-all hover:bg-gray-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 sm:w-auto"
             >
               Limpar Dados
             </button>
@@ -259,12 +259,12 @@ const Home = () => {
           {/* SEO e UX: Link dinâmico para tutorial contextual */}
           {operationToSlug[operation] && (
             <div className="mt-5 flex justify-center">
-              <div className="max-w-full p-3 bg-yellow-50 rounded-lg border border-yellow-100">
-                <p className="text-sm text-yellow-800">
+              <div className="max-w-full rounded-lg border border-yellow-100 bg-yellow-50 p-3 dark:border-amber-800 dark:bg-amber-950/40">
+                <p className="text-sm text-yellow-800 dark:text-amber-100">
                   💡 Dúvida no cálculo?{" "}
                   <Link
                     to={`/tutorial/${operationToSlug[operation]}`}
-                    className="font-bold underline hover:text-yellow-900"
+                    className="font-bold underline hover:text-yellow-900 dark:hover:text-amber-50"
                   >
                     Ver tutorial de {operationLabels[operation]}
                   </Link>
@@ -274,7 +274,7 @@ const Home = () => {
           )}
 
           {error && (
-            <div className="mt-4 p-3 bg-red-50 text-red-600 rounded-lg font-medium border border-red-100">
+            <div className="mt-4 rounded-lg border border-red-100 bg-red-50 p-3 font-medium text-red-600 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300">
               {error}
             </div>
           )}
@@ -284,8 +284,8 @@ const Home = () => {
           <ResultDisplay result={result} />
 
           {steps.length > 0 && (
-            <div className="mt-16 bg-white p-5 sm:p-8 lg:p-10 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 max-w-5xl mx-auto text-left">
-              <h2 className="text-2xl font-bold mb-12 text-center text-gray-800 tracking-tight">
+            <div className="mt-16 bg-white p-5 sm:p-8 lg:p-10 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 max-w-5xl mx-auto text-left dark:border-slate-800 dark:bg-slate-900 dark:shadow-none">
+              <h2 className="text-2xl font-bold mb-12 text-center text-gray-800 tracking-tight dark:text-slate-100">
                 Resolução Passo a Passo
               </h2>
 
@@ -310,14 +310,14 @@ const Home = () => {
                         }
                       >
                         <div className="flex items-center gap-3 mb-2">
-                          <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-gray-900 text-white text-xs font-bold font-mono">
+                          <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-gray-900 text-white text-xs font-bold font-mono dark:bg-blue-500">
                             {i + 1}
                           </span>
-                          <h3 className="min-w-0 text-sm font-bold text-gray-900 uppercase tracking-wider break-words">
+                          <h3 className="min-w-0 text-sm font-bold text-gray-900 uppercase tracking-wider break-words dark:text-slate-100">
                             {step.title}
                           </h3>
                         </div>
-                        <p className="sm:ml-10 text-gray-500 font-mono text-sm bg-gray-50 px-3 py-2 rounded border border-gray-200 whitespace-pre-wrap break-words">
+                        <p className="sm:ml-10 text-gray-500 font-mono text-sm bg-gray-50 px-3 py-2 rounded border border-gray-200 whitespace-pre-wrap break-words dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300">
                           {step.description}
                         </p>
                       </div>
@@ -340,15 +340,15 @@ const Home = () => {
         </div>
 
         {/* Seção de Tutoriais Recomendados */}
-        <div className="mt-20 border-t pt-12">
+        <div className="mt-20 border-t border-gray-200 pt-12 dark:border-slate-800">
           <div className="mx-auto mb-8 max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-wider text-blue-600">
+            <p className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
               Tutoriais recomendados
             </p>
-            <h2 className="mt-2 text-2xl sm:text-3xl font-bold text-gray-800">
+            <h2 className="mt-2 text-2xl sm:text-3xl font-bold text-gray-800 dark:text-slate-100">
               Comece pelos guias mais importantes
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed">
+            <p className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed dark:text-slate-300">
               Esta é uma seleção para quem está aprendendo matrizes. O catálogo
               completo fica na página de tutoriais.
             </p>
@@ -357,17 +357,17 @@ const Home = () => {
             {featuredTutorials.map((tutorial) => (
               <article
                 key={tutorial.id}
-                className="group bg-white border border-gray-200 rounded-xl p-6 hover:border-blue-400 transition-all hover:shadow-xl flex flex-col text-left"
+                className="group flex flex-col rounded-xl border border-gray-200 bg-white p-6 text-left transition-all hover:border-blue-400 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500"
               >
-                <h3 className="text-lg font-bold mb-2 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-lg font-bold mb-2 transition-colors group-hover:text-blue-600 dark:text-slate-100 dark:group-hover:text-blue-400">
                   {tutorial.title}
                 </h3>
-                <p className="text-gray-500 text-sm mb-6 flex-grow leading-relaxed">
+                <p className="text-gray-500 text-sm mb-6 flex-grow leading-relaxed dark:text-slate-300">
                   {tutorial.description}
                 </p>
                 <Link
                   to={`/tutorial/${tutorial.slug}`}
-                  className="text-blue-600 font-bold text-sm flex items-center group-hover:translate-x-2 transition-transform"
+                  className="flex items-center text-sm font-bold text-blue-600 transition-transform group-hover:translate-x-2 dark:text-blue-400"
                 >
                   Ler Tutorial Completo <span className="ml-1">→</span>
                 </Link>
@@ -377,7 +377,7 @@ const Home = () => {
           <div className="mt-8 flex justify-center">
             <Link
               to="/tutorials"
-              className="inline-flex w-full justify-center rounded-full border border-blue-200 bg-white px-6 py-3 text-sm font-bold text-blue-700 transition-colors hover:bg-blue-50 sm:w-auto"
+              className="inline-flex w-full justify-center rounded-full border border-blue-200 bg-white px-6 py-3 text-sm font-bold text-blue-700 transition-colors hover:bg-blue-50 dark:border-blue-900 dark:bg-slate-900 dark:text-blue-300 dark:hover:bg-slate-800 sm:w-auto"
             >
               Ver todos os tutoriais
             </Link>

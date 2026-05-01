@@ -35,7 +35,7 @@ const UseExampleButton = ({
     <button
       type="button"
       onClick={handleClick}
-      className="mt-4 inline-flex w-full justify-center rounded-full bg-blue-600 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-blue-700 sm:w-auto"
+      className="mt-4 inline-flex w-full justify-center rounded-full bg-blue-600 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 sm:w-auto"
     >
       {children}
     </button>

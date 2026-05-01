@@ -36,10 +36,10 @@ function Contato() {
 
       <section className="p-4 sm:p-6 max-w-5xl mx-auto text-center min-h-[70vh]">
         <header className="mb-12">
-          <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-gray-800">
+          <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-gray-800 dark:text-slate-100">
             Fale Conosco
           </h1>
-          <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto">
+          <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto dark:text-slate-300">
             Sua opinião é fundamental para o crescimento do Matrizes+. Use este
             canal para enviar sugestões, dúvidas ou relatos de erro.
           </p>
@@ -49,23 +49,23 @@ function Contato() {
           {contactTopics.map((topic) => (
             <article
               key={topic.title}
-              className="group bg-white border border-gray-200 rounded-xl p-6 hover:border-blue-400 transition-all hover:shadow-xl flex flex-col items-center text-center sm:last:col-span-2 sm:last:max-w-md sm:last:justify-self-center lg:last:col-span-1 lg:last:max-w-none"
+              className="group flex flex-col items-center rounded-xl border border-gray-200 bg-white p-6 text-center transition-all hover:border-blue-400 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500 sm:last:col-span-2 sm:last:max-w-md sm:last:justify-self-center lg:last:col-span-1 lg:last:max-w-none"
             >
-              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white dark:bg-blue-950/70 dark:text-blue-300">
                 {topic.icon}
               </div>
-              <h2 className="text-lg font-bold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">
+              <h2 className="text-lg font-bold mb-2 text-gray-900 transition-colors group-hover:text-blue-600 dark:text-slate-100 dark:group-hover:text-blue-400">
                 {topic.title}
               </h2>
-              <p className="text-gray-500 text-sm flex-grow leading-relaxed">
+              <p className="text-gray-500 text-sm flex-grow leading-relaxed dark:text-slate-300">
                 {topic.description}
               </p>
             </article>
           ))}
         </div>
 
-        <section className="bg-blue-600 p-8 sm:p-12 rounded-3xl shadow-lg text-center">
-          <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-white text-blue-600">
+        <section className="rounded-3xl bg-blue-600 p-8 text-center shadow-lg dark:bg-blue-700 sm:p-12">
+          <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-white text-blue-600 dark:bg-slate-100">
             <FaEnvelope className="h-7 w-7" aria-hidden="true" />
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
@@ -77,7 +77,7 @@ function Contato() {
           </p>
           <a
             href="mailto:suporte@matrizcalculator.com"
-            className="inline-flex max-w-full justify-center bg-white text-blue-600 px-6 sm:px-8 py-3 rounded-full font-extrabold text-sm sm:text-lg hover:bg-blue-50 transition-all transform hover:-translate-y-1 shadow-md break-all"
+            className="inline-flex max-w-full justify-center break-all rounded-full bg-white px-6 py-3 text-sm font-extrabold text-blue-600 shadow-md transition-all hover:-translate-y-1 hover:bg-blue-50 dark:bg-slate-100 sm:px-8 sm:text-lg"
           >
             suporte@matrizcalculator.com
           </a>

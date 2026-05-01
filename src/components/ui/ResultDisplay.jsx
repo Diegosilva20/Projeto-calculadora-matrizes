@@ -26,7 +26,7 @@ const ResultDisplay = ({ result }) => {
 
   return (
     <div className="mt-6">
-      <h2 className="font-semibold mb-2 text-sm sm:text-base">Resultado</h2>
+      <h2 className="font-semibold mb-2 text-sm sm:text-base dark:text-slate-200">Resultado</h2>
       <div
         className="grid gap-1 mx-auto max-w-[90vw] justify-center"
         style={{
@@ -38,7 +38,7 @@ const ResultDisplay = ({ result }) => {
           row.map((val, j) => (
             <div
               key={`result-${i}-${j}`}
-              className="bg-gray-200 p-2 rounded text-center text-sm"
+              className="rounded bg-gray-200 p-2 text-center text-sm text-gray-900 dark:bg-slate-800 dark:text-slate-100"
             >
               {/* Usa a nova função de formatação */}
               {formatNumber(val)}

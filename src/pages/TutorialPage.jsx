@@ -344,10 +344,10 @@ const TutorialPage = () => {
           />
           <meta name="robots" content="noindex, follow" />
         </Helmet>
-        <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
+        <h1 className="text-4xl font-extrabold text-gray-900 mb-4 dark:text-slate-100">
           Tutorial não encontrado
         </h1>
-        <p className="text-lg text-gray-600 mb-8">
+        <p className="text-lg text-gray-600 mb-8 dark:text-slate-300">
           O conteúdo que procura não existe ou foi movido.
         </p>
         <Link
@@ -361,7 +361,7 @@ const TutorialPage = () => {
   }
 
   return (
-    <div className="bg-white sm:bg-slate-50 min-h-screen pb-12">
+    <div className="min-h-screen bg-white pb-12 transition-colors dark:bg-slate-950 sm:bg-slate-50 sm:dark:bg-slate-950">
       <Helmet>
         <title>{seo.title}</title>
         <meta name="description" content={seo.description} />
@@ -387,31 +387,31 @@ const TutorialPage = () => {
       </Helmet>
 
       {/* Container mais estreito (max-w-3xl) e sem caixa no mobile (bg-white direto) */}
-      <article className="max-w-3xl mx-auto px-5 sm:px-8 py-8 sm:py-16 sm:bg-white sm:shadow-sm sm:border sm:border-slate-200 sm:rounded-2xl sm:mt-8">
+      <article className="max-w-3xl mx-auto px-5 sm:px-8 py-8 sm:py-16 sm:bg-white sm:shadow-sm sm:border sm:border-slate-200 sm:rounded-2xl sm:mt-8 dark:text-slate-200 sm:dark:border-slate-800 sm:dark:bg-slate-900 sm:dark:shadow-none">
         {/* Breadcrumbs de Navegação (Padrão de Documentação) */}
         <nav aria-label="Breadcrumb" className="mb-8 sm:mb-10">
-          <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-500 font-medium">
+          <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-500 font-medium dark:text-slate-400">
             <li>
-              <Link to="/" className="hover:text-blue-600 transition-colors">
+              <Link to="/" className="hover:text-blue-600 transition-colors dark:hover:text-blue-400">
                 Calculadora
               </Link>
             </li>
             <li>
-              <span className="text-slate-300 select-none">/</span>
+              <span className="text-slate-300 select-none dark:text-slate-600">/</span>
             </li>
             <li>
               <Link
                 to="/tutorials"
-                className="hover:text-blue-600 transition-colors"
+                className="hover:text-blue-600 transition-colors dark:hover:text-blue-400"
               >
                 Tutoriais
               </Link>
             </li>
             <li>
-              <span className="text-slate-300 select-none">/</span>
+              <span className="text-slate-300 select-none dark:text-slate-600">/</span>
             </li>
             <li
-              className="text-slate-800 truncate max-w-[150px] sm:max-w-md"
+              className="text-slate-800 truncate max-w-[150px] sm:max-w-md dark:text-slate-200"
               aria-current="page"
             >
               {tutorial.title}
@@ -420,15 +420,15 @@ const TutorialPage = () => {
         </nav>
 
         <header className="mb-10 sm:mb-14">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-[1.15] tracking-tight mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-[1.15] tracking-tight mb-6 dark:text-slate-100">
             {tutorial.title}
           </h1>
-          <p className="text-lg sm:text-xl text-slate-600 leading-relaxed font-medium">
+          <p className="text-lg sm:text-xl text-slate-600 leading-relaxed font-medium dark:text-slate-300">
             {tutorial.description}
           </p>
         </header>
 
-        <div className="prose prose-lg prose-slate max-w-none text-slate-800">
+        <div className="tutorial-content prose prose-lg prose-slate max-w-none text-slate-800 dark:text-slate-200">
           {tutorial.component}
         </div>
         <FAQSection items={faqItems} />

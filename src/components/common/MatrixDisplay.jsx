@@ -23,36 +23,38 @@ const MatrixDisplay = React.memo(({ matrix, emptyPlaceholder = "", highlight = {
 
   const getCellClasses = useCallback((row, col, value) => {
     if (value === "|") {
-      return "min-w-3 px-0 text-slate-400";
+      return "min-w-3 px-0 text-slate-400 dark:text-slate-500";
     }
 
     const key = toCellKey(row, col);
 
     if (highlightSets.pivotCells.has(key)) {
-      return "bg-rose-100 text-rose-900 ring-2 ring-rose-400";
+      return "bg-rose-100 text-rose-900 ring-2 ring-rose-400 dark:bg-rose-950 dark:text-rose-100 dark:ring-rose-500";
     }
 
     if (highlightSets.resultCells.has(key)) {
-      return "bg-blue-100 text-blue-900 ring-2 ring-blue-400";
+      return "bg-blue-100 text-blue-900 ring-2 ring-blue-400 dark:bg-blue-950 dark:text-blue-100 dark:ring-blue-500";
     }
 
     if (highlightSets.cells.has(key)) {
-      return "bg-amber-100 text-amber-950 ring-2 ring-amber-400";
+      return "bg-amber-100 text-amber-950 ring-2 ring-amber-400 dark:bg-amber-950 dark:text-amber-100 dark:ring-amber-500";
     }
 
     if (highlightSets.secondaryCells.has(key)) {
-      return "bg-orange-100 text-orange-950 ring-2 ring-orange-400";
+      return "bg-orange-100 text-orange-950 ring-2 ring-orange-400 dark:bg-orange-950 dark:text-orange-100 dark:ring-orange-500";
     }
 
     if (highlightSets.rows.has(row)) {
-      return "bg-sky-50 text-sky-900";
+      return "bg-sky-50 text-sky-900 dark:bg-sky-950 dark:text-sky-100";
     }
 
     if (highlightSets.cols.has(col)) {
-      return "bg-emerald-50 text-emerald-900";
+      return "bg-emerald-50 text-emerald-900 dark:bg-emerald-950 dark:text-emerald-100";
     }
 
-    return value === "" ? "text-slate-300" : "text-slate-900";
+    return value === ""
+      ? "text-slate-300 dark:text-slate-600"
+      : "text-slate-900 dark:text-slate-100";
   }, [highlightSets]);
 
   const renderCells = useMemo(() => {
@@ -75,7 +77,7 @@ const MatrixDisplay = React.memo(({ matrix, emptyPlaceholder = "", highlight = {
   return (
     <div className="my-3 w-full overflow-x-auto py-1">
       <div className="mx-auto flex w-max min-w-max items-stretch px-1">
-        <div className="w-3 rounded-l-lg border-y-2 border-l-2 border-slate-700" />
+        <div className="w-3 rounded-l-lg border-y-2 border-l-2 border-slate-700 dark:border-slate-300" />
         <div
           className="grid gap-x-2 gap-y-1 px-3 py-2"
           style={{
@@ -84,7 +86,7 @@ const MatrixDisplay = React.memo(({ matrix, emptyPlaceholder = "", highlight = {
         >
           {renderCells}
         </div>
-        <div className="w-3 rounded-r-lg border-y-2 border-r-2 border-slate-700" />
+        <div className="w-3 rounded-r-lg border-y-2 border-r-2 border-slate-700 dark:border-slate-300" />
       </div>
 
       {visibleRows < matrix.length && (
@@ -92,7 +94,7 @@ const MatrixDisplay = React.memo(({ matrix, emptyPlaceholder = "", highlight = {
           onClick={() =>
             setVisibleRows((prev) => Math.min(prev + 5, matrix.length))
           }
-          className="mt-3 w-full rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700 sm:w-auto"
+          className="mt-3 w-full rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 sm:w-auto"
         >
           Carregar Mais
         </button>

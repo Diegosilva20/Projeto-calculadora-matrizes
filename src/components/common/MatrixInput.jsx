@@ -92,7 +92,7 @@ const MatrixInput = ({ matrix, setMatrix, label, rows, cols }) => {
 
   return (
     <fieldset className="mb-4">
-      <legend className="font-semibold mb-2 text-sm sm:text-base">
+      <legend className="font-semibold mb-2 text-sm sm:text-base dark:text-slate-200">
         {label}
       </legend>
       <div
@@ -111,7 +111,7 @@ const MatrixInput = ({ matrix, setMatrix, label, rows, cols }) => {
               onChange={(e) => handleInputChange(i, j, e.target.value)}
               onPaste={(e) => handlePaste(e, i, j)}
               onKeyDown={(e) => handleKeyDown(e, i, j)}
-              className="border p-2 rounded w-full text-center text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-shadow"
+              className="w-full rounded border border-gray-200 p-2 text-center text-sm outline-none transition-colors focus:ring-2 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder-slate-500"
               aria-label={`Elemento da ${label} na linha ${i + 1}, coluna ${j + 1}`}
               placeholder="0"
             />

@@ -13,10 +13,10 @@ function NotFound() {
         <meta name="robots" content="noindex, follow" />
       </Helmet>
 
-      <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
+      <h1 className="text-4xl font-extrabold text-gray-900 mb-4 dark:text-slate-100">
         Página não encontrada
       </h1>
-      <p className="text-lg text-gray-600 mb-8">
+      <p className="text-lg text-gray-600 mb-8 dark:text-slate-300">
         O conteúdo que você procura não existe ou foi movido.
       </p>
       <Link

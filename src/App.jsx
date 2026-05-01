@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
@@ -17,12 +17,40 @@ const Sobre = lazy(() => import("./pages/Sobre"));
 const Tutorials = lazy(() => import("./pages/Tutorials"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
+const getInitialTheme = () => {
+  if (typeof window === "undefined") return "light";
+
+  const savedTheme = window.localStorage.getItem("theme");
+  if (savedTheme === "dark" || savedTheme === "light") {
+    return savedTheme;
+  }
+
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
 function App() {
+  const [theme, setTheme] = useState(getInitialTheme);
+  const isDarkMode = theme === "dark";
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", isDarkMode);
+    document.documentElement.style.colorScheme = isDarkMode ? "dark" : "light";
+    window.localStorage.setItem("theme", theme);
+  }, [isDarkMode, theme]);
+
+  const toggleTheme = () => {
+    setTheme((currentTheme) =>
+      currentTheme === "dark" ? "light" : "dark",
+    );
+  };
+
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-gray-100 text-gray-800">
-        <Header />
+      <div className="flex min-h-screen flex-col bg-gray-100 text-gray-800 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
+        <Header isDarkMode={isDarkMode} onToggleTheme={toggleTheme} />
         <CookieConsentWrapper />
         <main className="flex-grow container mx-auto p-4 pt-20">
           <Suspense fallback={

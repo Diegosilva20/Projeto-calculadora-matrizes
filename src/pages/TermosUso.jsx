@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function TermosUso() {
   return (
-    <div className="p-6 max-w-4xl mx-auto">
+    <div className="legal-page p-6 max-w-4xl mx-auto">
       <Helmet>
         <title>Termos de Uso - Matrizes+</title>
         <meta

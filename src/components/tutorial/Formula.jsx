@@ -1,5 +1,5 @@
 const Formula = ({ children }) => (
-  <span className="font-serif italic font-medium text-blue-900 bg-blue-50 px-1.5 py-0.5 rounded">
+  <span className="rounded bg-blue-50 px-1.5 py-0.5 font-serif font-medium italic text-blue-900 dark:bg-blue-950/70 dark:text-blue-100">
     {children}
   </span>
 );
