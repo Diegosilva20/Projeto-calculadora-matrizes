@@ -285,6 +285,7 @@ const faqDictionary = {
 };
 
 const slugAliases = {
+  "eliminacao-de-gauss": "escalonamento-gauss",
   "escalonamento-gauss-jordan": "escalonamento-gauss",
 };
 

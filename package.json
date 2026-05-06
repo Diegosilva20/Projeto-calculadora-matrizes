@@ -26,8 +26,10 @@
     "dev": "vite",
     "start": "vite",
     "sitemap": "node ./sitemap-generator.mjs",
-    "build": "npm run sitemap && vite build",
-    "seo": "react-snap",
+    "seo:routes": "node ./scripts/update-react-snap-routes.mjs",
+    "build": "npm run sitemap && vite build && npm run seo",
+    "seo": "npm run seo:routes && react-snap",
+    "validate:prerender": "node ./scripts/validate-prerender-output.mjs",
     "preview": "vite preview"
   },
   "eslintConfig": {
@@ -58,11 +60,12 @@
     "vite-plugin-pwa": "^1.2.0"
   },
   "overrides": {
-      "vite-plugin-pwa":{
-        "vite": "$vite"
-      }
+    "vite-plugin-pwa": {
+      "vite": "$vite"
+    }
   },
   "reactSnap": {
+    "source": "dist",
     "puppeteerArgs": [
       "--no-sandbox",
       "--disable-setuid-sandbox"
@@ -70,21 +73,24 @@
     "skipThirdPartyRequests": true,
     "include": [
       "/",
+      "/tutorials",
       "/sobre",
       "/contato",
       "/politica-privacidade",
       "/termos-uso",
-      "/tutorials",
       "/tutorial/determinante-de-matrizes",
       "/tutorial/matriz-inversa",
       "/tutorial/escalonamento-gauss",
-      "/tutorial/sistemas-lineares",
       "/tutorial/matriz-transposta",
       "/tutorial/multiplicacao-de-matrizes",
+      "/tutorial/sistemas-lineares",
       "/tutorial/soma-de-matrizes",
       "/tutorial/subtracao-de-matrizes",
       "/tutorial/multiplicacao-por-escalar",
-      "/tutorial/determinante-3x3-regra-de-sarrus"
+      "/tutorial/determinante-3x3-regra-de-sarrus",
+      "/tutorial/o-que-e-uma-matriz",
+      "/tutorial/matriz-identidade",
+      "/tutorial/eliminacao-de-gauss"
     ]
   }
 }
