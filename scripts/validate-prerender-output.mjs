@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { prerenderPaths, tutorialSeoRoutes } from "../src/data/seoRoutes.js";
+import { tutorialsInfo } from "../src/data/tutorialsInfo.js";
 
 const distDir = fileURLToPath(new URL("../dist/", import.meta.url));
 
@@ -11,18 +12,28 @@ const mandatoryRoutes = [
   "/tutorial/o-que-e-uma-matriz",
   "/tutorial/matriz-identidade",
   "/tutorial/eliminacao-de-gauss",
+  "/tutorial/determinante-de-matrizes",
+  "/tutorial/matriz-inversa",
+  "/tutorial/multiplicacao-de-matrizes",
 ];
 
+const tutorialExpectations = Object.fromEntries(
+  tutorialsInfo.map((tutorial) => [
+    `/tutorial/${tutorial.slug}`,
+    [tutorial.title, tutorial.description, "application/ld+json"],
+  ]),
+);
+const gaussTutorial = tutorialsInfo.find(
+  (tutorial) => tutorial.slug === "escalonamento-gauss",
+);
+
 const routeExpectations = {
+  ...tutorialExpectations,
   "/": ["Calculadora de Matrizes", "application/ld+json"],
-  "/tutorials": ["Tutoriais"],
-  "/tutorial/o-que-e-uma-matriz": ["O que", "Matriz", "application/ld+json"],
-  "/tutorial/matriz-identidade": [
-    "Matriz Identidade",
-    "application/ld+json",
-  ],
+  "/tutorials": ["Catálogo de Tutoriais"],
   "/tutorial/eliminacao-de-gauss": [
-    "Escalonamento",
+    gaussTutorial.title,
+    gaussTutorial.description,
     "application/ld+json",
   ],
 };

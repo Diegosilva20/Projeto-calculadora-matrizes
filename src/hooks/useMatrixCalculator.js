@@ -3,8 +3,12 @@ import { createEmptyMatrix, calculate } from "../utils/matrixCalculations";
 
 // 1. Função inteligente que puxa os dados guardados ANTES de desenhar o ecrã
 const loadSavedState = (key, defaultValue) => {
+  if (typeof window === "undefined" || !window.localStorage) {
+    return defaultValue;
+  }
+
   try {
-    const saved = localStorage.getItem("matrixState_v1");
+    const saved = window.localStorage.getItem("matrixState_v1");
     if (saved) {
       const parsed = JSON.parse(saved);
       if (parsed[key] !== undefined) return parsed[key];
@@ -42,7 +46,7 @@ export const useMatrixCalculator = () => {
   // 3. O "Olheiro": Sempre que o utilizador digitar algo novo, gravamos em milissegundos
   useEffect(() => {
     const stateToSave = { sizeA, sizeB, matrixA, matrixB, scalar, operation };
-    localStorage.setItem("matrixState_v1", JSON.stringify(stateToSave));
+    window.localStorage.setItem("matrixState_v1", JSON.stringify(stateToSave));
   }, [sizeA, sizeB, matrixA, matrixB, scalar, operation]);
 
   const handleSizeChange = (matrixId, e) => {

@@ -17,6 +17,17 @@ const Sobre = lazy(() => import("./pages/Sobre"));
 const Tutorials = lazy(() => import("./pages/Tutorials"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
+const lazyPages = {
+  Home,
+  TutorialPage,
+  PoliticaPrivacidade,
+  TermosUso,
+  Contato,
+  Sobre,
+  Tutorials,
+  NotFound,
+};
+
 const getInitialTheme = () => {
   if (typeof window === "undefined") return "light";
 
@@ -30,7 +41,40 @@ const getInitialTheme = () => {
     : "light";
 };
 
-function App() {
+export function AppRoutes({ pages = lazyPages }) {
+  const {
+    Home: HomePage,
+    TutorialPage: TutorialPageComponent,
+    PoliticaPrivacidade: PoliticaPrivacidadePage,
+    TermosUso: TermosUsoPage,
+    Contato: ContatoPage,
+    Sobre: SobrePage,
+    Tutorials: TutorialsPage,
+    NotFound: NotFoundPage,
+  } = pages;
+
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center min-h-[50vh]">
+         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+      </div>
+    }>
+      <Routes>
+        {/* O Elemento Home agora carrega instantaneamente */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/tutorial/:slug" element={<TutorialPageComponent />} />
+        <Route path="/politica-privacidade" element={<PoliticaPrivacidadePage />} />
+        <Route path="/termos-uso" element={<TermosUsoPage />} />
+        <Route path="/contato" element={<ContatoPage />} />
+        <Route path="/sobre" element={<SobrePage />} />
+        <Route path="/tutorials" element={<TutorialsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Suspense>
+  );
+}
+
+export function AppShell({ children }) {
   const [theme, setTheme] = useState(getInitialTheme);
   const isDarkMode = theme === "dark";
 
@@ -47,32 +91,26 @@ function App() {
   };
 
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <div className="flex min-h-screen flex-col bg-gray-100 text-gray-800 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
         <Header isDarkMode={isDarkMode} onToggleTheme={toggleTheme} />
         <CookieConsentWrapper />
         <main className="flex-grow container mx-auto p-4 pt-20">
-          <Suspense fallback={
-            <div className="flex items-center justify-center min-h-[50vh]">
-               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-            </div>
-          }>
-            <Routes>
-              {/* O Elemento Home agora carrega instantaneamente */}
-              <Route path="/" element={<Home />} />
-              <Route path="/tutorial/:slug" element={<TutorialPage />} />
-              <Route path="/politica-privacidade" element={<PoliticaPrivacidade />} />
-              <Route path="/termos-uso" element={<TermosUso />} />
-              <Route path="/contato" element={<Contato />} />
-              <Route path="/sobre" element={<Sobre />} />
-              <Route path="/tutorials" element={<Tutorials />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
+          {children}
         </main>
         <Footer />
       </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppShell>
+        <AppRoutes />
+      </AppShell>
     </Router>
   );
 }

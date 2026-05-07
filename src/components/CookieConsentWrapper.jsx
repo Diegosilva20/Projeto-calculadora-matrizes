@@ -1,5 +1,12 @@
-import CookieConsent from "react-cookie-consent";
+import CookieConsentDefault, {
+  CookieConsent as NamedCookieConsent,
+} from "react-cookie-consent";
 import { Link } from "react-router-dom";
+
+const CookieConsent =
+  typeof CookieConsentDefault === "function"
+    ? CookieConsentDefault
+    : NamedCookieConsent || CookieConsentDefault.CookieConsent;
 
 const CookieConsentWrapper = () => {
   return (

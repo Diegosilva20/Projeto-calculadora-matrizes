@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
+import { prerenderPaths } from './src/data/seoRoutes.js';
+import { ssrPrerenderPlugin } from './scripts/vite-ssr-prerender-plugin.mjs';
 
 export default defineConfig({
-  build: {
-    target: 'chrome67'
-  },
   plugins: [
     react(),
+    ssrPrerenderPlugin({ routes: prerenderPaths }),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'logo192.png', 'logo512.png'],

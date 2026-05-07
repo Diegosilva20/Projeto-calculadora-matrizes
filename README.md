@@ -12,7 +12,7 @@ Uma aplicação web de alta performance focada na resolução e explicação pas
 * **Resolução passo a passo:** algoritmo customizado de Eliminação de Gauss que documenta transformações de linha, como `L2 -> L2 - (3) x L1`, em uma interface didática.
 * **Persistência de dados:** Custom Hook com sincronização em `localStorage`, para manter os dados da matriz ao atualizar a página ou navegar para os tutoriais.
 * **Tutoriais interligados:** dicionário de SEO contextual que renderiza artigos dinamicamente e os conecta às operações do motor matemático.
-* **SEO estruturado:** uso de `react-helmet`, JSON-LD Schema, sitemap e pré-renderização estática com `react-snap`.
+* **SEO estruturado:** uso de `react-helmet`, JSON-LD Schema, sitemap e pré-renderização estática no build do Vite.
 
 ---
 
@@ -22,7 +22,7 @@ Uma aplicação web de alta performance focada na resolução e explicação pas
 * **Estilização:** Tailwind CSS
 * **Roteamento:** React Router DOM
 * **Matemática:** Math.js
-* **SEO e SSR estático:** React Helmet, React Snap
+* **SEO e SSR estático:** React Helmet, pré-renderização estática no build do Vite
 
 ### Estrutura de destaque
 
@@ -68,10 +68,10 @@ npm start
 npm run build
 ```
 
-6. Para simular a pré-renderização estática:
+6. Para validar a pré-renderização estática:
 
 ```bash
-npm run seo
+npm run validate:prerender
 ```
 
 ---
