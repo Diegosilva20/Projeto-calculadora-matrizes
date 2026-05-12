@@ -71,4 +71,10 @@ export const tutorialsInfo = [
     title: "Matriz Identidade: Definição, Fórmula e Exemplo",
     description: "Veja como é a matriz identidade, por que A × I = A e como ela aparece em matriz inversa, Gauss e sistemas lineares.",
   },
+  {
+    id: 13,
+    slug: 'determinante-2x2',
+    title: "Determinante 2x2: Fórmula e Exemplo Resolvido",
+    description: "Aprenda a calcular determinante de matriz 2x2 com fórmula, diagonais, sinais negativos e exemplo resolvido passo a passo.",
+  },
 ];

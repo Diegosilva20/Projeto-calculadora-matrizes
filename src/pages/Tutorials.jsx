@@ -27,22 +27,26 @@ const recommendedSequence = [
   },
   {
     order: 6,
-    slug: "determinante-de-matrizes",
+    slug: "determinante-2x2",
   },
   {
     order: 7,
-    slug: "matriz-identidade",
+    slug: "determinante-de-matrizes",
   },
   {
     order: 8,
-    slug: "matriz-inversa",
+    slug: "matriz-identidade",
   },
   {
     order: 9,
-    slug: "escalonamento-gauss",
+    slug: "matriz-inversa",
   },
   {
     order: 10,
+    slug: "escalonamento-gauss",
+  },
+  {
+    order: 11,
     slug: "sistemas-lineares",
   },
 ];
@@ -65,6 +69,7 @@ const tutorialCategories = [
       "Guias para cálculos mais frequentes em exercícios de álgebra linear.",
     slugs: [
       "multiplicacao-de-matrizes",
+      "determinante-2x2",
       "determinante-de-matrizes",
       "determinante-3x3-regra-de-sarrus",
       "matriz-inversa",

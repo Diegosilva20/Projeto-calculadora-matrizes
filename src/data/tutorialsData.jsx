@@ -15,6 +15,7 @@ import ScalarMultiplicationTutorial from '../pages/tutorials/ScalarMultiplicatio
 import SarrusTutorial from '../pages/tutorials/SarrusTutorial';
 import WhatIsMatrixTutorial from '../pages/tutorials/WhatIsMatrixTutorial';
 import IdentityMatrixTutorial from '../pages/tutorials/IdentityMatrixTutorial';
+import Determinant2x2Tutorial from '../pages/tutorials/Determinant2x2Tutorial';
 
 // Mapeia o ID para o componente correspondente
 const componentMap = {
@@ -30,6 +31,7 @@ const componentMap = {
   10: <SarrusTutorial />,
   11: <WhatIsMatrixTutorial />,
   12: <IdentityMatrixTutorial />,
+  13: <Determinant2x2Tutorial />,
 };
 
 // Adiciona a propriedade 'component' a cada tutorial

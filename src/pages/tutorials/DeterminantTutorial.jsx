@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
 import Formula from "../../components/tutorial/Formula";
 import TipBox from "../../components/tutorial/TipBox";
@@ -73,6 +74,16 @@ function DeterminantTutorial() {
             det(A) = (6 × 2) - (-3 × 4) = 12 - (-12) = 24
           </p>
         </div>
+        <p className="mt-4 text-sm text-gray-600 leading-relaxed">
+          Se você quer treinar só este caso, veja o guia focado em{" "}
+          <Link
+            to="/tutorial/determinante-2x2"
+            className="font-bold text-blue-600 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            determinante 2x2
+          </Link>
+          .
+        </p>
       </div>
 
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">

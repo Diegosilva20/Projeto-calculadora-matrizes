@@ -35,6 +35,7 @@ const operationsWithMatrixB = ["soma", "subtracao", "multiplicacao"];
 const featuredTutorialSlugs = [
   "multiplicacao-de-matrizes",
   "determinante-de-matrizes",
+  "determinante-2x2",
   "matriz-inversa",
   "escalonamento-gauss",
   "sistemas-lineares",

@@ -10,6 +10,11 @@ const seoDictionary = {
     description:
       "Aprenda a calcular determinante de matriz 2x2, 3x3 e maiores com fórmula, exemplo resolvido e calculadora de matrizes passo a passo.",
   },
+  "determinante-2x2": {
+    title: "Determinante 2x2: Fórmula e Exemplo Resolvido",
+    description:
+      "Aprenda a calcular determinante de matriz 2x2 com fórmula simples, exemplo passo a passo, sinais negativos e calculadora online.",
+  },
   "determinante-3x3-regra-de-sarrus": {
     title: "Determinante 3x3 pela Regra de Sarrus: Exemplo Resolvido",
     description:
@@ -83,6 +88,28 @@ const faqDictionary = {
       question: "Posso usar a regra de Sarrus em qualquer matriz?",
       answer:
         "Não. A regra de Sarrus é usada apenas para matrizes 3x3. Para matrizes maiores, use cofatores ou eliminação gaussiana.",
+    },
+  ],
+  "determinante-2x2": [
+    {
+      question: "Qual é a fórmula do determinante 2x2?",
+      answer:
+        "Para A = [[a, b], [c, d]], o determinante é det(A) = (a × d) - (b × c).",
+    },
+    {
+      question: "Determinante 2x2 pode dar número negativo?",
+      answer:
+        "Sim. O resultado pode ser positivo, negativo ou zero. Isso depende dos produtos das duas diagonais.",
+    },
+    {
+      question: "O que significa determinante 2x2 igual a zero?",
+      answer:
+        "Significa que a matriz 2x2 não tem inversa e, em um sistema linear 2x2, não há solução única.",
+    },
+    {
+      question: "Posso usar essa fórmula em matriz 3x3?",
+      answer:
+        "Não. A fórmula (a × d) - (b × c) vale apenas para matrizes 2x2. Para 3x3, use a Regra de Sarrus ou outro método.",
     },
   ],
   "matriz-inversa": [
