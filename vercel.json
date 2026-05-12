@@ -52,6 +52,11 @@
       "permanent": true
     },
     {
+      "source": "/tutorial/eliminacao-de-gauss",
+      "destination": "/tutorial/escalonamento-gauss",
+      "permanent": true
+    },
+    {
       "source": "/tutorial/escalonamento-gauss-jordan",
       "destination": "/tutorial/escalonamento-gauss",
       "permanent": true

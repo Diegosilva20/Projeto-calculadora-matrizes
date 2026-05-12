@@ -23,7 +23,7 @@ const operationLabels = {
   soma: "soma de matrizes",
   subtracao: "subtração de matrizes",
   inversa: "matriz inversa",
-  gauss: "escalonamento de matrizes",
+  gauss: "escalonamento de matrizes por Gauss",
   determinanteA: "determinante de matrizes",
   multiplicacao: "multiplicação de matrizes",
   transposicao: "matriz transposta",
@@ -92,7 +92,7 @@ const Home = () => {
         priceCurrency: "BRL",
       },
       featureList:
-        "Soma de Matrizes, Subtração de Matrizes, Multiplicação por Escalar, Matriz Inversa, Determinante, Multiplicação de Matrizes, Escalonamento de Matrizes, Sistemas Lineares",
+        "Calculadora de matrizes gratuita, resultados passo a passo, frações exatas, exemplos resolvidos, tutoriais explicados, determinante, matriz inversa, multiplicação de matrizes, escalonamento de matrizes e sistemas lineares",
     },
     {
       "@context": "https://schema.org",
@@ -160,11 +160,11 @@ const Home = () => {
       <Helmet>
         {/* Título focado nos termos de maior busca do Search Console */}
         <title>
-          Calculadora de Matrizes Online | Inversa, Determinante e Escalonamento
+          Calculadora de Matrizes Online Grátis | Passo a Passo
         </title>
         <meta
           name="description"
-          content="Use a calculadora de matrizes online para resolver determinante, matriz inversa, multiplicação, transposta e escalonamento com explicações didáticas."
+          content="Use a calculadora de matrizes gratuita para resolver determinante, inversa, multiplicação, transposta e Gauss com frações exatas, passo a passo e tutoriais."
         />
         <link rel="canonical" href="https://www.matrizcalculator.com/" />
         <script type="application/ld+json">
@@ -175,12 +175,12 @@ const Home = () => {
       <section className="p-4 sm:p-6 max-w-5xl mx-auto text-center">
         <header className="mb-8">
           <h1 className="text-3xl sm:text-4xl font-extrabold mb-2 text-gray-800 dark:text-slate-100">
-            Calculadora de Matrizes
+            Calculadora de Matrizes Online Gratuita
           </h1>
           <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto dark:text-slate-300">
-            A ferramenta definitiva para resolver álgebra linear. Calcule
-            determinantes, inversas e realize eliminação de Gauss com
-            precisão absoluta.
+            Resolva soma, multiplicação, determinante, inversa, transposta e
+            escalonamento de matrizes com resultados passo a passo, frações
+            exatas, exemplos resolvidos e tutoriais explicados.
           </p>
         </header>
 
@@ -363,8 +363,8 @@ const Home = () => {
               Comece pelos guias mais importantes
             </h2>
             <p className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed dark:text-slate-300">
-              Esta é uma seleção para quem está aprendendo matrizes. O catálogo
-              completo fica na página de tutoriais.
+              Reforce o estudo com exemplos resolvidos e tutoriais explicados
+              sobre os cálculos mais usados em matrizes.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -381,9 +381,9 @@ const Home = () => {
                 </p>
                 <Link
                   to={`/tutorial/${tutorial.slug}`}
-                  className="flex items-center text-sm font-bold text-blue-600 transition-transform group-hover:translate-x-2 dark:text-blue-400"
+                  className="inline-flex flex-wrap items-center gap-x-1 text-sm font-bold text-blue-600 transition-transform group-hover:translate-x-2 dark:text-blue-400"
                 >
-                  Ler Tutorial Completo <span className="ml-1">→</span>
+                  Ler tutorial: {tutorial.title} <span>→</span>
                 </Link>
               </article>
             ))}

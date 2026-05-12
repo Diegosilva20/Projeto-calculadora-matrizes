@@ -88,9 +88,9 @@ const TutorialCard = ({ tutorial }) => (
     </p>
     <Link
       to={`/tutorial/${tutorial.slug}`}
-      className="flex items-center text-sm font-bold text-blue-600 transition-transform group-hover:translate-x-2 dark:text-blue-400"
+      className="inline-flex flex-wrap items-center gap-x-1 text-sm font-bold text-blue-600 transition-transform group-hover:translate-x-2 dark:text-blue-400"
     >
-      Ler Tutorial Completo <span className="ml-1">→</span>
+      Ler tutorial: {tutorial.title} <span>→</span>
     </Link>
   </article>
 );
@@ -110,9 +110,9 @@ const SequenceCard = ({ tutorial, sequenceNumber }) => (
     </p>
     <Link
       to={`/tutorial/${tutorial.slug}`}
-      className="flex items-center text-sm font-bold text-blue-600 transition-transform group-hover:translate-x-2 dark:text-blue-400"
+      className="inline-flex flex-wrap items-center gap-x-1 text-sm font-bold text-blue-600 transition-transform group-hover:translate-x-2 dark:text-blue-400"
     >
-      Começar <span className="ml-1">→</span>
+      Começar por {tutorial.title} <span>→</span>
     </Link>
   </article>
 );
@@ -162,8 +162,8 @@ const Tutorials = () => {
   return (
     <>
       <Helmet>
-        <title>Tutoriais de Álgebra Linear e Matrizes | Matriz Calculator</title>
-        <meta name="description" content="Aprenda passo a passo como calcular soma, subtração, multiplicação por escalar, determinantes, matriz inversa, transposta, multiplicação e escalonamento pelo método de Gauss." />
+        <title>Tutoriais de Matrizes com Exemplos Resolvidos | Matriz Calculator</title>
+        <meta name="description" content="Aprenda matrizes com tutoriais passo a passo, exemplos resolvidos, fórmulas e links para calculadora de determinante, inversa, multiplicação e Gauss." />
         <link rel="canonical" href="https://www.matrizcalculator.com/tutorials" />
       </Helmet>
 
@@ -173,8 +173,8 @@ const Tutorials = () => {
             Catálogo de Tutoriais de Álgebra Linear
           </h1>
           <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto dark:text-slate-300">
-            Explore todos os guias disponíveis, organizados por nível de
-            dificuldade e tipo de operação.
+            Explore guias com fórmulas, exemplos resolvidos e links para a
+            calculadora de matrizes passo a passo.
           </p>
         </header>
 

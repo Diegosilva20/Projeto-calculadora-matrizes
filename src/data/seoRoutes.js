@@ -1,6 +1,7 @@
 import { tutorialsInfo } from "./tutorialsInfo.js";
 
 export const siteBaseUrl = "https://www.matrizcalculator.com";
+export const defaultLastmod = "2026-05-12";
 
 export const staticSeoRoutes = [
   { path: "/", changefreq: "daily", priority: "1.0" },
@@ -17,23 +18,11 @@ export const tutorialSeoRoutes = tutorialsInfo.map((tutorial) => ({
   priority: "0.7",
 }));
 
-// Kept out of the sitemap to avoid duplicate canonical URLs, but included in
-// pre-render validation because this slug is an expected public entry point.
-export const prerenderOnlyRoutes = [
-  {
-    path: "/tutorial/eliminacao-de-gauss",
-    canonicalPath: "/tutorial/escalonamento-gauss",
-  },
-];
-
 export const seoRoutes = [...staticSeoRoutes, ...tutorialSeoRoutes];
 
 export const sitemapRoutes = seoRoutes;
 
-export const prerenderRoutes = [
-  ...seoRoutes,
-  ...prerenderOnlyRoutes,
-];
+export const prerenderRoutes = seoRoutes;
 
 export const sitemapPaths = sitemapRoutes.map((route) => route.path);
 

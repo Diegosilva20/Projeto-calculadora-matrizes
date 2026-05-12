@@ -11,7 +11,6 @@ const mandatoryRoutes = [
   "/tutorials",
   "/tutorial/o-que-e-uma-matriz",
   "/tutorial/matriz-identidade",
-  "/tutorial/eliminacao-de-gauss",
   "/tutorial/determinante-de-matrizes",
   "/tutorial/matriz-inversa",
   "/tutorial/multiplicacao-de-matrizes",
@@ -23,19 +22,10 @@ const tutorialExpectations = Object.fromEntries(
     [tutorial.title, tutorial.description, "application/ld+json"],
   ]),
 );
-const gaussTutorial = tutorialsInfo.find(
-  (tutorial) => tutorial.slug === "escalonamento-gauss",
-);
-
 const routeExpectations = {
   ...tutorialExpectations,
   "/": ["Calculadora de Matrizes", "application/ld+json"],
   "/tutorials": ["Catálogo de Tutoriais"],
-  "/tutorial/eliminacao-de-gauss": [
-    gaussTutorial.title,
-    gaussTutorial.description,
-    "application/ld+json",
-  ],
 };
 
 const tutorialPaths = new Set(tutorialSeoRoutes.map((route) => route.path));
@@ -78,7 +68,7 @@ routesToCheck.forEach((routePath) => {
   }
 
   if (
-    (tutorialPaths.has(routePath) || routePath === "/tutorial/eliminacao-de-gauss") &&
+    tutorialPaths.has(routePath) &&
     !html.includes("application/ld+json")
   ) {
     failures.push(`${routePath}: JSON-LD esperado nao encontrado`);

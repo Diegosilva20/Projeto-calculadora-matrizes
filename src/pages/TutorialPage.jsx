@@ -6,64 +6,64 @@ import FAQSection from "../components/tutorial/FAQSection";
 
 const seoDictionary = {
   "determinante-de-matrizes": {
-    title: "Determinante de uma Matriz: Como Calcular Passo a Passo",
+    title: "Determinante de Matrizes: Fórmula, Exemplo e Calculadora",
     description:
-      "Aprenda a calcular determinantes de matrizes 2x2 e 3x3 de forma simples, usando a regra de Sarrus e nossa calculadora de matrizes online.",
+      "Aprenda a calcular determinante de matriz 2x2, 3x3 e maiores com fórmula, exemplo resolvido e calculadora de matrizes passo a passo.",
   },
   "determinante-3x3-regra-de-sarrus": {
-    title: "Determinante 3x3 pela Regra de Sarrus Passo a Passo",
+    title: "Determinante 3x3 pela Regra de Sarrus: Exemplo Resolvido",
     description:
-      "Aprenda a calcular determinante 3x3 pela Regra de Sarrus, veja diagonais principais e secundárias, exemplo resolvido e calculadora online.",
+      "Veja a fórmula da Regra de Sarrus, monte as diagonais da matriz 3x3 e acompanhe um exemplo resolvido passo a passo.",
   },
   "matriz-inversa": {
-    title: "Matriz Inversa: Fórmula, Exemplo e Calculadora Online",
+    title: "Matriz Inversa: Fórmula, Exemplo Resolvido e Calculadora",
     description:
-      "Entenda o que é matriz inversa, veja a fórmula para matrizes 2x2, aprenda como o escalonamento ajuda em matrizes maiores e teste na calculadora online.",
+      "Entenda quando a matriz inversa existe, veja a fórmula 2x2 e use a calculadora com passo a passo e frações exatas.",
   },
   "escalonamento-gauss": {
-    title: "Escalonamento de Matrizes: Eliminação de Gauss Passo a Passo",
+    title: "Escalonamento de Matrizes por Gauss Passo a Passo",
     description:
-      "Aprenda o método de eliminação de Gauss, veja como transformar uma matriz em forma escalonada e resolva sistemas lineares.",
+      "Aprenda eliminação de Gauss com pivôs, operações de linha, exemplo resolvido e calculadora de matriz escalonada passo a passo.",
   },
   "sistemas-lineares": {
-    title: "Resolução de Sistemas Lineares com Matrizes Online",
+    title: "Sistemas Lineares com Matrizes: Exemplo Resolvido",
     description:
-      "Descubra como transformar e resolver Sistemas Lineares utilizando matrizes, regra de Cramer e escalonamento na nossa calculadora.",
+      "Aprenda a montar matriz aumentada, usar escalonamento de Gauss e resolver sistemas lineares com exemplo passo a passo.",
   },
   "matriz-transposta": {
-    title: "Matriz Transposta: Como Calcular Passo a Passo",
+    title: "Matriz Transposta: Fórmula, Exemplo e Calculadora",
     description:
-      "Aprenda o que é matriz transposta, veja como trocar linhas por colunas, entenda erros comuns e teste na calculadora online.",
+      "Aprenda a fórmula da matriz transposta, troque linhas por colunas e confira um exemplo resolvido na calculadora.",
   },
   "multiplicacao-de-matrizes": {
-    title: "Como Multiplicar Matrizes Passo a Passo | Calculadora Online",
+    title: "Multiplicação de Matrizes Passo a Passo | Calculadora",
     description:
-      "Aprenda como multiplicar matrizes passo a passo, entenda a regra linha por coluna, veja erros comuns e teste na calculadora online.",
+      "Entenda a regra linha por coluna, veja exemplo resolvido de multiplicação de matrizes e confira cada etapa na calculadora.",
   },
   "soma-de-matrizes": {
-    title: "Soma de Matrizes: Como Calcular Passo a Passo",
+    title: "Soma de Matrizes: Regra, Exemplo Resolvido e Calculadora",
     description:
-      "Aprenda como somar matrizes de mesmo tamanho, entenda a regra posição por posição, veja exemplo resolvido e teste na calculadora online.",
+      "Aprenda a somar matrizes de mesmo tamanho, use a regra posição por posição e pratique com cálculo passo a passo.",
   },
   "subtracao-de-matrizes": {
-    title: "Subtração de Matrizes: Como Calcular Passo a Passo",
+    title: "Subtração de Matrizes: Regra e Exemplo Resolvido",
     description:
-      "Aprenda como subtrair matrizes, entenda por que as dimensões precisam ser iguais, veja erros comuns e pratique na calculadora.",
+      "Veja como subtrair matrizes de mesmo tamanho, cuide dos sinais e acompanhe um exemplo resolvido passo a passo.",
   },
   "multiplicacao-por-escalar": {
-    title: "Multiplicação de Matriz por Escalar Passo a Passo",
+    title: "Multiplicação de Matriz por Escalar: Fórmula e Exemplo",
     description:
-      "Entenda como multiplicar uma matriz por um número, veja a regra para cada elemento e teste com passo a passo na calculadora.",
+      "Entenda a fórmula da multiplicação por escalar, calcule cada elemento da matriz e veja um exemplo resolvido.",
   },
   "o-que-e-uma-matriz": {
     title: "O que é uma Matriz? Definição, Linhas e Colunas",
     description:
-      "Aprenda o que é uma matriz, entenda notação, linhas e colunas, veja exemplos práticos e descubra por que matrizes são importantes.",
+      "Entenda o que é uma matriz, veja linhas, colunas, ordem, notação e exemplos antes de usar a calculadora de matrizes.",
   },
   "matriz-identidade": {
-    title: "Matriz Identidade: O 'Um' da Multiplicação de Matrizes",
+    title: "Matriz Identidade: Definição, Fórmula e Exemplo",
     description:
-      "Compreenda a matriz identidade, a propriedade A × I = A, exemplos 2x2 e 3x3, e por que é crucial para inversa e Gauss.",
+      "Veja a fórmula da matriz identidade, exemplos 2x2 e 3x3 e por que ela é importante para inversa, Gauss e sistemas lineares.",
   },
 };
 
@@ -394,7 +394,7 @@ const TutorialPage = () => {
           <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-500 font-medium dark:text-slate-400">
             <li>
               <Link to="/" className="hover:text-blue-600 transition-colors dark:hover:text-blue-400">
-                Calculadora
+                Calculadora de matrizes
               </Link>
             </li>
             <li>
@@ -405,7 +405,7 @@ const TutorialPage = () => {
                 to="/tutorials"
                 className="hover:text-blue-600 transition-colors dark:hover:text-blue-400"
               >
-                Tutoriais
+                Tutoriais de matrizes
               </Link>
             </li>
             <li>
