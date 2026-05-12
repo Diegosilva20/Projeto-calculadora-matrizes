@@ -5,11 +5,25 @@ import { prerenderPaths } from './src/data/seoRoutes.js';
 import { ssrPrerenderPlugin } from './scripts/vite-ssr-prerender-plugin.mjs';
 
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules/mathjs')) {
+            return 'calculator-engine';
+          }
+        }
+      }
+    }
+  },
   plugins: [
     react(),
     ssrPrerenderPlugin({ routes: prerenderPaths }),
     VitePWA({
       registerType: 'autoUpdate',
+      workbox: {
+        globIgnores: ['**/calculator-engine-*.js']
+      },
       includeAssets: ['favicon.ico', 'logo192.png', 'logo512.png'],
       manifest: {
         name: 'Matriz Calculator',

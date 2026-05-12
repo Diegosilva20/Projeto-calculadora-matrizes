@@ -1,6 +1,28 @@
 // src/utils/matrixCalculations.js
-import { matrix, add, subtract, multiply, divide, det, inv, transpose, fraction, number } from "mathjs";
 import { calculateGaussianElimination } from "../algorithms/gaussianElimination";
+
+let matrix;
+let add;
+let subtract;
+let multiply;
+let divide;
+let det;
+let inv;
+let transpose;
+let fraction;
+let number;
+let mathModulePromise;
+
+const loadMath = async () => {
+  if (!mathModulePromise) {
+    mathModulePromise = import("mathjs").then((math) => {
+      ({ matrix, add, subtract, multiply, divide, det, inv, transpose, fraction, number } = math);
+      return math;
+    });
+  }
+
+  return mathModulePromise;
+};
 
 export const createEmptyMatrix = (rows, cols) =>
   Array.from({ length: rows }, () => Array(cols).fill(""));
@@ -661,7 +683,7 @@ const operationsMap = {
   },
 };
 
-export const calculate = (matrixA, matrixB, scalar, operation, size, setResult, setError, setSteps) => {
+export const calculate = async (matrixA, matrixB, scalar, operation, size, setResult, setError, setSteps) => {
   setError("");
   setSteps([]);
 
@@ -670,16 +692,16 @@ export const calculate = (matrixA, matrixB, scalar, operation, size, setResult, 
     return;
   }
 
-  const parsedA = parseMatrix(matrixA);
-  const parsedB = matrixB ? parseMatrix(matrixB) : null;
-  const rowsA = size.rows;
-
   try {
+    const math = await loadMath();
+    const parsedA = parseMatrix(matrixA);
+    const parsedB = matrixB ? parseMatrix(matrixB) : null;
+    const rowsA = size.rows;
     const matrixAObj = matrix(parsedA);
     const matrixBObj = parsedB ? matrix(parsedB) : null;
 
     if (operation === "gauss") {
-      const { result: gaussResult, steps: gaussSteps } = calculateGaussianElimination(parsedA, rowsA);
+      const { result: gaussResult, steps: gaussSteps } = calculateGaussianElimination(parsedA, rowsA, math);
       setResult(gaussResult);
       setSteps(gaussSteps);
       return;

@@ -67,7 +67,7 @@ export const useMatrixCalculator = () => {
     setSteps([]);
   };
 
-  const handleCalculate = () => {
+  const handleCalculate = async () => {
     let newError = "";
     const isSquareA = sizeA.rows === sizeA.cols;
 
@@ -89,7 +89,7 @@ export const useMatrixCalculator = () => {
       return;
     }
 
-    calculate(
+    await calculate(
       matrixA,
       matrixB,
       scalar,

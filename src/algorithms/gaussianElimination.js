@@ -1,7 +1,7 @@
-import { matrix, number, divide, multiply, subtract } from "mathjs";
 import { formatMatrix, formatValue, isRowEchelonForm } from "../utils/matrixCalculations";
 
-export const calculateGaussianElimination = (parsedA, rowsA) => {
+export const calculateGaussianElimination = (parsedA, rowsA, math) => {
+  const { matrix, number, divide, multiply, subtract } = math;
   const m = matrix(parsedA);
   const steps = [];
   const rowCount = rowsA;

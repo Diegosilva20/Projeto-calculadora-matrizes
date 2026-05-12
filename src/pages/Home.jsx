@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import MatrixDisplay from "../components/common/MatrixDisplay";
@@ -64,6 +64,18 @@ const Home = () => {
     handleCalculate,
     handleClear,
   } = useMatrixCalculator();
+
+  const [isCalculating, setIsCalculating] = useState(false);
+
+  const handleCalculateClick = async () => {
+    setIsCalculating(true);
+
+    try {
+      await handleCalculate();
+    } finally {
+      setIsCalculating(false);
+    }
+  };
 
   // Dados Estruturados (JSON-LD) para otimizar o rankeamento no Google
   const structuredData = [
@@ -242,10 +254,12 @@ const Home = () => {
 
           <div className="mt-2 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
             <button
-              onClick={handleCalculate}
-              className="w-full rounded-full bg-blue-600 px-12 py-3 font-bold text-white shadow-md transition-all hover:scale-105 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 sm:w-auto"
+              onClick={handleCalculateClick}
+              disabled={isCalculating}
+              aria-busy={isCalculating}
+              className="w-full rounded-full bg-blue-600 px-12 py-3 font-bold text-white shadow-md transition-all hover:scale-105 hover:bg-blue-700 disabled:cursor-wait disabled:opacity-80 disabled:hover:scale-100 dark:bg-blue-500 dark:hover:bg-blue-400 sm:w-auto"
             >
-              Calcular Agora
+              {isCalculating ? "Calculando..." : "Calcular Agora"}
             </button>
 
             <button
