@@ -1,5 +1,6 @@
 import MatrixDisplay from "../../components/common/MatrixDisplay";
 import Formula from "../../components/tutorial/Formula";
+import SymbolicMatrix from "../../components/tutorial/SymbolicMatrix";
 import TipBox from "../../components/tutorial/TipBox";
 import TutorialCTA from "../../components/tutorial/TutorialCTA";
 import UseExampleButton from "../../components/tutorial/UseExampleButton";
@@ -63,13 +64,16 @@ function InverseMatrixTutorial() {
         <p className="mb-4 leading-relaxed">
           Para uma matriz 2x2, existe uma fórmula rápida. Se:
         </p>
-        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg mb-4">
-          <Formula>A = [[a, b], [c, d]]</Formula>
-        </div>
+        <SymbolicMatrix
+          label="A ="
+          matrix={[["a", "b"], ["c", "d"]]}
+          className="mb-4"
+        />
         <p className="mb-4 leading-relaxed">então:</p>
-        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg">
-          <Formula>A⁻¹ = 1/det(A) × [[d, -b], [-c, a]]</Formula>
-        </div>
+        <SymbolicMatrix
+          label="A⁻¹ = 1/det(A) ×"
+          matrix={[["d", "-b"], ["-c", "a"]]}
+        />
         <ol className="list-decimal pl-5 space-y-3 leading-relaxed mt-5">
           <li>Calcule o determinante.</li>
           <li>Troque os elementos da diagonal principal.</li>
@@ -132,9 +136,11 @@ function InverseMatrixTutorial() {
             <h3 className="text-lg font-semibold mb-2">
               Passo 3: multiplicar por 1/determinante
             </h3>
-            <p className="font-mono text-sm sm:text-base break-words">
-              A⁻¹ = 1/1 × [[3, -5], [-1, 2]]
-            </p>
+            <SymbolicMatrix
+              label="A⁻¹ = 1/1 ×"
+              matrix={[["3", "-5"], ["-1", "2"]]}
+              className="mx-auto"
+            />
           </div>
         </div>
 

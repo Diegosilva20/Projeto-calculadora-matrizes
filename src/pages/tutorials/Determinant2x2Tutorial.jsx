@@ -1,5 +1,6 @@
 import MatrixDisplay from "../../components/common/MatrixDisplay";
 import Formula from "../../components/tutorial/Formula";
+import SymbolicMatrix from "../../components/tutorial/SymbolicMatrix";
 import TipBox from "../../components/tutorial/TipBox";
 import TutorialCTA from "../../components/tutorial/TutorialCTA";
 import UseExampleButton from "../../components/tutorial/UseExampleButton";
@@ -37,9 +38,11 @@ function Determinant2x2Tutorial() {
         <p className="mb-4 leading-relaxed">
           Para uma matriz 2x2:
         </p>
-        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg mb-4">
-          <Formula>A = [[a, b], [c, d]]</Formula>
-        </div>
+        <SymbolicMatrix
+          label="A ="
+          matrix={[["a", "b"], ["c", "d"]]}
+          className="mb-4"
+        />
         <p className="mb-4 leading-relaxed">
           o determinante é:
         </p>
