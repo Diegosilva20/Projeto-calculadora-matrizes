@@ -30,6 +30,11 @@ const seoDictionary = {
     description:
       "Aprenda a usar a Regra de Cramer em sistemas 2x2 e 3x3, entendendo D, Dx, Dy e quando aplicar determinantes para resolver incógnitas.",
   },
+  "posto-de-matriz": {
+    title: "Posto de Matriz: Como Calcular pelo Escalonamento",
+    description:
+      "Aprenda a encontrar o posto de uma matriz com escalonamento, contando linhas não nulas e entendendo a relação com determinante e matriz inversa.",
+  },
   "escalonamento-gauss": {
     title: "Escalonamento de Matrizes por Gauss Passo a Passo",
     description:
@@ -193,6 +198,38 @@ const faqDictionary = {
       question: "É melhor usar Regra de Cramer ou escalonamento?",
       answer:
         "Para sistemas 2x2 e 3x3 com D ≠ 0, a Regra de Cramer é direta. Para sistemas maiores ou quando D = 0, o escalonamento é mais eficiente.",
+    },
+  ],
+  "posto-de-matriz": [
+    {
+      question: "O que é o posto de uma matriz?",
+      answer:
+        "O posto é o número de linhas não nulas na forma escalonada da matriz. Ele mede quantas linhas independentes existem na matriz.",
+    },
+    {
+      question: "Como calcular o posto de uma matriz?",
+      answer:
+        "Escalone a matriz usando operações de linha e depois conte quantas linhas não nulas sobraram.",
+    },
+    {
+      question: "O posto é o número de linhas ou de colunas?",
+      answer:
+        "O posto é o número máximo de linhas independentes ou colunas independentes. Em qualquer caso, é o mesmo valor para uma dada matriz.",
+    },
+    {
+      question: "O que significa uma linha não nula?",
+      answer:
+        "Uma linha não nula é uma linha que tem pelo menos um elemento diferente de zero. Uma linha com todos elementos zero não conta para o posto.",
+    },
+    {
+      question: "Qual a relação entre posto, determinante e matriz inversa?",
+      answer:
+        "Para uma matriz quadrada n x n, se o posto for n, a matriz pode ser invertida. Se o posto for menor que n, o determinante é zero e a matriz não tem inversa.",
+    },
+    {
+      question: "É possível calcular o posto de uma matriz retangular?",
+      answer:
+        "Sim. O posto também vale para matrizes retangulares e é sempre menor ou igual ao menor número de linhas ou colunas.",
     },
   ],
   "matriz-transposta": [

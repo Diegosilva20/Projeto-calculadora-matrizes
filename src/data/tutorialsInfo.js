@@ -81,4 +81,10 @@ export const tutorialsInfo = [
     slug: 'regra-de-cramer',
     title: "Regra de Cramer: Como Resolver Sistemas Lineares com Determinantes",
     description: "Aprenda a usar a Regra de Cramer em sistemas 2x2 e 3x3, entendendo D, Dx, Dy e quando usar determinantes para resolver incógnitas.",
+  },
+  {
+    id: 15,
+    slug: 'posto-de-matriz',
+    title: "Posto de Matriz: Como Calcular pelo Escalonamento",
+    description: "Aprenda a encontrar o posto de uma matriz com escalonamento, contando as linhas não nulas e entendendo a relação com determinante e matriz inversa.",
   },];

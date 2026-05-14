@@ -79,13 +79,13 @@ const tutorialCategories = [
     title: "Sistemas e métodos",
     description:
       "Métodos para escalonar matrizes e interpretar sistemas lineares.",
-    slugs: ["escalonamento-gauss", "sistemas-lineares", "regra-de-cramer"],
+    slugs: ["escalonamento-gauss", "sistemas-lineares", "regra-de-cramer", "posto-de-matriz"],
   },
 ];
 
 const TutorialCard = ({ tutorial }) => (
   <article className="group flex flex-col rounded-xl border border-gray-200 bg-white p-6 text-left transition-all hover:border-blue-400 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500">
-    <h3 className="text-lg font-bold mb-2 transition-colors group-hover:text-blue-600 dark:text-slate-100 dark:group-hover:text-blue-400">
+    <h3 className="text-lg font-bold mb-2 transition-colors group-hover:text-blue-600 dark:text-slate-100">
       {tutorial.title}
     </h3>
     <p className="text-gray-500 text-sm mb-6 flex-grow leading-relaxed dark:text-slate-300">
