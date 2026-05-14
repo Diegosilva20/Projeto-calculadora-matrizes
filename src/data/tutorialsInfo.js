@@ -76,5 +76,9 @@ export const tutorialsInfo = [
     slug: 'determinante-2x2',
     title: "Determinante 2x2: Fórmula e Exemplo Resolvido",
     description: "Aprenda a calcular determinante de matriz 2x2 com fórmula, diagonais, sinais negativos e exemplo resolvido passo a passo.",
-  },
-];
+  },  {
+    id: 14,
+    slug: 'regra-de-cramer',
+    title: "Regra de Cramer: Como Resolver Sistemas Lineares com Determinantes",
+    description: "Aprenda a usar a Regra de Cramer em sistemas 2x2 e 3x3, entendendo D, Dx, Dy e quando usar determinantes para resolver incógnitas.",
+  },];

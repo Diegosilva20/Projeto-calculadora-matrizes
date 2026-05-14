@@ -79,7 +79,7 @@ const tutorialCategories = [
     title: "Sistemas e métodos",
     description:
       "Métodos para escalonar matrizes e interpretar sistemas lineares.",
-    slugs: ["escalonamento-gauss", "sistemas-lineares"],
+    slugs: ["escalonamento-gauss", "sistemas-lineares", "regra-de-cramer"],
   },
 ];
 

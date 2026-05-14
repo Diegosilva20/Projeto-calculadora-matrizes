@@ -25,6 +25,11 @@ const seoDictionary = {
     description:
       "Entenda quando a matriz inversa existe, veja a fórmula 2x2 e use a calculadora com passo a passo e frações exatas.",
   },
+  "regra-de-cramer": {
+    title: "Regra de Cramer: Como Resolver Sistemas Lineares com Determinantes",
+    description:
+      "Aprenda a usar a Regra de Cramer em sistemas 2x2 e 3x3, entendendo D, Dx, Dy e quando aplicar determinantes para resolver incógnitas.",
+  },
   "escalonamento-gauss": {
     title: "Escalonamento de Matrizes por Gauss Passo a Passo",
     description:
@@ -161,6 +166,33 @@ const faqDictionary = {
       question: "Todo sistema linear tem uma única solução?",
       answer:
         "Não. Um sistema pode ter uma solução, infinitas soluções ou nenhuma solução, dependendo da relação entre suas equações.",
+    },
+  ],
+  "regra-de-cramer": [
+    {
+      question: "Quando posso usar a Regra de Cramer?",
+      answer:
+        "Use a Regra de Cramer em sistemas quadrados (2x2 ou 3x3) quando o determinante da matriz de coeficientes for diferente de zero.",
+    },
+    {
+      question: "O que são D, Dx e Dy na Regra de Cramer?",
+      answer:
+        "D é o determinante da matriz dos coeficientes. Dx substitui a coluna de x pela coluna de resultados e Dy substitui a coluna de y pela coluna de resultados.",
+    },
+    {
+      question: "A Regra de Cramer vale para sistemas 4x4?",
+      answer:
+        "Teoricamente sim, mas na prática o cálculo dos determinantes fica muito pesado. Para sistemas maiores, o escalonamento é mais eficiente.",
+    },
+    {
+      question: "O que acontece se D = 0?",
+      answer:
+        "Quando D = 0, a matriz dos coeficientes não tem inversa e a Regra de Cramer não pode ser usada para encontrar uma solução única.",
+    },
+    {
+      question: "É melhor usar Regra de Cramer ou escalonamento?",
+      answer:
+        "Para sistemas 2x2 e 3x3 com D ≠ 0, a Regra de Cramer é direta. Para sistemas maiores ou quando D = 0, o escalonamento é mais eficiente.",
     },
   ],
   "matriz-transposta": [
