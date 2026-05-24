@@ -7,6 +7,7 @@ import ResultDisplay from "../components/ui/ResultDisplay";
 import {
   calculatorPagesByPath,
   getCalculatorPageByOperation,
+  getCalculatorPageContent,
   getCalculatorPageCopy,
 } from "../data/calculatorPages";
 import { getTutoriais } from "../data/tutorialsData";
@@ -62,6 +63,10 @@ const Home = () => {
   const pageHeroTitle = calculatorPageCopy?.heroTitle || t("home.heroTitle");
   const pageHeroDescription =
     calculatorPageCopy?.heroDescription || t("home.heroDescription");
+  const calculatorPageContent = getCalculatorPageContent(
+    calculatorPage,
+    language,
+  );
   const showTutorialLinks = language === "pt-BR";
   const tutoriais = useMemo(
     () => (showTutorialLinks ? getTutoriais(language) : []),
@@ -100,6 +105,28 @@ const Home = () => {
     t(`calculator.operationNames.${operation}`);
 
   const [isCalculating, setIsCalculating] = useState(false);
+
+  const genericFaqItems = [
+    {
+      question: t("home.structuredGaussQuestion"),
+      answer: t("home.structuredGaussAnswer"),
+    },
+    {
+      question: t("home.structuredInverseQuestion"),
+      answer: t("home.structuredInverseAnswer"),
+    },
+  ];
+  const pageFaqItems = calculatorPageContent?.faq?.length
+    ? calculatorPageContent.faq
+    : genericFaqItems;
+  const structuredFaqItems = pageFaqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  }));
 
   const handleCalculateClick = async () => {
     setIsCalculating(true);
@@ -144,24 +171,7 @@ const Home = () => {
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: t("home.structuredGaussQuestion"),
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: t("home.structuredGaussAnswer"),
-          },
-        },
-        {
-          "@type": "Question",
-          name: t("home.structuredInverseQuestion"),
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: t("home.structuredInverseAnswer"),
-          },
-        },
-      ],
+      mainEntity: structuredFaqItems,
     },
   ];
 
@@ -390,6 +400,68 @@ const Home = () => {
             </div>
           )}
         </div>
+
+        {calculatorPageContent && (
+          <section
+            aria-labelledby="calculator-guide-title"
+            className="mx-auto mb-16 max-w-4xl border-t border-gray-200 pt-10 text-left dark:border-slate-800"
+          >
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+              <div>
+                <h2
+                  id="calculator-guide-title"
+                  className="text-2xl font-bold text-gray-800 dark:text-slate-100"
+                >
+                  {calculatorPageContent.introTitle}
+                </h2>
+                <p className="mt-4 text-sm leading-relaxed text-gray-600 dark:text-slate-300 sm:text-base">
+                  {calculatorPageContent.intro}
+                </p>
+
+                <h3 className="mt-8 text-lg font-bold text-gray-800 dark:text-slate-100">
+                  {calculatorPageContent.stepsTitle}
+                </h3>
+                <ol className="mt-4 space-y-3 text-sm leading-relaxed text-gray-600 dark:text-slate-300 sm:text-base">
+                  {calculatorPageContent.steps.map((step) => (
+                    <li key={step} className="flex gap-3">
+                      <span className="mt-2 h-2 w-2 flex-none rounded-full bg-blue-600 dark:bg-blue-400" />
+                      <span>{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              <div className="space-y-8 border-t border-gray-200 pt-8 dark:border-slate-800 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+                <div>
+                  <h3 className="text-lg font-bold text-gray-800 dark:text-slate-100">
+                    {calculatorPageContent.exampleTitle}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-slate-300 sm:text-base">
+                    {calculatorPageContent.example}
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-bold text-gray-800 dark:text-slate-100">
+                    {calculatorPageContent.faqTitle}
+                  </h3>
+                  <dl className="mt-4 space-y-5">
+                    {calculatorPageContent.faq.map((item) => (
+                      <div key={item.question}>
+                        <dt className="font-bold text-gray-800 dark:text-slate-100">
+                          {item.question}
+                        </dt>
+                        <dd className="mt-1 text-sm leading-relaxed text-gray-600 dark:text-slate-300">
+                          {item.answer}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {showTutorialLinks && (
         <div className="mt-20 border-t border-gray-200 pt-12 dark:border-slate-800">

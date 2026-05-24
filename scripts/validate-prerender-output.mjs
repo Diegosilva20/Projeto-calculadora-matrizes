@@ -6,7 +6,10 @@ import {
   prerenderPaths,
   tutorialSeoRoutes,
 } from "../src/data/seoRoutes.js";
-import { calculatorPages } from "../src/data/calculatorPages.js";
+import {
+  calculatorPages,
+  getCalculatorPageContent,
+} from "../src/data/calculatorPages.js";
 import { tutorialsInfo } from "../src/data/tutorialsInfo.js";
 
 const distDir = fileURLToPath(new URL("../dist/", import.meta.url));
@@ -28,14 +31,20 @@ const tutorialExpectations = Object.fromEntries(
   ]),
 );
 const calculatorExpectations = Object.fromEntries(
-  calculatorPages.map((page) => [
-    page.path,
-    [
-      page.copy["pt-BR"].heroTitle,
-      page.copy["pt-BR"].metaDescription,
-      "application/ld+json",
-    ],
-  ]),
+  calculatorPages.map((page) => {
+    const content = getCalculatorPageContent(page, "pt-BR");
+
+    return [
+      page.path,
+      [
+        page.copy["pt-BR"].heroTitle,
+        page.copy["pt-BR"].metaDescription,
+        content?.introTitle,
+        content?.faq?.[0]?.question,
+        "application/ld+json",
+      ].filter(Boolean),
+    ];
+  }),
 );
 const routeExpectations = {
   ...tutorialExpectations,
