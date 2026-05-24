@@ -1,6 +1,7 @@
 // src/data/tutorialsData.js
 
 import { tutorialsInfo } from './tutorialsInfo'; // Importa os dados puros
+import { translate } from '../i18n';
 
 // Importa os componentes React
 import DeterminantTutorial from '../pages/tutorials/DeterminantTutorial';
@@ -39,7 +40,15 @@ const componentMap = {
 };
 
 // Adiciona a propriedade 'component' a cada tutorial
-export const tutoriais = tutorialsInfo.map(tutorial => ({
-  ...tutorial,
-  component: componentMap[tutorial.id],
-}));
+export const getTutoriais = (language = "pt-BR") =>
+  tutorialsInfo.map((tutorial) => {
+    const localizedInfo = translate(language, `tutorials.info.${tutorial.slug}`);
+
+    return {
+      ...tutorial,
+      ...(typeof localizedInfo === "object" ? localizedInfo : {}),
+      component: componentMap[tutorial.id],
+    };
+  });
+
+export const tutoriais = getTutoriais();

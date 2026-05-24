@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
 import Formula from "../../components/tutorial/Formula";
 import TipBox from "../../components/tutorial/TipBox";
@@ -26,6 +27,24 @@ function GaussEscalonamentoTutorial() {
           <strong>Resumo rápido:</strong> pivô é o número usado como referência.
           Abaixo de cada pivô, queremos criar zeros.
         </TipBox>
+        <p className="mt-4 text-sm text-gray-600 leading-relaxed dark:text-slate-300">
+          Para ver esse método aplicado desde a montagem das equações, comece por{" "}
+          <Link
+            to="/tutorial/sistemas-lineares"
+            className="font-bold text-blue-600 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            sistemas lineares com matrizes
+          </Link>
+          . Se o sistema for pequeno e tiver determinante principal não nulo,
+          compare com a{" "}
+          <Link
+            to="/tutorial/regra-de-cramer"
+            className="font-bold text-blue-600 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            Regra de Cramer
+          </Link>
+          .
+        </p>
       </div>
 
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">

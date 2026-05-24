@@ -3,18 +3,21 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import {
   FaBars,
   FaCalculator,
+  FaGlobe,
   FaMoon,
   FaSun,
   FaTimes,
 } from "react-icons/fa";
+import { useI18n } from "../../i18n/LanguageContext";
 
 const navItems = [
-  { to: "/tutorials", label: "Tutoriais" },
-  { to: "/sobre", label: "Sobre" },
-  { to: "/contato", label: "Contato" },
+  { to: "/tutorials", labelKey: "nav.tutorials" },
+  { to: "/sobre", labelKey: "nav.about" },
+  { to: "/contato", labelKey: "nav.contact" },
 ];
 
 function Header({ isDarkMode, onToggleTheme }) {
+  const { language, languages, setLanguage, t } = useI18n();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCalculatorClicked, setIsCalculatorClicked] = useState(false);
   const clickTimeoutRef = useRef(null);
@@ -46,8 +49,28 @@ function Header({ isDarkMode, onToggleTheme }) {
     ].join(" ");
 
   const themeToggleLabel = isDarkMode
-    ? "Ativar modo claro"
-    : "Ativar modo escuro";
+    ? t("header.activateLight")
+    : t("header.activateDark");
+
+  const renderLanguageSelect = () => (
+    <label className="relative inline-flex h-10 items-center gap-2 rounded-full bg-white/10 px-3 text-white transition-colors hover:bg-white/20 focus-within:ring-2 focus-within:ring-white/70 focus-within:ring-offset-2 focus-within:ring-offset-blue-600">
+      <FaGlobe className="h-4 w-4 flex-none" aria-hidden="true" />
+      <span className="sr-only">{t("language.select")}</span>
+      <select
+        value={language}
+        onChange={(event) => setLanguage(event.target.value)}
+        aria-label={t("language.select")}
+        title={t("language.select")}
+        className="h-full cursor-pointer appearance-none bg-transparent pr-1 text-xs font-bold uppercase text-white outline-none"
+      >
+        {languages.map((item) => (
+          <option key={item.code} value={item.code} className="text-slate-900">
+            {item.shortLabel}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
 
   const renderThemeToggle = () => (
     <button
@@ -76,39 +99,39 @@ function Header({ isDarkMode, onToggleTheme }) {
             "focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-600",
             isCalculatorClicked ? "scale-[0.98] bg-white/15 shadow-inner" : "",
           ].join(" ")}
-          aria-label="Ir para a calculadora"
+          aria-label={t("header.homeAria")}
           onClick={handleCalculatorClick}
         >
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white text-blue-600 shadow-sm dark:bg-slate-100 dark:text-blue-700">
             <FaCalculator className="h-5 w-5" aria-hidden="true" />
           </span>
-          <span className="text-lg sm:text-xl font-extrabold tracking-tight">
-            Calculadora
+          <span className="text-lg font-extrabold tracking-tight sm:text-xl">
+            {t("header.calculator")}
           </span>
         </Link>
 
         <div className="hidden items-center gap-2 md:flex">
           <nav
             className="flex items-center gap-2"
-            aria-label="Navegação principal"
+            aria-label={t("header.mainNav")}
           >
             {navItems.map((item) => (
               <NavLink key={item.to} to={item.to} className={linkClasses}>
-                {item.label}
+                {t(item.labelKey)}
               </NavLink>
             ))}
           </nav>
+          {renderLanguageSelect()}
           {renderThemeToggle()}
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
+          {renderLanguageSelect()}
           {renderThemeToggle()}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={
-              isMenuOpen
-                ? "Fechar menu de navegação"
-                : "Abrir menu de navegação"
+              isMenuOpen ? t("header.closeMenu") : t("header.openMenu")
             }
             aria-expanded={isMenuOpen}
             aria-controls="mobile-navigation"
@@ -127,13 +150,13 @@ function Header({ isDarkMode, onToggleTheme }) {
         <nav
           id="mobile-navigation"
           className="border-t border-white/10 bg-blue-700 px-4 py-3 shadow-lg transition-colors md:hidden dark:bg-slate-900"
-          aria-label="Navegação mobile"
+          aria-label={t("header.mobileNav")}
           onClick={() => setIsMenuOpen(false)}
         >
           <div className="container mx-auto grid gap-2">
             {navItems.map((item) => (
               <NavLink key={item.to} to={item.to} className={linkClasses}>
-                {item.label}
+                {t(item.labelKey)}
               </NavLink>
             ))}
           </div>

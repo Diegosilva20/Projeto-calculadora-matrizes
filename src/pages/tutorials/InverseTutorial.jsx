@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
 import Formula from "../../components/tutorial/Formula";
 import SymbolicMatrix from "../../components/tutorial/SymbolicMatrix";
@@ -55,6 +56,23 @@ function InverseMatrixTutorial() {
           Se <Formula>det(A) = 0</Formula>, a matriz é chamada de singular e não
           possui inversa.
         </TipBox>
+        <p className="mt-4 text-sm text-gray-600 leading-relaxed dark:text-slate-300">
+          Para praticar essa condição em matrizes pequenas, revise o{" "}
+          <Link
+            to="/tutorial/determinante-2x2"
+            className="font-bold text-blue-600 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            determinante 2x2
+          </Link>
+          . Para outros tamanhos e métodos, veja{" "}
+          <Link
+            to="/tutorial/determinante-de-matrizes"
+            className="font-bold text-blue-600 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            determinante de matrizes
+          </Link>
+          .
+        </p>
       </div>
 
       <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
 import Formula from "../../components/tutorial/Formula";
 import TipBox from "../../components/tutorial/TipBox";
@@ -34,6 +35,30 @@ function LinearSystemsTutorial() {
           escalonamento: monte a matriz aumentada e escolha “Eliminação de
           Gauss”. Assim a ferramenta mostra as operações de linha sem criar uma
           operação separada para sistemas.
+        </p>
+        <p className="mt-4 text-sm text-gray-600 leading-relaxed dark:text-slate-300">
+          Depois de entender a montagem do sistema, compare três caminhos:{" "}
+          <Link
+            to="/tutorial/regra-de-cramer"
+            className="font-bold text-blue-600 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            Regra de Cramer
+          </Link>{" "}
+          para sistemas pequenos com determinante não nulo,{" "}
+          <Link
+            to="/tutorial/eliminacao-de-gauss"
+            className="font-bold text-blue-600 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            eliminação de Gauss
+          </Link>{" "}
+          para escalonar, e{" "}
+          <Link
+            to="/tutorial/matriz-inversa"
+            className="font-bold text-blue-600 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            matriz inversa
+          </Link>{" "}
+          para a forma <Formula>Ax = b</Formula>.
         </p>
       </div>
 

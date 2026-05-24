@@ -1,36 +1,43 @@
-// src/components/ui/ResultDisplay.jsx
+import { useI18n } from "../../i18n/LanguageContext";
 
-// Função para formatar os números do resultado
-const formatNumber = (value) => {
+const localeByLanguage = {
+  "pt-BR": "pt-BR",
+  en: "en-US",
+  es: "es-ES",
+};
+
+const formatNumber = (value, language) => {
   const number = Number(value);
 
-  // Se o valor não for um número, retorna N/A
   if (isNaN(number)) {
     return "N/A";
   }
 
-  // Se o valor absoluto do número for maior ou igual a 100.000, formata em notação exponencial
   if (Math.abs(number) >= 100000) {
-    return number.toExponential(2); // ex: 1.23e+5
+    return number.toExponential(2);
   }
 
-  // Caso contrário, formata com duas casas decimais
-  return number.toFixed(2);
+  return new Intl.NumberFormat(localeByLanguage[language] || "pt-BR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(number);
 };
 
 const ResultDisplay = ({ result }) => {
-  // Se não houver resultado, não renderiza nada
+  const { language, t } = useI18n();
+
   if (!result) {
     return null;
   }
 
   return (
     <div className="mt-6">
-      <h2 className="font-semibold mb-2 text-sm sm:text-base dark:text-slate-200">Resultado</h2>
+      <h2 className="mb-2 text-sm font-semibold dark:text-slate-200 sm:text-base">
+        {t("calculator.result")}
+      </h2>
       <div
-        className="grid gap-1 mx-auto max-w-[90vw] justify-center"
+        className="mx-auto grid max-w-[90vw] justify-center gap-1"
         style={{
-          // Aumenta a largura mínima de cada coluna para acomodar números maiores
           gridTemplateColumns: `repeat(${result[0].length}, minmax(0, 80px))`,
         }}
       >
@@ -40,10 +47,9 @@ const ResultDisplay = ({ result }) => {
               key={`result-${i}-${j}`}
               className="rounded bg-gray-200 p-2 text-center text-sm text-gray-900 dark:bg-slate-800 dark:text-slate-100"
             >
-              {/* Usa a nova função de formatação */}
-              {formatNumber(val)}
+              {formatNumber(val, language)}
             </div>
-          ))
+          )),
         )}
       </div>
     </div>

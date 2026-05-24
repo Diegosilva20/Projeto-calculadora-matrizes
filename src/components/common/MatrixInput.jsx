@@ -1,6 +1,9 @@
 import React from "react";
+import { useI18n } from "../../i18n/LanguageContext";
 
 const MatrixInput = ({ matrix, setMatrix, label, rows, cols }) => {
+  const { t } = useI18n();
+
   const handleInputChange = (row, col, value) => {
     // Permite números, negativos, decimais ou campo vazio
     const numericRegex = /^-?[0-9]*\.?[0-9]*$/;
@@ -112,7 +115,11 @@ const MatrixInput = ({ matrix, setMatrix, label, rows, cols }) => {
               onPaste={(e) => handlePaste(e, i, j)}
               onKeyDown={(e) => handleKeyDown(e, i, j)}
               className="w-full rounded border border-gray-200 p-2 text-center text-sm outline-none transition-colors focus:ring-2 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder-slate-500"
-              aria-label={`Elemento da ${label} na linha ${i + 1}, coluna ${j + 1}`}
+              aria-label={t("calculator.matrixElementAria", {
+                label,
+                row: i + 1,
+                col: j + 1,
+              })}
               placeholder="0"
             />
           ))

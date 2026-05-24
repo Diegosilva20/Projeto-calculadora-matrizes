@@ -1,5 +1,8 @@
 // src/utils/matrixCalculations.js
 import { calculateGaussianElimination } from "../algorithms/gaussianElimination";
+import { defaultLanguage, translate } from "../i18n";
+
+const defaultT = (key, params) => translate(defaultLanguage, key, params);
 
 let matrix;
 let add;
@@ -35,18 +38,17 @@ export const validateMatrix = (mat) =>
 const parseMatrix = (mat) =>
   mat.map((row) => row.map((val) => (val === "" ? fraction(0) : fraction(val))));
 
-// Exportadas para uso em algoritmos externos
 export const formatValue = (val) => Number(number(val).toFixed(2));
 
-export const toArray = (result) => {
-  if (result && typeof result.toArray === 'function') return result.toArray();
+export const toArray = (result, t = defaultT) => {
+  if (result && typeof result.toArray === "function") return result.toArray();
   if (Array.isArray(result)) return result;
-  throw new Error("O resultado não é uma matriz válida");
+  throw new Error(t("calculation.errors.invalidResult"));
 };
 
 export const formatMatrix = (mat) => {
   const arr = toArray(mat);
-  return arr.map(row => row.map(val => formatValue(val)));
+  return arr.map((row) => row.map((val) => formatValue(val)));
 };
 
 const cloneMatrix = (mat) => mat.map((row) => [...row]);
@@ -108,7 +110,7 @@ const sarrusSecondaryDiagonalCells = [
   [0, 4],
 ];
 
-const buildMultiplicationSteps = (parsedA, parsedB, formattedResult) => {
+const buildMultiplicationSteps = (parsedA, parsedB, formattedResult, t) => {
   const rowsA = parsedA.length;
   const colsA = parsedA[0]?.length || 0;
   const rowsB = parsedB.length;
@@ -119,8 +121,13 @@ const buildMultiplicationSteps = (parsedA, parsedB, formattedResult) => {
 
   const steps = [
     {
-      title: "Verificação das dimensões",
-      description: `A tem ${rowsA}x${colsA} e B tem ${rowsB}x${colsB}. Como ${colsA} = ${rowsB}, a multiplicação existe e o resultado terá ${rowsA}x${colsB}.`,
+      title: t("calculation.steps.dimensionCheckTitle"),
+      description: t("calculation.steps.dimensionCheckDescription", {
+        rowsA,
+        colsA,
+        rowsB,
+        colsB,
+      }),
     },
   ];
 
@@ -141,8 +148,14 @@ const buildMultiplicationSteps = (parsedA, parsedB, formattedResult) => {
       partialResult[i][j] = formattedResult[i][j];
 
       steps.push({
-        title: `Elemento C${i + 1}${j + 1}`,
-        description: `Linha ${i + 1} de A x coluna ${j + 1} de B: ${terms.join(" + ")} = ${products.join(" + ")} = ${formattedResult[i][j]}.`,
+        title: t("calculation.steps.elementTitle", { row: i + 1, col: j + 1 }),
+        description: t("calculation.steps.multiplicationElementDescription", {
+          row: i + 1,
+          col: j + 1,
+          terms: terms.join(" + "),
+          products: products.join(" + "),
+          result: formattedResult[i][j],
+        }),
         matrix: cloneMatrix(partialResult),
         highlight: {
           resultCells: [[i, j]],
@@ -154,7 +167,7 @@ const buildMultiplicationSteps = (parsedA, parsedB, formattedResult) => {
   return steps;
 };
 
-const buildTransposeSteps = (parsedA, formattedResult) => {
+const buildTransposeSteps = (parsedA, formattedResult, t) => {
   const rowsA = parsedA.length;
   const colsA = parsedA[0]?.length || 0;
   const partialResult = Array.from({ length: colsA }, () =>
@@ -163,8 +176,11 @@ const buildTransposeSteps = (parsedA, formattedResult) => {
 
   const steps = [
     {
-      title: "Troca de dimensões",
-      description: `A matriz original tem ${rowsA}x${colsA}. A transposta terá ${colsA}x${rowsA}, porque linhas viram colunas.`,
+      title: t("calculation.steps.transposeDimensionTitle"),
+      description: t("calculation.steps.transposeDimensionDescription", {
+        rowsA,
+        colsA,
+      }),
       matrix: formatMatrix(parsedA),
     },
   ];
@@ -173,8 +189,17 @@ const buildTransposeSteps = (parsedA, formattedResult) => {
     for (let j = 0; j < colsA; j++) {
       partialResult[j][i] = formattedResult[j][i];
       steps.push({
-        title: `Elemento A${i + 1}${j + 1}`,
-        description: `O valor ${formatValue(parsedA[i][j])}, que estava na posição (${i + 1}, ${j + 1}), vai para a posição (${j + 1}, ${i + 1}) na transposta.`,
+        title: t("calculation.steps.transposeElementTitle", {
+          row: i + 1,
+          col: j + 1,
+        }),
+        description: t("calculation.steps.transposeElementDescription", {
+          value: formatValue(parsedA[i][j]),
+          row: i + 1,
+          col: j + 1,
+          targetRow: j + 1,
+          targetCol: i + 1,
+        }),
         matrix: cloneMatrix(partialResult),
         highlight: {
           resultCells: [[j, i]],
@@ -192,6 +217,7 @@ const buildElementWiseSteps = (
   formattedResult,
   operationName,
   symbol,
+  t,
 ) => {
   const rows = parsedA.length;
   const cols = parsedA[0]?.length || 0;
@@ -199,8 +225,10 @@ const buildElementWiseSteps = (
 
   const steps = [
     {
-      title: "Cálculo elemento a elemento",
-      description: `Na ${operationName}, cada posição da resposta usa os valores da mesma posição em A e B.`,
+      title: t("calculation.steps.elementWiseTitle"),
+      description: t("calculation.steps.elementWiseDescription", {
+        operationName,
+      }),
     },
   ];
 
@@ -211,8 +239,15 @@ const buildElementWiseSteps = (
       partialResult[i][j] = formattedResult[i][j];
 
       steps.push({
-        title: `Elemento C${i + 1}${j + 1}`,
-        description: `Posição (${i + 1}, ${j + 1}): ${aValue} ${symbol} ${bValue} = ${formattedResult[i][j]}.`,
+        title: t("calculation.steps.elementTitle", { row: i + 1, col: j + 1 }),
+        description: t("calculation.steps.elementWiseElementDescription", {
+          row: i + 1,
+          col: j + 1,
+          aValue,
+          bValue,
+          symbol,
+          result: formattedResult[i][j],
+        }),
         matrix: cloneMatrix(partialResult),
         highlight: {
           resultCells: [[i, j]],
@@ -224,7 +259,7 @@ const buildElementWiseSteps = (
   return steps;
 };
 
-const buildScalarSteps = (parsedA, scalar, formattedResult) => {
+const buildScalarSteps = (parsedA, scalar, formattedResult, t) => {
   const rows = parsedA.length;
   const cols = parsedA[0]?.length || 0;
   const scalarValue = Number(parseFloat(scalar).toFixed(2));
@@ -232,8 +267,10 @@ const buildScalarSteps = (parsedA, scalar, formattedResult) => {
 
   const steps = [
     {
-      title: "Multiplicação por escalar",
-      description: `Cada elemento da matriz A será multiplicado pelo escalar ${scalarValue}.`,
+      title: t("calculation.steps.scalarTitle"),
+      description: t("calculation.steps.scalarDescription", {
+        scalar: scalarValue,
+      }),
     },
   ];
 
@@ -243,8 +280,14 @@ const buildScalarSteps = (parsedA, scalar, formattedResult) => {
       partialResult[i][j] = formattedResult[i][j];
 
       steps.push({
-        title: `Elemento C${i + 1}${j + 1}`,
-        description: `Posição (${i + 1}, ${j + 1}): ${scalarValue} x ${aValue} = ${formattedResult[i][j]}.`,
+        title: t("calculation.steps.elementTitle", { row: i + 1, col: j + 1 }),
+        description: t("calculation.steps.scalarElementDescription", {
+          row: i + 1,
+          col: j + 1,
+          scalar: scalarValue,
+          value: aValue,
+          result: formattedResult[i][j],
+        }),
         matrix: cloneMatrix(partialResult),
         highlight: {
           resultCells: [[i, j]],
@@ -256,7 +299,7 @@ const buildScalarSteps = (parsedA, scalar, formattedResult) => {
   return steps;
 };
 
-const buildDeterminantSteps = (parsedA, formattedResult) => {
+const buildDeterminantSteps = (parsedA, formattedResult, t) => {
   const n = parsedA.length;
   const value = formattedResult[0][0];
   const a = parsedA.map((row) => row.map((cell) => formatValue(cell)));
@@ -264,8 +307,8 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
   if (n === 1) {
     return [
       {
-        title: "Matriz 1x1",
-        description: `O determinante de uma matriz 1x1 é o próprio elemento: det(A) = ${value}.`,
+        title: t("calculation.steps.matrix1x1Title"),
+        description: t("calculation.steps.matrix1x1Description", { value }),
         matrix: [[value]],
         highlight: {
           resultCells: [[0, 0]],
@@ -280,8 +323,8 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
 
     return [
       {
-        title: "Fórmula 2x2",
-        description: "Para uma matriz 2x2, usamos det(A) = (a x d) - (b x c).",
+        title: t("calculation.steps.formula2x2Title"),
+        description: t("calculation.steps.formula2x2Description"),
         matrix: a,
         highlight: {
           cells: diagonalCells(2),
@@ -289,7 +332,7 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
         },
       },
       {
-        title: "Diagonal principal",
+        title: t("calculation.steps.mainDiagonalTitle"),
         description: `${a[0][0]} x ${a[1][1]} = ${mainDiagonal}.`,
         matrix: a,
         highlight: {
@@ -297,7 +340,7 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
         },
       },
       {
-        title: "Diagonal secundária",
+        title: t("calculation.steps.secondaryDiagonalTitle"),
         description: `${a[0][1]} x ${a[1][0]} = ${secondaryDiagonal}.`,
         matrix: a,
         highlight: {
@@ -305,8 +348,12 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
         },
       },
       {
-        title: "Resultado",
-        description: `det(A) = ${mainDiagonal} - (${secondaryDiagonal}) = ${value}.`,
+        title: t("calculation.steps.determinantResultTitle"),
+        description: t("calculation.steps.determinantResultDescription", {
+          mainDiagonal,
+          secondaryDiagonal,
+          value,
+        }),
         matrix: [[value]],
         highlight: {
           resultCells: [[0, 0]],
@@ -332,12 +379,12 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
 
     return [
       {
-        title: "Regra de Sarrus",
-        description: "Para matriz 3x3, somamos as diagonais que descem e subtraímos as diagonais que sobem.",
+        title: t("calculation.steps.sarrusTitle"),
+        description: t("calculation.steps.sarrusDescription"),
         matrix: sarrusMatrix,
       },
       {
-        title: "Diagonais principais",
+        title: t("calculation.steps.mainDiagonalsTitle"),
         description: `${downProducts.join(" + ")} = ${downSum}.`,
         matrix: sarrusMatrix,
         highlight: {
@@ -345,7 +392,7 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
         },
       },
       {
-        title: "Diagonais secundárias",
+        title: t("calculation.steps.secondaryDiagonalsTitle"),
         description: `${upProducts.join(" + ")} = ${upSum}.`,
         matrix: sarrusMatrix,
         highlight: {
@@ -353,8 +400,12 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
         },
       },
       {
-        title: "Resultado",
-        description: `det(A) = ${downSum} - (${upSum}) = ${value}.`,
+        title: t("calculation.steps.determinantResultTitle"),
+        description: t("calculation.steps.determinantResultDescription", {
+          mainDiagonal: downSum,
+          secondaryDiagonal: upSum,
+          value,
+        }),
         matrix: [[value]],
         highlight: {
           resultCells: [[0, 0]],
@@ -366,8 +417,10 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
   const working = parsedA.map((row) => [...row]);
   const steps = [
     {
-      title: "Matriz inicial",
-      description: `Para calcular det(A) em uma matriz ${n}x${n}, transformamos A em matriz triangular superior. Operações do tipo Lk -> Lk - m x Li não mudam o determinante.`,
+      title: t("calculation.steps.determinantInitialTitle"),
+      description: t("calculation.steps.determinantInitialDescription", {
+        size: n,
+      }),
       matrix: formatWorkingMatrix(working),
       highlight: {
         pivotCells: [[0, 0]],
@@ -385,8 +438,10 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
 
     if (pivotRow === n) {
       steps.push({
-        title: "Coluna sem pivô",
-        description: `Não há pivô não nulo na coluna ${pivotIndex + 1}. A matriz fica com uma diagonal nula, então det(A) = 0.`,
+        title: t("calculation.steps.noPivotColumnTitle"),
+        description: t("calculation.steps.noPivotColumnDescription", {
+          col: pivotIndex + 1,
+        }),
         matrix: formatWorkingMatrix(working),
         highlight: {
           cols: [pivotIndex],
@@ -403,8 +458,11 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
       sign *= -1;
 
       steps.push({
-        title: "Troca de linhas",
-        description: `Trocamos L${pivotIndex + 1} com L${pivotRow + 1}. Cada troca de linhas muda o sinal do determinante.`,
+        title: t("calculation.steps.swapRowsTitle"),
+        description: t("calculation.steps.determinantSwapRowsDescription", {
+          rowA: pivotIndex + 1,
+          rowB: pivotRow + 1,
+        }),
         matrix: formatWorkingMatrix(working),
         highlight: {
           rows: [pivotIndex, pivotRow],
@@ -429,8 +487,15 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
       }
 
       steps.push({
-        title: `Zerar A${row + 1}${pivotIndex + 1}`,
-        description: `Usamos L${row + 1} -> L${row + 1} - (${formatValue(factor)}) x L${pivotIndex + 1}. Essa operação cria zero abaixo do pivô e mantém o determinante.`,
+        title: t("calculation.steps.zeroCellTitle", {
+          row: row + 1,
+          col: pivotIndex + 1,
+        }),
+        description: t("calculation.steps.zeroCellDescription", {
+          row: row + 1,
+          factor: formatValue(factor),
+          pivotRow: pivotIndex + 1,
+        }),
         matrix: formatWorkingMatrix(working),
         highlight: {
           rows: [row],
@@ -450,8 +515,13 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
   const signText = sign === -1 ? "-1 x " : "";
 
   steps.push({
-    title: "Multiplicar a diagonal",
-    description: `Como a matriz está triangular, det(A) = ${signText}${diagonalText} = ${formatValue(diagonalProduct)}. Resultado final: det(A) = ${value}.`,
+    title: t("calculation.steps.multiplyDiagonalTitle"),
+    description: t("calculation.steps.multiplyDiagonalDescription", {
+      sign: signText,
+      diagonal: diagonalText,
+      product: formatValue(diagonalProduct),
+      value,
+    }),
     matrix: formatWorkingMatrix(working),
     highlight: {
       cells: diagonalCells(n),
@@ -461,7 +531,7 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
   return steps;
 };
 
-const buildInverseSteps = (parsedA, formattedResult) => {
+const buildInverseSteps = (parsedA, formattedResult, t) => {
   const n = parsedA.length;
   const determinant = formatValue(det(matrix(parsedA)));
   const a = parsedA.map((row) => row.map((cell) => formatValue(cell)));
@@ -474,16 +544,18 @@ const buildInverseSteps = (parsedA, formattedResult) => {
     ]);
     const steps = [
       {
-        title: "Verificar determinante",
-        description: `A matriz é quadrada e det(A) = ${determinant}. Como o determinante é diferente de zero, a inversa existe.`,
+        title: t("calculation.steps.verifyDeterminantTitle"),
+        description: t("calculation.steps.inverseVerifyDescription", {
+          determinant,
+        }),
         matrix: a,
         highlight: {
           cells: diagonalCells(n),
         },
       },
       {
-        title: "Montar [A | I]",
-        description: "Colocamos a matriz A à esquerda e a matriz identidade à direita. O objetivo é transformar o lado esquerdo em identidade.",
+        title: t("calculation.steps.augmentedTitle"),
+        description: t("calculation.steps.augmentedDescription"),
         matrix: formatAugmentedMatrix(augmented, n),
         highlight: {
           resultCells: allCellCoordinates(n, n).map(([row, col]) => [
@@ -503,8 +575,8 @@ const buildInverseSteps = (parsedA, formattedResult) => {
 
       if (pivotRow === n) {
         steps.push({
-          title: "Pivô não encontrado",
-          description: "Não foi possível encontrar um pivô não nulo nesta coluna. Confira se a matriz é invertível.",
+          title: t("calculation.steps.pivotNotFoundTitle"),
+          description: t("calculation.steps.pivotNotFoundDescription"),
           matrix: formatAugmentedMatrix(augmented, n),
           highlight: {
             cols: [pivotIndex],
@@ -520,8 +592,13 @@ const buildInverseSteps = (parsedA, formattedResult) => {
         ];
 
         steps.push({
-          title: "Troca de linhas",
-          description: `Trocamos L${pivotIndex + 1} com L${pivotRow + 1} para colocar um pivô não nulo na posição (${pivotIndex + 1}, ${pivotIndex + 1}).`,
+          title: t("calculation.steps.swapRowsTitle"),
+          description: t("calculation.steps.inverseSwapRowsDescription", {
+            rowA: pivotIndex + 1,
+            rowB: pivotRow + 1,
+            positionRow: pivotIndex + 1,
+            positionCol: pivotIndex + 1,
+          }),
           matrix: formatAugmentedMatrix(augmented, n),
           highlight: {
             rows: [pivotIndex, pivotRow],
@@ -538,8 +615,13 @@ const buildInverseSteps = (parsedA, formattedResult) => {
         }
 
         steps.push({
-          title: `Normalizar pivô ${pivotIndex + 1}`,
-          description: `Dividimos L${pivotIndex + 1} por ${formatValue(pivot)} para transformar o pivô em 1.`,
+          title: t("calculation.steps.normalizePivotTitle", {
+            pivot: pivotIndex + 1,
+          }),
+          description: t("calculation.steps.normalizePivotDescription", {
+            row: pivotIndex + 1,
+            value: formatValue(pivot),
+          }),
           matrix: formatAugmentedMatrix(augmented, n),
           highlight: {
             rows: [pivotIndex],
@@ -564,8 +646,14 @@ const buildInverseSteps = (parsedA, formattedResult) => {
         }
 
         steps.push({
-          title: `Zerar coluna ${pivotIndex + 1}`,
-          description: `Usamos L${row + 1} -> L${row + 1} - (${formatValue(factor)}) x L${pivotIndex + 1} para criar zero fora do pivô.`,
+          title: t("calculation.steps.zeroColumnTitle", {
+            col: pivotIndex + 1,
+          }),
+          description: t("calculation.steps.zeroColumnDescription", {
+            row: row + 1,
+            factor: formatValue(factor),
+            pivotRow: pivotIndex + 1,
+          }),
           matrix: formatAugmentedMatrix(augmented, n),
           highlight: {
             rows: [row],
@@ -577,8 +665,8 @@ const buildInverseSteps = (parsedA, formattedResult) => {
     }
 
     steps.push({
-      title: "Ler a inversa",
-      description: "Quando o lado esquerdo vira identidade, o lado direito é a matriz inversa A⁻¹.",
+      title: t("calculation.steps.readInverseTitle"),
+      description: t("calculation.steps.readInverseDescription"),
       matrix: formattedResult,
       highlight: {
         resultCells: allCellCoordinates(n, n),
@@ -595,8 +683,14 @@ const buildInverseSteps = (parsedA, formattedResult) => {
 
   return [
     {
-      title: "Verificar determinante",
-      description: `det(A) = (${a[0][0]} x ${a[1][1]}) - (${a[0][1]} x ${a[1][0]}) = ${determinant}. Como é diferente de zero, a inversa existe.`,
+      title: t("calculation.steps.verifyDeterminantTitle"),
+      description: t("calculation.steps.inverse2x2VerifyDescription", {
+        a: a[0][0],
+        b: a[0][1],
+        c: a[1][0],
+        d: a[1][1],
+        determinant,
+      }),
       matrix: a,
       highlight: {
         cells: diagonalCells(2),
@@ -604,20 +698,22 @@ const buildInverseSteps = (parsedA, formattedResult) => {
       },
     },
     {
-      title: "Trocar e inverter sinais",
-      description: "Trocamos os elementos da diagonal principal e invertemos o sinal dos outros dois elementos.",
+      title: t("calculation.steps.swapAndSignsTitle"),
+      description: t("calculation.steps.swapAndSignsDescription"),
       matrix: adjusted,
       highlight: {
         resultCells: allCellCoordinates(2, 2),
       },
     },
     {
-      title: "Multiplicar por 1/det(A)",
-      description: `Agora multiplicamos todos os elementos por 1/${determinant}.`,
+      title: t("calculation.steps.multiplyByDetTitle"),
+      description: t("calculation.steps.multiplyByDetDescription", {
+        determinant,
+      }),
     },
     {
-      title: "Resultado",
-      description: "Esta é a matriz inversa A⁻¹.",
+      title: t("calculation.steps.determinantResultTitle"),
+      description: t("calculation.steps.inverseResultDescription"),
       matrix: formattedResult,
       highlight: {
         resultCells: allCellCoordinates(2, 2),
@@ -647,48 +743,58 @@ export const isRowEchelonForm = (mat) => {
 };
 
 const operationsMap = {
-  soma: (a, b) => {
+  soma: (a, b, _, t) => {
     if (a.size()[0] !== b.size()[0] || a.size()[1] !== b.size()[1])
-      throw new Error("As matrizes devem ter o mesmo tamanho para a soma.");
+      throw new Error(t("calculation.errors.sameSizeAdd"));
     return add(a, b);
   },
-  subtracao: (a, b) => {
+  subtracao: (a, b, _, t) => {
     if (a.size()[0] !== b.size()[0] || a.size()[1] !== b.size()[1])
-      throw new Error("As matrizes devem ter o mesmo tamanho para a subtração.");
+      throw new Error(t("calculation.errors.sameSizeSubtract"));
     return subtract(a, b);
   },
-  multiplicacao: (a, b) => {
+  multiplicacao: (a, b, _, t) => {
     if (a.size()[1] !== b.size()[0])
-      throw new Error("O número de colunas da Matriz A deve ser igual ao número de linhas da Matriz B.");
+      throw new Error(t("calculation.errors.multiplicationDimensions"));
     return multiply(a, b);
   },
-  determinanteA: (a) => {
+  determinanteA: (a, _b, _scalar, t) => {
     if (a.size()[0] !== a.size()[1])
-      throw new Error("O determinante só pode ser calculado para matrizes quadradas.");
+      throw new Error(t("calculation.errors.squareDeterminantShort"));
     return [[det(a)]];
   },
-  inversa: (a) => {
+  inversa: (a, _b, _scalar, t) => {
     if (a.size()[0] !== a.size()[1])
-      throw new Error("A inversa só pode ser calculada para matrizes quadradas.");
+      throw new Error(t("calculation.errors.squareInverseShort"));
     if (Math.abs(number(det(a))) < 1e-10)
-      throw new Error("A matriz não é invertível (determinante igual a zero).");
+      throw new Error(t("calculation.errors.singular"));
     return inv(a);
   },
   transposicao: (a) => transpose(a),
-  escalar: (a, _, scalar) => {
+  escalar: (a, _, scalar, t) => {
     const scalarValue = parseFloat(scalar);
     if (isNaN(scalarValue) || !isFinite(scalarValue))
-      throw new Error("Insira um número válido para o escalar.");
+      throw new Error(t("calculation.errors.scalarInvalid"));
     return multiply(a, fraction(scalarValue));
   },
 };
 
-export const calculate = async (matrixA, matrixB, scalar, operation, size, setResult, setError, setSteps) => {
+export const calculate = async (
+  matrixA,
+  matrixB,
+  scalar,
+  operation,
+  size,
+  setResult,
+  setError,
+  setSteps,
+  t = defaultT,
+) => {
   setError("");
   setSteps([]);
 
   if (!validateMatrix(matrixA) || (matrixB && !validateMatrix(matrixB))) {
-    setError("Por favor, insira apenas números válidos nas matrizes.");
+    setError(t("calculation.errors.invalidMatrix"));
     return;
   }
 
@@ -701,22 +807,22 @@ export const calculate = async (matrixA, matrixB, scalar, operation, size, setRe
     const matrixBObj = parsedB ? matrix(parsedB) : null;
 
     if (operation === "gauss") {
-      const { result: gaussResult, steps: gaussSteps } = calculateGaussianElimination(parsedA, rowsA, math);
+      const { result: gaussResult, steps: gaussSteps } = calculateGaussianElimination(parsedA, rowsA, math, t);
       setResult(gaussResult);
       setSteps(gaussSteps);
       return;
     }
 
     if (operation === "multiplicacao") {
-      const rawResult = operationsMap[operation](matrixAObj, matrixBObj, scalar);
+      const rawResult = operationsMap[operation](matrixAObj, matrixBObj, scalar, t);
       const formattedResult = formatMatrix(rawResult);
       setResult(formattedResult);
-      setSteps(buildMultiplicationSteps(parsedA, parsedB, formattedResult));
+      setSteps(buildMultiplicationSteps(parsedA, parsedB, formattedResult, t));
       return;
     }
 
     if (operation === "soma") {
-      const rawResult = operationsMap[operation](matrixAObj, matrixBObj, scalar);
+      const rawResult = operationsMap[operation](matrixAObj, matrixBObj, scalar, t);
       const formattedResult = formatMatrix(rawResult);
       setResult(formattedResult);
       setSteps(
@@ -724,15 +830,16 @@ export const calculate = async (matrixA, matrixB, scalar, operation, size, setRe
           parsedA,
           parsedB,
           formattedResult,
-          "soma de matrizes",
+          t("calculation.operationNames.addition"),
           "+",
+          t,
         ),
       );
       return;
     }
 
     if (operation === "subtracao") {
-      const rawResult = operationsMap[operation](matrixAObj, matrixBObj, scalar);
+      const rawResult = operationsMap[operation](matrixAObj, matrixBObj, scalar, t);
       const formattedResult = formatMatrix(rawResult);
       setResult(formattedResult);
       setSteps(
@@ -740,52 +847,57 @@ export const calculate = async (matrixA, matrixB, scalar, operation, size, setRe
           parsedA,
           parsedB,
           formattedResult,
-          "subtração de matrizes",
+          t("calculation.operationNames.subtraction"),
           "-",
+          t,
         ),
       );
       return;
     }
 
     if (operation === "escalar") {
-      const rawResult = operationsMap[operation](matrixAObj, matrixBObj, scalar);
+      const rawResult = operationsMap[operation](matrixAObj, matrixBObj, scalar, t);
       const formattedResult = formatMatrix(rawResult);
       setResult(formattedResult);
-      setSteps(buildScalarSteps(parsedA, scalar, formattedResult));
+      setSteps(buildScalarSteps(parsedA, scalar, formattedResult, t));
       return;
     }
 
     if (operation === "determinanteA") {
-      const rawResult = operationsMap[operation](matrixAObj, matrixBObj, scalar);
+      const rawResult = operationsMap[operation](matrixAObj, matrixBObj, scalar, t);
       const formattedResult = formatMatrix(rawResult);
       setResult(formattedResult);
-      setSteps(buildDeterminantSteps(parsedA, formattedResult));
+      setSteps(buildDeterminantSteps(parsedA, formattedResult, t));
       return;
     }
 
     if (operation === "inversa") {
-      const rawResult = operationsMap[operation](matrixAObj, matrixBObj, scalar);
+      const rawResult = operationsMap[operation](matrixAObj, matrixBObj, scalar, t);
       const formattedResult = formatMatrix(rawResult);
       setResult(formattedResult);
-      setSteps(buildInverseSteps(parsedA, formattedResult));
+      setSteps(buildInverseSteps(parsedA, formattedResult, t));
       return;
     }
 
     if (operation === "transposicao") {
-      const rawResult = operationsMap[operation](matrixAObj, matrixBObj, scalar);
+      const rawResult = operationsMap[operation](matrixAObj, matrixBObj, scalar, t);
       const formattedResult = formatMatrix(rawResult);
       setResult(formattedResult);
-      setSteps(buildTransposeSteps(parsedA, formattedResult));
+      setSteps(buildTransposeSteps(parsedA, formattedResult, t));
       return;
     }
 
     if (operationsMap[operation]) {
-      const rawResult = operationsMap[operation](matrixAObj, matrixBObj, scalar);
+      const rawResult = operationsMap[operation](matrixAObj, matrixBObj, scalar, t);
       setResult(formatMatrix(rawResult));
     } else {
-      setError("Operação desconhecida.");
+      setError(t("calculation.errors.unknownOperation"));
     }
   } catch (e) {
-    setError(`Erro: ${e.message || "Verifique os valores de entrada e tente novamente."}`);
+    setError(
+      t("calculation.errors.generic", {
+        message: e.message || t("calculation.errors.fallback"),
+      }),
+    );
   }
 };

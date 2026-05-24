@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
 import Formula from "../../components/tutorial/Formula";
 import TipBox from "../../components/tutorial/TipBox";
@@ -37,7 +38,21 @@ function SarrusTutorial() {
         <p className="mb-4 leading-relaxed">
           A Regra de Sarrus só vale para matriz <strong>3x3</strong>. Ela não
           serve para matrizes 2x2, 4x4 ou maiores. Para outros tamanhos, usamos
-          outros métodos, como fórmula 2x2, cofatores ou eliminação.
+          outros métodos, como{" "}
+          <Link
+            to="/tutorial/determinante-2x2"
+            className="font-bold text-blue-600 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            fórmula do determinante 2x2
+          </Link>
+          , cofatores ou os métodos do guia de{" "}
+          <Link
+            to="/tutorial/determinante-de-matrizes"
+            className="font-bold text-blue-600 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            determinante de matrizes
+          </Link>
+          .
         </p>
         <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg">
           <Formula>A é 3x3</Formula> → pode usar Sarrus
@@ -147,6 +162,16 @@ function SarrusTutorial() {
           A Regra de Sarrus é útil porque transforma o determinante 3x3 em uma
           sequência visual de multiplicações. Para estudantes iniciantes, ela é
           uma forma rápida de treinar sinais, diagonais e organização do cálculo.
+        </p>
+        <p className="mb-4 leading-relaxed">
+          Ela também aparece em sistemas 3x3 resolvidos pela{" "}
+          <Link
+            to="/tutorial/regra-de-cramer"
+            className="font-bold text-blue-600 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            Regra de Cramer
+          </Link>
+          , porque cada variável depende de um determinante 3x3.
         </p>
         <TipBox>
           Se o exercício pede determinante 3x3, Sarrus costuma ser o caminho

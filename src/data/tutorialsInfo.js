@@ -30,7 +30,7 @@ export const tutorialsInfo = [
     description: "Entenda a regra linha por coluna, veja exemplo resolvido de multiplicação de matrizes e confira cada etapa na calculadora.",
   },
   {
-    id: 6, 
+    id: 6,
     slug: 'sistemas-lineares',
     title: 'Sistemas Lineares com Matrizes: Passo a Passo',
     description: "Aprenda a montar a matriz aumentada, usar escalonamento de Gauss e resolver sistemas lineares com exemplo resolvido.",
@@ -76,7 +76,8 @@ export const tutorialsInfo = [
     slug: 'determinante-2x2',
     title: "Determinante 2x2: Fórmula e Exemplo Resolvido",
     description: "Aprenda a calcular determinante de matriz 2x2 com fórmula, diagonais, sinais negativos e exemplo resolvido passo a passo.",
-  },  {
+  },
+  {
     id: 14,
     slug: 'regra-de-cramer',
     title: "Regra de Cramer: Como Resolver Sistemas Lineares com Determinantes",
@@ -87,4 +88,5 @@ export const tutorialsInfo = [
     slug: 'posto-de-matriz',
     title: "Posto de Matriz: Como Calcular pelo Escalonamento",
     description: "Aprenda a encontrar o posto de uma matriz com escalonamento, contando as linhas não nulas e entendendo a relação com determinante e matriz inversa.",
-  },];
+  },
+];

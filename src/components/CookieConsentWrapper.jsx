@@ -2,6 +2,7 @@ import CookieConsentDefault, {
   CookieConsent as NamedCookieConsent,
 } from "react-cookie-consent";
 import { Link } from "react-router-dom";
+import { useI18n } from "../i18n/LanguageContext";
 
 const CookieConsent =
   typeof CookieConsentDefault === "function"
@@ -9,11 +10,13 @@ const CookieConsent =
     : NamedCookieConsent || CookieConsentDefault.CookieConsent;
 
 const CookieConsentWrapper = () => {
+  const { t } = useI18n();
+
   return (
     <CookieConsent
       location="bottom"
-      buttonText="Aceitar"
-      declineButtonText="Recusar"
+      buttonText={t("cookie.accept")}
+      declineButtonText={t("cookie.decline")}
       cookieName="matrizesCookieConsent"
       enableDeclineButton={true}
       disableStyles
@@ -24,13 +27,14 @@ const CookieConsentWrapper = () => {
       declineButtonClasses="min-w-24 rounded-lg bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 sm:text-sm"
       expires={365}
     >
-      Usamos cookies para melhorar sua experiência.
+      {t("cookie.text")}
       <Link
         to="/politica-privacidade"
         className="ml-1 font-semibold text-slate-700 underline underline-offset-2 hover:text-blue-700 dark:text-slate-100 dark:hover:text-blue-300"
       >
-        Saiba mais
-      </Link>.
+        {t("cookie.learnMore")}
+      </Link>
+      .
     </CookieConsent>
   );
 };
