@@ -1,6 +1,11 @@
 import React, { useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import {
+  getCalculatorPageByTutorialSlug,
+  getCalculatorPageCopy,
+} from "../data/calculatorPages";
+import { getTutorialComponent } from "../data/tutorialComponents";
 import { getTutoriais } from "../data/tutorialsData";
 import FAQSection from "../components/tutorial/FAQSection";
 import TutorialsUnavailable from "../components/tutorial/TutorialsUnavailable";
@@ -442,6 +447,12 @@ const TutorialPage = () => {
   };
 
   const tutorial = tutoriais.find((t) => t.slug === canonicalSlug);
+  const TutorialContent = getTutorialComponent(canonicalSlug);
+  const relatedCalculatorPage = getCalculatorPageByTutorialSlug(canonicalSlug);
+  const relatedCalculatorCopy = getCalculatorPageCopy(
+    relatedCalculatorPage,
+    "pt-BR",
+  );
   const localizedSeo =
     language === "pt-BR"
       ? seo
@@ -600,9 +611,29 @@ const TutorialPage = () => {
           </p>
         </header>
 
-        <div className="tutorial-content prose prose-lg prose-slate max-w-none text-slate-800 dark:text-slate-200">
-          {tutorial.component}
-        </div>
+        {relatedCalculatorPage && relatedCalculatorCopy && (
+          <aside className="mb-10 rounded-xl border border-blue-100 bg-blue-50 p-5 dark:border-blue-900/70 dark:bg-blue-950/40">
+            <p className="mb-2 text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
+              Pratique com a calculadora
+            </p>
+            <p className="mb-4 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+              Use a calculadora específica para testar este conteúdo com seus
+              próprios valores e conferir o passo a passo.
+            </p>
+            <Link
+              to={relatedCalculatorPage.path}
+              className="inline-flex rounded-full bg-blue-600 px-5 py-2 text-sm font-bold text-white transition-colors hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
+            >
+              Abrir calculadora de {relatedCalculatorCopy.linkLabel.toLowerCase()}
+            </Link>
+          </aside>
+        )}
+
+        {TutorialContent && (
+          <div className="tutorial-content prose prose-lg prose-slate max-w-none text-slate-800 dark:text-slate-200">
+            <TutorialContent />
+          </div>
+        )}
         <FAQSection items={faqItems} />
       </article>
     </div>

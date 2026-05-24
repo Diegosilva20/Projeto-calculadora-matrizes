@@ -1,12 +1,19 @@
 import React, { useMemo, useState } from "react";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import MatrixDisplay from "../components/common/MatrixDisplay";
 import MatrixInput from "../components/common/MatrixInput";
 import ResultDisplay from "../components/ui/ResultDisplay";
+import {
+  calculatorPagesByPath,
+  getCalculatorPageByOperation,
+  getCalculatorPageCopy,
+} from "../data/calculatorPages";
 import { getTutoriais } from "../data/tutorialsData";
 import { useMatrixCalculator } from "../hooks/useMatrixCalculator";
 import { useI18n } from "../i18n/LanguageContext";
+
+const siteBaseUrl = "https://www.matrizcalculator.com";
 
 const operationToSlug = {
   soma: "soma-de-matrizes",
@@ -44,6 +51,17 @@ const featuredTutorialSlugs = [
 
 const Home = () => {
   const { language, t } = useI18n();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const calculatorPage = calculatorPagesByPath[location.pathname] || null;
+  const calculatorPageCopy = getCalculatorPageCopy(calculatorPage, language);
+  const canonicalUrl = `${siteBaseUrl}${calculatorPage?.path || "/"}`;
+  const pageMetaTitle = calculatorPageCopy?.metaTitle || t("home.metaTitle");
+  const pageMetaDescription =
+    calculatorPageCopy?.metaDescription || t("home.metaDescription");
+  const pageHeroTitle = calculatorPageCopy?.heroTitle || t("home.heroTitle");
+  const pageHeroDescription =
+    calculatorPageCopy?.heroDescription || t("home.heroDescription");
   const showTutorialLinks = language === "pt-BR";
   const tutoriais = useMemo(
     () => (showTutorialLinks ? getTutoriais(language) : []),
@@ -56,7 +74,6 @@ const Home = () => {
         .filter(Boolean),
     [tutoriais],
   );
-
   const {
     sizeA,
     sizeB,
@@ -74,7 +91,13 @@ const Home = () => {
     handleSizeChange,
     handleCalculate,
     handleClear,
-  } = useMatrixCalculator();
+    loadExample,
+  } = useMatrixCalculator(calculatorPage?.operation, calculatorPage?.example);
+  const activeTutorialSlug =
+    calculatorPage?.tutorialSlug || operationToSlug[operation];
+  const activeTutorialName =
+    calculatorPageCopy?.linkLabel?.toLowerCase() ||
+    t(`calculator.operationNames.${operation}`);
 
   const [isCalculating, setIsCalculating] = useState(false);
 
@@ -88,12 +111,26 @@ const Home = () => {
     }
   };
 
+  const handleOperationChange = (event) => {
+    const nextOperation = event.target.value;
+    const nextCalculatorPage = getCalculatorPageByOperation(nextOperation);
+
+    if (calculatorPage && nextCalculatorPage) {
+      navigate(nextCalculatorPage.path);
+      loadExample(nextCalculatorPage.example);
+      return;
+    }
+
+    setOperation(nextOperation);
+  };
+
   const structuredData = [
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      name: t("home.heroTitle"),
-      url: "https://www.matrizcalculator.com/",
+      name: pageHeroTitle,
+      description: pageMetaDescription,
+      url: canonicalUrl,
       applicationCategory: "EducationalApplication",
       operatingSystem: "All",
       inLanguage: t("tutorialPage.inLanguage"),
@@ -168,9 +205,9 @@ const Home = () => {
   return (
     <div className="w-full">
       <Helmet>
-        <title>{t("home.metaTitle")}</title>
-        <meta name="description" content={t("home.metaDescription")} />
-        <link rel="canonical" href="https://www.matrizcalculator.com/" />
+        <title>{pageMetaTitle}</title>
+        <meta name="description" content={pageMetaDescription} />
+        <link rel="canonical" href={canonicalUrl} />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
@@ -179,10 +216,10 @@ const Home = () => {
       <section className="mx-auto max-w-5xl p-4 text-center sm:p-6">
         <header className="mb-8">
           <h1 className="mb-2 text-3xl font-extrabold text-gray-800 dark:text-slate-100 sm:text-4xl">
-            {t("home.heroTitle")}
+            {pageHeroTitle}
           </h1>
           <p className="mx-auto max-w-2xl text-sm text-gray-600 dark:text-slate-300 sm:text-base">
-            {t("home.heroDescription")}
+            {pageHeroDescription}
           </p>
         </header>
 
@@ -198,7 +235,7 @@ const Home = () => {
               id="operation-select"
               className="w-full max-w-md rounded-lg border-2 border-blue-100 bg-blue-50 p-3 text-center outline-none transition-colors focus:border-blue-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
               value={operation}
-              onChange={(e) => setOperation(e.target.value)}
+              onChange={handleOperationChange}
             >
               {operationOptions.map((option) => (
                 <option key={option} value={option}>
@@ -271,17 +308,17 @@ const Home = () => {
             </button>
           </div>
 
-          {showTutorialLinks && operationToSlug[operation] && (
+          {showTutorialLinks && activeTutorialSlug && (
             <div className="mt-5 flex justify-center">
               <div className="max-w-full rounded-lg border border-yellow-100 bg-yellow-50 p-3 dark:border-amber-800 dark:bg-amber-950/40">
                 <p className="text-sm text-yellow-800 dark:text-amber-100">
                   {t("home.tutorialHint")}{" "}
                   <Link
-                    to={`/tutorial/${operationToSlug[operation]}`}
+                    to={`/tutorial/${activeTutorialSlug}`}
                     className="font-bold underline hover:text-yellow-900 dark:hover:text-amber-50"
                   >
                     {t("home.tutorialHintLink", {
-                      operation: t(`calculator.operationNames.${operation}`),
+                      operation: activeTutorialName,
                     })}
                   </Link>
                 </p>

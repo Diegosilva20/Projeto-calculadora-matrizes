@@ -19,23 +19,25 @@ const loadSavedState = (key, defaultValue) => {
   return defaultValue;
 };
 
-export const useMatrixCalculator = () => {
+export const useMatrixCalculator = (initialOperation, initialExample = null) => {
   const { language, t } = useI18n();
   const [sizeA, setSizeA] = useState(() =>
-    loadSavedState("sizeA", { rows: 2, cols: 2 }),
+    initialExample?.sizeA || loadSavedState("sizeA", { rows: 2, cols: 2 }),
   );
   const [sizeB, setSizeB] = useState(() =>
-    loadSavedState("sizeB", { rows: 2, cols: 2 }),
+    initialExample?.sizeB || loadSavedState("sizeB", { rows: 2, cols: 2 }),
   );
   const [matrixA, setMatrixA] = useState(() =>
-    loadSavedState("matrixA", createEmptyMatrix(2, 2)),
+    initialExample?.matrixA || loadSavedState("matrixA", createEmptyMatrix(2, 2)),
   );
   const [matrixB, setMatrixB] = useState(() =>
-    loadSavedState("matrixB", createEmptyMatrix(2, 2)),
+    initialExample?.matrixB || loadSavedState("matrixB", createEmptyMatrix(2, 2)),
   );
-  const [scalar, setScalar] = useState(() => loadSavedState("scalar", ""));
+  const [scalar, setScalar] = useState(() =>
+    initialExample?.scalar ?? loadSavedState("scalar", ""),
+  );
   const [operation, setOperation] = useState(() =>
-    loadSavedState("operation", "soma"),
+    initialOperation || loadSavedState("operation", "soma"),
   );
 
   const [result, setResult] = useState(null);
@@ -48,6 +50,16 @@ export const useMatrixCalculator = () => {
     const stateToSave = { sizeA, sizeB, matrixA, matrixB, scalar, operation };
     window.localStorage.setItem("matrixState_v1", JSON.stringify(stateToSave));
   }, [sizeA, sizeB, matrixA, matrixB, scalar, operation]);
+
+  useEffect(() => {
+    if (!initialOperation) return;
+
+    setOperation(initialOperation);
+    setResult(null);
+    setError("");
+    setSteps([]);
+    setHasCalculated(false);
+  }, [initialOperation]);
 
   const handleSizeChange = (matrixId, e) => {
     const { name, value } = e.target;
@@ -67,6 +79,27 @@ export const useMatrixCalculator = () => {
     setSteps([]);
     setHasCalculated(false);
   };
+
+  const loadExample = useCallback((example) => {
+    if (!example) return;
+
+    if (example.sizeA) setSizeA(example.sizeA);
+    if (example.sizeB) setSizeB(example.sizeB);
+    if (example.matrixA) setMatrixA(example.matrixA);
+    if (example.matrixB) setMatrixB(example.matrixB);
+    if (example.scalar !== undefined) setScalar(example.scalar);
+
+    setResult(null);
+    setError("");
+    setSteps([]);
+    setHasCalculated(false);
+  }, []);
+
+  useEffect(() => {
+    if (!initialExample) return;
+
+    loadExample(initialExample);
+  }, [initialExample, loadExample]);
 
   const runCalculation = useCallback(async () => {
     let newError = "";
@@ -141,5 +174,6 @@ export const useMatrixCalculator = () => {
     handleSizeChange,
     handleCalculate,
     handleClear,
+    loadExample,
   };
 };

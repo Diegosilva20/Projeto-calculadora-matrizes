@@ -1,7 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { prerenderPaths, tutorialSeoRoutes } from "../src/data/seoRoutes.js";
+import {
+  calculatorSeoRoutes,
+  prerenderPaths,
+  tutorialSeoRoutes,
+} from "../src/data/seoRoutes.js";
+import { calculatorPages } from "../src/data/calculatorPages.js";
 import { tutorialsInfo } from "../src/data/tutorialsInfo.js";
 
 const distDir = fileURLToPath(new URL("../dist/", import.meta.url));
@@ -22,12 +27,39 @@ const tutorialExpectations = Object.fromEntries(
     [tutorial.title, tutorial.description, "application/ld+json"],
   ]),
 );
+const calculatorExpectations = Object.fromEntries(
+  calculatorPages.map((page) => [
+    page.path,
+    [
+      page.copy["pt-BR"].heroTitle,
+      page.copy["pt-BR"].metaDescription,
+      "application/ld+json",
+    ],
+  ]),
+);
 const routeExpectations = {
   ...tutorialExpectations,
+  ...calculatorExpectations,
   "/": ["Calculadora de Matrizes", "application/ld+json"],
   "/tutorials": ["Catálogo de Tutoriais"],
 };
 
+calculatorPages.forEach((page) => {
+  const relatedSlugs = [
+    page.tutorialSlug,
+    ...(page.relatedTutorialSlugs || []),
+  ];
+
+  relatedSlugs.forEach((slug) => {
+    const routePath = `/tutorial/${slug}`;
+    routeExpectations[routePath] = [
+      ...(routeExpectations[routePath] || []),
+      page.path,
+    ];
+  });
+});
+
+const calculatorPaths = new Set(calculatorSeoRoutes.map((route) => route.path));
 const tutorialPaths = new Set(tutorialSeoRoutes.map((route) => route.path));
 const routesToCheck = [...new Set([...prerenderPaths, ...mandatoryRoutes])];
 
@@ -68,7 +100,7 @@ routesToCheck.forEach((routePath) => {
   }
 
   if (
-    tutorialPaths.has(routePath) &&
+    (tutorialPaths.has(routePath) || calculatorPaths.has(routePath)) &&
     !html.includes("application/ld+json")
   ) {
     failures.push(`${routePath}: JSON-LD esperado nao encontrado`);

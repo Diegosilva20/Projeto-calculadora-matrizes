@@ -18,7 +18,7 @@ let mathModulePromise;
 
 const loadMath = async () => {
   if (!mathModulePromise) {
-    mathModulePromise = import("mathjs").then((math) => {
+    mathModulePromise = import("./mathRuntime.js").then((math) => {
       ({ matrix, add, subtract, multiply, divide, det, inv, transpose, fraction, number } = math);
       return math;
     });
