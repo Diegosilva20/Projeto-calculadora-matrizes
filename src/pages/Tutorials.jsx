@@ -93,8 +93,8 @@ const Tutorials = () => {
             Catálogo de Tutoriais de Álgebra Linear
           </h1>
           <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto dark:text-slate-300">
-            Explore guias com fórmulas, exemplos resolvidos e links para a
-            calculadora de matrizes passo a passo.
+            Escolha um tema e veja a explicação passo a passo, com exemplos
+            antes de usar a calculadora.
           </p>
         </header>
 
