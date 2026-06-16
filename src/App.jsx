@@ -4,8 +4,6 @@ import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
 import CookieConsentWrapper from "./components/CookieConsentWrapper";
 import ScrollToTop from "./components/common/ScrollToTop";
-import { calculatorPages } from "./data/calculatorPages";
-import { LanguageProvider } from "./i18n/LanguageContext";
 
 // 1. IMPORTAÇÃO DIRETA PARA A HOME (Corrige bugs visuais e SEO)
 import Home from "./pages/Home";
@@ -64,9 +62,6 @@ export function AppRoutes({ pages = lazyPages }) {
       <Routes>
         {/* O Elemento Home agora carrega instantaneamente */}
         <Route path="/" element={<HomePage />} />
-        {calculatorPages.map((page) => (
-          <Route key={page.path} path={page.path} element={<HomePage />} />
-        ))}
         <Route path="/tutorial/:slug" element={<TutorialPageComponent />} />
         <Route path="/politica-privacidade" element={<PoliticaPrivacidadePage />} />
         <Route path="/termos-uso" element={<TermosUsoPage />} />
@@ -112,13 +107,11 @@ export function AppShell({ children }) {
 
 function App() {
   return (
-    <LanguageProvider>
-      <Router>
-        <AppShell>
-          <AppRoutes />
-        </AppShell>
-      </Router>
-    </LanguageProvider>
+    <Router>
+      <AppShell>
+        <AppRoutes />
+      </AppShell>
+    </Router>
   );
 }
 

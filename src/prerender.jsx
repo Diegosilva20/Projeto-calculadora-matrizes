@@ -3,7 +3,6 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router";
 import { Helmet } from "react-helmet";
 import { AppRoutes, AppShell } from "./App.jsx";
-import { LanguageProvider } from "./i18n/LanguageContext.jsx";
 
 import Home from "./pages/Home";
 import TutorialPage from "./pages/TutorialPage";
@@ -32,13 +31,11 @@ const extractTitle = (titleMarkup) => {
 
 export function prerender({ url }) {
   const html = renderToString(
-    <LanguageProvider initialLanguage="pt-BR">
-      <StaticRouter location={url}>
-        <AppShell>
-          <AppRoutes pages={pages} />
-        </AppShell>
-      </StaticRouter>
-    </LanguageProvider>,
+    <StaticRouter location={url}>
+      <AppShell>
+        <AppRoutes pages={pages} />
+      </AppShell>
+    </StaticRouter>,
   );
 
   const helmet = Helmet.renderStatic();

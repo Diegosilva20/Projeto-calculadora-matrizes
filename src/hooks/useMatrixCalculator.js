@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useI18n } from "../i18n/LanguageContext";
+import { useState, useEffect } from "react";
 import { createEmptyMatrix, calculate } from "../utils/matrixCalculations";
 
+// 1. Função inteligente que puxa os dados guardados ANTES de desenhar o ecrã
 const loadSavedState = (key, defaultValue) => {
   if (typeof window === "undefined" || !window.localStorage) {
     return defaultValue;
@@ -19,47 +19,35 @@ const loadSavedState = (key, defaultValue) => {
   return defaultValue;
 };
 
-export const useMatrixCalculator = (initialOperation, initialExample = null) => {
-  const { language, t } = useI18n();
+export const useMatrixCalculator = () => {
+  // 2. Os estados agora nascem com a memória do LocalStorage (ou com o padrão se for a primeira visita)
   const [sizeA, setSizeA] = useState(() =>
-    initialExample?.sizeA || loadSavedState("sizeA", { rows: 2, cols: 2 }),
+    loadSavedState("sizeA", { rows: 2, cols: 2 }),
   );
   const [sizeB, setSizeB] = useState(() =>
-    initialExample?.sizeB || loadSavedState("sizeB", { rows: 2, cols: 2 }),
+    loadSavedState("sizeB", { rows: 2, cols: 2 }),
   );
   const [matrixA, setMatrixA] = useState(() =>
-    initialExample?.matrixA || loadSavedState("matrixA", createEmptyMatrix(2, 2)),
+    loadSavedState("matrixA", createEmptyMatrix(2, 2)),
   );
   const [matrixB, setMatrixB] = useState(() =>
-    initialExample?.matrixB || loadSavedState("matrixB", createEmptyMatrix(2, 2)),
+    loadSavedState("matrixB", createEmptyMatrix(2, 2)),
   );
-  const [scalar, setScalar] = useState(() =>
-    initialExample?.scalar ?? loadSavedState("scalar", ""),
-  );
+  const [scalar, setScalar] = useState(() => loadSavedState("scalar", ""));
   const [operation, setOperation] = useState(() =>
-    initialOperation || loadSavedState("operation", "soma"),
+    loadSavedState("operation", "soma"),
   );
 
+  // Resultados e erros não são guardados, pois queremos a ecrã limpo ao voltar
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
   const [steps, setSteps] = useState([]);
-  const [hasCalculated, setHasCalculated] = useState(false);
-  const previousLanguageRef = useRef(language);
 
+  // 3. O "Olheiro": Sempre que o utilizador digitar algo novo, gravamos em milissegundos
   useEffect(() => {
     const stateToSave = { sizeA, sizeB, matrixA, matrixB, scalar, operation };
     window.localStorage.setItem("matrixState_v1", JSON.stringify(stateToSave));
   }, [sizeA, sizeB, matrixA, matrixB, scalar, operation]);
-
-  useEffect(() => {
-    if (!initialOperation) return;
-
-    setOperation(initialOperation);
-    setResult(null);
-    setError("");
-    setSteps([]);
-    setHasCalculated(false);
-  }, [initialOperation]);
 
   const handleSizeChange = (matrixId, e) => {
     const { name, value } = e.target;
@@ -77,40 +65,21 @@ export const useMatrixCalculator = (initialOperation, initialExample = null) => 
     setResult(null);
     setError("");
     setSteps([]);
-    setHasCalculated(false);
   };
 
-  const loadExample = useCallback((example) => {
-    if (!example) return;
-
-    if (example.sizeA) setSizeA(example.sizeA);
-    if (example.sizeB) setSizeB(example.sizeB);
-    if (example.matrixA) setMatrixA(example.matrixA);
-    if (example.matrixB) setMatrixB(example.matrixB);
-    if (example.scalar !== undefined) setScalar(example.scalar);
-
-    setResult(null);
-    setError("");
-    setSteps([]);
-    setHasCalculated(false);
-  }, []);
-
-  useEffect(() => {
-    if (!initialExample) return;
-
-    loadExample(initialExample);
-  }, [initialExample, loadExample]);
-
-  const runCalculation = useCallback(async () => {
+  const handleCalculate = async () => {
     let newError = "";
     const isSquareA = sizeA.rows === sizeA.cols;
 
     if (operation === "multiplicacao" && sizeA.cols !== sizeB.rows) {
-      newError = t("calculation.errors.multiplicationDimensionsDetailed");
+      newError =
+        "Erro: O número de colunas da Matriz A deve ser igual ao número de linhas da Matriz B para multiplicação.";
     } else if (operation === "inversa" && !isSquareA) {
-      newError = t("calculation.errors.squareInverse");
+      newError =
+        "Erro: A inversa só pode ser calculada para matrizes quadradas.";
     } else if (operation === "determinanteA" && !isSquareA) {
-      newError = t("calculation.errors.squareDeterminant");
+      newError =
+        "Erro: O determinante só pode ser calculado para matrizes quadradas.";
     }
 
     if (newError) {
@@ -129,33 +98,17 @@ export const useMatrixCalculator = (initialOperation, initialExample = null) => 
       setResult,
       setError,
       setSteps,
-      t,
     );
-  }, [matrixA, matrixB, operation, scalar, sizeA, sizeB, t]);
-
-  useEffect(() => {
-    if (previousLanguageRef.current === language) return;
-    previousLanguageRef.current = language;
-
-    if (hasCalculated) {
-      runCalculation();
-    }
-  }, [hasCalculated, language, runCalculation]);
-
-  const handleCalculate = async () => {
-    setHasCalculated(true);
-    await runCalculation();
   };
 
   const handleClear = () => {
-    setMatrixA(createEmptyMatrix(sizeA.rows, sizeA.cols));
-    setMatrixB(createEmptyMatrix(sizeB.rows, sizeB.cols));
-    setScalar("");
-    setResult(null);
-    setError("");
-    setSteps([]);
-    setHasCalculated(false);
-  };
+      setMatrixA(createEmptyMatrix(sizeA.rows, sizeA.cols));
+      setMatrixB(createEmptyMatrix(sizeB.rows, sizeB.cols));
+      setScalar("");
+      setResult(null);
+      setError("");
+      setSteps([]);
+    };
 
   return {
     sizeA,
@@ -174,6 +127,5 @@ export const useMatrixCalculator = (initialOperation, initialExample = null) => 
     handleSizeChange,
     handleCalculate,
     handleClear,
-    loadExample,
   };
 };

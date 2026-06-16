@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import MatrixDisplay from "../../components/common/MatrixDisplay";
 import Formula from "../../components/tutorial/Formula";
 import SymbolicMatrix from "../../components/tutorial/SymbolicMatrix";
@@ -6,61 +5,57 @@ import TipBox from "../../components/tutorial/TipBox";
 import TutorialCTA from "../../components/tutorial/TutorialCTA";
 import UseExampleButton from "../../components/tutorial/UseExampleButton";
 
-const tutorialLinkClass =
-  "font-bold text-blue-600 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300";
-
 function Determinant2x2Tutorial() {
   return (
-    <div className="p-6 max-w-4xl mx-auto text-gray-800 dark:text-slate-200">
+    <div className="p-6 max-w-4xl mx-auto text-gray-800">
       <p className="mb-6 text-lg leading-relaxed">
-        O determinante 2x2 é o cálculo mais rápido para medir o comportamento
-        de uma matriz quadrada de ordem 2. Aqui você vai aprender a fórmula,
-        entender as diagonais e resolver um exemplo completo antes de testar na
-        calculadora.
+        O determinante 2x2 é um dos cálculos mais importantes para começar em
+        matrizes. Ele aparece em exercícios de matriz inversa, sistemas lineares
+        e em muitos testes para saber se uma matriz pode ser invertida.
       </p>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200 dark:border-slate-800 dark:bg-slate-900">
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+        <h2 className="text-2xl font-semibold mb-3">
+          A Ideia: Multiplicar Cruzado
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Em uma matriz 2x2, existem duas diagonais. A diagonal principal desce
+          da esquerda para a direita. A diagonal secundária desce da direita
+          para a esquerda. Para calcular o determinante, multiplicamos cada
+          diagonal e fazemos a diferença entre esses dois produtos.
+        </p>
+        <TipBox>
+          <strong>Resumo rápido:</strong> multiplique a diagonal principal,
+          multiplique a diagonal secundária e subtraia: principal menos
+          secundária.
+        </TipBox>
+      </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-3">
           Fórmula do Determinante 2x2
         </h2>
         <p className="mb-4 leading-relaxed">
-          Para a matriz 2 por 2 abaixo, chamamos cada posição de{" "}
-          <Formula>a</Formula>, <Formula>b</Formula>, <Formula>c</Formula> e{" "}
-          <Formula>d</Formula>:
+          Para uma matriz 2x2:
         </p>
         <SymbolicMatrix
           label="A ="
           matrix={[["a", "b"], ["c", "d"]]}
           className="mb-4"
         />
-        <p className="mb-4 leading-relaxed">o determinante é:</p>
-        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg dark:border-slate-700 dark:bg-slate-950">
+        <p className="mb-4 leading-relaxed">
+          o determinante é:
+        </p>
+        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg">
           <Formula>det(A) = (a × d) - (b × c)</Formula>
         </div>
-        <p className="mt-4 text-sm text-gray-600 leading-relaxed dark:text-slate-300">
+        <p className="mt-4 text-sm text-gray-600 leading-relaxed">
           O produto <Formula>a × d</Formula> vem da diagonal principal. O produto{" "}
           <Formula>b × c</Formula> vem da diagonal secundária.
         </p>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200 dark:border-slate-800 dark:bg-slate-900">
-        <h2 className="text-2xl font-semibold mb-3">
-          A Intuição: Principal Menos Secundária
-        </h2>
-        <p className="mb-4 leading-relaxed">
-          Imagine duas multiplicações cruzadas. A diagonal principal desce da
-          esquerda para a direita: <Formula>a × d</Formula>. A diagonal
-          secundária desce da direita para a esquerda: <Formula>b × c</Formula>.
-          O determinante compara esses dois produtos.
-        </p>
-        <TipBox>
-          <strong>Resumo rápido:</strong> multiplique a diagonal principal,
-          multiplique a diagonal secundária e subtraia:{" "}
-          <Formula>principal - secundária</Formula>.
-        </TipBox>
-      </div>
-
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200 dark:border-slate-800 dark:bg-slate-900">
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-4">
           Exemplo Resolvido Passo a Passo
         </h2>
@@ -73,16 +68,6 @@ function Determinant2x2Tutorial() {
             [4, 7],
             [2, 6],
           ]}
-          highlight={{
-            cells: [
-              [0, 0],
-              [1, 1],
-            ],
-            secondaryCells: [
-              [0, 1],
-              [1, 0],
-            ],
-          }}
         />
 
         <UseExampleButton
@@ -94,27 +79,18 @@ function Determinant2x2Tutorial() {
         />
 
         <div className="mt-6 space-y-5">
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-950">
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
             <h3 className="text-lg font-semibold mb-2">
-              Passo 1: identificar a, b, c e d
+              Passo 1: identificar os valores
             </h3>
             <p className="font-mono text-sm sm:text-base break-words">
               a = 4, b = 7, c = 2, d = 6
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-950">
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
             <h3 className="text-lg font-semibold mb-2">
-              Passo 2: substituir na fórmula
-            </h3>
-            <p className="font-mono text-sm sm:text-base break-words">
-              det(A) = (4 × 6) - (7 × 2)
-            </p>
-          </div>
-
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-950">
-            <h3 className="text-lg font-semibold mb-2">
-              Passo 3: calcular as diagonais
+              Passo 2: multiplicar as diagonais
             </h3>
             <p className="font-mono text-sm sm:text-base break-words">
               diagonal principal: 4 × 6 = 24
@@ -123,9 +99,9 @@ function Determinant2x2Tutorial() {
             </p>
           </div>
 
-          <div className="rounded-lg border border-green-200 bg-green-50 p-4 dark:border-emerald-900 dark:bg-emerald-950/30">
+          <div className="rounded-lg border border-green-200 bg-green-50 p-4">
             <h3 className="text-lg font-semibold mb-2">
-              Passo 4: subtrair e concluir
+              Passo 3: subtrair
             </h3>
             <p className="font-mono text-sm sm:text-base break-words">
               det(A) = 24 - 14 = 10
@@ -134,13 +110,14 @@ function Determinant2x2Tutorial() {
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200 dark:border-slate-800 dark:bg-slate-900">
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-3">
-          Cuidado com Números Negativos
+          Cuidado com Sinais Negativos
         </h2>
         <p className="mb-4 leading-relaxed">
-          A fórmula do determinante 2x2 não muda quando aparecem sinais
-          negativos. Primeiro calcule cada produto; só depois faça a subtração.
+          O erro mais comum em determinante 2x2 acontece quando aparece número
+          negativo. Lembre que a fórmula continua a mesma: primeiro calcule os
+          produtos, depois faça a subtração.
         </p>
 
         <MatrixDisplay
@@ -150,7 +127,7 @@ function Determinant2x2Tutorial() {
           ]}
         />
 
-        <div className="mt-5 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-950">
+        <div className="mt-5 rounded-lg border border-gray-200 bg-gray-50 p-4">
           <p className="font-mono text-sm sm:text-base break-words">
             det(A) = (3 × 4) - (-5 × 2)
             <br />
@@ -166,100 +143,60 @@ function Determinant2x2Tutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200 dark:border-slate-800 dark:bg-slate-900">
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-3">
           Para Que Serve o Determinante 2x2?
         </h2>
         <p className="mb-4 leading-relaxed">
-          O determinante 2x2 aparece sempre que uma matriz pequena precisa dizer
-          se há solução única, inversa ou alguma transformação geométrica sem
-          colapso.
+          O resultado do determinante não é só uma conta isolada. Ele ajuda a
+          responder perguntas importantes:
         </p>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
-            Em{" "}
-            <Link to="/tutorial/matriz-inversa" className={tutorialLinkClass}>
-              matriz inversa
-            </Link>
-            , <Formula>det(A) ≠ 0</Formula> é a condição para a inversa existir.
+            <strong>Se det(A) é diferente de zero:</strong> a matriz 2x2 tem
+            inversa.
           </li>
           <li>
-            Em{" "}
-            <Link to="/tutorial/sistemas-lineares" className={tutorialLinkClass}>
-              sistemas lineares
-            </Link>
-            , determinante diferente de zero indica solução única em sistemas
-            2x2.
+            <strong>Se det(A) é igual a zero:</strong> a matriz não tem inversa.
           </li>
           <li>
-            Na{" "}
-            <Link to="/tutorial/regra-de-cramer" className={tutorialLinkClass}>
-              Regra de Cramer
-            </Link>
-            , ele é usado para calcular <Formula>x</Formula> e{" "}
-            <Formula>y</Formula> por quocientes de determinantes.
-          </li>
-          <li>
-            Em geometria, o valor absoluto do determinante 2x2 mede a área
-            escalada por uma transformação no plano.
+            <strong>Em sistemas lineares:</strong> determinante diferente de
+            zero indica solução única para sistemas 2x2.
           </li>
         </ul>
-        <p className="mt-4 text-sm text-gray-600 leading-relaxed dark:text-slate-300">
-          Para uma visão mais ampla, veja também{" "}
-          <Link
-            to="/tutorial/determinante-de-matrizes"
-            className={tutorialLinkClass}
-          >
-            determinante de matrizes
-          </Link>{" "}
-          e{" "}
-          <Link
-            to="/tutorial/determinante-3x3-regra-de-sarrus"
-            className={tutorialLinkClass}
-          >
-            determinante 3x3 pela Regra de Sarrus
-          </Link>
-          .
-        </p>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200 dark:border-slate-800 dark:bg-slate-900">
+      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
         <h2 className="text-2xl font-semibold mb-3">
-          Erros Comuns no Determinante 2x2
+          Erros Comuns
         </h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
-            <strong>Inverter a ordem da subtração:</strong> fazer{" "}
-            <Formula>bc - ad</Formula> troca o sinal do resultado.
+            <strong>Somar as diagonais em vez de subtrair:</strong> a regra é
+            principal menos secundária.
           </li>
           <li>
-            <strong>Esquecer o sinal negativo:</strong> a fórmula é uma
-            diferença, não uma soma das diagonais.
+            <strong>Trocar a ordem da subtração:</strong> fazer secundária menos
+            principal troca o sinal do resultado.
           </li>
           <li>
-            <strong>Confundir as diagonais:</strong> a principal é{" "}
-            <Formula>a × d</Formula>; a secundária é <Formula>b × c</Formula>.
+            <strong>Perder sinais negativos:</strong> calcule cada produto com
+            calma antes de subtrair.
           </li>
           <li>
-            <strong>Tentar usar Sarrus sem necessidade:</strong> a Regra de
-            Sarrus é feita para matriz 3x3; em 2x2, a fórmula{" "}
-            <Formula>ad - bc</Formula> é direta.
-          </li>
-          <li>
-            <strong>Errar multiplicações com negativos:</strong> resolva cada
-            produto antes de subtrair.
+            <strong>Usar a fórmula em matriz que não é 2x2:</strong> essa regra
+            rápida é específica para matrizes de ordem 2.
           </li>
         </ul>
       </div>
 
       <TutorialCTA
         title="Pratique com a Calculadora"
-        primaryLabel="Testar determinante 2x2"
-        secondaryTo="/tutorial/regra-de-cramer"
-        secondaryLabel="Avançar para Cramer"
+        secondaryTo="/tutorial/determinante-de-matrizes"
+        secondaryLabel="Ver determinantes"
       >
-        Escolha "Determinante de A", preencha uma matriz 2x2 e compare o
-        resultado da calculadora com a fórmula <Formula>ad - bc</Formula>.
+        Escolha “Determinante de A”, preencha uma matriz 2x2 e compare o
+        resultado da calculadora com a fórmula principal menos secundária.
       </TutorialCTA>
     </div>
   );

@@ -1,15 +1,8 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import {
-  getCalculatorPageByTutorialSlug,
-  getCalculatorPageCopy,
-} from "../data/calculatorPages";
-import { getTutorialComponent } from "../data/tutorialComponents";
-import { getTutoriais } from "../data/tutorialsData";
+import { tutoriais } from "../data/tutorialsData";
 import FAQSection from "../components/tutorial/FAQSection";
-import TutorialsUnavailable from "../components/tutorial/TutorialsUnavailable";
-import { useI18n } from "../i18n/LanguageContext";
 
 const seoDictionary = {
   "determinante-de-matrizes": {
@@ -21,11 +14,6 @@ const seoDictionary = {
     title: "Determinante 2x2: Fórmula e Exemplo Resolvido",
     description:
       "Aprenda a calcular determinante de matriz 2x2 com fórmula simples, exemplo passo a passo, sinais negativos e calculadora online.",
-  },
-  "regra-de-cramer": {
-    title: "Regra de Cramer: Como Resolver Sistemas Lineares",
-    description:
-      "Aprenda a resolver sistemas lineares pela Regra de Cramer com determinante principal, Dx, Dy, exemplo 2x2 e conexão com Sarrus.",
   },
   "determinante-3x3-regra-de-sarrus": {
     title: "Determinante 3x3 pela Regra de Sarrus: Exemplo Resolvido",
@@ -114,61 +102,24 @@ const faqDictionary = {
   ],
   "determinante-2x2": [
     {
-      question: "Como calcular determinante 2x2?",
-      answer:
-        "Multiplique a diagonal principal, multiplique a diagonal secundária e subtraia: principal menos secundária.",
-    },
-    {
       question: "Qual é a fórmula do determinante 2x2?",
       answer:
-        "Para A = [[a, b], [c, d]], o determinante é det(A) = ad - bc.",
+        "Para A = [[a, b], [c, d]], o determinante é det(A) = (a × d) - (b × c).",
     },
     {
-      question: "O que significa determinante igual a zero?",
+      question: "Determinante 2x2 pode dar número negativo?",
       answer:
-        "Significa que a matriz não tem inversa. Em sistemas lineares, indica que não há solução única; pode haver nenhuma solução ou infinitas soluções.",
+        "Sim. O resultado pode ser positivo, negativo ou zero. Isso depende dos produtos das duas diagonais.",
     },
     {
-      question: "Posso usar Regra de Sarrus em matriz 2x2?",
+      question: "O que significa determinante 2x2 igual a zero?",
       answer:
-        "Não é necessário. A Regra de Sarrus é feita para matrizes 3x3; em matriz 2x2, use diretamente a fórmula ad - bc.",
+        "Significa que a matriz 2x2 não tem inversa e, em um sistema linear 2x2, não há solução única.",
     },
     {
-      question: "Onde o determinante 2x2 é usado?",
+      question: "Posso usar essa fórmula em matriz 3x3?",
       answer:
-        "Ele aparece em matriz inversa, sistemas lineares 2x2, Regra de Cramer e interpretações geométricas de área no plano.",
-    },
-  ],
-  "regra-de-cramer": [
-    {
-      question: "O que é a Regra de Cramer?",
-      answer:
-        "É um método para resolver sistemas lineares usando determinantes da matriz dos coeficientes e de matrizes com colunas substituídas pelos termos independentes.",
-    },
-    {
-      question: "Quando posso usar a Regra de Cramer?",
-      answer:
-        "Você pode usar quando o sistema tem o mesmo número de equações e incógnitas, a matriz dos coeficientes é quadrada e o determinante principal é diferente de zero.",
-    },
-    {
-      question: "O que acontece se o determinante principal for zero?",
-      answer:
-        "A regra não fornece solução única, porque não é possível dividir por D. O sistema pode não ter solução ou pode ter infinitas soluções.",
-    },
-    {
-      question: "A Regra de Cramer funciona para sistema 3x3?",
-      answer:
-        "Sim. Em sistemas 3x3, calculamos D, Dx, Dy e Dz; os determinantes 3x3 podem ser resolvidos pela Regra de Sarrus.",
-    },
-    {
-      question: "Regra de Cramer é melhor que escalonamento?",
-      answer:
-        "Depende. Cramer é ótimo para sistemas pequenos e estudo de determinantes; escalonamento costuma ser mais eficiente para sistemas maiores.",
-    },
-    {
-      question: "Como saber qual coluna trocar em Dx e Dy?",
-      answer:
-        "Em Dx, troque a coluna dos coeficientes de x pelos termos independentes. Em Dy, troque a coluna dos coeficientes de y.",
+        "Não. A fórmula (a × d) - (b × c) vale apenas para matrizes 2x2. Para 3x3, use a Regra de Sarrus ou outro método.",
     },
   ],
   "matriz-inversa": [
@@ -435,8 +386,6 @@ const slugAliases = {
 };
 
 const TutorialPage = () => {
-  const { language, t } = useI18n();
-  const tutoriais = useMemo(() => getTutoriais(language), [language]);
   const { slug } = useParams();
   const canonicalSlug = slugAliases[slug] || slug;
 
@@ -447,22 +396,6 @@ const TutorialPage = () => {
   };
 
   const tutorial = tutoriais.find((t) => t.slug === canonicalSlug);
-  const TutorialContent = getTutorialComponent(canonicalSlug);
-  const relatedCalculatorPage = getCalculatorPageByTutorialSlug(canonicalSlug);
-  const relatedCalculatorCopy = getCalculatorPageCopy(
-    relatedCalculatorPage,
-    "pt-BR",
-  );
-  const localizedSeo =
-    language === "pt-BR"
-      ? seo
-      : {
-          title: tutorial
-            ? `${tutorial.title} | Matriz Calculator`
-            : t("tutorialPage.defaultTitle"),
-          description:
-            tutorial?.description || t("tutorialPage.defaultDescription"),
-        };
   const tutorialStructuredData = tutorial
     ? {
         "@context": "https://schema.org",
@@ -473,7 +406,7 @@ const TutorialPage = () => {
           "@type": "Organization",
           name: "Matriz Calculator",
         },
-        inLanguage: t("tutorialPage.inLanguage"),
+        inLanguage: "pt-BR",
         isAccessibleForFree: true,
         mainEntityOfPage: {
           "@type": "WebPage",
@@ -481,7 +414,7 @@ const TutorialPage = () => {
         },
       }
     : null;
-  const faqItems = language === "pt-BR" ? faqDictionary[canonicalSlug] : null;
+  const faqItems = faqDictionary[canonicalSlug];
   const faqStructuredData = faqItems
     ? {
         "@context": "https://schema.org",
@@ -524,36 +457,17 @@ const TutorialPage = () => {
     );
   }
 
-  if (language !== "pt-BR") {
-    return (
-      <div className="min-h-screen bg-white pb-12 transition-colors dark:bg-slate-950 sm:bg-slate-50 sm:dark:bg-slate-950">
-        <Helmet>
-          <title>{t("tutorials.unavailable.title")} | Matriz Calculator</title>
-          <meta
-            name="description"
-            content={t("tutorials.unavailable.description")}
-          />
-          <link
-            rel="canonical"
-            href={`https://www.matrizcalculator.com/tutorial/${canonicalSlug}`}
-          />
-        </Helmet>
-        <TutorialsUnavailable />
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-white pb-12 transition-colors dark:bg-slate-950 sm:bg-slate-50 sm:dark:bg-slate-950">
       <Helmet>
-        <title>{localizedSeo.title}</title>
-        <meta name="description" content={localizedSeo.description} />
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
         <link
           rel="canonical"
           href={`https://www.matrizcalculator.com/tutorial/${canonicalSlug}`}
         />
-        <meta property="og:title" content={localizedSeo.title} />
-        <meta property="og:description" content={localizedSeo.description} />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
         <meta property="og:type" content="article" />
         <meta
           property="og:url"
@@ -576,7 +490,7 @@ const TutorialPage = () => {
           <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-500 font-medium dark:text-slate-400">
             <li>
               <Link to="/" className="hover:text-blue-600 transition-colors dark:hover:text-blue-400">
-                {t("common.matrixCalculator")}
+                Calculadora de matrizes
               </Link>
             </li>
             <li>
@@ -587,7 +501,7 @@ const TutorialPage = () => {
                 to="/tutorials"
                 className="hover:text-blue-600 transition-colors dark:hover:text-blue-400"
               >
-                {t("common.matrixTutorials")}
+                Tutoriais de matrizes
               </Link>
             </li>
             <li>
@@ -611,29 +525,9 @@ const TutorialPage = () => {
           </p>
         </header>
 
-        {relatedCalculatorPage && relatedCalculatorCopy && (
-          <aside className="mb-10 rounded-xl border border-blue-100 bg-blue-50 p-5 dark:border-blue-900/70 dark:bg-blue-950/40">
-            <p className="mb-2 text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
-              Pratique com a calculadora
-            </p>
-            <p className="mb-4 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-              Use a calculadora específica para testar este conteúdo com seus
-              próprios valores e conferir o passo a passo.
-            </p>
-            <Link
-              to={relatedCalculatorPage.path}
-              className="inline-flex rounded-full bg-blue-600 px-5 py-2 text-sm font-bold text-white transition-colors hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
-            >
-              Abrir calculadora de {relatedCalculatorCopy.linkLabel.toLowerCase()}
-            </Link>
-          </aside>
-        )}
-
-        {TutorialContent && (
-          <div className="tutorial-content prose prose-lg prose-slate max-w-none text-slate-800 dark:text-slate-200">
-            <TutorialContent />
-          </div>
-        )}
+        <div className="tutorial-content prose prose-lg prose-slate max-w-none text-slate-800 dark:text-slate-200">
+          {tutorial.component}
+        </div>
         <FAQSection items={faqItems} />
       </article>
     </div>

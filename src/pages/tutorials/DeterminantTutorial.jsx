@@ -95,16 +95,6 @@ function DeterminantTutorial() {
           somando os produtos das diagonais que descem e subtraindo os produtos
           das diagonais que sobem.
         </p>
-        <p className="mb-4 text-sm text-gray-600 leading-relaxed dark:text-slate-300">
-          Se quiser treinar esse caso isoladamente, veja o tutorial de{" "}
-          <Link
-            to="/tutorial/determinante-3x3-regra-de-sarrus"
-            className="font-bold text-blue-600 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-          >
-            determinante 3x3 pela Regra de Sarrus
-          </Link>
-          .
-        </p>
         <MatrixDisplay
           matrix={[
             [1, 0, 2],
@@ -206,16 +196,6 @@ function DeterminantTutorial() {
           O determinante aparece em matriz inversa, sistemas lineares, geometria,
           transformações, cálculo de áreas e volumes, autovalores e vários
           métodos numéricos.
-        </p>
-        <p className="mb-4 leading-relaxed">
-          Em sistemas pequenos, ele também aparece diretamente na{" "}
-          <Link
-            to="/tutorial/regra-de-cramer"
-            className="font-bold text-blue-600 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-          >
-            Regra de Cramer
-          </Link>
-          , onde cada variável é encontrada por uma razão entre determinantes.
         </p>
         <TipBox>
           Em muitos exercícios, calcular o determinante é o primeiro passo para

@@ -1,6 +1,6 @@
 import { formatMatrix, formatValue, isRowEchelonForm } from "../utils/matrixCalculations";
 
-export const calculateGaussianElimination = (parsedA, rowsA, math, t) => {
+export const calculateGaussianElimination = (parsedA, rowsA, math) => {
   const { matrix, number, divide, multiply, subtract } = math;
   const m = matrix(parsedA);
   const steps = [];
@@ -10,8 +10,8 @@ export const calculateGaussianElimination = (parsedA, rowsA, math, t) => {
 
   if (isRowEchelonForm(parsedA)) {
     steps.push({
-      title: t("calculation.steps.gaussianOriginalTitle"),
-      description: t("calculation.steps.gaussianAlreadyEchelon"),
+      title: "Matriz Original",
+      description: "A matriz já se encontra na forma escalonada.",
       matrix: formatMatrix(parsedA),
       highlight: {
         cells: [[0, 0]],
@@ -21,8 +21,8 @@ export const calculateGaussianElimination = (parsedA, rowsA, math, t) => {
   }
 
   steps.push({
-    title: t("calculation.steps.gaussianInitialTitle"),
-    description: t("calculation.steps.gaussianInitialDescription"),
+    title: "Matriz Inicial",
+    description: "Configuração original da matriz.",
     matrix: formatMatrix(m),
     highlight: {
       pivotCells: [[0, 0]],
@@ -58,11 +58,8 @@ export const calculateGaussianElimination = (parsedA, rowsA, math, t) => {
       }
 
       steps.push({
-        title: t("calculation.steps.gaussianSwapRowsTitle"),
-        description: t("calculation.steps.gaussianSwapRowsDescription", {
-          rowA: i + 1,
-          rowB: pivotRow + 1,
-        }),
+        title: "Troca de Linhas",
+        description: `L${i + 1} ↔ L${pivotRow + 1} para evitar pivô zero.`,
         matrix: formatMatrix(m),
         highlight: {
           rows: [i, pivotRow],
@@ -80,13 +77,8 @@ export const calculateGaussianElimination = (parsedA, rowsA, math, t) => {
         m.set([i, j], divide(m.get([i, j]), pivot));
       }
       steps.push({
-        title: t("calculation.steps.gaussianPivotTitle", {
-          row: i + 1,
-        }),
-        description: t("calculation.steps.gaussianPivotDescription", {
-          row: i + 1,
-          factor: factorStr,
-        }),
+        title: `Pivô (Linha ${i + 1})`,
+        description: `L${i + 1} → L${i + 1} ÷ (${factorStr})`,
         matrix: formatMatrix(m),
         highlight: {
           rows: [i],
@@ -108,14 +100,8 @@ export const calculateGaussianElimination = (parsedA, rowsA, math, t) => {
       }
 
       steps.push({
-        title: t("calculation.steps.gaussianEliminationTitle", {
-          row: k + 1,
-        }),
-        description: t("calculation.steps.gaussianEliminationDescription", {
-          row: k + 1,
-          factor: factorStr,
-          pivotRow: i + 1,
-        }),
+        title: `Eliminação (Linha ${k + 1})`,
+        description: `L${k + 1} → L${k + 1} - (${factorStr}) x L${i + 1}`,
         matrix: formatMatrix(m),
         highlight: {
           rows: [k],

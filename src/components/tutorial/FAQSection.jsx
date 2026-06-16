@@ -1,14 +1,10 @@
-import { useI18n } from "../../i18n/LanguageContext";
-
 const FAQSection = ({ items }) => {
-  const { t } = useI18n();
-
   if (!items?.length) return null;
 
   return (
     <section className="mt-12 border-t border-slate-200 pt-10 dark:border-slate-700">
       <h2 className="text-2xl font-bold text-slate-900 mb-6 dark:text-slate-100">
-        {t("tutorialPage.faqHeading")}
+        Perguntas Frequentes
       </h2>
       <div className="space-y-3">
         {items.map((item) => (
