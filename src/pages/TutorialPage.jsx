@@ -473,6 +473,11 @@ const TutorialPage = () => {
           property="og:url"
           content={`https://www.matrizcalculator.com/tutorial/${canonicalSlug}`}
         />
+        <meta property="og:image" content="https://www.matrizcalculator.com/logo1920.png" />
+        <meta property="og:image:width" content="1920" />
+        <meta property="og:image:height" content="1080" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.matrizcalculator.com/logo1920.png" />
         <script type="application/ld+json">
           {JSON.stringify(tutorialStructuredData)}
         </script>

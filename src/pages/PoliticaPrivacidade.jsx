@@ -12,6 +12,12 @@ function PoliticaPrivacidade() {
         <meta property="og:title" content="Política de Privacidade - Matrizes+" />
         <meta property="og:description" content="Leia a política de privacidade do Matrizes+ para entender como protegemos seus dados." />
         <meta property="og:url" content="https://www.matrizcalculator.com/politica-privacidade" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.matrizcalculator.com/logo1920.png" />
+        <meta property="og:image:width" content="1920" />
+        <meta property="og:image:height" content="1080" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.matrizcalculator.com/logo1920.png" />
       </Helmet>
       
       <h1 className="text-3xl font-bold mb-2 text-gray-800">

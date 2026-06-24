@@ -11,6 +11,11 @@ function NotFound() {
           content="A página solicitada não foi encontrada. Volte para a calculadora de matrizes ou explore os tutoriais de álgebra linear."
         />
         <meta name="robots" content="noindex, follow" />
+        <meta property="og:image" content="https://www.matrizcalculator.com/logo1920.png" />
+        <meta property="og:image:width" content="1920" />
+        <meta property="og:image:height" content="1080" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.matrizcalculator.com/logo1920.png" />
       </Helmet>
 
       <h1 className="text-4xl font-extrabold text-gray-900 mb-4 dark:text-slate-100">

@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import MatrixDisplay from "../components/common/MatrixDisplay";
 import MatrixInput from "../components/common/MatrixInput";
 import ResultDisplay from "../components/ui/ResultDisplay";
+import {
+  calculatorPages,
+  calculatorPagesByPath,
+  getCalculatorPageByOperation,
+} from "../data/calculatorPages";
 import { tutoriais } from "../data/tutorialsData";
 import { useMatrixCalculator } from "../hooks/useMatrixCalculator";
+
+const siteBaseUrl = "https://www.matrizcalculator.com";
 
 // Mapeamento para SEO Contextual e Linkagem Interna
 const operationToSlug = {
@@ -47,6 +54,22 @@ const featuredTutorials = featuredTutorialSlugs
   .filter(Boolean);
 
 const Home = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const calculatorPage = calculatorPagesByPath[location.pathname] || null;
+  const canonicalUrl = `${siteBaseUrl}${calculatorPage?.path || "/"}`;
+  const pageMetaTitle =
+    calculatorPage?.metaTitle ||
+    "Calculadora de Matrizes Online Grátis | Passo a Passo";
+  const pageMetaDescription =
+    calculatorPage?.metaDescription ||
+    "Use a calculadora de matrizes gratuita para resolver determinante, inversa, multiplicação, transposta e Gauss com frações exatas, passo a passo e tutoriais.";
+  const pageHeroTitle =
+    calculatorPage?.heroTitle || "Calculadora de Matrizes Online Gratuita";
+  const pageHeroDescription =
+    calculatorPage?.heroDescription ||
+    "Resolva soma, multiplicação, determinante, inversa, transposta e escalonamento de matrizes com resultados passo a passo, frações exatas, exemplos resolvidos e tutoriais explicados.";
+  const calculatorGuide = calculatorPage?.guide;
   const {
     sizeA,
     sizeB,
@@ -64,9 +87,35 @@ const Home = () => {
     handleSizeChange,
     handleCalculate,
     handleClear,
-  } = useMatrixCalculator();
+    loadExample,
+  } = useMatrixCalculator(calculatorPage?.operation, calculatorPage?.example);
 
   const [isCalculating, setIsCalculating] = useState(false);
+  const activeTutorialSlug = calculatorPage?.tutorialSlug || operationToSlug[operation];
+  const activeTutorialLabel =
+    calculatorPage?.linkLabel?.toLowerCase() || operationLabels[operation];
+
+  useEffect(() => {
+    if (calculatorPage) {
+      loadExample(calculatorPage.operation, calculatorPage.example);
+    }
+  }, [calculatorPage?.path]);
+
+  const handleOperationChange = (event) => {
+    const nextOperation = event.target.value;
+    const nextCalculatorPage = getCalculatorPageByOperation(nextOperation);
+
+    if (nextCalculatorPage) {
+      navigate(nextCalculatorPage.path);
+      return;
+    }
+
+    if (calculatorPage) {
+      navigate("/");
+    }
+
+    setOperation(nextOperation);
+  };
 
   const handleCalculateClick = async () => {
     setIsCalculating(true);
@@ -78,15 +127,33 @@ const Home = () => {
     }
   };
 
+  const genericFaqItems = [
+    {
+      question: "Como ver o escalonamento de uma matriz?",
+      answer:
+        "Selecione a operação Eliminação de Gauss, insira os valores da matriz e a calculadora exibirá as etapas do escalonamento até chegar à forma escalonada.",
+    },
+    {
+      question: "Como calcular matriz inversa online?",
+      answer:
+        "Selecione a operação Inversa de A, preencha uma matriz quadrada e clique em calcular. A ferramenta valida se a matriz é invertível e mostra o resultado.",
+    },
+  ];
+  const faqItems = calculatorGuide?.faq?.length
+    ? calculatorGuide.faq
+    : genericFaqItems;
+
   // Dados Estruturados (JSON-LD) para otimizar o rankeamento no Google
   const structuredData = [
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      name: "Calculadora de Matrizes Online",
-      url: "https://www.matrizcalculator.com/",
+      name: pageHeroTitle,
+      description: pageMetaDescription,
+      url: canonicalUrl,
       applicationCategory: "EducationalApplication",
       operatingSystem: "All",
+      inLanguage: "pt-BR",
       offers: {
         "@type": "Offer",
         price: "0",
@@ -98,25 +165,37 @@ const Home = () => {
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "Como ver o escalonamento de uma matriz?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Selecione a operação Eliminação de Gauss, insira os valores da matriz e a calculadora exibirá as etapas do escalonamento até chegar à forma escalonada.",
-          },
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
         },
-        {
-          "@type": "Question",
-          name: "Como calcular matriz inversa online?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Selecione a operação Inversa de A, preencha uma matriz quadrada e clique em calcular. A ferramenta valida se a matriz é invertível e mostra o resultado.",
-          },
-        },
-      ],
+      })),
     },
+    ...(calculatorPage
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Calculadora de matrizes",
+                item: `${siteBaseUrl}/`,
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: calculatorPage.linkLabel,
+                item: canonicalUrl,
+              },
+            ],
+          },
+        ]
+      : []),
   ];
 
   const renderSizeInput = (label, state, onChangeHandler) => (
@@ -159,15 +238,18 @@ const Home = () => {
   return (
     <div className="w-full">
       <Helmet>
-        {/* Título focado nos termos de maior busca do Search Console */}
-        <title>
-          Calculadora de Matrizes Online Grátis | Passo a Passo
-        </title>
-        <meta
-          name="description"
-          content="Use a calculadora de matrizes gratuita para resolver determinante, inversa, multiplicação, transposta e Gauss com frações exatas, passo a passo e tutoriais."
-        />
-        <link rel="canonical" href="https://www.matrizcalculator.com/" />
+        <title>{pageMetaTitle}</title>
+        <meta name="description" content={pageMetaDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={pageMetaTitle} />
+        <meta property="og:description" content={pageMetaDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.matrizcalculator.com/logo1920.png" />
+        <meta property="og:image:width" content="1920" />
+        <meta property="og:image:height" content="1080" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.matrizcalculator.com/logo1920.png" />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
@@ -176,12 +258,10 @@ const Home = () => {
       <section className="p-4 sm:p-6 max-w-5xl mx-auto text-center">
         <header className="mb-8">
           <h1 className="text-3xl sm:text-4xl font-extrabold mb-2 text-gray-800 dark:text-slate-100">
-            Calculadora de Matrizes Online Gratuita
+            {pageHeroTitle}
           </h1>
           <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto dark:text-slate-300">
-            Resolva soma, multiplicação, determinante, inversa, transposta e
-            escalonamento de matrizes com resultados passo a passo, frações
-            exatas, exemplos resolvidos e tutoriais explicados.
+            {pageHeroDescription}
           </p>
         </header>
 
@@ -197,7 +277,7 @@ const Home = () => {
               id="operation-select"
               className="w-full max-w-md rounded-lg border-2 border-blue-100 bg-blue-50 p-3 text-center outline-none transition-colors focus:border-blue-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
               value={operation}
-              onChange={(e) => setOperation(e.target.value)}
+              onChange={handleOperationChange}
             >
               <option value="soma">Soma (A + B)</option>
               <option value="subtracao">Subtração (A - B)</option>
@@ -272,16 +352,16 @@ const Home = () => {
           </div>
 
           {/* SEO e UX: Link dinâmico para tutorial contextual */}
-          {operationToSlug[operation] && (
+          {activeTutorialSlug && (
             <div className="mt-5 flex justify-center">
               <div className="max-w-full rounded-lg border border-yellow-100 bg-yellow-50 p-3 dark:border-amber-800 dark:bg-amber-950/40">
                 <p className="text-sm text-yellow-800 dark:text-amber-100">
                   💡 Dúvida no cálculo?{" "}
                   <Link
-                    to={`/tutorial/${operationToSlug[operation]}`}
+                    to={`/tutorial/${activeTutorialSlug}`}
                     className="font-bold underline hover:text-yellow-900 dark:hover:text-amber-50"
                   >
-                    Ver tutorial de {operationLabels[operation]}
+                    Ver tutorial de {activeTutorialLabel}
                   </Link>
                 </p>
               </div>
