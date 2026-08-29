@@ -5,7 +5,7 @@ import TutorialCTA from "../../components/tutorial/TutorialCTA";
 
 function IdentityMatrixTutorial() {
   return (
-    <div className="p-6 max-w-4xl mx-auto text-gray-800">
+    <div className="p-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
         A matriz identidade é a matriz "do um" da multiplicação. Assim como
         multiplicar um número por 1 não o altera (5 × 1 = 5), multiplicar uma
@@ -13,20 +13,20 @@ function IdentityMatrixTutorial() {
         para entender inversas, escalonamento e sistemas lineares.
       </p>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           A Intuição: O "Um" das Matrizes
         </h2>
         <p className="mb-4 leading-relaxed">
           Em números normais:
         </p>
-        <p className="font-mono text-center p-3 bg-gray-50 rounded mb-4">
+        <p className="font-mono text-center p-3 bg-slate-50 dark:bg-slate-900 rounded mb-4">
           5 × 1 = 5
         </p>
         <p className="mb-4 leading-relaxed">
           Com matrizes:
         </p>
-        <p className="font-mono text-center p-3 bg-gray-50 rounded">
+        <p className="font-mono text-center p-3 bg-slate-50 dark:bg-slate-900 rounded">
           A × I = A
         </p>
         <p className="mt-4 leading-relaxed">
@@ -41,7 +41,7 @@ function IdentityMatrixTutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Qual é a Forma da Matriz Identidade?
         </h2>
@@ -66,7 +66,7 @@ function IdentityMatrixTutorial() {
         </p>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-4">
           Exemplos: Matriz Identidade 2×2 e 3×3
         </h2>
@@ -74,7 +74,7 @@ function IdentityMatrixTutorial() {
         <div className="grid md:grid-cols-2 gap-6">
           <div>
             <p className="font-semibold mb-3">Identidade 2×2 (I₂)</p>
-            <div className="bg-blue-50 border border-blue-200 p-4 rounded">
+            <div className="bg-blue-50 border border-accent/30 p-4 rounded">
               <MatrixDisplay
                 matrix={[
                   [1, 0],
@@ -82,7 +82,7 @@ function IdentityMatrixTutorial() {
                 ]}
               />
             </div>
-            <p className="text-sm text-gray-600 mt-2">
+            <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">
               1 na diagonal (1,1) e (2,2).
               <br />
               0 fora dela.
@@ -100,7 +100,7 @@ function IdentityMatrixTutorial() {
                 ]}
               />
             </div>
-            <p className="text-sm text-gray-600 mt-2">
+            <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">
               1 na diagonal (1,1), (2,2) e (3,3).
               <br />
               0 fora dela.
@@ -109,7 +109,7 @@ function IdentityMatrixTutorial() {
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           A Propriedade Central: A × I = A
         </h2>
@@ -125,7 +125,7 @@ function IdentityMatrixTutorial() {
         </div>
 
         <div className="space-y-4">
-          <div className="border border-gray-200 bg-gray-50 p-4 rounded">
+          <div className="border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4 rounded">
             <h3 className="font-semibold mb-2">Exemplo: 2×2</h3>
             <p className="text-sm mb-3">
               Multiplicar uma matriz A pela matriz identidade 2×2:
@@ -161,14 +161,14 @@ function IdentityMatrixTutorial() {
                 ]}
               />
             </div>
-            <p className="text-xs text-gray-600 mt-3">
+            <p className="text-xs text-slate-600 dark:text-slate-300 mt-3">
               A matriz A volta igual. A identidade não muda nada!
             </p>
           </div>
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Conexão com Matriz Inversa
         </h2>
@@ -194,7 +194,7 @@ function IdentityMatrixTutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Conexão com Eliminação de Gauss
         </h2>
@@ -204,7 +204,7 @@ function IdentityMatrixTutorial() {
           (ou em forma escalonada).
         </p>
 
-        <div className="border border-blue-200 bg-blue-50 p-4 rounded mb-4">
+        <div className="border border-accent/30 bg-blue-50 p-4 rounded mb-4">
           <p className="font-semibold mb-2">Exemplo: Processo de Gauss</p>
           <p className="text-sm mb-3">
             Começamos com a matriz [A | I] e aplicamos operações de linha até
@@ -215,13 +215,13 @@ function IdentityMatrixTutorial() {
           </p>
         </div>
 
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-slate-600 dark:text-slate-300">
           Quando o lado esquerdo vira a identidade, o lado direito se torna a
           inversa de A. Por isso a identidade é tão importante.
         </p>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Propriedades Importantes da Identidade
         </h2>
@@ -249,7 +249,7 @@ function IdentityMatrixTutorial() {
         </ul>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Por Que Isso Importa?
         </h2>

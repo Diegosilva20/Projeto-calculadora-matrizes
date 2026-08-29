@@ -7,7 +7,7 @@ import UseExampleButton from "../../components/tutorial/UseExampleButton";
 
 function InverseMatrixTutorial() {
   return (
-    <div className="p-6 max-w-4xl mx-auto text-gray-800">
+    <div className="p-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
         A matriz inversa é a matriz que desfaz o efeito de outra matriz. Ela é
         muito usada para resolver sistemas lineares e para reverter
@@ -15,7 +15,7 @@ function InverseMatrixTutorial() {
         entender a ideia antes de decorar qualquer fórmula.
       </p>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           A Intuição: A Matriz Que Desfaz
         </h2>
@@ -28,13 +28,13 @@ function InverseMatrixTutorial() {
         <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg">
           <Formula>A × A⁻¹ = A⁻¹ × A = I</Formula>
         </div>
-        <p className="mt-4 text-sm text-gray-600 leading-relaxed">
+        <p className="mt-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
           A matriz identidade funciona como o número 1 na multiplicação: ela não
           altera a matriz quando aparece em um produto.
         </p>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Quando uma Matriz Tem Inversa?
         </h2>
@@ -57,7 +57,7 @@ function InverseMatrixTutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Como Calcular a Matriz Inversa 2x2 Passo a Passo
         </h2>
@@ -82,7 +82,7 @@ function InverseMatrixTutorial() {
         </ol>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-4">
           Exemplo Resolvido: Inversa de uma Matriz 2x2
         </h2>
@@ -104,7 +104,7 @@ function InverseMatrixTutorial() {
         />
 
         <div className="mt-6 space-y-5">
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
               Passo 1: calcular o determinante
             </h3>
@@ -116,7 +116,7 @@ function InverseMatrixTutorial() {
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
               Passo 2: montar a matriz ajustada
             </h3>
@@ -132,7 +132,7 @@ function InverseMatrixTutorial() {
             />
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
               Passo 3: multiplicar por 1/determinante
             </h3>
@@ -153,7 +153,7 @@ function InverseMatrixTutorial() {
         />
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Escalonamento para Matrizes Maiores
         </h2>
@@ -173,7 +173,7 @@ function InverseMatrixTutorial() {
         </ol>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
@@ -195,7 +195,7 @@ function InverseMatrixTutorial() {
         </ul>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Onde a Matriz Inversa Aparece?
         </h2>

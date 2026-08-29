@@ -57,7 +57,7 @@ export function AppRoutes({ pages = lazyPages }) {
   return (
     <Suspense fallback={
       <div className="flex items-center justify-center min-h-[50vh]">
-         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+         <div className="animate-spin rounded-xl h-12 w-12 border-b-2 border-blue-500"></div>
       </div>
     }>
       <Routes>
@@ -94,7 +94,7 @@ export function AppShell({ children }) {
   return (
     <>
       <ScrollToTop />
-      <div className="flex min-h-screen flex-col bg-gray-100 text-gray-800 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
+      <div className="flex min-h-screen flex-col pattern-bg transition-colors duration-300">
         <Header isDarkMode={isDarkMode} onToggleTheme={toggleTheme} />
         <CookieConsentWrapper />
         <main className="flex-grow container mx-auto p-4 pt-20">

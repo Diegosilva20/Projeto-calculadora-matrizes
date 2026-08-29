@@ -418,7 +418,7 @@ const TutorialPage = () => {
   const faqStructuredData = faqItems
     ? {
         "@context": "https://schema.org",
-        "@type": "FAQPage",
+        "@type": "QAPage",
         mainEntity: faqItems.map((item) => ({
           "@type": "Question",
           name: item.question,
@@ -444,12 +444,12 @@ const TutorialPage = () => {
         <h1 className="text-4xl font-extrabold text-gray-900 mb-4 dark:text-slate-100">
           Tutorial não encontrado
         </h1>
-        <p className="text-lg text-gray-600 mb-8 dark:text-slate-300">
+        <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 dark:text-slate-300">
           O conteúdo que procura não existe ou foi movido.
         </p>
         <Link
           to="/"
-          className="bg-blue-600 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-700 transition-colors"
+          className="bg-accent text-white px-8 py-3 rounded-xl font-bold hover:bg-accent-hover transition-colors"
         >
           Voltar para a Calculadora
         </Link>
@@ -489,12 +489,12 @@ const TutorialPage = () => {
       </Helmet>
 
       {/* Container mais estreito (max-w-3xl) e sem caixa no mobile (bg-white direto) */}
-      <article className="max-w-3xl mx-auto px-5 sm:px-8 py-8 sm:py-16 sm:bg-white sm:shadow-sm sm:border sm:border-slate-200 sm:rounded-2xl sm:mt-8 dark:text-slate-200 sm:dark:border-slate-800 sm:dark:bg-slate-900 sm:dark:shadow-none">
+      <article className="max-w-3xl mx-auto px-5 sm:px-8 py-8 sm:py-16 sm:bg-white sm: sm:border sm:border-slate-200 sm:rounded-2xl border border-slate-200 shadow-sm dark:border-slate-700/50 sm:mt-8 dark:text-slate-200 sm:dark:border-slate-800 sm:dark:bg-slate-900 sm:dark:shadow-none">
         {/* Breadcrumbs de Navegação (Padrão de Documentação) */}
         <nav aria-label="Breadcrumb" className="mb-8 sm:mb-10">
           <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-500 font-medium dark:text-slate-400">
             <li>
-              <Link to="/" className="hover:text-blue-600 transition-colors dark:hover:text-blue-400">
+              <Link to="/" className="hover:text-accent transition-colors dark:hover:text-blue-400">
                 Calculadora de matrizes
               </Link>
             </li>
@@ -504,7 +504,7 @@ const TutorialPage = () => {
             <li>
               <Link
                 to="/tutorials"
-                className="hover:text-blue-600 transition-colors dark:hover:text-blue-400"
+                className="hover:text-accent transition-colors dark:hover:text-blue-400"
               >
                 Tutoriais de matrizes
               </Link>

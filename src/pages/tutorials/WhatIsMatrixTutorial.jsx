@@ -5,7 +5,7 @@ import TutorialCTA from "../../components/tutorial/TutorialCTA";
 
 function WhatIsMatrixTutorial() {
   return (
-    <div className="p-6 max-w-4xl mx-auto text-gray-800">
+    <div className="p-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
         Uma matriz é uma forma de organizar números em linhas e colunas. Pense
         nela como uma tabela. Matrizes aparecem em todo lugar: em planilhas de
@@ -13,7 +13,7 @@ function WhatIsMatrixTutorial() {
         até em inteligência artificial.
       </p>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           A Ideia: Uma Tabela de Números
         </h2>
@@ -28,7 +28,7 @@ function WhatIsMatrixTutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Partes de uma Matriz: Linhas e Colunas
         </h2>
@@ -48,8 +48,8 @@ function WhatIsMatrixTutorial() {
           dizemos que ela é uma matriz <strong>2×3</strong> (lê-se "2 por 3").
         </p>
 
-        <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-4">
-          <p className="text-sm text-gray-600 mb-3">
+        <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 mb-4">
+          <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
             <strong>Exemplo visual:</strong> Esta matriz é 2×2 (2 linhas, 2 colunas)
           </p>
           <MatrixDisplay
@@ -61,7 +61,7 @@ function WhatIsMatrixTutorial() {
         </div>
 
         <div className="space-y-3 mb-4">
-          <div className="border border-blue-200 bg-blue-50 p-3 rounded">
+          <div className="border border-accent/30 bg-blue-50 p-3 rounded">
             <p className="text-sm font-semibold text-blue-900">
               Primeira linha: [3, 5]
             </p>
@@ -74,7 +74,7 @@ function WhatIsMatrixTutorial() {
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Como Nomear um Número na Matriz
         </h2>
@@ -90,7 +90,7 @@ function WhatIsMatrixTutorial() {
         </p>
 
         <div className="space-y-3">
-          <div className="border border-gray-200 bg-gray-50 p-4 rounded">
+          <div className="border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4 rounded">
             <p className="font-semibold mb-2">Exemplo:</p>
             <p className="text-sm mb-2">
               Na matriz abaixo:
@@ -114,7 +114,7 @@ function WhatIsMatrixTutorial() {
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Exemplo Real: Uma Matriz no Dia a Dia
         </h2>
@@ -161,13 +161,13 @@ function WhatIsMatrixTutorial() {
           ]}
         />
 
-        <p className="mt-4 text-sm text-gray-600">
+        <p className="mt-4 text-sm text-slate-600 dark:text-slate-300">
           Essa matriz tem 3 linhas (uma para cada aluno) e 2 colunas (uma para
           cada disciplina).
         </p>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Tamanho de uma Matriz (Dimensão)
         </h2>
@@ -177,22 +177,22 @@ function WhatIsMatrixTutorial() {
         </p>
 
         <div className="space-y-3 mb-4">
-          <div className="border border-gray-200 bg-gray-50 p-3 rounded">
+          <div className="border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-3 rounded">
             <p className="text-sm font-mono">
               Matriz 2×3: 2 linhas e 3 colunas (tem 6 números no total)
             </p>
           </div>
-          <div className="border border-gray-200 bg-gray-50 p-3 rounded">
+          <div className="border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-3 rounded">
             <p className="text-sm font-mono">
               Matriz 4×1: 4 linhas e 1 coluna (é uma coluna vertical)
             </p>
           </div>
-          <div className="border border-gray-200 bg-gray-50 p-3 rounded">
+          <div className="border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-3 rounded">
             <p className="text-sm font-mono">
               Matriz 1×5: 1 linha e 5 colunas (é uma linha horizontal)
             </p>
           </div>
-          <div className="border border-gray-200 bg-gray-50 p-3 rounded">
+          <div className="border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-3 rounded">
             <p className="text-sm font-mono">
               Matriz 3×3: 3 linhas e 3 colunas (quadrada)
             </p>
@@ -200,7 +200,7 @@ function WhatIsMatrixTutorial() {
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Por Que Matrizes São Importantes?
         </h2>
@@ -233,7 +233,7 @@ function WhatIsMatrixTutorial() {
         </ul>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Próximo Passo: Operações com Matrizes
         </h2>

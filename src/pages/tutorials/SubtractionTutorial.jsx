@@ -6,14 +6,14 @@ import UseExampleButton from "../../components/tutorial/UseExampleButton";
 
 function MatrixSubtractionTutorial() {
   return (
-    <div className="p-6 max-w-4xl mx-auto text-gray-800">
+    <div className="p-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
         Subtrair matrizes é parecido com somar matrizes: a operação acontece
         posição por posição. A diferença é que, em vez de juntar os valores,
         tiramos de A o valor correspondente em B.
       </p>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           A Intuição: Comparar Duas Matrizes
         </h2>
@@ -29,7 +29,7 @@ function MatrixSubtractionTutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">Regra Principal</h2>
         <p className="mb-4 leading-relaxed">
           A subtração <Formula>A - B</Formula> só existe quando as duas matrizes
@@ -40,7 +40,7 @@ function MatrixSubtractionTutorial() {
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Como Subtrair Matrizes Passo a Passo
         </h2>
@@ -53,7 +53,7 @@ function MatrixSubtractionTutorial() {
         </ol>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-4">
           Exemplo Resolvido: Subtração de Matrizes 2x2
         </h2>
@@ -96,13 +96,13 @@ function MatrixSubtractionTutorial() {
         />
 
         <div className="mt-6 space-y-4">
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">Primeira linha</h3>
             <p className="font-mono text-sm sm:text-base break-words">
               7 - 2 = 5 e 4 - 5 = -1
             </p>
           </div>
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">Segunda linha</h3>
             <p className="font-mono text-sm sm:text-base break-words">
               3 - 1 = 2 e 9 - 6 = 3
@@ -119,7 +119,7 @@ function MatrixSubtractionTutorial() {
         />
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
@@ -138,7 +138,7 @@ function MatrixSubtractionTutorial() {
         </ul>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Onde a Subtração de Matrizes Aparece?
         </h2>

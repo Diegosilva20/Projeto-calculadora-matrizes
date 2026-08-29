@@ -44,10 +44,10 @@ function Sobre() {
 
       <section className="p-4 sm:p-6 max-w-5xl mx-auto text-center min-h-[70vh]">
         <header className="mb-12">
-          <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-gray-800 dark:text-slate-100">
+          <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-slate-900 dark:text-white dark:text-slate-100">
             Nossa Missão: Descomplicar a Álgebra Linear
           </h1>
-          <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto dark:text-slate-300">
+          <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-2xl mx-auto dark:text-slate-300">
             Acreditamos que a matemática pode ser acessível. Por isso, criamos
             uma plataforma que une ferramentas práticas e aprendizado teórico de
             forma simples e gratuita.
@@ -58,20 +58,20 @@ function Sobre() {
           {pillars.map((pillar) => (
             <article
               key={pillar.title}
-              className="group flex flex-col items-center rounded-xl border border-gray-200 bg-white p-6 text-center transition-all hover:border-blue-400 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500 sm:p-8"
+              className="group flex flex-col items-center rounded-2xl border border-slate-200 shadow-sm dark:border-slate-700/50 border border-slate-200 shadow-sm dark:border-slate-700/20 bg-white p-6 text-center transition-all hover:border-blue-400 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500 sm:p-8"
             >
-              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white dark:bg-blue-950/70 dark:text-blue-300">
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-200 shadow-sm dark:border-slate-700/50 bg-blue-50 text-accent transition-colors group-hover:bg-accent group-hover:text-white dark:bg-blue-950/70 dark:text-blue-300">
                 {pillar.icon}
               </div>
-              <h2 className="text-xl font-bold mb-3 text-gray-900 transition-colors group-hover:text-blue-600 dark:text-slate-100 dark:group-hover:text-blue-400">
+              <h2 className="text-xl font-bold mb-3 text-gray-900 transition-colors group-hover:text-accent dark:text-slate-100 dark:group-hover:text-blue-400">
                 {pillar.title}
               </h2>
-              <p className="text-gray-500 text-sm sm:text-base mb-8 flex-grow leading-relaxed dark:text-slate-300">
+              <p className="text-slate-600 dark:text-slate-300/70 text-sm sm:text-base mb-8 flex-grow leading-relaxed dark:text-slate-300">
                 {pillar.description}
               </p>
               <Link
                 to={pillar.to}
-                className="inline-flex justify-center bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-md"
+                className="inline-flex justify-center bg-accent text-white px-6 py-3 rounded-xl font-bold hover:bg-accent-hover transition-all transform hover:scale-105 "
               >
                 {pillar.action}
               </Link>
@@ -79,22 +79,22 @@ function Sobre() {
           ))}
         </div>
 
-        <section className="rounded-xl border border-gray-100 bg-white p-6 text-center shadow-lg transition-colors dark:border-slate-800 dark:bg-slate-900 dark:shadow-none sm:p-8">
+        <section className="rounded-2xl border border-slate-200 shadow-sm dark:border-slate-700/50 border border-slate-200 shadow-sm dark:border-slate-700/10 bg-white p-6 text-center shadow-lg transition-colors dark:border-slate-800 dark:bg-slate-900 dark:shadow-none sm:p-8">
           <div className="flex flex-col items-center gap-5">
-            <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950/70 dark:text-blue-300">
+            <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl border border-slate-200 shadow-sm dark:border-slate-700/50 bg-blue-50 text-accent dark:bg-blue-950/70 dark:text-blue-300">
               <FaComments className="h-8 w-8" aria-hidden="true" />
             </div>
             <div className="max-w-2xl">
-              <h2 className="text-2xl font-bold mb-3 text-gray-800 dark:text-slate-100">
+              <h2 className="text-2xl font-bold mb-3 text-slate-900 dark:text-white dark:text-slate-100">
                 Próximos Passos & Contato
               </h2>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed dark:text-slate-300">
+              <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed dark:text-slate-300">
                 Estamos sempre trabalhando para adicionar novas funcionalidades
                 e aprofundar nosso conteúdo. Se tiver sugestões, dúvidas ou
                 encontrar algum erro,{" "}
                 <Link
                   to="/contato"
-                  className="text-blue-600 font-bold hover:underline dark:text-blue-400"
+                  className="text-accent font-bold hover:underline dark:text-blue-400"
                 >
                   entre em contato
                 </Link>

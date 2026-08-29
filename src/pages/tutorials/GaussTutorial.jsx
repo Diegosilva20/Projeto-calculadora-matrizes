@@ -6,14 +6,14 @@ import UseExampleButton from "../../components/tutorial/UseExampleButton";
 
 function GaussEscalonamentoTutorial() {
   return (
-    <div className="p-6 max-w-4xl mx-auto text-gray-800">
+    <div className="p-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
         Escalonar uma matriz é transformar seus números em uma “escada” usando
         operações de linha. Essa forma facilita resolver sistemas lineares,
         identificar o tipo de solução e simplificar cálculos com matrizes.
       </p>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           A Intuição: Criar uma Escada de Zeros
         </h2>
@@ -28,7 +28,7 @@ function GaussEscalonamentoTutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           As Operações Que Podemos Fazer
         </h2>
@@ -50,7 +50,7 @@ function GaussEscalonamentoTutorial() {
         </ul>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Como Escalonar uma Matriz Passo a Passo
         </h2>
@@ -64,7 +64,7 @@ function GaussEscalonamentoTutorial() {
         </ol>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-4">
           Exemplo Resolvido: Escalonamento de um Sistema 3x3
         </h2>
@@ -97,7 +97,7 @@ function GaussEscalonamentoTutorial() {
         />
 
         <div className="mt-6 space-y-5">
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
               Passo 1: usar o primeiro pivô
             </h3>
@@ -113,7 +113,7 @@ function GaussEscalonamentoTutorial() {
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
               Resultado parcial
             </h3>
@@ -126,7 +126,7 @@ function GaussEscalonamentoTutorial() {
             />
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
               Passo 2: usar o segundo pivô
             </h3>
@@ -139,7 +139,7 @@ function GaussEscalonamentoTutorial() {
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
               Matriz escalonada
             </h3>
@@ -154,7 +154,7 @@ function GaussEscalonamentoTutorial() {
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Substituição Reversa
         </h2>
@@ -177,7 +177,7 @@ function GaussEscalonamentoTutorial() {
         </ol>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           O Que a Calculadora Faz?
         </h2>
@@ -193,7 +193,7 @@ function GaussEscalonamentoTutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
@@ -215,7 +215,7 @@ function GaussEscalonamentoTutorial() {
         </ul>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Onde o Escalonamento Aparece?
         </h2>

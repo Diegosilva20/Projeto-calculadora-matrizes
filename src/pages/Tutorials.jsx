@@ -36,16 +36,16 @@ const tutorialCategories = [
 ];
 
 const TutorialCard = ({ tutorial }) => (
-  <article className="group flex flex-col rounded-xl border border-gray-200 bg-white p-6 text-left transition-all hover:border-blue-400 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500">
-    <h3 className="text-lg font-bold mb-2 transition-colors group-hover:text-blue-600 dark:text-slate-100">
+  <article className="group flex flex-col rounded-2xl border border-slate-200 shadow-sm dark:border-slate-700/50 border border-slate-200 shadow-sm dark:border-slate-700/20 bg-white p-6 text-left transition-all hover:border-blue-400 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500">
+    <h3 className="text-lg font-bold mb-2 transition-colors group-hover:text-accent dark:text-slate-100">
       {tutorial.title}
     </h3>
-    <p className="text-gray-500 text-sm mb-6 flex-grow leading-relaxed dark:text-slate-300">
+    <p className="text-slate-600 dark:text-slate-300/70 text-sm mb-6 flex-grow leading-relaxed dark:text-slate-300">
       {tutorial.description}
     </p>
     <Link
       to={`/tutorial/${tutorial.slug}`}
-      className="inline-flex flex-wrap items-center gap-x-1 text-sm font-bold text-blue-600 transition-transform group-hover:translate-x-2 dark:text-blue-400"
+      className="inline-flex flex-wrap items-center gap-x-1 text-sm font-bold text-accent transition-transform group-hover:translate-x-2 dark:text-blue-400"
     >
       Ler tutorial: {tutorial.title} <span>→</span>
     </Link>
@@ -98,10 +98,10 @@ const Tutorials = () => {
 
       <section className="p-4 sm:p-6 max-w-5xl mx-auto text-center min-h-[70vh]">
         <header className="mb-12">
-          <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-gray-800 dark:text-slate-100">
+          <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-slate-900 dark:text-white dark:text-slate-100">
             Catálogo de Tutoriais de Álgebra Linear
           </h1>
-          <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto dark:text-slate-300">
+          <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-2xl mx-auto dark:text-slate-300">
             Escolha um tema e veja a explicação passo a passo, com exemplos
             antes de usar a calculadora.
           </p>
@@ -111,10 +111,10 @@ const Tutorials = () => {
           {allCategories.map((category) => (
             <section key={category.title} className="text-left">
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-100">
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white dark:text-slate-100">
                   {category.title}
                 </h2>
-                <p className="mt-2 max-w-2xl text-sm sm:text-base text-gray-600 leading-relaxed dark:text-slate-300">
+                <p className="mt-2 max-w-2xl text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed dark:text-slate-300">
                   {category.description}
                 </p>
               </div>

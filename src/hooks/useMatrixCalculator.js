@@ -139,6 +139,33 @@ export const useMatrixCalculator = () => {
       setSteps([]);
     };
 
+  const handleUseResultAsA = () => {
+    if (result) {
+      const r = result.length;
+      const c = result[0].length;
+      setSizeA({ rows: r, cols: c });
+      setMatrixA(result);
+      setResult(null);
+      setSteps([]);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleSwapMatrices = () => {
+    const tempSizeA = sizeA;
+    const tempMatrixA = matrixA;
+    
+    setSizeA(sizeB);
+    setMatrixA(matrixB);
+    
+    setSizeB(tempSizeA);
+    setMatrixB(tempMatrixA);
+    
+    setResult(null);
+    setSteps([]);
+    setError("");
+  };
+
   return {
     sizeA,
     sizeB,
@@ -156,5 +183,7 @@ export const useMatrixCalculator = () => {
     handleSizeChange,
     handleCalculate,
     handleClear,
+    handleUseResultAsA,
+    handleSwapMatrices,
   };
 };

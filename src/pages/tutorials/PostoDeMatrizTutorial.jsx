@@ -6,7 +6,7 @@ import TutorialCTA from "../../components/tutorial/TutorialCTA";
 
 function PostoDeMatrizTutorial() {
   return (
-    <div className="p-6 max-w-4xl mx-auto text-gray-800 dark:text-slate-100">
+    <div className="p-6 max-w-4xl mx-auto text-slate-900 dark:text-white dark:text-slate-100">
       <div className="mb-8">
         <p className="mb-6 text-lg leading-relaxed">
           O posto de uma matriz é uma medida do quanto suas linhas ou colunas são
@@ -20,7 +20,7 @@ function PostoDeMatrizTutorial() {
         </TipBox>
       </div>
 
-      <section className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200 dark:bg-slate-900 dark:border-slate-700">
+      <section className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
         <h2 className="text-2xl font-semibold mb-3">O que é uma linha não nula?</h2>
         <p className="mb-4 leading-relaxed">
           Uma linha não nula é uma linha que tem pelo menos um elemento diferente de
@@ -32,7 +32,7 @@ function PostoDeMatrizTutorial() {
         </p>
       </section>
 
-      <section className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200 dark:bg-slate-900 dark:border-slate-700">
+      <section className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
         <h2 className="text-2xl font-semibold mb-3">Exemplo resolvido: matriz 3x3</h2>
         <p className="mb-4 leading-relaxed">
           Vamos calcular o posto da matriz <Formula>A</Formula> usando escalonamento.
@@ -49,7 +49,7 @@ function PostoDeMatrizTutorial() {
         <p className="mb-4 leading-relaxed">
           Agora vamos usar operações de linha para escalonar a matriz.</p>
 
-        <div className="rounded-lg border border-gray-200 bg-slate-50 p-4 mb-6 dark:bg-slate-950 dark:border-slate-700">
+        <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 p-4 mb-6 dark:bg-slate-950 dark:border-slate-700">
           <h3 className="text-xl font-semibold mb-3">Passo 1: eliminar abaixo do primeiro pivô</h3>
           <p className="mb-3 leading-relaxed">
             Usamos o primeiro elemento da primeira linha como pivô. A seguir, zeramos os elementos abaixo dele.
@@ -70,7 +70,7 @@ function PostoDeMatrizTutorial() {
           Nesse ponto, a segunda linha virou <Formula>[0, 0, 0]</Formula>. A terceira linha ainda tem um elemento não nulo, então ela continua sendo uma linha importante para o posto.
         </p>
 
-        <div className="rounded-lg border border-gray-200 bg-slate-50 p-4 mb-6 dark:bg-slate-950 dark:border-slate-700">
+        <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 p-4 mb-6 dark:bg-slate-950 dark:border-slate-700">
           <h3 className="text-xl font-semibold mb-3">Passo 2: organizar a forma escalonada</h3>
           <p className="mb-3 leading-relaxed">
             Para ficar mais claro, trocamos a segunda e a terceira linha. Assim, a linha nula fica por baixo.
@@ -93,7 +93,7 @@ function PostoDeMatrizTutorial() {
         </TipBox>
       </section>
 
-      <section className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200 dark:bg-slate-900 dark:border-slate-700">
+      <section className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
         <h2 className="text-2xl font-semibold mb-3">Por que o escalonamento mostra o posto?</h2>
         <p className="mb-4 leading-relaxed">
           O escalonamento usa operações de linha que não mudam a dependência entre as linhas. Ele apenas rearranja a matriz para que as linhas independentes fiquem na parte de cima e as linhas dependentes ou nulas fiquem por baixo.
@@ -103,7 +103,7 @@ function PostoDeMatrizTutorial() {
         </p>
       </section>
 
-      <section className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200 dark:bg-slate-900 dark:border-slate-700">
+      <section className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
         <h2 className="text-2xl font-semibold mb-3">Posto de matriz quadrada e matriz retangular</h2>
         <p className="mb-4 leading-relaxed">
           O posto existe para qualquer matriz, quadrada ou retangular. Em uma matriz quadrada <Formula>n × n</Formula>, o posto máximo é <Formula>n</Formula>. Em uma matriz retangular, o posto máximo é o menor entre o número de linhas e colunas.
@@ -113,17 +113,17 @@ function PostoDeMatrizTutorial() {
         </p>
       </section>
 
-      <section className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200 dark:bg-slate-900 dark:border-slate-700">
+      <section className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
         <h2 className="text-2xl font-semibold mb-3">Posto e sistemas lineares</h2>
         <p className="mb-4 leading-relaxed">
           O posto de uma matriz de coeficientes decide quantas equações independentes o sistema realmente tem. Se o posto for menor que o número de incógnitas, o sistema pode ter infinitas soluções ou nenhuma solução exclusiva.
         </p>
         <p className="mb-4 leading-relaxed">
-          Se o posto da matriz aumentada for igual ao posto da matriz de coeficientes, o sistema é consistente. Para entender melhor isso, veja o tutorial de <Link to="/tutorial/sistemas-lineares" className="font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-200">sistemas lineares</Link>.
+          Se o posto da matriz aumentada for igual ao posto da matriz de coeficientes, o sistema é consistente. Para entender melhor isso, veja o tutorial de <Link to="/tutorial/sistemas-lineares" className="font-semibold text-accent hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-200">sistemas lineares</Link>.
         </p>
       </section>
 
-      <section className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200 dark:bg-slate-900 dark:border-slate-700">
+      <section className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
         <h2 className="text-2xl font-semibold mb-3">Posto, determinante e inversa</h2>
         <p className="mb-4 leading-relaxed">
           Em uma matriz quadrada <Formula>n × n</Formula>:
@@ -137,10 +137,10 @@ function PostoDeMatrizTutorial() {
           </li>
         </ul>
         <p className="mt-4 leading-relaxed">
-          Para ler mais sobre isso, veja <Link to="/tutorial/determinante-de-matrizes" className="font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-200">determinante de matrizes</Link> e <Link to="/tutorial/matriz-inversa" className="font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-200">matriz inversa</Link>.</p>
+          Para ler mais sobre isso, veja <Link to="/tutorial/determinante-de-matrizes" className="font-semibold text-accent hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-200">determinante de matrizes</Link> e <Link to="/tutorial/matriz-inversa" className="font-semibold text-accent hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-200">matriz inversa</Link>.</p>
       </section>
 
-      <section className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200 dark:bg-slate-900 dark:border-slate-700">
+      <section className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
         <h2 className="text-2xl font-semibold mb-3">Erros comuns ao calcular o posto</h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>Contar linhas nulas como se fossem não nulas.</li>

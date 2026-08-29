@@ -14,7 +14,7 @@ const FAQSection = ({ items }) => {
           >
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-slate-900 dark:text-slate-100">
               <span>{item.question}</span>
-              <span className="text-blue-600 transition-transform group-open:rotate-45">
+              <span className="text-accent transition-transform group-open:rotate-45">
                 +
               </span>
             </summary>

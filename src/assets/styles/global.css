@@ -1,14 +1,50 @@
-/* src/assets/styles/global.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  background-color: #f8f9fa; /* Cor de fundo consistente */
+@layer base {
+  body {
+    @apply font-sans bg-blueprint-50 text-slate-800;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  
+  /* Subtle modern dot pattern for light mode */
+  .pattern-bg {
+    background-size: 24px 24px;
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  }
+
+  /* Matrix brackets styling - sleek and modern */
+  .matrix-bracket {
+    @apply border-x-2 border-slate-300 dark:border-slate-600 rounded-lg relative;
+  }
+  .matrix-bracket::before, .matrix-bracket::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 2px;
+    background: currentColor;
+    @apply bg-slate-300 dark:bg-slate-600;
+  }
+  .matrix-bracket::before { top: 0; left: 0; border-top-left-radius: 2px; }
+  .matrix-bracket::after { bottom: 0; left: 0; border-bottom-left-radius: 2px; }
+
+  /* Modern headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans tracking-tight font-bold text-slate-900 dark:text-white;
+  }
+  
+  .dark body {
+    @apply bg-blueprint-900 text-slate-300;
+  }
+  
+  .dark .pattern-bg {
+    background-size: 24px 24px;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  }
 }
 
 #root {
@@ -18,161 +54,18 @@ body {
 }
 
 main {
-  flex: 1 0 auto; /* Faz o main ocupar o espaço disponível, empurrando o footer para baixo */
+  flex: 1 0 auto;
 }
 
-/* Estilos específicos para o footer */
 footer {
-  width: 100%;
-  padding: 1rem 0;
-  text-align: center;
-}
-
-footer .container {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  @apply border-t border-slate-200 dark:border-slate-800 py-6 text-center text-sm mt-12;
 }
 
 footer a {
-  color: #3b82f6; /* Cor padrão do link */
-  text-decoration: none;
+  @apply text-slate-500 dark:text-slate-400 hover:text-accent transition-colors underline decoration-slate-200 dark:decoration-slate-700 underline-offset-4;
 }
 
-footer a:hover {
-  text-decoration: underline;
+/* Base interactive elements to have subtle rounding */
+input, select, textarea, button {
+  @apply rounded-lg transition-all duration-200;
 }
-
-.dark footer a {
-  color: #60a5fa;
-}
-
-.dark body {
-  background-color: #020617;
-}
-
-.dark .legal-page {
-  color: #cbd5e1;
-}
-
-.dark .legal-page .text-gray-800,
-.dark .legal-page .text-gray-900 {
-  color: #f1f5f9;
-}
-
-.dark .legal-page .text-gray-700,
-.dark .legal-page .text-gray-600 {
-  color: #cbd5e1;
-}
-
-.dark .legal-page .text-gray-500 {
-  color: #94a3b8;
-}
-
-.dark .legal-page .text-blue-600 {
-  color: #60a5fa;
-}
-
-.dark .tutorial-content {
-  color: #cbd5e1;
-}
-
-.dark .tutorial-content div.bg-white {
-  background-color: #0f172a;
-  border-color: #334155;
-  box-shadow: none;
-}
-
-.dark .tutorial-content .bg-gray-50,
-.dark .tutorial-content .bg-gray-100,
-.dark .tutorial-content .bg-slate-50 {
-  background-color: #111827;
-  border-color: #334155;
-}
-
-.dark .tutorial-content .bg-blue-50 {
-  background-color: rgba(30, 58, 138, 0.35);
-  border-color: #1e40af;
-}
-
-.dark .tutorial-content .bg-green-50 {
-  background-color: rgba(20, 83, 45, 0.55);
-}
-
-.dark .tutorial-content .bg-red-50 {
-  background-color: rgba(127, 29, 29, 0.55);
-}
-
-.dark .tutorial-content .border-gray-200,
-.dark .tutorial-content .border-gray-300,
-.dark .tutorial-content .border-slate-200,
-.dark .tutorial-content .border-blue-200 {
-  border-color: #334155;
-}
-
-.dark .tutorial-content .border-green-200 {
-  border-color: #166534;
-}
-
-.dark .tutorial-content .border-red-200 {
-  border-color: #991b1b;
-}
-
-.dark .tutorial-content .text-gray-800,
-.dark .tutorial-content .text-gray-900,
-.dark .tutorial-content .text-slate-800,
-.dark .tutorial-content .text-slate-900 {
-  color: #f1f5f9;
-}
-
-.dark .tutorial-content .text-gray-700,
-.dark .tutorial-content .text-gray-600,
-.dark .tutorial-content .text-gray-500,
-.dark .tutorial-content .text-slate-700,
-.dark .tutorial-content .text-slate-600 {
-  color: #cbd5e1;
-}
-
-.dark .tutorial-content .text-blue-700,
-.dark .tutorial-content .text-blue-900,
-.dark .tutorial-content .text-blue-950 {
-  color: #bfdbfe;
-}
-
-.dark .tutorial-content .text-green-900 {
-  color: #bbf7d0;
-}
-
-.dark .tutorial-content .text-red-900,
-.dark .tutorial-content .text-red-700 {
-  color: #fecaca;
-}
-
-.dark .tutorial-content .tutorial-cta {
-  color: #ffffff;
-}
-
-.dark .tutorial-content .tutorial-cta p {
-  color: #dbeafe;
-}
-
-.dark .tutorial-content .tutorial-cta-primary {
-  color: #1d4ed8;
-  text-shadow: none;
-}
-
-/* Media Queries para Responsividade */
-/* 
-@media (max-width: 640px) { 
-  footer .flex {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  footer a {
-    font-size: 0.875rem; 
-  }
-} 
-*/

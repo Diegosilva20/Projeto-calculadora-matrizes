@@ -367,4 +367,48 @@ describe("calculate operations", () => {
       expect(error).toContain("2x2 e 3x3");
     });
   });
+
+  describe("Cofatores e Adjunta", () => {
+    it("calculates matrix of cofactors", async () => {
+      const A = [["1", "2"], ["3", "4"]];
+      const { result, error } = await runCalculate(A, null, "", "cofatores");
+      expect(error).toBe("");
+      expect(result).toEqual([[4, -3], [-2, 1]]);
+    });
+
+    it("calculates adjoint matrix", async () => {
+      const A = [["1", "2"], ["3", "4"]];
+      const { result, error } = await runCalculate(A, null, "", "adjunta");
+      expect(error).toBe("");
+      // Adjoint is transpose of cofactors: [[4, -2], [-3, 1]]
+      expect(result).toEqual([[4, -2], [-3, 1]]);
+    });
+  });
+
+  describe("Sistema Gauss", () => {
+    it("solves 2x2 linear system", async () => {
+      const A = [["2", "1"], ["1", "-1"]];
+      const B = [["5"], ["1"]];
+      const { result, error, steps } = await runCalculate(A, B, "", "sistemaGauss", { rows: 2, cols: 2 });
+      expect(error).toBe("");
+      // Reduced row echelon form of [A|B]
+      // [2 1 | 5]  -> [1  0.5 | 2.5]
+      // [1 -1 | 1] -> [1 -1   | 1  ] -> [0 -1.5 | -1.5] -> [0 1 | 1]
+      // -> [1 0 | 2]
+      expect(result).toEqual([[1, 0.5, 2.5], [0, 1, 1]]);
+      expect(steps[0].title).toContain("Matriz Aumentada");
+    });
+  });
+
+  describe("Autovalores e Autovetores", () => {
+    it("calculates eigenvalues and eigenvectors for 2x2 identity matrix", async () => {
+      const A = [["1", "0"], ["0", "1"]];
+      const { result, error } = await runCalculate(A, null, "", "autovalores");
+      expect(error).toBe("");
+      // First row: eigenvalues. Identity has eigenvalues 1 and 1.
+      // Next rows: eigenvectors.
+      expect(result[0]).toEqual([1, 1]);
+    });
+  });
+
 });

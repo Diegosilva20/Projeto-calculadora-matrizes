@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
 const footerLinkClasses =
-  "text-sm text-blue-600 hover:underline dark:text-blue-400";
+  "text-sm text-accent hover:underline dark:text-blue-400";
 
 const Footer = () => (
-  <footer className="mt-12 border-t border-gray-200 bg-gray-100 pt-6 transition-colors dark:border-slate-800 dark:bg-slate-950">
+  <footer className="mt-12 border-t border-blueprint-800/20 bg-gray-100 pt-6 transition-colors dark:border-slate-800 dark:bg-slate-950">
     <div className="container mx-auto text-center">
-      <p className="text-sm text-gray-600 dark:text-slate-400">
+      <p className="text-sm text-slate-600 dark:text-slate-300 dark:text-slate-400">
         © 2026 MatrizCalculator. Todos os direitos reservados.
       </p>
       <div className="mt-2 flex flex-col items-center justify-center space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0">

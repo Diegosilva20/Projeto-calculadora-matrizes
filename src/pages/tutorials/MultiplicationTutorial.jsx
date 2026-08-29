@@ -6,7 +6,7 @@ import UseExampleButton from "../../components/tutorial/UseExampleButton";
 
 function MatrixMultiplicationTutorial() {
   return (
-    <div className="p-6 max-w-4xl mx-auto text-gray-800">
+    <div className="p-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
         Multiplicar matrizes parece estranho no começo porque não funciona como
         uma soma: você não multiplica posição com posição. A regra é sempre
@@ -15,7 +15,7 @@ function MatrixMultiplicationTutorial() {
         clara, o cálculo vira uma repetição bem previsível.
       </p>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           A Intuição: Linha Encontra Coluna
         </h2>
@@ -32,7 +32,7 @@ function MatrixMultiplicationTutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Antes de Calcular: As Matrizes Podem Ser Multiplicadas?
         </h2>
@@ -54,13 +54,13 @@ function MatrixMultiplicationTutorial() {
           ) = C (<Formula>m x p</Formula>)
         </div>
 
-        <p className="mt-4 text-sm text-gray-600 leading-relaxed">
+        <p className="mt-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
           Os números de dentro precisam bater: colunas de A e linhas de B. O
           resultado fica com os números de fora: linhas de A e colunas de B.
         </p>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Como Multiplicar Matrizes Passo a Passo
         </h2>
@@ -74,7 +74,7 @@ function MatrixMultiplicationTutorial() {
         </ol>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-4">
           Exemplo Resolvido: Multiplicando uma Matriz 2x3 por uma 3x2
         </h2>
@@ -119,7 +119,7 @@ function MatrixMultiplicationTutorial() {
         />
 
         <div className="mt-6 space-y-5">
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
               C11: linha 1 de A com coluna 1 de B
             </h3>
@@ -128,7 +128,7 @@ function MatrixMultiplicationTutorial() {
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
               C12: linha 1 de A com coluna 2 de B
             </h3>
@@ -137,7 +137,7 @@ function MatrixMultiplicationTutorial() {
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
               C21: linha 2 de A com coluna 1 de B
             </h3>
@@ -146,7 +146,7 @@ function MatrixMultiplicationTutorial() {
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
               C22: linha 2 de A com coluna 2 de B
             </h3>
@@ -167,7 +167,7 @@ function MatrixMultiplicationTutorial() {
         />
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
@@ -190,7 +190,7 @@ function MatrixMultiplicationTutorial() {
         </ul>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Onde Isso Aparece na Prática?
         </h2>

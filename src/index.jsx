@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import "./assets/styles/global.css";
+import "katex/dist/katex.min.css";
 import App from "./App.jsx";
 import reportWebVitals from './reportWebVitals.js';
 

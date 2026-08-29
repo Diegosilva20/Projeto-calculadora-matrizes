@@ -1,0 +1,27 @@
+# Calculadora de Matrizes
+
+> Calculadora de Matrizes Online Gratuita com resolução passo a passo e frações exatas.
+
+Esta ferramenta educacional resolve operações matriciais mostrando todas as etapas intermediárias (como Eliminação de Gauss, Regra de Cramer e multiplicação linha por coluna).
+
+## O que a ferramenta faz
+- Soma e Subtração de Matrizes
+- Multiplicação de Matrizes
+- Determinante (Fórmula e Gauss)
+- Matriz Inversa
+- Escalonamento de Matrizes (Método de Gauss)
+- Posto de Matriz
+- Sistemas Lineares (Regra de Cramer e Gauss)
+
+## Tutoriais Disponíveis
+O site oferece artigos educativos sobre:
+- [Multiplicação de Matrizes](https://projeto-calculadora-matrizes.vercel.app/tutorial/multiplicacao-de-matrizes)
+- [Determinante 2x2](https://projeto-calculadora-matrizes.vercel.app/tutorial/determinante-2x2)
+- [Determinante de Matrizes: Fórmula](https://projeto-calculadora-matrizes.vercel.app/tutorial/determinante-matrizes)
+- [Matriz Inversa](https://projeto-calculadora-matrizes.vercel.app/tutorial/matriz-inversa)
+- [Escalonamento por Gauss](https://projeto-calculadora-matrizes.vercel.app/tutorial/escalonamento-matrizes)
+- [Regra de Cramer](https://projeto-calculadora-matrizes.vercel.app/tutorial/regra-de-cramer)
+- [Sistemas Lineares](https://projeto-calculadora-matrizes.vercel.app/tutorial/sistemas-lineares)
+
+## Notas Técnicas
+Todas as operações matemáticas preservam precisão utilizando a biblioteca Math.js. A interface é um Single Page Application (SPA).

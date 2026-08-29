@@ -7,7 +7,7 @@ import UseExampleButton from "../../components/tutorial/UseExampleButton";
 
 function DeterminantTutorial() {
   return (
-    <div className="p-6 max-w-4xl mx-auto text-gray-800">
+    <div className="p-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
         O determinante é um número calculado a partir de uma matriz quadrada.
         Ele ajuda a responder perguntas importantes, como: essa matriz tem
@@ -15,7 +15,7 @@ function DeterminantTutorial() {
         área ou volume?
       </p>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           A Intuição: Um Número Que Resume a Matriz
         </h2>
@@ -32,7 +32,7 @@ function DeterminantTutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Antes de Calcular: A Matriz Precisa Ser Quadrada
         </h2>
@@ -52,7 +52,7 @@ function DeterminantTutorial() {
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Como Calcular Determinante 2x2 Passo a Passo
         </h2>
@@ -69,16 +69,16 @@ function DeterminantTutorial() {
             [4, 2],
           ]}
         />
-        <div className="mt-5 rounded-lg border border-gray-200 bg-gray-50 p-4">
+        <div className="mt-5 rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
           <p className="font-mono text-sm sm:text-base break-words">
             det(A) = (6 × 2) - (-3 × 4) = 12 - (-12) = 24
           </p>
         </div>
-        <p className="mt-4 text-sm text-gray-600 leading-relaxed">
+        <p className="mt-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
           Se você quer treinar só este caso, veja o guia focado em{" "}
           <Link
             to="/tutorial/determinante-2x2"
-            className="font-bold text-blue-600 underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+            className="font-bold text-accent underline hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
           >
             determinante 2x2
           </Link>
@@ -86,7 +86,7 @@ function DeterminantTutorial() {
         </p>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-4">
           Exemplo Resolvido: Determinante 3x3 pela Regra de Sarrus
         </h2>
@@ -112,7 +112,7 @@ function DeterminantTutorial() {
         />
 
         <div className="mt-6 space-y-5">
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
               Passo 1: somar as diagonais principais
             </h3>
@@ -121,7 +121,7 @@ function DeterminantTutorial() {
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
               Passo 2: somar as diagonais secundárias
             </h3>
@@ -130,7 +130,7 @@ function DeterminantTutorial() {
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
               Passo 3: subtrair os resultados
             </h3>
@@ -141,7 +141,7 @@ function DeterminantTutorial() {
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Métodos Para Matrizes Maiores
         </h2>
@@ -166,7 +166,7 @@ function DeterminantTutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
@@ -188,7 +188,7 @@ function DeterminantTutorial() {
         </ul>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 border border-gray-200">
+      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Onde o Determinante Aparece?
         </h2>
