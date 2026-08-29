@@ -2,8 +2,8 @@ import React from "react";
 
 const MatrixInput = ({ matrix, setMatrix, label, rows, cols }) => {
   const handleInputChange = (row, col, value) => {
-    // Permite números, negativos, decimais ou campo vazio
-    const numericRegex = /^-?[0-9]*\.?[0-9]*$/;
+    // Permite números, negativos, decimais, frações (ex: 1/2, -3/4) ou campo vazio
+    const numericRegex = /^-?[0-9]*\.?[0-9]*(\/[0-9]*)?$/;
 
     if (numericRegex.test(value)) {
       const updated = matrix.map((r, i) =>
@@ -36,7 +36,7 @@ const MatrixInput = ({ matrix, setMatrix, label, rows, cols }) => {
         if (targetCol >= cols) break; // Ignora se passar do limite de colunas
 
         const val = pastedCols[j].trim().replace(",", "."); // Aceita vírgula brasileira como decimal
-        const numericRegex = /^-?[0-9]*\.?[0-9]*$/;
+        const numericRegex = /^-?[0-9]*\.?[0-9]*(\/[0-9]*)?$/;
 
         if (numericRegex.test(val) || val === "") {
           updatedMatrix[targetRow][targetCol] = val;
@@ -105,8 +105,8 @@ const MatrixInput = ({ matrix, setMatrix, label, rows, cols }) => {
               key={`${label}-${i}-${j}`}
               id={`input-${label}-${i}-${j}`} 
               type="text"
-              inputMode="decimal"
-              pattern="-?[0-9]*\.?[0-9]*"
+              inputMode="text"
+              pattern="-?[0-9]*\.?[0-9]*(\/[0-9]*)?"
               value={val}
               onChange={(e) => handleInputChange(i, j, e.target.value)}
               onPaste={(e) => handlePaste(e, i, j)}

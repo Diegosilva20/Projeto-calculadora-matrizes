@@ -21,22 +21,6 @@
   ],
   "redirects": [
     {
-      "source": "/matrizcalculator.com",
-      "destination": "https://www.matrizcalculator.com",
-      "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "destination": "https://www.matrizcalculator.com/$1",
-      "has": [
-        {
-          "type": "host",
-          "value": "matrizcalculator.com"
-        }
-      ],
-      "permanent": true
-    },
-    {
       "source": "/tutorial/1",
       "destination": "/tutorial/determinante-de-matrizes",
       "permanent": true

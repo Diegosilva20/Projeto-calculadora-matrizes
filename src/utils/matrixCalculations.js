@@ -1,5 +1,15 @@
 // src/utils/matrixCalculations.js
 import { calculateGaussianElimination } from "../algorithms/gaussianElimination";
+import {
+  toNumber,
+  formatValue,
+  toArray,
+  formatMatrix,
+  isRowEchelonForm,
+} from "./matrixUtils";
+
+// Re-export so external callers (tests, components) that import from here still work.
+export { toNumber, formatValue, toArray, formatMatrix, isRowEchelonForm };
 
 let matrix;
 let add;
@@ -27,33 +37,49 @@ const loadMath = async () => {
 export const createEmptyMatrix = (rows, cols) =>
   Array.from({ length: rows }, () => Array(cols).fill(""));
 
+export const resizeMatrix = (mat, newRows, newCols) =>
+  Array.from({ length: newRows }, (_, i) =>
+    Array.from({ length: newCols }, (_, j) =>
+      mat && mat[i] && mat[i][j] !== undefined ? mat[i][j] : ""
+    )
+  );
+
 export const validateMatrix = (mat) =>
   mat.every((row) =>
-    row.every((val) => val === "" || (!isNaN(parseFloat(val)) && isFinite(parseFloat(val))))
+    row.every((val) => {
+      if (val === "" || val === null || val === undefined) return true;
+      const str = String(val).trim();
+      if (/^-?\d+(\.\d+)?(\/-?\d+(\.\d+)?)?$/.test(str)) {
+        if (str.includes("/")) {
+          const parts = str.split("/");
+          return parseFloat(parts[1]) !== 0;
+        }
+        return true;
+      }
+      return !isNaN(parseFloat(str)) && isFinite(parseFloat(str));
+    })
   );
 
 const parseMatrix = (mat) =>
-  mat.map((row) => row.map((val) => (val === "" ? fraction(0) : fraction(val))));
+  mat.map((row) =>
+    row.map((val) => {
+      if (val === "" || val === null || val === undefined) return fraction(0);
+      const str = String(val).trim();
+      try {
+        return fraction(str);
+      } catch {
+        const num = parseFloat(str);
+        return isNaN(num) ? fraction(0) : fraction(num);
+      }
+    })
+  );
 
-// Exportadas para uso em algoritmos externos
-export const formatValue = (val) => Number(number(val).toFixed(2));
-
-export const toArray = (result) => {
-  if (result && typeof result.toArray === 'function') return result.toArray();
-  if (Array.isArray(result)) return result;
-  throw new Error("O resultado não é uma matriz válida");
-};
-
-export const formatMatrix = (mat) => {
-  const arr = toArray(mat);
-  return arr.map(row => row.map(val => formatValue(val)));
-};
 
 const cloneMatrix = (mat) => mat.map((row) => [...row]);
 
-const isZero = (value) => Math.abs(number(value)) < 1e-10;
+const isZero = (value) => Math.abs(toNumber(value)) < 1e-10;
 
-const isOne = (value) => Math.abs(number(value) - 1) < 1e-10;
+const isOne = (value) => Math.abs(toNumber(value) - 1) < 1e-10;
 
 const formatWorkingMatrix = (mat) =>
   mat.map((row) => row.map((cell) => formatValue(cell)));
@@ -316,18 +342,20 @@ const buildDeterminantSteps = (parsedA, formattedResult) => {
   }
 
   if (n === 3) {
-    const downProducts = [
+    const downRaw = [
       multiply(multiply(parsedA[0][0], parsedA[1][1]), parsedA[2][2]),
       multiply(multiply(parsedA[0][1], parsedA[1][2]), parsedA[2][0]),
       multiply(multiply(parsedA[0][2], parsedA[1][0]), parsedA[2][1]),
-    ].map(formatValue);
-    const upProducts = [
+    ];
+    const upRaw = [
       multiply(multiply(parsedA[0][2], parsedA[1][1]), parsedA[2][0]),
       multiply(multiply(parsedA[0][0], parsedA[1][2]), parsedA[2][1]),
       multiply(multiply(parsedA[0][1], parsedA[1][0]), parsedA[2][2]),
-    ].map(formatValue);
-    const downSum = downProducts.reduce((sum, item) => sum + item, 0);
-    const upSum = upProducts.reduce((sum, item) => sum + item, 0);
+    ];
+    const downProducts = downRaw.map(formatValue);
+    const upProducts = upRaw.map(formatValue);
+    const downSum = formatValue(downRaw.reduce((sum, item) => add(sum, item), fraction(0)));
+    const upSum = formatValue(upRaw.reduce((sum, item) => add(sum, item), fraction(0)));
     const sarrusMatrix = buildSarrusDisplayMatrix(a);
 
     return [
@@ -626,25 +654,217 @@ const buildInverseSteps = (parsedA, formattedResult) => {
   ];
 };
 
-export const isRowEchelonForm = (mat) => {
-  let lastPivotCol = -1;
-  for (let i = 0; i < mat.length; i++) {
-    let pivotCol = -1;
-    for (let j = 0; j < mat[i].length; j++) {
-      if (Math.abs(number(mat[i][j])) > 1e-10) {
-        pivotCol = j;
+const buildTraceSteps = (parsedA, formattedResult) => {
+  const n = parsedA.length;
+  const traceValue = formattedResult[0][0];
+  const diagonalValues = [];
+  const diagonalCellsList = [];
+
+  for (let i = 0; i < n; i++) {
+    diagonalValues.push(formatValue(parsedA[i][i]));
+    diagonalCellsList.push([i, i]);
+  }
+
+  return [
+    {
+      title: "Verificação de Matriz Quadrada",
+      description: `A matriz tem dimensão ${n}x${n}. Por ser quadrada, a diagonal principal é bem definida.`,
+      matrix: formatMatrix(parsedA),
+      highlight: {
+        cells: diagonalCellsList,
+      },
+    },
+    {
+      title: "Elementos da Diagonal Principal",
+      description: `Os elementos da diagonal principal são: ${diagonalValues.map((v, i) => `A${i + 1}${i + 1} = ${v}`).join(", ")}.`,
+      matrix: formatMatrix(parsedA),
+      highlight: {
+        cells: diagonalCellsList,
+      },
+    },
+    {
+      title: "Soma do Traço",
+      description: `tr(A) = ${diagonalValues.join(" + ")} = ${traceValue}.`,
+      matrix: [[traceValue]],
+      highlight: {
+        resultCells: [[0, 0]],
+      },
+    },
+  ];
+};
+
+const buildPowerSteps = (parsedA, exponent, formattedResult) => {
+  const n = parsedA.length;
+  const expNum = parseInt(exponent);
+
+  if (expNum === 0) {
+    return [
+      {
+        title: "Expoente Zero (A⁰ = I)",
+        description: `Qualquer matriz quadrada não nula elevada a 0 resulta na matriz identidade de mesma ordem (${n}x${n}).`,
+        matrix: formattedResult,
+        highlight: {
+          cells: diagonalCells(n),
+        },
+      },
+    ];
+  }
+
+  if (expNum === 1) {
+    return [
+      {
+        title: "Expoente Um (A¹ = A)",
+        description: "Qualquer matriz elevada a 1 é igual a ela mesma.",
+        matrix: formattedResult,
+        highlight: {
+          resultCells: allCellCoordinates(n, n),
+        },
+      },
+    ];
+  }
+
+  const steps = [
+    {
+      title: "Definição de Potência",
+      description: `Calcularemos A^${expNum} através de multiplicações sucessivas de A por ela mesma.`,
+      matrix: formatMatrix(parsedA),
+    },
+  ];
+
+  let currentMat = matrix(parsedA);
+  const baseMat = matrix(parsedA);
+
+  for (let p = 2; p <= expNum; p++) {
+    currentMat = multiply(currentMat, baseMat);
+    const partialFormatted = formatMatrix(currentMat);
+    steps.push({
+      title: `Multiplicação: A^${p} = A^${p - 1} × A`,
+      description: `Resultado parcial da potência A^${p}:`,
+      matrix: partialFormatted,
+      highlight: {
+        resultCells: allCellCoordinates(n, n),
+      },
+    });
+  }
+
+  return steps;
+};
+
+const buildRankSteps = (parsedA, gaussSteps, echelonMatrix, rankValue, rowsA, colsA) => {
+  const steps = [
+    {
+      title: "Dimensões e Posto Máximo",
+      description: `A matriz tem dimensão ${rowsA}x${colsA}. O posto máximo possível é min(${rowsA}, ${colsA}) = ${Math.min(rowsA, colsA)}.`,
+      matrix: formatMatrix(parsedA),
+    },
+  ];
+
+  gaussSteps.forEach((st) => {
+    steps.push(st);
+  });
+
+  const nonZeroRows = [];
+  const pivotCells = [];
+  for (let i = 0; i < echelonMatrix.length; i++) {
+    for (let j = 0; j < echelonMatrix[i].length; j++) {
+      if (Math.abs(toNumber(echelonMatrix[i][j])) > 1e-10) {
+        nonZeroRows.push(i);
+        pivotCells.push([i, j]);
         break;
       }
     }
-    if (pivotCol === -1) continue;
-    if (pivotCol <= lastPivotCol) return false;
-    for (let k = i + 1; k < mat.length; k++) {
-      if (Math.abs(number(mat[k][pivotCol])) > 1e-10) return false;
-    }
-    lastPivotCol = pivotCol;
   }
-  return true;
+
+  steps.push({
+    title: "Contagem de Linhas Não Nulas",
+    description: `Na matriz escalonada, encontramos ${nonZeroRows.length} linha(s) não nula(s) com pivôs linearmente independentes. Portanto, posto(A) = ${rankValue}.`,
+    matrix: echelonMatrix,
+    highlight: {
+      rows: nonZeroRows,
+      pivotCells: pivotCells,
+    },
+  });
+
+  return steps;
 };
+
+const buildCramerSteps = (parsedA, parsedB, math) => {
+  const { matrix, det, divide } = math;
+  const n = parsedA.length;
+  const matrixAObj = matrix(parsedA);
+  const detA = det(matrixAObj);
+  const detANum = toNumber(detA);
+  const formattedDetA = formatValue(detA);
+
+  if (Math.abs(detANum) < 1e-10) {
+    throw new Error(
+      "O determinante da matriz de coeficientes é zero (D = 0). O sistema não possui solução única e a Regra de Cramer não pode ser aplicada."
+    );
+  }
+
+  const varNames = n === 2 ? ["x", "y"] : ["x", "y", "z"];
+  const bVector = parsedB.map((row) => row[0]);
+
+  const steps = [
+    {
+      title: "Sistema Linear e Matriz de Coeficientes",
+      description: `Sistema ${n}x${n} com matriz de coeficientes A e vetor de termos constantes B = [${bVector.map(formatValue).join(", ")}]ᵀ.`,
+      matrix: formatMatrix(parsedA),
+    },
+    {
+      title: "Determinante Principal (D)",
+      description: `Calculamos o determinante da matriz de coeficientes: D = det(A) = ${formattedDetA}. Como D ≠ 0, o sistema tem solução única.`,
+      matrix: formatMatrix(parsedA),
+      highlight: {
+        cells: diagonalCells(n),
+      },
+    },
+  ];
+
+  const solutions = [];
+  const formattedSolutionMatrix = [];
+
+  for (let i = 0; i < n; i++) {
+    const varName = varNames[i];
+    const aSub = parsedA.map((row, rIdx) =>
+      row.map((val, cIdx) => (cIdx === i ? bVector[rIdx] : val))
+    );
+    const subMatrixObj = matrix(aSub);
+    const detSub = det(subMatrixObj);
+    const formattedDetSub = formatValue(detSub);
+    const varValue = divide(detSub, detA);
+    const formattedVarValue = formatValue(varValue);
+
+    solutions.push({ name: varName, value: formattedVarValue, raw: varValue });
+    formattedSolutionMatrix.push([formattedVarValue]);
+
+    steps.push({
+      title: `Determinante D${varName} e Incógnita ${varName}`,
+      description: `Substituímos a coluna ${i + 1} (${varName}) pelo vetor de resultados B.\nD${varName} = det(A_${varName}) = ${formattedDetSub}.\n${varName} = D${varName} / D = ${formattedDetSub} / ${formattedDetA} = ${formattedVarValue}.`,
+      matrix: formatMatrix(aSub),
+      highlight: {
+        cols: [i],
+        resultCells: Array.from({ length: n }, (_, r) => [r, i]),
+      },
+    });
+  }
+
+  const solutionSummary = solutions
+    .map((s) => `${s.name} = ${s.value}`)
+    .join(", ");
+
+  steps.push({
+    title: "Conjunto Solução",
+    description: `Solução única do sistema linear: (${solutionSummary}). S = {(${solutions.map((s) => s.value).join(", ")})}.`,
+    matrix: formattedSolutionMatrix,
+    highlight: {
+      resultCells: Array.from({ length: n }, (_, r) => [r, 0]),
+    },
+  });
+
+  return { formattedSolutionMatrix, steps };
+};
+
 
 const operationsMap = {
   soma: (a, b) => {
@@ -681,11 +901,48 @@ const operationsMap = {
       throw new Error("Insira um número válido para o escalar.");
     return multiply(a, fraction(scalarValue));
   },
+  traco: (a) => {
+    if (a.size()[0] !== a.size()[1])
+      throw new Error("O traço só pode ser calculado para matrizes quadradas.");
+    const n = a.size()[0];
+    let sum = fraction(0);
+    for (let i = 0; i < n; i++) {
+      sum = add(sum, a.get([i, i]));
+    }
+    return [[sum]];
+  },
+  potencia: (a, _, exponent) => {
+    if (a.size()[0] !== a.size()[1])
+      throw new Error("A potenciação só pode ser calculada para matrizes quadradas.");
+    const expNum = Number(exponent);
+    if (!Number.isInteger(expNum) || expNum < 0)
+      throw new Error("Insira um número inteiro não negativo (0, 1, 2, ...) para o expoente.");
+    if (expNum > 10)
+      throw new Error("O expoente máximo suportado para cálculo passo a passo é 10.");
+
+    const n = a.size()[0];
+    if (expNum === 0) {
+      return matrix(createIdentityMatrix(n));
+    }
+    if (expNum === 1) {
+      return a;
+    }
+    let res = a;
+    for (let i = 2; i <= expNum; i++) {
+      res = multiply(res, a);
+    }
+    return res;
+  },
 };
 
 export const calculate = async (matrixA, matrixB, scalar, operation, size, setResult, setError, setSteps) => {
   setError("");
   setSteps([]);
+
+  if (!matrixA || matrixA.length === 0 || matrixA[0].length === 0) {
+    setError("A matriz não pode ser vazia.");
+    return;
+  }
 
   if (!validateMatrix(matrixA) || (matrixB && !validateMatrix(matrixB))) {
     setError("Por favor, insira apenas números válidos nas matrizes.");
@@ -697,6 +954,7 @@ export const calculate = async (matrixA, matrixB, scalar, operation, size, setRe
     const parsedA = parseMatrix(matrixA);
     const parsedB = matrixB ? parseMatrix(matrixB) : null;
     const rowsA = size.rows;
+    const colsA = size.cols || parsedA[0]?.length || 0;
     const matrixAObj = matrix(parsedA);
     const matrixBObj = parsedB ? matrix(parsedB) : null;
 
@@ -704,6 +962,48 @@ export const calculate = async (matrixA, matrixB, scalar, operation, size, setRe
       const { result: gaussResult, steps: gaussSteps } = calculateGaussianElimination(parsedA, rowsA, math);
       setResult(gaussResult);
       setSteps(gaussSteps);
+      return;
+    }
+
+    if (operation === "posto") {
+      const { result: gaussResult, steps: gaussSteps } = calculateGaussianElimination(parsedA, rowsA, math);
+      let rank = 0;
+      for (let i = 0; i < gaussResult.length; i++) {
+        if (gaussResult[i].some((cell) => Math.abs(toNumber(cell)) > 1e-10)) {
+          rank++;
+        }
+      }
+      setResult([[rank]]);
+      setSteps(buildRankSteps(parsedA, gaussSteps, gaussResult, rank, rowsA, colsA));
+      return;
+    }
+
+    if (operation === "cramer") {
+      if (rowsA !== colsA || (rowsA !== 2 && rowsA !== 3)) {
+        throw new Error("A Regra de Cramer está disponível para sistemas 2x2 e 3x3 (matrizes quadradas de coeficientes).");
+      }
+      if (!parsedB || parsedB.length !== rowsA || (parsedB[0] && parsedB[0].length < 1)) {
+        throw new Error("A Matriz B deve conter o vetor coluna dos termos independentes com o mesmo número de linhas.");
+      }
+      const { formattedSolutionMatrix, steps: cramerSteps } = buildCramerSteps(parsedA, parsedB, math);
+      setResult(formattedSolutionMatrix);
+      setSteps(cramerSteps);
+      return;
+    }
+
+    if (operation === "traco") {
+      const rawResult = operationsMap.traco(matrixAObj);
+      const formattedResult = formatMatrix(rawResult);
+      setResult(formattedResult);
+      setSteps(buildTraceSteps(parsedA, formattedResult));
+      return;
+    }
+
+    if (operation === "potencia") {
+      const rawResult = operationsMap.potencia(matrixAObj, null, scalar);
+      const formattedResult = formatMatrix(rawResult);
+      setResult(formattedResult);
+      setSteps(buildPowerSteps(parsedA, scalar, formattedResult));
       return;
     }
 
@@ -779,13 +1079,9 @@ export const calculate = async (matrixA, matrixB, scalar, operation, size, setRe
       return;
     }
 
-    if (operationsMap[operation]) {
-      const rawResult = operationsMap[operation](matrixAObj, matrixBObj, scalar);
-      setResult(formatMatrix(rawResult));
-    } else {
-      setError("Operação desconhecida.");
-    }
+    throw new Error("Operação desconhecida.");
   } catch (e) {
     setError(`Erro: ${e.message || "Verifique os valores de entrada e tente novamente."}`);
   }
 };
+

@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import MatrixDisplay from "../components/common/MatrixDisplay";
 import MatrixInput from "../components/common/MatrixInput";
 import ResultDisplay from "../components/ui/ResultDisplay";
-import {
-  calculatorPages,
-  calculatorPagesByPath,
-  getCalculatorPageByOperation,
-} from "../data/calculatorPages";
-import { tutoriais } from "../data/tutorialsData";
+import { tutorialsInfo } from "../data/tutorialsInfo";
 import { useMatrixCalculator } from "../hooks/useMatrixCalculator";
 
-const siteBaseUrl = "https://www.matrizcalculator.com";
+const siteBaseUrl = "https://projeto-calculadora-matrizes.vercel.app";
 
 // Mapeamento para SEO Contextual e Linkagem Interna
 const operationToSlug = {
@@ -24,6 +19,10 @@ const operationToSlug = {
   multiplicacao: "multiplicacao-de-matrizes",
   transposicao: "matriz-transposta",
   escalar: "multiplicacao-por-escalar",
+  traco: "soma-de-matrizes", // Link to soma tutorial for now instead of 'what is a matrix'
+  potencia: "multiplicacao-de-matrizes",
+  posto: "posto-de-matriz",
+  cramer: "regra-de-cramer",
 };
 
 const operationLabels = {
@@ -35,9 +34,13 @@ const operationLabels = {
   multiplicacao: "multiplicação de matrizes",
   transposicao: "matriz transposta",
   escalar: "multiplicação por escalar",
+  traco: "traço de matriz",
+  potencia: "potenciação de matrizes",
+  posto: "posto de matriz",
+  cramer: "Regra de Cramer",
 };
 
-const operationsWithMatrixB = ["soma", "subtracao", "multiplicacao"];
+const operationsWithMatrixB = ["soma", "subtracao", "multiplicacao", "cramer"];
 
 const featuredTutorialSlugs = [
   "multiplicacao-de-matrizes",
@@ -45,31 +48,25 @@ const featuredTutorialSlugs = [
   "determinante-2x2",
   "matriz-inversa",
   "escalonamento-gauss",
+  "regra-de-cramer",
+  "posto-de-matriz",
   "sistemas-lineares",
   "soma-de-matrizes",
 ];
 
 const featuredTutorials = featuredTutorialSlugs
-  .map((slug) => tutoriais.find((tutorial) => tutorial.slug === slug))
+  .map((slug) => tutorialsInfo.find((tutorial) => tutorial.slug === slug))
   .filter(Boolean);
 
 const Home = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const calculatorPage = calculatorPagesByPath[location.pathname] || null;
-  const canonicalUrl = `${siteBaseUrl}${calculatorPage?.path || "/"}`;
-  const pageMetaTitle =
-    calculatorPage?.metaTitle ||
-    "Calculadora de Matrizes Online Grátis | Passo a Passo";
+  const canonicalUrl = `${siteBaseUrl}/`;
+  const pageMetaTitle = "Calculadora de Matrizes Online Grátis | Passo a Passo";
   const pageMetaDescription =
-    calculatorPage?.metaDescription ||
-    "Use a calculadora de matrizes gratuita para resolver determinante, inversa, multiplicação, transposta e Gauss com frações exatas, passo a passo e tutoriais.";
-  const pageHeroTitle =
-    calculatorPage?.heroTitle || "Calculadora de Matrizes Online Gratuita";
+    "Use a calculadora de matrizes gratuita para resolver determinante, inversa, multiplicação, transposta, traço, potência, posto, Cramer e Gauss com frações exatas e passo a passo.";
+  const pageHeroTitle = "Calculadora de Matrizes Online Gratuita";
   const pageHeroDescription =
-    calculatorPage?.heroDescription ||
-    "Resolva soma, multiplicação, determinante, inversa, transposta e escalonamento de matrizes com resultados passo a passo, frações exatas, exemplos resolvidos e tutoriais explicados.";
-  const calculatorGuide = calculatorPage?.guide;
+    "Resolva soma, multiplicação, determinante, inversa, transposta, traço, potenciação, posto e Regra de Cramer com resultados passo a passo, frações exatas e tutoriais explicados.";
+
   const {
     sizeA,
     sizeB,
@@ -87,34 +84,28 @@ const Home = () => {
     handleSizeChange,
     handleCalculate,
     handleClear,
-    loadExample,
-  } = useMatrixCalculator(calculatorPage?.operation, calculatorPage?.example);
+  } = useMatrixCalculator();
 
   const [isCalculating, setIsCalculating] = useState(false);
-  const activeTutorialSlug = calculatorPage?.tutorialSlug || operationToSlug[operation];
-  const activeTutorialLabel =
-    calculatorPage?.linkLabel?.toLowerCase() || operationLabels[operation];
-
-  useEffect(() => {
-    if (calculatorPage) {
-      loadExample(calculatorPage.operation, calculatorPage.example);
-    }
-  }, [calculatorPage?.path]);
+  const activeTutorialSlug = operationToSlug[operation];
+  const activeTutorialLabel = operationLabels[operation];
 
   const handleOperationChange = (event) => {
-    const nextOperation = event.target.value;
-    const nextCalculatorPage = getCalculatorPageByOperation(nextOperation);
+    const nextOp = event.target.value;
+    setOperation(nextOp);
 
-    if (nextCalculatorPage) {
-      navigate(nextCalculatorPage.path);
-      return;
+    if (nextOp === "cramer") {
+      let nextRows = sizeA.rows;
+      if (nextRows !== 2 && nextRows !== 3) {
+        nextRows = 2;
+        handleSizeChange("A", { rows: 2, cols: 2 });
+      } else if (sizeA.rows !== sizeA.cols) {
+        handleSizeChange("A", { rows: nextRows, cols: nextRows });
+      }
+      handleSizeChange("B", { rows: nextRows, cols: 1 });
+    } else if (nextOp === "potencia" && scalar === "") {
+      setScalar("2");
     }
-
-    if (calculatorPage) {
-      navigate("/");
-    }
-
-    setOperation(nextOperation);
   };
 
   const handleCalculateClick = async () => {
@@ -127,21 +118,23 @@ const Home = () => {
     }
   };
 
-  const genericFaqItems = [
+  const faqItems = [
     {
-      question: "Como ver o escalonamento de uma matriz?",
+      question: "Como ver o escalonamento e posto de uma matriz?",
       answer:
-        "Selecione a operação Eliminação de Gauss, insira os valores da matriz e a calculadora exibirá as etapas do escalonamento até chegar à forma escalonada.",
+        "Selecione a operação Eliminação de Gauss ou Posto de A, insira os valores da matriz e a calculadora exibirá todas as operações elementares e a contagem de linhas independentes passo a passo.",
+    },
+    {
+      question: "Como resolver sistemas lineares pela Regra de Cramer?",
+      answer:
+        "Selecione Regra de Cramer, insira a matriz de coeficientes e os termos constantes. A calculadora calcula os determinantes D, Dx, Dy (e Dz) e exibe as soluções x, y, z detalhadas.",
     },
     {
       question: "Como calcular matriz inversa online?",
       answer:
-        "Selecione a operação Inversa de A, preencha uma matriz quadrada e clique em calcular. A ferramenta valida se a matriz é invertível e mostra o resultado.",
+        "Selecione a operação Inversa de A, preencha uma matriz quadrada e clique em calcular. A ferramenta valida se a matriz é invertível e mostra o resultado com frações exatas.",
     },
   ];
-  const faqItems = calculatorGuide?.faq?.length
-    ? calculatorGuide.faq
-    : genericFaqItems;
 
   // Dados Estruturados (JSON-LD) para otimizar o rankeamento no Google
   const structuredData = [
@@ -174,28 +167,6 @@ const Home = () => {
         },
       })),
     },
-    ...(calculatorPage
-      ? [
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Calculadora de matrizes",
-                item: `${siteBaseUrl}/`,
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: calculatorPage.linkLabel,
-                item: canonicalUrl,
-              },
-            ],
-          },
-        ]
-      : []),
   ];
 
   const renderSizeInput = (label, state, onChangeHandler) => (
@@ -245,14 +216,19 @@ const Home = () => {
         <meta property="og:description" content={pageMetaDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.matrizcalculator.com/logo1920.png" />
-        <meta property="og:image:width" content="1920" />
-        <meta property="og:image:height" content="1080" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:image" content="https://projeto-calculadora-matrizes.vercel.app/logo512.png" />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://www.matrizcalculator.com/logo1920.png" />
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
+        <meta name="twitter:image" content="https://projeto-calculadora-matrizes.vercel.app/logo512.png" />
+        <meta name="twitter:title" content={pageMetaTitle} />
+        <meta name="twitter:description" content={pageMetaDescription} />
+        {structuredData.map((sd, i) => (
+          <script key={i} type="application/ld+json">
+            {JSON.stringify(sd)}
+          </script>
+        ))}
       </Helmet>
 
       <section className="p-4 sm:p-6 max-w-5xl mx-auto text-center">
@@ -285,47 +261,57 @@ const Home = () => {
               <option value="determinanteA">Determinante de A</option>
               <option value="inversa">Inversa de A</option>
               <option value="transposicao">Transposição de A</option>
-              <option value="escalar">Multiplicação por Escalar</option>
+              <option value="traco">Traço de A (tr(A))</option>
+              <option value="potencia">Potenciação de A (Aⁿ)</option>
+              <option value="posto">Posto de A (Rank)</option>
               <option value="gauss">Eliminação de Gauss (Escalonamento)</option>
+              <option value="cramer">Regra de Cramer (Sistemas Lineares)</option>
+              <option value="escalar">Multiplicação por Escalar</option>
             </select>
           </div>
 
           <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-8 mb-8">
             <div className="w-full max-w-xs">
-              {renderSizeInput("Tamanho da Matriz A", sizeA, (e) =>
-                handleSizeChange("A", e),
+              {renderSizeInput(
+                operation === "cramer" ? "Tamanho do Sistema" : "Tamanho da Matriz A",
+                sizeA,
+                (e) => handleSizeChange("A", e),
               )}
               <MatrixInput
                 matrix={matrixA}
                 setMatrix={setMatrixA}
-                label="Matriz A"
+                label={operation === "cramer" ? "Matriz dos Coeficientes (A)" : "Matriz A"}
                 rows={sizeA.rows}
                 cols={sizeA.cols}
               />
             </div>
 
-            {operation === "escalar" && (
+            {(operation === "escalar" || operation === "potencia") && (
               <div className="flex flex-col items-center justify-center pt-8">
-                <span className="font-bold mb-2 dark:text-slate-200">Escalar</span>
+                <span className="font-bold mb-2 dark:text-slate-200">
+                  {operation === "escalar" ? "Escalar" : "Expoente (n)"}
+                </span>
                 <input
                   type="text"
                   value={scalar}
                   onChange={(e) => setScalar(e.target.value)}
-                  className="w-20 rounded-lg border-2 border-gray-200 p-2 text-center outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-                  placeholder="k"
+                  className="w-24 rounded-lg border-2 border-gray-200 p-2 text-center outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                  placeholder={operation === "escalar" ? "k" : "n (ex: 2)"}
                 />
               </div>
             )}
 
             {operationsWithMatrixB.includes(operation) && (
               <div className="w-full max-w-xs">
-                {renderSizeInput("Tamanho da Matriz B", sizeB, (e) =>
-                  handleSizeChange("B", e),
+                {renderSizeInput(
+                  operation === "cramer" ? "Termos Independentes (B)" : "Tamanho da Matriz B",
+                  sizeB,
+                  (e) => handleSizeChange("B", e),
                 )}
                 <MatrixInput
                   matrix={matrixB}
                   setMatrix={setMatrixB}
-                  label="Matriz B"
+                  label={operation === "cramer" ? "Termos Constantes (B)" : "Matriz B"}
                   rows={sizeB.rows}
                   cols={sizeB.cols}
                 />

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { createEmptyMatrix, calculate } from "../utils/matrixCalculations";
+import { createEmptyMatrix, resizeMatrix, calculate } from "../utils/matrixCalculations";
+
+const STORAGE_KEY = "matrixState_v1";
 
 // 1. Função inteligente que puxa os dados guardados ANTES de desenhar o ecrã
 const loadSavedState = (key, defaultValue) => {
@@ -8,7 +10,7 @@ const loadSavedState = (key, defaultValue) => {
   }
 
   try {
-    const saved = window.localStorage.getItem("matrixState_v1");
+    const saved = window.localStorage.getItem(STORAGE_KEY);
     if (saved) {
       const parsed = JSON.parse(saved);
       if (parsed[key] !== undefined) return parsed[key];
@@ -43,23 +45,33 @@ export const useMatrixCalculator = () => {
   const [error, setError] = useState("");
   const [steps, setSteps] = useState([]);
 
-  // 3. O "Olheiro": Sempre que o utilizador digitar algo novo, gravamos em milissegundos
+  // 3. O "Olheiro": Sempre que o utilizador digitar algo novo, gravamos com debounce
   useEffect(() => {
-    const stateToSave = { sizeA, sizeB, matrixA, matrixB, scalar, operation };
-    window.localStorage.setItem("matrixState_v1", JSON.stringify(stateToSave));
+    const id = setTimeout(() => {
+      const stateToSave = { sizeA, sizeB, matrixA, matrixB, scalar, operation };
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(stateToSave));
+    }, 300);
+    return () => clearTimeout(id);
   }, [sizeA, sizeB, matrixA, matrixB, scalar, operation]);
 
-  const handleSizeChange = (matrixId, e) => {
-    const { name, value } = e.target;
+  const handleSizeChange = (matrixId, eOrSize) => {
+    const isEvent = eOrSize && eOrSize.target !== undefined;
     const currentSize = matrixId === "A" ? sizeA : sizeB;
-    const newSize = { ...currentSize, [name]: parseInt(value) || 1 };
+    
+    let newSize;
+    if (isEvent) {
+      const { name, value } = eOrSize.target;
+      newSize = { ...currentSize, [name]: parseInt(value) || 1 };
+    } else {
+      newSize = eOrSize;
+    }
 
     if (matrixId === "A") {
       setSizeA(newSize);
-      setMatrixA(createEmptyMatrix(newSize.rows, newSize.cols));
+      setMatrixA((prev) => resizeMatrix(prev, newSize.rows, newSize.cols));
     } else {
       setSizeB(newSize);
-      setMatrixB(createEmptyMatrix(newSize.rows, newSize.cols));
+      setMatrixB((prev) => resizeMatrix(prev, newSize.rows, newSize.cols));
     }
 
     setResult(null);
@@ -80,6 +92,23 @@ export const useMatrixCalculator = () => {
     } else if (operation === "determinanteA" && !isSquareA) {
       newError =
         "Erro: O determinante só pode ser calculado para matrizes quadradas.";
+    } else if (operation === "traco" && !isSquareA) {
+      newError =
+        "Erro: O traço só pode ser calculado para matrizes quadradas.";
+    } else if (operation === "potencia") {
+      if (!isSquareA) {
+        newError = "Erro: A potenciação só pode ser calculada para matrizes quadradas.";
+      } else if (scalar === "" || !Number.isInteger(Number(scalar)) || Number(scalar) < 0) {
+        newError = "Erro: Insira um número inteiro não negativo (0, 1, 2, ...) para o expoente.";
+      }
+    } else if (operation === "cramer") {
+      if (!isSquareA || (sizeA.rows !== 2 && sizeA.rows !== 3)) {
+        newError = "Erro: A Regra de Cramer está disponível para sistemas 2x2 e 3x3.";
+      } else if (sizeB.rows !== sizeA.rows || sizeB.cols !== 1) {
+        newError = "Erro: O vetor de termos constantes (Matriz B) deve ser um vetor coluna (nx1) com o mesmo número de linhas da Matriz A.";
+      }
+    } else if (operation === "escalar" && (scalar === "" || isNaN(parseFloat(scalar)))) {
+      newError = "Erro: Insira um número válido para o escalar.";
     }
 
     if (newError) {

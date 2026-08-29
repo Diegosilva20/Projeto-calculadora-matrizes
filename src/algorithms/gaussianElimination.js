@@ -1,4 +1,4 @@
-import { formatMatrix, formatValue, isRowEchelonForm } from "../utils/matrixCalculations";
+import { formatMatrix, formatValue, isRowEchelonForm } from "../utils/matrixUtils";
 
 export const calculateGaussianElimination = (parsedA, rowsA, math) => {
   const { matrix, number, divide, multiply, subtract } = math;
@@ -8,26 +8,16 @@ export const calculateGaussianElimination = (parsedA, rowsA, math) => {
   const colCount = parsedA[0]?.length || 0;
   const pivotLimit = Math.min(rowCount, colCount);
 
-  if (isRowEchelonForm(parsedA)) {
-    steps.push({
-      title: "Matriz Original",
-      description: "A matriz já se encontra na forma escalonada.",
-      matrix: formatMatrix(parsedA),
-      highlight: {
-        cells: [[0, 0]],
-      },
-    });
-    return { result: formatMatrix(parsedA), steps };
-  }
-
   steps.push({
     title: "Matriz Inicial",
     description: "Configuração original da matriz.",
-    matrix: formatMatrix(m),
+    matrix: formatMatrix(parsedA),
     highlight: {
       pivotCells: [[0, 0]],
     },
   });
+
+
 
   for (let i = 0; i < pivotLimit; i++) {
     let pivotRow = i;

@@ -1,7 +1,7 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router";
-import { Helmet } from "react-helmet";
+import { HelmetProvider } from "react-helmet-async";
 import { AppRoutes, AppShell } from "./App.jsx";
 
 import Home from "./pages/Home";
@@ -30,26 +30,29 @@ const extractTitle = (titleMarkup) => {
 };
 
 export function prerender({ url }) {
+  const helmetContext = {};
   const html = renderToString(
-    <StaticRouter location={url}>
-      <AppShell>
-        <AppRoutes pages={pages} />
-      </AppShell>
-    </StaticRouter>,
+    <HelmetProvider context={helmetContext}>
+      <StaticRouter location={url}>
+        <AppShell>
+          <AppRoutes pages={pages} />
+        </AppShell>
+      </StaticRouter>
+    </HelmetProvider>,
   );
 
-  const helmet = Helmet.renderStatic();
+  const { helmet } = helmetContext;
   const headElements = [
-    helmet.meta.toString(),
-    helmet.link.toString(),
-    helmet.script.toString(),
+    helmet?.meta?.toString(),
+    helmet?.link?.toString(),
+    helmet?.script?.toString(),
   ].filter(Boolean);
 
   return {
     html,
     head: {
       lang: "pt-BR",
-      title: extractTitle(helmet.title.toString()),
+      title: extractTitle(helmet?.title?.toString() || ""),
       elements: new Set(headElements),
     },
   };

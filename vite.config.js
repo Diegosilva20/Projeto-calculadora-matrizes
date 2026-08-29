@@ -6,11 +6,15 @@ import { ssrPrerenderPlugin } from './scripts/vite-ssr-prerender-plugin.mjs';
 
 export default defineConfig({
   build: {
+    chunkSizeWarningLimit: 800,
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes('node_modules/mathjs')) {
             return 'calculator-engine';
+          }
+          if (id.includes('node_modules')) {
+            return 'vendor';
           }
         }
       }

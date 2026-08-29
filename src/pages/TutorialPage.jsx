@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { tutoriais } from "../data/tutorialsData";
 import FAQSection from "../components/tutorial/FAQSection";
 
@@ -410,7 +410,7 @@ const TutorialPage = () => {
         isAccessibleForFree: true,
         mainEntityOfPage: {
           "@type": "WebPage",
-          "@id": `https://www.matrizcalculator.com/tutorial/${canonicalSlug}`,
+          "@id": `https://projeto-calculadora-matrizes.vercel.app/tutorial/${canonicalSlug}`,
         },
       }
     : null;
@@ -464,20 +464,20 @@ const TutorialPage = () => {
         <meta name="description" content={seo.description} />
         <link
           rel="canonical"
-          href={`https://www.matrizcalculator.com/tutorial/${canonicalSlug}`}
+          href={`https://projeto-calculadora-matrizes.vercel.app/tutorial/${canonicalSlug}`}
         />
         <meta property="og:title" content={seo.title} />
         <meta property="og:description" content={seo.description} />
         <meta property="og:type" content="article" />
         <meta
           property="og:url"
-          content={`https://www.matrizcalculator.com/tutorial/${canonicalSlug}`}
+          content={`https://projeto-calculadora-matrizes.vercel.app/tutorial/${canonicalSlug}`}
         />
-        <meta property="og:image" content="https://www.matrizcalculator.com/logo1920.png" />
+        <meta property="og:image" content="https://projeto-calculadora-matrizes.vercel.app/logo1920.png" />
         <meta property="og:image:width" content="1920" />
         <meta property="og:image:height" content="1080" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://www.matrizcalculator.com/logo1920.png" />
+        <meta name="twitter:image" content="https://projeto-calculadora-matrizes.vercel.app/logo1920.png" />
         <script type="application/ld+json">
           {JSON.stringify(tutorialStructuredData)}
         </script>

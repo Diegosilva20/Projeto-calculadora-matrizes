@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 function TermosUso() {
@@ -13,7 +13,7 @@ function TermosUso() {
         <meta name="robots" content="index, follow" />
         <link
           rel="canonical"
-          href="https://www.matrizcalculator.com/termos-uso"
+          href="https://projeto-calculadora-matrizes.vercel.app/termos-uso"
         />
         <meta property="og:title" content="Termos de Uso - Matrizes+" />
         <meta
@@ -22,14 +22,14 @@ function TermosUso() {
         />
         <meta
           property="og:url"
-          content="https://www.matrizcalculator.com/termos-uso"
+          content="https://projeto-calculadora-matrizes.vercel.app/termos-uso"
         />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.matrizcalculator.com/logo1920.png" />
+        <meta property="og:image" content="https://projeto-calculadora-matrizes.vercel.app/logo1920.png" />
         <meta property="og:image:width" content="1920" />
         <meta property="og:image:height" content="1080" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://www.matrizcalculator.com/logo1920.png" />
+        <meta name="twitter:image" content="https://projeto-calculadora-matrizes.vercel.app/logo1920.png" />
       </Helmet>
       
       <h1 className="text-3xl font-bold mb-2 text-gray-800">
