@@ -241,18 +241,20 @@ const Home = () => {
           ))}
         </select>
       </div>
-      <div className="flex justify-center gap-2 mt-2">
+      <div className="flex justify-center mt-3">
+        <div className="inline-flex rounded-md shadow-sm border border-slate-200 dark:border-slate-700 divide-x divide-slate-200 dark:divide-slate-700 overflow-hidden">
         {[2, 3, 4].map(n => (
           <button
             key={`preset-${n}`}
             type="button"
             onClick={() => onChangeHandler({ rows: n, cols: n })}
-            className="px-2 py-0.5 text-[10px] sm:text-xs font-semibold rounded bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 transition-colors"
+            className="px-3 py-1 text-[10px] sm:text-[11px] font-semibold bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 transition-colors"
             title={`Redimensionar para ${n}x${n}`}
           >
             {n}x{n}
           </button>
         ))}
+        </div>
       </div>
     </div>
   );
@@ -326,8 +328,8 @@ const Home = () => {
             </select>
           </div>
 
-          <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-8 mb-8">
-            <div className="w-full max-w-xs">
+          <div className="flex flex-col lg:flex-row justify-center items-center lg:items-stretch gap-8 mb-8">
+            <div className="w-full flex-1 min-w-0 max-w-xs">
               {renderSizeInput(
                 operation === "cramer" ? "Tamanho do Sistema" : "Tamanho da Matriz A",
                 sizeA,
@@ -359,7 +361,7 @@ const Home = () => {
 
             {operationsWithMatrixB.includes(operation) && (
               <>
-                <div className="flex justify-center my-4 lg:my-0 lg:px-4 shrink-0">
+                <div className="flex justify-center my-4 lg:my-0 lg:px-4 shrink-0 self-center">
                   <button
                     type="button"
                     onClick={handleSwapMatrices}
@@ -371,7 +373,7 @@ const Home = () => {
                   </button>
                 </div>
                 
-                <div className="w-full flex-1 min-w-0">
+                <div className="w-full flex-1 min-w-0 max-w-xs">
                 {renderSizeInput(
                   operation === "cramer" ? "Termos Independentes (B)" : "Tamanho da Matriz B",
                   sizeB,
