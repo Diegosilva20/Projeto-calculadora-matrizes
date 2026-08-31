@@ -9,6 +9,7 @@ import jsPDF from "jspdf";
 import pkg from "react-katex";
 const { BlockMath } = pkg;
 import { FaDownload } from "react-icons/fa";
+import { MdSwapHoriz } from "react-icons/md";
 import { tutorialsInfo } from "../data/tutorialsInfo";
 import { useMatrixCalculator } from "../hooks/useMatrixCalculator";
 
@@ -362,11 +363,11 @@ const Home = () => {
                   <button
                     type="button"
                     onClick={handleSwapMatrices}
-                    className="flex h-10 w-10 lg:h-12 lg:w-12 items-center justify-center rounded-full bg-white dark:bg-slate-800 text-slate-500 hover:text-accent hover:bg-slate-50 dark:hover:bg-slate-700 transition-all border border-slate-200 dark:border-slate-700 shadow-sm"
+                    className="flex h-10 w-10 items-center justify-center rounded-full text-slate-400 hover:text-blue-600 hover:bg-slate-100 dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-blue-400 transition-all"
                     title="Trocar Matriz A com Matriz B"
                     aria-label="Trocar matrizes"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="h8-16v4-4 4-4M16 3l-4 4 4 4M20 7H4M8 21l4-4-4-4M4 17h16"/></svg>
+                    <MdSwapHoriz className="text-3xl rotate-90 lg:rotate-0 transition-transform" />
                   </button>
                 </div>
                 
