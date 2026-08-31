@@ -6,8 +6,8 @@ import TutorialCTA from "../../components/tutorial/TutorialCTA";
 
 function RegraDeCramerTutorial() {
   return (
-    <div className="p-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
-      <section className="bg-white p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
+    <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
+      <section className="bg-white p-4 sm:p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
         <h2 className="text-2xl font-semibold mb-4">
           Regra de Cramer: Como Resolver Sistemas Lineares com Determinantes
         </h2>
@@ -22,7 +22,7 @@ function RegraDeCramerTutorial() {
         </p>
       </section>
 
-      <section className="bg-white p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
+      <section className="bg-white p-4 sm:p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
         <h2 className="text-2xl font-semibold mb-4">O que é a Regra de Cramer?</h2>
         <p className="leading-relaxed mb-4">
           A Regra de Cramer resolve um sistema linear quadrado usando determinantes. Em vez de eliminar variáveis, ela substitui cada coluna da matriz de coeficientes pela coluna de resultados para calcular o valor de cada variável.
@@ -32,7 +32,7 @@ function RegraDeCramerTutorial() {
         </p>
       </section>
 
-      <section className="bg-white p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
+      <section className="bg-white p-4 sm:p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
         <h2 className="text-2xl font-semibold mb-4">Quando a Regra de Cramer pode ser usada?</h2>
         <ul className="list-disc pl-6 space-y-3 leading-relaxed text-gray-700">
           <li>O sistema deve ser quadrado: o número de equações deve ser igual ao número de incógnitas.</li>
@@ -44,7 +44,7 @@ function RegraDeCramerTutorial() {
         </TipBox>
       </section>
 
-      <section className="bg-white p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
+      <section className="bg-white p-4 sm:p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
         <h2 className="text-2xl font-semibold mb-4">Fórmula da Regra de Cramer para sistemas 2x2</h2>
         <p className="leading-relaxed mb-4">
           Para um sistema 2x2:
@@ -77,7 +77,7 @@ function RegraDeCramerTutorial() {
         </div>
       </section>
 
-      <section className="bg-white p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
+      <section className="bg-white p-4 sm:p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
         <h2 className="text-2xl font-semibold mb-4">Exemplo resolvido passo a passo</h2>
         <p className="leading-relaxed mb-4">
           Vamos resolver o sistema 2x2 abaixo usando a Regra de Cramer.
@@ -142,7 +142,7 @@ function RegraDeCramerTutorial() {
         </div>
       </section>
 
-      <section className="bg-white p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
+      <section className="bg-white p-4 sm:p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
         <h2 className="text-2xl font-semibold mb-4">Como funciona em sistemas 3x3</h2>
         <p className="leading-relaxed mb-4">
           A lógica da Regra de Cramer em 3x3 é a mesma do 2x2. A diferença é que agora existem três determinantes substituídos: Dx, Dy e Dz.
@@ -163,7 +163,7 @@ function RegraDeCramerTutorial() {
         </p>
       </section>
 
-      <section className="bg-white p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
+      <section className="bg-white p-4 sm:p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
         <h2 className="text-2xl font-semibold mb-4">Quando não usar a Regra de Cramer?</h2>
         <p className="leading-relaxed mb-4">
           Não use a Regra de Cramer quando o sistema não for quadrado ou quando o determinante da matriz de coeficientes for zero. Nesse caso, a regra não entrega uma solução única.
@@ -175,7 +175,7 @@ function RegraDeCramerTutorial() {
         </ul>
       </section>
 
-      <section className="bg-white p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
+      <section className="bg-white p-4 sm:p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
         <h2 className="text-2xl font-semibold mb-4">Regra de Cramer ou escalonamento: qual usar?</h2>
         <p className="leading-relaxed mb-4">
           A Regra de Cramer é ótima para entender a relação entre determinantes e sistemas lineares. Ela é ideal para sistemas 2x2 e 3x3 com solução única.
@@ -193,7 +193,7 @@ function RegraDeCramerTutorial() {
         </ul>
       </section>
 
-      <section className="bg-white p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
+      <section className="bg-white p-4 sm:p-6 rounded-lg  border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
         <h2 className="text-2xl font-semibold mb-4">Erros comuns</h2>
         <ul className="list-disc pl-6 space-y-3 leading-relaxed text-gray-700">
           <li>Confundir a matriz de coeficientes com a matriz aumentada. A matriz A só contém coeficientes, enquanto b contém os resultados.</li>

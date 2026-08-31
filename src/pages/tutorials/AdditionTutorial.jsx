@@ -6,14 +6,14 @@ import UseExampleButton from "../../components/tutorial/UseExampleButton";
 
 function MatrixAdditionTutorial() {
   return (
-    <div className="p-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
+    <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
         Somar matrizes é uma das operações mais diretas da álgebra linear. A
         ideia é comparar duas matrizes do mesmo tamanho e somar os números que
         ocupam a mesma posição.
       </p>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           A Intuição: Somar Posição com Posição
         </h2>
@@ -28,19 +28,19 @@ function MatrixAdditionTutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">Regra Principal</h2>
         <p className="mb-4 leading-relaxed">
           A soma <Formula>A + B</Formula> só existe quando A e B têm o mesmo
           número de linhas e colunas. Se A é 2x2, B também precisa ser 2x2. Se A
           é 3x4, B também precisa ser 3x4.
         </p>
-        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg">
+        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg overflow-x-auto">
           <Formula>C(i, j) = A(i, j) + B(i, j)</Formula>
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Como Somar Matrizes Passo a Passo
         </h2>
@@ -53,7 +53,7 @@ function MatrixAdditionTutorial() {
         </ol>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-4">
           Exemplo Resolvido: Soma de Matrizes 2x2
         </h2>
@@ -119,7 +119,7 @@ function MatrixAdditionTutorial() {
         />
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
@@ -137,7 +137,7 @@ function MatrixAdditionTutorial() {
         </ul>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Onde a Soma de Matrizes Aparece?
         </h2>

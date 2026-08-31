@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const TutorialCTA = ({ title, children, primaryTo = "/", primaryLabel = "Abrir calculadora de matrizes", secondaryTo, secondaryLabel }) => (
-  <div className="tutorial-cta rounded-lg bg-accent p-6 text-white  dark:bg-accent-hover">
+  <div className="tutorial-cta rounded-lg bg-accent p-4 sm:p-6 text-white  dark:bg-accent-hover">
     <h2 className="text-2xl font-semibold mb-3">{title}</h2>
     <p className="mb-5 text-blue-50 leading-relaxed">{children}</p>
     <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">

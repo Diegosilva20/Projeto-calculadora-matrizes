@@ -7,7 +7,7 @@ import UseExampleButton from "../../components/tutorial/UseExampleButton";
 
 function DeterminantTutorial() {
   return (
-    <div className="p-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
+    <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
         O determinante é um número calculado a partir de uma matriz quadrada.
         Ele ajuda a responder perguntas importantes, como: essa matriz tem
@@ -15,7 +15,7 @@ function DeterminantTutorial() {
         área ou volume?
       </p>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           A Intuição: Um Número Que Resume a Matriz
         </h2>
@@ -32,7 +32,7 @@ function DeterminantTutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Antes de Calcular: A Matriz Precisa Ser Quadrada
         </h2>
@@ -52,7 +52,7 @@ function DeterminantTutorial() {
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Como Calcular Determinante 2x2 Passo a Passo
         </h2>
@@ -86,7 +86,7 @@ function DeterminantTutorial() {
         </p>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-4">
           Exemplo Resolvido: Determinante 3x3 pela Regra de Sarrus
         </h2>
@@ -141,7 +141,7 @@ function DeterminantTutorial() {
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Métodos Para Matrizes Maiores
         </h2>
@@ -166,7 +166,7 @@ function DeterminantTutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
@@ -188,7 +188,7 @@ function DeterminantTutorial() {
         </ul>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Onde o Determinante Aparece?
         </h2>

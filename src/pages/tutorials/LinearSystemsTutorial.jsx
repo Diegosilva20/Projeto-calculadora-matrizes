@@ -6,7 +6,7 @@ import UseExampleButton from "../../components/tutorial/UseExampleButton";
 
 function LinearSystemsTutorial() {
   return (
-    <div className="p-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
+    <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
         Resolver um sistema linear significa encontrar valores que deixam todas
         as equações verdadeiras ao mesmo tempo. Com matrizes, esse processo fica
@@ -14,7 +14,7 @@ function LinearSystemsTutorial() {
         resolve seguindo uma sequência de passos.
       </p>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           A Intuição: Equações Viram uma Tabela
         </h2>
@@ -37,7 +37,7 @@ function LinearSystemsTutorial() {
         </p>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Como Montar a Matriz Aumentada
         </h2>
@@ -66,7 +66,7 @@ function LinearSystemsTutorial() {
         </p>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Como Resolver Sistemas Lineares Passo a Passo
         </h2>
@@ -80,7 +80,7 @@ function LinearSystemsTutorial() {
         </ol>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-4">
           Exemplo Resolvido: Sistema 2x2 por Escalonamento
         </h2>
@@ -150,7 +150,7 @@ function LinearSystemsTutorial() {
         </p>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Como Saber o Tipo de Solução?
         </h2>
@@ -170,7 +170,7 @@ function LinearSystemsTutorial() {
         </ul>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
@@ -192,7 +192,7 @@ function LinearSystemsTutorial() {
         </ul>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Onde Sistemas Lineares Aparecem?
         </h2>

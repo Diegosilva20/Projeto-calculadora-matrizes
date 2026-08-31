@@ -6,14 +6,14 @@ import UseExampleButton from "../../components/tutorial/UseExampleButton";
 
 function ScalarMultiplicationTutorial() {
   return (
-    <div className="p-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
+    <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
         Multiplicar uma matriz por escalar significa multiplicar todos os seus
         elementos por um mesmo número. Esse número é chamado de escalar porque
         ele aumenta, diminui ou muda o sinal da matriz inteira de uma vez.
       </p>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           A Intuição: Aplicar o Mesmo Fator em Tudo
         </h2>
@@ -28,19 +28,19 @@ function ScalarMultiplicationTutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">Regra Principal</h2>
         <p className="mb-4 leading-relaxed">
           Se <Formula>k</Formula> é um número e <Formula>A</Formula> é uma
           matriz, então <Formula>kA</Formula> é a matriz formada multiplicando
           cada elemento de A por <Formula>k</Formula>.
         </p>
-        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg">
+        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg overflow-x-auto">
           <Formula>C(i, j) = k x A(i, j)</Formula>
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Como Multiplicar por Escalar Passo a Passo
         </h2>
@@ -53,7 +53,7 @@ function ScalarMultiplicationTutorial() {
         </ol>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-4">
           Exemplo Resolvido: 3 Vezes uma Matriz 2x2
         </h2>
@@ -108,7 +108,7 @@ function ScalarMultiplicationTutorial() {
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
@@ -130,7 +130,7 @@ function ScalarMultiplicationTutorial() {
         </ul>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Onde a Multiplicação por Escalar Aparece?
         </h2>

@@ -7,14 +7,14 @@ import UseExampleButton from "../../components/tutorial/UseExampleButton";
 
 function Determinant2x2Tutorial() {
   return (
-    <div className="p-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
+    <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
         O determinante 2x2 é um dos cálculos mais importantes para começar em
         matrizes. Ele aparece em exercícios de matriz inversa, sistemas lineares
         e em muitos testes para saber se uma matriz pode ser invertida.
       </p>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           A Ideia: Multiplicar Cruzado
         </h2>
@@ -31,7 +31,7 @@ function Determinant2x2Tutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Fórmula do Determinante 2x2
         </h2>
@@ -46,7 +46,7 @@ function Determinant2x2Tutorial() {
         <p className="mb-4 leading-relaxed">
           o determinante é:
         </p>
-        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg">
+        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg overflow-x-auto">
           <Formula>det(A) = (a × d) - (b × c)</Formula>
         </div>
         <p className="mt-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -55,7 +55,7 @@ function Determinant2x2Tutorial() {
         </p>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-4">
           Exemplo Resolvido Passo a Passo
         </h2>
@@ -110,7 +110,7 @@ function Determinant2x2Tutorial() {
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Cuidado com Sinais Negativos
         </h2>
@@ -143,7 +143,7 @@ function Determinant2x2Tutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Para Que Serve o Determinante 2x2?
         </h2>
@@ -166,7 +166,7 @@ function Determinant2x2Tutorial() {
         </ul>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Erros Comuns
         </h2>

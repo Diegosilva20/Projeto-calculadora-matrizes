@@ -6,7 +6,7 @@ import UseExampleButton from "../../components/tutorial/UseExampleButton";
 
 function MatrixTransposeTutorial() {
   return (
-    <div className="p-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
+    <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
         A matriz transposta é uma das operações mais visuais da álgebra linear.
         A ideia é simples: tudo que está em uma linha passa a ficar em uma
@@ -14,7 +14,7 @@ function MatrixTransposeTutorial() {
         matrizes mudam de formato.
       </p>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           A Intuição: Virar Linhas em Colunas
         </h2>
@@ -31,7 +31,7 @@ function MatrixTransposeTutorial() {
         </TipBox>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           O Que Acontece com o Tamanho da Matriz?
         </h2>
@@ -40,7 +40,7 @@ function MatrixTransposeTutorial() {
           <strong>n colunas</strong>, a matriz transposta terá{" "}
           <strong>n linhas</strong> e <strong>m colunas</strong>.
         </p>
-        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg">
+        <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg overflow-x-auto">
           A (<Formula>m x n</Formula>) vira A^T (<Formula>n x m</Formula>)
         </div>
         <p className="mt-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -50,7 +50,7 @@ function MatrixTransposeTutorial() {
         </p>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Como Calcular a Matriz Transposta Passo a Passo
         </h2>
@@ -63,7 +63,7 @@ function MatrixTransposeTutorial() {
         </ol>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-4">
           Exemplo Resolvido: Transposta de uma Matriz 2x3
         </h2>
@@ -121,7 +121,7 @@ function MatrixTransposeTutorial() {
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
@@ -144,7 +144,7 @@ function MatrixTransposeTutorial() {
         </ul>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Propriedades Importantes
         </h2>
@@ -168,7 +168,7 @@ function MatrixTransposeTutorial() {
         </ul>
       </div>
 
-      <div className="bg-white p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
           Onde a Transposta Aparece na Prática?
         </h2>
