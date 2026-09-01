@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://projeto-calculadora-matrizes.vercel.app/sitemap.xml
+Sitemap: https://calculamatriz.vercel.app/sitemap.xml

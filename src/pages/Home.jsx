@@ -13,7 +13,7 @@ import { MdSwapHoriz } from "react-icons/md";
 import { tutorialsInfo } from "../data/tutorialsInfo";
 import { useMatrixCalculator } from "../hooks/useMatrixCalculator";
 
-const siteBaseUrl = "https://projeto-calculadora-matrizes.vercel.app";
+const siteBaseUrl = "https://calculamatriz.vercel.app";
 
 // Mapeamento para SEO Contextual e Linkagem Interna
 const operationToSlug = {
@@ -270,11 +270,11 @@ const Home = () => {
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="pt_BR" />
-        <meta property="og:image" content="https://projeto-calculadora-matrizes.vercel.app/logo512.png" />
+        <meta property="og:image" content="https://calculamatriz.vercel.app/logo512.png" />
         <meta property="og:image:width" content="512" />
         <meta property="og:image:height" content="512" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://projeto-calculadora-matrizes.vercel.app/logo512.png" />
+        <meta name="twitter:image" content="https://calculamatriz.vercel.app/logo512.png" />
         <meta name="twitter:title" content={pageMetaTitle} />
         <meta name="twitter:description" content={pageMetaDescription} />
         {structuredData.map((sd, i) => (

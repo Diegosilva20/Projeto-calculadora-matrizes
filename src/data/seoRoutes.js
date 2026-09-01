@@ -1,6 +1,6 @@
 import { tutorialsInfo } from "./tutorialsInfo.js";
 
-export const siteBaseUrl = "https://projeto-calculadora-matrizes.vercel.app";
+export const siteBaseUrl = "https://calculamatriz.vercel.app";
 export const defaultLastmod = "2026-05-12";
 
 export const staticSeoRoutes = [

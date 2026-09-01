@@ -30,16 +30,16 @@ function Sobre() {
           name="description"
           content="Conheça a missão do Matrizes+: simplificar a Álgebra Linear com uma calculadora de matrizes poderosa e tutoriais didáticos para todos."
         />
-        <link rel="canonical" href="https://projeto-calculadora-matrizes.vercel.app/sobre" />
+        <link rel="canonical" href="https://calculamatriz.vercel.app/sobre" />
         <meta property="og:title" content="Sobre o Matrizes+: Calculadora e Tutoriais de Álgebra Linear" />
         <meta property="og:description" content="Conheça a missão do Matrizes+: simplificar a Álgebra Linear com uma calculadora de matrizes poderosa e tutoriais didáticos para todos." />
-        <meta property="og:url" content="https://projeto-calculadora-matrizes.vercel.app/sobre" />
+        <meta property="og:url" content="https://calculamatriz.vercel.app/sobre" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://projeto-calculadora-matrizes.vercel.app/logo1920.png" />
+        <meta property="og:image" content="https://calculamatriz.vercel.app/logo1920.png" />
         <meta property="og:image:width" content="1920" />
         <meta property="og:image:height" content="1080" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://projeto-calculadora-matrizes.vercel.app/logo1920.png" />
+        <meta name="twitter:image" content="https://calculamatriz.vercel.app/logo1920.png" />
       </Helmet>
 
       <section className="p-4 sm:p-6 max-w-5xl mx-auto text-center min-h-[70vh]">

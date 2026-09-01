@@ -31,16 +31,16 @@ function Contato() {
           name="description"
           content="Entre em contato com a equipe Matrizes+ para enviar sugestões, reportar erros ou tirar dúvidas."
         />
-        <link rel="canonical" href="https://projeto-calculadora-matrizes.vercel.app/contato" />
+        <link rel="canonical" href="https://calculamatriz.vercel.app/contato" />
         <meta property="og:title" content="Contato - Matrizes+" />
         <meta property="og:description" content="Entre em contato com a equipe Matrizes+ para enviar sugestões, reportar erros ou tirar dúvidas." />
-        <meta property="og:url" content="https://projeto-calculadora-matrizes.vercel.app/contato" />
+        <meta property="og:url" content="https://calculamatriz.vercel.app/contato" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://projeto-calculadora-matrizes.vercel.app/logo1920.png" />
+        <meta property="og:image" content="https://calculamatriz.vercel.app/logo1920.png" />
         <meta property="og:image:width" content="1920" />
         <meta property="og:image:height" content="1080" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://projeto-calculadora-matrizes.vercel.app/logo1920.png" />
+        <meta name="twitter:image" content="https://calculamatriz.vercel.app/logo1920.png" />
       </Helmet>
 
       <section className="p-4 sm:p-6 max-w-5xl mx-auto text-center min-h-[70vh]">
@@ -85,10 +85,10 @@ function Contato() {
             Faremos o possível para responder o mais rápido possível.
           </p>
           <a
-            href="mailto:suporte@projeto-calculadora-matrizes.vercel.app"
+            href="mailto:suporte@calculamatriz.vercel.app"
             className="inline-flex max-w-full justify-center break-all rounded-xl bg-white px-6 py-3 text-sm font-extrabold text-accent  transition-all hover:-translate-y-1 hover:bg-blue-50 dark:bg-slate-100 sm:px-8 sm:text-lg"
           >
-            suporte@projeto-calculadora-matrizes.vercel.app
+            suporte@calculamatriz.vercel.app
           </a>
         </section>
       </section>

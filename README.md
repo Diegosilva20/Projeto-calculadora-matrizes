@@ -2,7 +2,7 @@
 
 Uma aplicação web de alta performance focada na resolução e explicação passo a passo de operações de álgebra linear e matrizes. Construída com foco em arquitetura limpa, UX educacional e SEO técnico.
 
-**Live Demo:** [projeto-calculadora-matrizes.vercel.app](https://projeto-calculadora-matrizes.vercel.app/)
+**Live Demo:** [calculamatriz.vercel.app](https://calculamatriz.vercel.app/)
 
 ---
 
@@ -78,4 +78,4 @@ npm run validate:prerender
 
 ## Licença
 
-Este projeto é de uso educacional. Os direitos de conteúdo e marca estão reservados ao domínio projeto-calculadora-matrizes.vercel.app.
+Este projeto é de uso educacional. Os direitos de conteúdo e marca estão reservados ao domínio calculamatriz.vercel.app.

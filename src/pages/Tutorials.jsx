@@ -84,16 +84,16 @@ const Tutorials = () => {
       <Helmet>
         <title>Tutoriais de Matrizes com Exemplos Resolvidos | Matriz Calculator</title>
         <meta name="description" content="Aprenda matrizes com tutoriais passo a passo, exemplos resolvidos, fórmulas e links para calculadora de determinante, inversa, multiplicação e Gauss." />
-        <link rel="canonical" href="https://projeto-calculadora-matrizes.vercel.app/tutorials" />
+        <link rel="canonical" href="https://calculamatriz.vercel.app/tutorials" />
         <meta property="og:title" content="Tutoriais de Matrizes com Exemplos Resolvidos | Matriz Calculator" />
         <meta property="og:description" content="Aprenda matrizes com tutoriais passo a passo, exemplos resolvidos, fórmulas e links para calculadora de determinante, inversa, multiplicação e Gauss." />
-        <meta property="og:url" content="https://projeto-calculadora-matrizes.vercel.app/tutorials" />
+        <meta property="og:url" content="https://calculamatriz.vercel.app/tutorials" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://projeto-calculadora-matrizes.vercel.app/logo1920.png" />
+        <meta property="og:image" content="https://calculamatriz.vercel.app/logo1920.png" />
         <meta property="og:image:width" content="1920" />
         <meta property="og:image:height" content="1080" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://projeto-calculadora-matrizes.vercel.app/logo1920.png" />
+        <meta name="twitter:image" content="https://calculamatriz.vercel.app/logo1920.png" />
       </Helmet>
 
       <section className="p-4 sm:p-6 max-w-5xl mx-auto text-center min-h-[70vh]">
