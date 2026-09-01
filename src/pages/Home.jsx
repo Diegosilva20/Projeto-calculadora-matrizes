@@ -8,7 +8,7 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import pkg from "react-katex";
 const { BlockMath } = pkg;
-import { FaDownload } from "react-icons/fa";
+import { FaDownload, FaShareAlt, FaCheck } from "react-icons/fa";
 import { MdSwapHoriz } from "react-icons/md";
 import { tutorialsInfo } from "../data/tutorialsInfo";
 import { useMatrixCalculator } from "../hooks/useMatrixCalculator";
@@ -69,7 +69,7 @@ const Home = () => {
   const pageMetaTitle = "Calculadora de Matrizes Online Grátis | Passo a Passo";
   const pageMetaDescription =
     "Use a calculadora de matrizes gratuita para resolver determinante, inversa, multiplicação, transposta, traço, potência, posto, Cramer e Gauss com frações exatas e passo a passo.";
-  const pageHeroTitle = "Calculadora de Matrizes Online Gratuita";
+  const pageHeroTitle = "Calculadora de Matrizes com Passo a Passo";
   const pageHeroDescription =
     "Resolva soma, multiplicação, determinante, inversa, transposta, traço, potenciação, posto e Regra de Cramer com resultados passo a passo, frações exatas e tutoriais explicados.";
 
@@ -96,7 +96,23 @@ const Home = () => {
 
   const [isCalculating, setIsCalculating] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
   const resolutionRef = React.useRef(null);
+
+  const handleShare = () => {
+    const params = new URLSearchParams();
+    params.set('op', operation);
+    if (scalar) params.set('s', scalar);
+    params.set('A', encodeURIComponent(JSON.stringify(matrixA)));
+    if (operationsWithMatrixB.includes(operation)) {
+      params.set('B', encodeURIComponent(JSON.stringify(matrixB)));
+    }
+    const shareUrl = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
+    });
+  };
 
   const handleExportPDF = async () => {
     if (!resolutionRef.current) return;
@@ -435,16 +451,23 @@ const Home = () => {
 
         <div className="max-w-5xl mx-auto mb-16">
           {(result || steps.length > 0) && (
-            <div className="flex justify-end mb-4">
-              <button
-                onClick={handleExportPDF}
-                disabled={isExporting}
-                className="flex items-center gap-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/50 px-4 py-2 text-sm font-semibold text-emerald-700 dark:text-emerald-400 transition-colors hover:bg-emerald-200 dark:hover:bg-emerald-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 disabled:opacity-50"
-              >
-                <FaDownload />
-                {isExporting ? "Gerando PDF..." : "Baixar Resolução em PDF"}
-              </button>
-            </div>
+              <div className="flex justify-end gap-2 mb-4">
+                <button
+                  onClick={handleShare}
+                  className="flex items-center gap-2 rounded-lg bg-blue-100 dark:bg-blue-900/50 px-4 py-2 text-sm font-semibold text-blue-700 dark:text-blue-400 transition-colors hover:bg-blue-200 dark:hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  {isCopied ? <FaCheck /> : <FaShareAlt />}
+                  {isCopied ? "Copiado!" : "Compartilhar Resolução"}
+                </button>
+                <button
+                  onClick={handleExportPDF}
+                  disabled={isExporting}
+                  className="flex items-center gap-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/50 px-4 py-2 text-sm font-semibold text-emerald-700 dark:text-emerald-400 transition-colors hover:bg-emerald-200 dark:hover:bg-emerald-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 disabled:opacity-50"
+                >
+                  <FaDownload />
+                  {isExporting ? "Gerando PDF..." : "Baixar PDF"}
+                </button>
+              </div>
           )}
           
           <div ref={resolutionRef} className="bg-transparent rounded pb-4">

@@ -5,9 +5,40 @@ const STORAGE_KEY = "matrixState_v1";
 
 // 1. Função inteligente que puxa os dados guardados ANTES de desenhar o ecrã
 const loadSavedState = (key, defaultValue) => {
-  if (typeof window === "undefined" || !window.localStorage) {
+  if (typeof window === "undefined") {
     return defaultValue;
   }
+
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (key === 'operation' && urlParams.has('op')) return urlParams.get('op');
+    if (key === 'scalar' && urlParams.has('s')) return urlParams.get('s');
+    
+    if (key === 'matrixA' && urlParams.has('A')) {
+      const parsed = JSON.parse(decodeURIComponent(urlParams.get('A')));
+      if (Array.isArray(parsed)) return parsed;
+    }
+    if (key === 'matrixB' && urlParams.has('B')) {
+      const parsed = JSON.parse(decodeURIComponent(urlParams.get('B')));
+      if (Array.isArray(parsed)) return parsed;
+    }
+    if (key === 'sizeA' && urlParams.has('A')) {
+      const parsed = JSON.parse(decodeURIComponent(urlParams.get('A')));
+      if (Array.isArray(parsed) && Array.isArray(parsed[0])) {
+         return { rows: parsed.length, cols: parsed[0].length };
+      }
+    }
+    if (key === 'sizeB' && urlParams.has('B')) {
+      const parsed = JSON.parse(decodeURIComponent(urlParams.get('B')));
+      if (Array.isArray(parsed) && Array.isArray(parsed[0])) {
+         return { rows: parsed.length, cols: parsed[0].length };
+      }
+    }
+  } catch (e) {
+    console.warn("Invalid URL params for matrices", e);
+  }
+
+  if (!window.localStorage) return defaultValue;
 
   try {
     const saved = window.localStorage.getItem(STORAGE_KEY);
