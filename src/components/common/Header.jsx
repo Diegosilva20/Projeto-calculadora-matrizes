@@ -9,10 +9,10 @@ import {
 } from "react-icons/fa";
 
 const navItems = [
+  { to: "/visualizador", label: "Visualizador 2D 📐" },
   { to: "/pratica", label: "Modo Treino 🧠" },
   { to: "/tutorials", label: "Tutoriais" },
   { to: "/sobre", label: "Sobre" },
-  { to: "/contato", label: "Contato" },
 ];
 
 function Header({ isDarkMode, onToggleTheme }) {

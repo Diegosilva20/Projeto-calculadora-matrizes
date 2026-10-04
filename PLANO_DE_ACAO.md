@@ -14,11 +14,11 @@ Este documento centraliza as tarefas para transformar o site de uma ferramenta c
 
 ## Módulo 2: O Visualizador Geométrico (O Efeito "Desmos")
 **Objetivo:** Criar um diferencial absoluto contra o ChatGPT (que é puramente textual). Mostrar na prática como matrizes transformam o espaço bidimensional e tridimensional.
-- [ ] Escolher uma biblioteca gráfica (ex: `p5.js`, `three.js` ou gráficos SVG nativos / `chart.js`).
-- [ ] Criar uma nova rota `/visualizador` (ou integrar diretamente na Home).
-- [ ] Desenhar um "Grid" bidimensional básico com vetores (ex: um vetor `(1,0)` e `(0,1)`).
-- [ ] Criar um input onde, ao alterar a matriz, o grid e os vetores se distorcem/rotacionam em tempo real.
-- [ ] Adicionar presets interativos (ex: botão "Aplicar Cisalhamento", "Rotacionar 90º", "Refletir no eixo Y").
+- [x] Escolher uma biblioteca gráfica (ex: `p5.js`, `three.js` ou gráficos SVG nativos / `chart.js`).
+- [x] Criar uma nova rota `/visualizador` (ou integrar diretamente na Home).
+- [x] Desenhar um "Grid" bidimensional básico com vetores (ex: um vetor `(1,0)` e `(0,1)`).
+- [x] Criar um input onde, ao alterar a matriz, o grid e os vetores se distorcem/rotacionam em tempo real.
+- [x] Adicionar presets interativos (ex: botão "Aplicar Cisalhamento", "Rotacionar 90º", "Refletir no eixo Y").
 
 ## Módulo 3: Ferramentas para Professores
 **Objetivo:** Atrair professores do ensino médio e superior que buscam facilitar a rotina, trazendo um público fiel (recorrente).
