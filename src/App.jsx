@@ -16,6 +16,7 @@ const TermosUso = lazy(() => import("./pages/TermosUso"));
 const Contato = lazy(() => import("./pages/Contato"));
 const Sobre = lazy(() => import("./pages/Sobre"));
 const Tutorials = lazy(() => import("./pages/Tutorials"));
+const Pratica = lazy(() => import("./pages/Pratica"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const lazyPages = {
@@ -26,6 +27,7 @@ const lazyPages = {
   Contato,
   Sobre,
   Tutorials,
+  Pratica,
   NotFound,
 };
 
@@ -51,6 +53,7 @@ export function AppRoutes({ pages = lazyPages }) {
     Contato: ContatoPage,
     Sobre: SobrePage,
     Tutorials: TutorialsPage,
+    Pratica: PraticaPage,
     NotFound: NotFoundPage,
   } = pages;
 
@@ -69,6 +72,7 @@ export function AppRoutes({ pages = lazyPages }) {
         <Route path="/contato" element={<ContatoPage />} />
         <Route path="/sobre" element={<SobrePage />} />
         <Route path="/tutorials" element={<TutorialsPage />} />
+        <Route path="/pratica" element={<PraticaPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>

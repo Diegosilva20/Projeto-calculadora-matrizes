@@ -157,4 +157,4 @@ const MatrixInput = ({ matrix, setMatrix, label, rows, cols }) => {
   );
 };
 
-export default MatrixInput;
+export default React.memo(MatrixInput);

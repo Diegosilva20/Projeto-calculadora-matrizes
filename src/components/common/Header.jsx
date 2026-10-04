@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 
 const navItems = [
+  { to: "/pratica", label: "Modo Treino 🧠" },
   { to: "/tutorials", label: "Tutoriais" },
   { to: "/sobre", label: "Sobre" },
   { to: "/contato", label: "Contato" },

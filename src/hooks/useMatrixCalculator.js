@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { createEmptyMatrix, resizeMatrix, calculate } from "../utils/matrixCalculations";
 
 const STORAGE_KEY = "matrixState_v1";
@@ -85,7 +85,7 @@ export const useMatrixCalculator = () => {
     return () => clearTimeout(id);
   }, [sizeA, sizeB, matrixA, matrixB, scalar, operation]);
 
-  const handleSizeChange = (matrixId, eOrSize) => {
+  const handleSizeChange = useCallback((matrixId, eOrSize) => {
     const isEvent = eOrSize && eOrSize.target !== undefined;
     const currentSize = matrixId === "A" ? sizeA : sizeB;
     
@@ -108,9 +108,9 @@ export const useMatrixCalculator = () => {
     setResult(null);
     setError("");
     setSteps([]);
-  };
+  }, [sizeA, sizeB]);
 
-  const handleCalculate = async () => {
+  const handleCalculate = useCallback(async () => {
     let newError = "";
     const isSquareA = sizeA.rows === sizeA.cols;
 
@@ -159,18 +159,18 @@ export const useMatrixCalculator = () => {
       setError,
       setSteps,
     );
-  };
+  }, [sizeA, sizeB, matrixA, matrixB, scalar, operation]);
 
-  const handleClear = () => {
+  const handleClear = useCallback(() => {
       setMatrixA(createEmptyMatrix(sizeA.rows, sizeA.cols));
       setMatrixB(createEmptyMatrix(sizeB.rows, sizeB.cols));
       setScalar("");
       setResult(null);
       setError("");
       setSteps([]);
-    };
+    }, [sizeA, sizeB]);
 
-  const handleUseResultAsA = () => {
+  const handleUseResultAsA = useCallback(() => {
     if (result) {
       const r = result.length;
       const c = result[0].length;
@@ -180,9 +180,9 @@ export const useMatrixCalculator = () => {
       setSteps([]);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-  };
+  }, [result]);
 
-  const handleSwapMatrices = () => {
+  const handleSwapMatrices = useCallback(() => {
     const tempSizeA = sizeA;
     const tempMatrixA = matrixA;
     
@@ -195,7 +195,7 @@ export const useMatrixCalculator = () => {
     setResult(null);
     setSteps([]);
     setError("");
-  };
+  }, [sizeA, sizeB, matrixA, matrixB]);
 
   return {
     sizeA,
