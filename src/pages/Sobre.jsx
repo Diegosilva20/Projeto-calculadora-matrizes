@@ -5,18 +5,18 @@ import { FaBookOpen, FaCalculator, FaComments } from "react-icons/fa";
 const pillars = [
   {
     icon: <FaCalculator className="h-9 w-9" aria-hidden="true" />,
-    title: "Uma Calculadora Direto ao Ponto",
+    title: "Cálculos com passo a passo",
     description:
-      "Resolva desde somas simples até inversões complexas em uma interface prática, responsiva e pensada para estudar sem atrito.",
-    action: "Usar a Calculadora",
+      "Resolva operações com matrizes visualizando cada etapa do cálculo, com frações exatas e fórmulas claras.",
+    action: "Usar a calculadora",
     to: "/",
   },
   {
     icon: <FaBookOpen className="h-9 w-9" aria-hidden="true" />,
-    title: "Tutoriais Para Descomplicar",
+    title: "Tutoriais didáticos",
     description:
-      "Aprenda a teoria por trás dos cálculos com guias passo a passo, exemplos claros e conexão direta com as operações da calculadora.",
-    action: "Ver Tutoriais",
+      "Aprenda o conceito por trás de cada operação com exemplos práticos e integração direta com a calculadora.",
+    action: "Ver tutoriais",
     to: "/tutorials",
   },
 ];
@@ -25,14 +25,14 @@ function Sobre() {
   return (
     <>
       <Helmet>
-        <title>Sobre o Matrizes+: Calculadora e Tutoriais de Álgebra Linear</title>
+        <title>Sobre o CalculaMatriz: Calculadora e Tutoriais de Álgebra Linear</title>
         <meta
           name="description"
-          content="Conheça a missão do Matrizes+: simplificar a Álgebra Linear com uma calculadora de matrizes poderosa e tutoriais didáticos para todos."
+          content="Conheça o CalculaMatriz: uma ferramenta gratuita para resolver matrizes passo a passo e aprender álgebra linear com explicações claras."
         />
         <link rel="canonical" href="https://calculamatriz.vercel.app/sobre" />
-        <meta property="og:title" content="Sobre o Matrizes+: Calculadora e Tutoriais de Álgebra Linear" />
-        <meta property="og:description" content="Conheça a missão do Matrizes+: simplificar a Álgebra Linear com uma calculadora de matrizes poderosa e tutoriais didáticos para todos." />
+        <meta property="og:title" content="Sobre o CalculaMatriz: Calculadora e Tutoriais de Álgebra Linear" />
+        <meta property="og:description" content="Conheça o CalculaMatriz: uma ferramenta gratuita para resolver matrizes passo a passo e aprender álgebra linear com explicações claras." />
         <meta property="og:url" content="https://calculamatriz.vercel.app/sobre" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://calculamatriz.vercel.app/logo1920.png" />
@@ -45,12 +45,10 @@ function Sobre() {
       <section className="p-4 sm:p-6 max-w-5xl mx-auto text-center min-h-[70vh]">
         <header className="mb-12">
           <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-slate-900 dark:text-white dark:text-slate-100">
-            Nossa Missão: Descomplicar a Álgebra Linear
+            Sobre o CalculaMatriz
           </h1>
           <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-2xl mx-auto dark:text-slate-300">
-            Acreditamos que a matemática pode ser acessível. Por isso, criamos
-            uma plataforma que une ferramentas práticas e aprendizado teórico de
-            forma simples e gratuita.
+            Criamos esta plataforma para ajudar estudantes, professores e entusiastas de matemática a resolver operações com matrizes e entender o raciocínio por trás de cada etapa.
           </p>
         </header>
 
@@ -86,17 +84,15 @@ function Sobre() {
             </div>
             <div className="max-w-2xl">
               <h2 className="text-2xl font-bold mb-3 text-slate-900 dark:text-white dark:text-slate-100">
-                Próximos Passos & Contato
+                Sugestões e contato
               </h2>
               <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed dark:text-slate-300">
-                Estamos sempre trabalhando para adicionar novas funcionalidades
-                e aprofundar nosso conteúdo. Se tiver sugestões, dúvidas ou
-                encontrar algum erro,{" "}
+                Se você encontrou algum erro nos cálculos, tem ideias para novas funcionalidades ou quer sugerir um tema de tutorial,{" "}
                 <Link
                   to="/contato"
                   className="text-accent font-bold hover:underline dark:text-blue-400"
                 >
-                  entre em contato
+                  fale com a gente
                 </Link>
                 .
               </p>

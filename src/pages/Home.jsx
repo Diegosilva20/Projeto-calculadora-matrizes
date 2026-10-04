@@ -66,12 +66,12 @@ const featuredTutorials = featuredTutorialSlugs
 
 const Home = () => {
   const canonicalUrl = `${siteBaseUrl}/`;
-  const pageMetaTitle = "Calculadora de Matrizes Online Grátis | Passo a Passo";
+  const pageMetaTitle = "Calculadora de Matrizes Online com Passo a Passo";
   const pageMetaDescription =
-    "Use a calculadora de matrizes gratuita para resolver determinante, inversa, multiplicação, transposta, traço, potência, posto, Cramer e Gauss com frações exatas e passo a passo.";
+    "Calcule determinante, inversa, multiplicação, transposta, traço, posto, eliminação de Gauss e Regra de Cramer com frações exatas e resolução passo a passo.";
   const pageHeroTitle = "Calculadora de Matrizes com Passo a Passo";
   const pageHeroDescription =
-    "Resolva soma, multiplicação, determinante, inversa, transposta, traço, potenciação, posto e Regra de Cramer com resultados passo a passo, frações exatas e tutoriais explicados.";
+    "Resolva operações com matrizes em frações exatas com resolução detalhada passo a passo e tutoriais com exemplos práticos.";
 
   const {
     sizeA,
@@ -539,14 +539,13 @@ const Home = () => {
         <div className="mt-20 border-t border-blueprint-800/20 pt-12 dark:border-slate-800">
           <div className="mx-auto mb-8 max-w-2xl">
             <p className="text-xs font-bold uppercase tracking-wider text-accent dark:text-blue-400">
-              Tutoriais recomendados
+              Guias de estudo
             </p>
             <h2 className="mt-2 text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white dark:text-slate-100">
-              Comece pelos guias mais importantes
+              Tutoriais de Álgebra Linear
             </h2>
             <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed dark:text-slate-300">
-              Reforce o estudo com exemplos resolvidos e tutoriais explicados
-              sobre os cálculos mais usados em matrizes.
+              Entenda os conceitos e acompanhe exemplos resolvidos para cada operação disponível na calculadora.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

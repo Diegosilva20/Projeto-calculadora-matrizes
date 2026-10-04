@@ -8,62 +8,53 @@ function SarrusTutorial() {
   return (
     <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
-        A Regra de Sarrus é um método prático para calcular determinantes de
-        matrizes 3x3. Ela organiza o cálculo em diagonais: somamos os produtos
-        das diagonais que descem e subtraímos os produtos das diagonais que
-        sobem.
+        A Regra de Sarrus é um método mnemônico e direto para calcular determinantes de matrizes de ordem 3 (3×3), estruturado na soma dos produtos das diagonais principais e subtração das secundárias.
       </p>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          A Intuição: Diagonais que Descendem e Sobem
+          Como funciona a Regra de Sarrus
         </h2>
         <p className="mb-4 leading-relaxed">
-          Em uma matriz 3x3, cada diagonal escolhida pega três números. A Regra
-          de Sarrus separa essas diagonais em dois grupos: as que descem da
-          esquerda para a direita e as que sobem da esquerda para a direita.
+          Para calcular o determinante, repetem-se mentalmente (ou no papel) as duas primeiras colunas da matriz à sua direita. Multiplicam-se os termos das 3 diagonais descendentes e subtraem-se os produtos das 3 diagonais ascendentes.
         </p>
         <TipBox>
-          <strong>Resumo rápido:</strong> multiplique os três números de cada
-          diagonal, some os três produtos principais e depois subtraia os três
-          produtos secundários.
+          Regra geral: (soma das 3 diagonais principais) − (soma das 3 diagonais secundárias).
         </TipBox>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Quando Posso Usar a Regra de Sarrus?
+          Escopo de aplicação
         </h2>
         <p className="mb-4 leading-relaxed">
-          A Regra de Sarrus só vale para matriz <strong>3x3</strong>. Ela não
-          serve para matrizes 2x2, 4x4 ou maiores. Para outros tamanhos, usamos
-          outros métodos, como fórmula 2x2, cofatores ou eliminação.
+          A Regra de Sarrus aplica-se <strong>exclusivamente a matrizes 3×3</strong>. Ela não é matematicamente válida para matrizes 4×4 ou de ordens superiores, onde se deve empregar o Teorema de Laplace ou escalonamento.
         </p>
         <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg overflow-x-auto">
-          <Formula>A é 3x3</Formula> → pode usar Sarrus
+          <Formula>A \text{ de ordem } 3 \times 3</Formula> → aplicação válida
         </div>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Como Calcular Determinante 3x3 Passo a Passo
+          Passo a passo
         </h2>
         <ol className="list-decimal pl-5 space-y-3 leading-relaxed">
-          <li>Confira se a matriz tem 3 linhas e 3 colunas.</li>
-          <li>Multiplique os elementos das três diagonais principais.</li>
-          <li>Some os três produtos das diagonais principais.</li>
-          <li>Multiplique os elementos das três diagonais secundárias.</li>
-          <li>Some os três produtos das diagonais secundárias.</li>
-          <li>Subtraia: soma principal menos soma secundária.</li>
+          <li>Confirme que a matriz possui dimensão 3×3.</li>
+          <li>Calcule o produto de cada uma das três diagonais principais (descendentes).</li>
+          <li>Some os três produtos obtidos.</li>
+          <li>Calcule o produto de cada uma das três diagonais secundárias (ascendentes).</li>
+          <li>Some os três produtos secundários.</li>
+          <li>Subtraia a soma secundária da soma principal.</li>
         </ol>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-4">
-          Exemplo Resolvido pela Regra de Sarrus
+          Exemplo resolvido
         </h2>
         <p className="mb-4 leading-relaxed">
-          Vamos calcular o determinante da matriz A abaixo usando Sarrus.
+          Calcule o determinante da matriz <Formula>A</Formula>:
         </p>
 
         <MatrixDisplay
@@ -86,30 +77,24 @@ function SarrusTutorial() {
         <div className="mt-6 space-y-5">
           <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
-              Diagonais principais
+              1. Diagonais principais
             </h3>
             <p className="font-mono text-sm sm:text-base break-words">
-              (1 x 4 x 6) + (2 x 5 x 1) + (3 x 0 x 0)
-            </p>
-            <p className="mt-2 font-mono text-sm sm:text-base break-words">
-              24 + 10 + 0 = 34
+              (1 × 4 × 6) + (2 × 5 × 1) + (3 × 0 × 0) = 24 + 10 + 0 = 34
             </p>
           </div>
 
           <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
-              Diagonais secundárias
+              2. Diagonais secundárias
             </h3>
             <p className="font-mono text-sm sm:text-base break-words">
-              (3 x 4 x 1) + (1 x 5 x 0) + (2 x 0 x 6)
-            </p>
-            <p className="mt-2 font-mono text-sm sm:text-base break-words">
-              12 + 0 + 0 = 12
+              (3 × 4 × 1) + (1 × 5 × 0) + (2 × 0 × 6) = 12 + 0 + 0 = 12
             </p>
           </div>
 
           <div className="rounded-lg border border-green-200 bg-green-50 p-4">
-            <h3 className="text-lg font-semibold mb-2">Resultado</h3>
+            <h3 className="text-lg font-semibold mb-2">3. Resultado final</h3>
             <p className="font-mono text-sm sm:text-base break-words">
               det(A) = 34 - 12 = 22
             </p>
@@ -117,50 +102,24 @@ function SarrusTutorial() {
         </div>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
-        <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+        <h2 className="text-2xl font-semibold mb-3">Cuidados frequentes</h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
-            <strong>Usar Sarrus em matriz que não é 3x3:</strong> a regra é
-            específica para determinantes de ordem 3.
+            <strong>Não generalizar para 4x4:</strong> tentar aplicar o esquema de Sarrus em matrizes 4×4 ignora 16 dos 24 termos da definição formal do determinante, produzindo respostas incorretas.
           </li>
           <li>
-            <strong>Esquecer a subtração:</strong> depois de somar as diagonais
-            secundárias, esse valor deve ser subtraído.
-          </li>
-          <li>
-            <strong>Trocar diagonais principais e secundárias:</strong> isso
-            pode inverter o sinal do resultado.
-          </li>
-          <li>
-            <strong>Perder sinais negativos:</strong> se algum elemento da
-            diagonal for negativo, o produto inteiro pode mudar de sinal.
+            <strong>Jogo de sinais com zeros e números negativos:</strong> mantenha os parênteses de cada termo para não cometer erros em produtos com sinais trocados.
           </li>
         </ul>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
-        <h2 className="text-2xl font-semibold mb-3">
-          Por Que Sarrus é Útil?
-        </h2>
-        <p className="mb-4 leading-relaxed">
-          A Regra de Sarrus é útil porque transforma o determinante 3x3 em uma
-          sequência visual de multiplicações. Para estudantes iniciantes, ela é
-          uma forma rápida de treinar sinais, diagonais e organização do cálculo.
-        </p>
-        <TipBox>
-          Se o exercício pede determinante 3x3, Sarrus costuma ser o caminho
-          mais direto. Se a matriz for maior, use outro método.
-        </TipBox>
-      </div>
-
       <TutorialCTA
-        title="Confira na Calculadora"
+        title="Pratique na calculadora"
         secondaryTo="/tutorial/determinante-de-matrizes"
-        secondaryLabel="Ver determinantes"
+        secondaryLabel="Ver determinantes gerais"
       >
-        Escolha “Determinante de A”, use uma matriz 3x3 e compare o resultado
-        com as diagonais principais e secundárias do exemplo.
+        Insira matrizes 3×3 na calculadora para conferir a separação das diagonais e o resultado do determinante no passo a passo.
       </TutorialCTA>
     </div>
   );

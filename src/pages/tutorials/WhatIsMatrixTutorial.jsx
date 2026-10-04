@@ -7,50 +7,32 @@ function WhatIsMatrixTutorial() {
   return (
     <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
-        Uma matriz é uma forma de organizar números em linhas e colunas. Pense
-        nela como uma tabela. Matrizes aparecem em todo lugar: em planilhas de
-        notas, tabelas de dados, imagens digitais, gráficos 3D de videogames e
-        até em inteligência artificial.
+        Uma matriz é uma tabela de números dispostos em linhas e colunas. Ela serve para representar dados numéricos estruturados, resolver sistemas de equações e aplicar transformações no espaço.
       </p>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          A Ideia: Uma Tabela de Números
+          O que é uma matriz
         </h2>
         <p className="mb-4 leading-relaxed">
-          Matriz é só um jeito matemático de dizer "tabela com números
-          organizados". Cada posição na tabela contém um número, e sabemos exatamente
-          qual é sua localização dizendo qual linha e qual coluna.
+          Cada valor armazenado na matriz é chamado de elemento. Para localizar qualquer elemento com exatidão, basta indicar o número da linha e o número da coluna em que ele está posicionado.
         </p>
         <TipBox>
-          <strong>Resumo rápido:</strong> uma matriz é um retângulo de números
-          organizados em linhas (na horizontal) e colunas (na vertical).
+          Linhas são lidas na horizontal (da esquerda para a direita) e colunas na vertical (de cima para baixo).
         </TipBox>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Partes de uma Matriz: Linhas e Colunas
+          Linhas, colunas e ordem
         </h2>
         <p className="mb-4 leading-relaxed">
-          Toda matriz tem:
-        </p>
-        <ul className="list-disc pl-5 space-y-3 leading-relaxed mb-4">
-          <li>
-            <strong>Linhas:</strong> os números organizados na horizontal (começam no topo).
-          </li>
-          <li>
-            <strong>Colunas:</strong> os números organizados na vertical (começam na esquerda).
-          </li>
-        </ul>
-        <p className="mb-3 leading-relaxed">
-          Se uma matriz tem <strong>2 linhas</strong> e <strong>3 colunas</strong>,
-          dizemos que ela é uma matriz <strong>2×3</strong> (lê-se "2 por 3").
+          A ordem ou dimensão de uma matriz indica quantas linhas e quantas colunas ela tem. Uma matriz com 2 linhas e 3 colunas é dita de ordem 2×3 (lê-se "dois por três").
         </p>
 
         <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 mb-4">
           <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
-            <strong>Exemplo visual:</strong> Esta matriz é 2×2 (2 linhas, 2 colunas)
+            <strong>Exemplo:</strong> Matriz 2×2 (2 linhas e 2 colunas)
           </p>
           <MatrixDisplay
             matrix={[
@@ -74,27 +56,23 @@ function WhatIsMatrixTutorial() {
         </div>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Como Nomear um Número na Matriz
+          Notação e índices
         </h2>
         <p className="mb-4 leading-relaxed">
-          Para indicar exatamente qual número queremos, usamos a notação:
+          Para referenciar um elemento específico, usamos a notação genérica:
         </p>
         <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg mb-4">
           <Formula>A(i, j)</Formula> ou <Formula>a_(ij)</Formula>
         </div>
         <p className="mb-4 leading-relaxed">
-          Onde <Formula>i</Formula> é o número da linha e <Formula>j</Formula> é
-          o número da coluna.
+          Onde <Formula>i</Formula> representa a linha e <Formula>j</Formula> representa a coluna.
         </p>
 
         <div className="space-y-3">
           <div className="border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4 rounded">
-            <p className="font-semibold mb-2">Exemplo:</p>
-            <p className="text-sm mb-2">
-              Na matriz abaixo:
-            </p>
+            <p className="font-semibold mb-2">Exemplo de índices:</p>
             <MatrixDisplay
               matrix={[
                 [2, 7],
@@ -102,24 +80,24 @@ function WhatIsMatrixTutorial() {
               ]}
             />
             <p className="text-sm font-mono mt-3">
-              A(1,1) = 2 (primeira linha, primeira coluna)
+              A(1,1) = 2 (linha 1, coluna 1)
               <br />
-              A(1,2) = 7 (primeira linha, segunda coluna)
+              A(1,2) = 7 (linha 1, coluna 2)
               <br />
-              A(2,1) = 9 (segunda linha, primeira coluna)
+              A(2,1) = 9 (linha 2, coluna 1)
               <br />
-              A(2,2) = 5 (segunda linha, segunda coluna)
+              A(2,2) = 5 (linha 2, coluna 2)
             </p>
           </div>
         </div>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Exemplo Real: Uma Matriz no Dia a Dia
+          Exemplo prático: tabela de notas
         </h2>
         <p className="mb-4 leading-relaxed">
-          Imagine uma tabela com as notas de 3 alunos em 2 disciplinas:
+          Considere as notas de 3 estudantes em 2 matérias:
         </p>
 
         <table className="w-full mb-4 text-center border-collapse">
@@ -150,7 +128,7 @@ function WhatIsMatrixTutorial() {
         </table>
 
         <p className="mb-4 leading-relaxed">
-          Se guardamos apenas os números, teremos uma matriz 3×2:
+          Ao extrair apenas os dados numéricos, obtemos uma matriz 3×2:
         </p>
 
         <MatrixDisplay
@@ -162,99 +140,80 @@ function WhatIsMatrixTutorial() {
         />
 
         <p className="mt-4 text-sm text-slate-600 dark:text-slate-300">
-          Essa matriz tem 3 linhas (uma para cada aluno) e 2 colunas (uma para
-          cada disciplina).
+          A matriz tem 3 linhas (uma por estudante) e 2 colunas (uma por matéria).
         </p>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Tamanho de uma Matriz (Dimensão)
+          Dimensão e tipos de matrizes
         </h2>
         <p className="mb-4 leading-relaxed">
-          Quando descrevemos o tamanho de uma matriz, sempre dizemos
-          <strong> linhas × colunas</strong>.
+          A ordem é sempre indicada no formato <strong>linhas × colunas</strong>:
         </p>
 
         <div className="space-y-3 mb-4">
           <div className="border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-3 rounded">
             <p className="text-sm font-mono">
-              Matriz 2×3: 2 linhas e 3 colunas (tem 6 números no total)
+              Matriz 2×3: 2 linhas e 3 colunas (6 elementos no total)
             </p>
           </div>
           <div className="border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-3 rounded">
             <p className="text-sm font-mono">
-              Matriz 4×1: 4 linhas e 1 coluna (é uma coluna vertical)
+              Matriz 4×1: 4 linhas e 1 coluna (matriz coluna)
             </p>
           </div>
           <div className="border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-3 rounded">
             <p className="text-sm font-mono">
-              Matriz 1×5: 1 linha e 5 colunas (é uma linha horizontal)
+              Matriz 1×5: 1 linha e 5 colunas (matriz linha)
             </p>
           </div>
           <div className="border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-3 rounded">
             <p className="text-sm font-mono">
-              Matriz 3×3: 3 linhas e 3 colunas (quadrada)
+              Matriz 3×3: 3 linhas e 3 colunas (matriz quadrada)
             </p>
           </div>
         </div>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Por Que Matrizes São Importantes?
+          Aplicações práticas
         </h2>
         <p className="mb-4 leading-relaxed">
-          Matrizes não são apenas um jeito estranho de escrever números. Elas
-          são uma ferramenta poderosa usada para:
+          As matrizes são utilizadas em diversas áreas da ciência e da tecnologia:
         </p>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
-            <strong>Resolver sistemas de equações:</strong> quando você tem
-            várias equações com várias incógnitas, as matrizes ajudam a organizar
-            e calcular de forma eficiente.
+            <strong>Sistemas lineares:</strong> organização e resolução de equações simultâneas em engenharia e economia.
           </li>
           <li>
-            <strong>Transformações geométricas:</strong> girar, ampliar ou mover
-            objetos em 3D (videogames, CAD, gráficos).
+            <strong>Computação gráfica:</strong> rotação, translação e escala de objetos em modelos 2D e 3D.
           </li>
           <li>
-            <strong>Análise de dados:</strong> processar informações de tabelas
-            grandes (negócios, ciência de dados, inteligência artificial).
+            <strong>Processamento de imagens:</strong> manipulação de pixels e canais de cor em formato de grade matricial.
           </li>
           <li>
-            <strong>Processamento de imagens:</strong> cada pixel tem cores (RGB)
-            que podem ser organizadas em matrizes.
-          </li>
-          <li>
-            <strong>Engenharia:</strong> cálculos estruturais, eletricidade,
-            física.
+            <strong>Ciência de dados e machine learning:</strong> operações com tensores e vetores de características.
           </li>
         </ul>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Próximo Passo: Operações com Matrizes
+          Próximos passos
         </h2>
         <p className="mb-4 leading-relaxed">
-          Agora que você entende o que é uma matriz, chegou a hora de descobrir
-          o que podemos fazer com elas. A operação mais simples é a soma.
+          Com a estrutura básica compreendida, o passo seguinte é aprender as operações aritméticas elementares, começando pela soma de matrizes de mesma ordem.
         </p>
-        <TipBox>
-          Quando souber somar matrizes, você vai aprender subtração, multiplicação
-          e muitas outras operações que abrem portas para resolver problemas reais.
-        </TipBox>
       </div>
 
       <TutorialCTA
-        title="Pratique com a Calculadora"
+        title="Pratique na calculadora"
         secondaryTo="/tutorial/soma-de-matrizes"
         secondaryLabel="Próximo: Soma de Matrizes"
       >
-        Agora que você entende o que é uma matriz, pratique preenchendo a
-        calculadora com seus próprios números. Veja como a ferramenta organiza e
-        trabalha com matrizes.
+        Configure as dimensões, insira os valores desejados e veja como a calculadora organiza os dados e executa cada operação passo a passo.
       </TutorialCTA>
     </div>
   );

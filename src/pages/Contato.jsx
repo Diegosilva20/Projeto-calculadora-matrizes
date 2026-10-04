@@ -4,21 +4,21 @@ import { FaBug, FaEnvelope, FaLightbulb, FaQuestionCircle } from "react-icons/fa
 const contactTopics = [
   {
     icon: <FaBug className="h-8 w-8" aria-hidden="true" />,
-    title: "Encontrou um Erro?",
+    title: "Relatar um erro",
     description:
-      "Seja um erro de cálculo ou um bug no site, seu feedback ajuda a manter a plataforma precisa e confiável.",
+      "Se encontrar um resultado divergente ou falha na interface, nos avise para corrigirmos.",
   },
   {
     icon: <FaLightbulb className="h-8 w-8" aria-hidden="true" />,
-    title: "Tem uma Sugestão?",
+    title: "Enviar sugestão",
     description:
-      "Gostaria de uma nova funcionalidade na calculadora ou um novo tópico de tutorial? Adoramos ouvir boas ideias.",
+      "Sugira novas operações matemáticas, melhorias de visualização ou novos temas de tutoriais.",
   },
   {
     icon: <FaQuestionCircle className="h-8 w-8" aria-hidden="true" />,
-    title: "Outras Dúvidas",
+    title: "Dúvidas gerais",
     description:
-      "Para parcerias, feedback geral ou qualquer outra questão, envie uma mensagem pelo nosso canal de contato.",
+      "Envie suas dúvidas sobre o funcionamento da ferramenta ou feedback sobre a plataforma.",
   },
 ];
 
@@ -26,14 +26,14 @@ function Contato() {
   return (
     <>
       <Helmet>
-        <title>Contato - Matrizes+</title>
+        <title>Contato - CalculaMatriz</title>
         <meta
           name="description"
-          content="Entre em contato com a equipe Matrizes+ para enviar sugestões, reportar erros ou tirar dúvidas."
+          content="Entre em contato com o CalculaMatriz para enviar sugestões, reportar erros de cálculo ou tirar dúvidas."
         />
         <link rel="canonical" href="https://calculamatriz.vercel.app/contato" />
-        <meta property="og:title" content="Contato - Matrizes+" />
-        <meta property="og:description" content="Entre em contato com a equipe Matrizes+ para enviar sugestões, reportar erros ou tirar dúvidas." />
+        <meta property="og:title" content="Contato - CalculaMatriz" />
+        <meta property="og:description" content="Entre em contato com o CalculaMatriz para enviar sugestões, reportar erros de cálculo ou tirar dúvidas." />
         <meta property="og:url" content="https://calculamatriz.vercel.app/contato" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://calculamatriz.vercel.app/logo1920.png" />
@@ -46,11 +46,10 @@ function Contato() {
       <section className="p-4 sm:p-6 max-w-5xl mx-auto text-center min-h-[70vh]">
         <header className="mb-12">
           <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-slate-900 dark:text-white dark:text-slate-100">
-            Fale Conosco
+            Fale conosco
           </h1>
           <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-2xl mx-auto dark:text-slate-300">
-            Sua opinião é fundamental para o crescimento do Matrizes+. Use este
-            canal para enviar sugestões, dúvidas ou relatos de erro.
+            Use este canal para enviar sugestões, tirar dúvidas ou relatar qualquer inconsistência em cálculos ou tutoriais.
           </p>
         </header>
 
@@ -78,11 +77,10 @@ function Contato() {
             <FaEnvelope className="h-7 w-7" aria-hidden="true" />
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-            Nosso Canal de Comunicação
+            Envie sua mensagem por e-mail
           </h2>
           <p className="text-blue-100 mb-8 max-w-xl mx-auto text-sm sm:text-lg leading-relaxed">
-            Para todas as comunicações, envie sua mensagem para o e-mail abaixo.
-            Faremos o possível para responder o mais rápido possível.
+            Escreva diretamente para o nosso e-mail. Respondemos assim que possível.
           </p>
           <a
             href="mailto:suporte@calculamatriz.vercel.app"

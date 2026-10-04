@@ -9,33 +9,24 @@ function PostoDeMatrizTutorial() {
     <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white dark:text-slate-100">
       <div className="mb-8">
         <p className="mb-6 text-lg leading-relaxed">
-          O posto de uma matriz é uma medida do quanto suas linhas ou colunas são
-          independentes. Um jeito prático de calcular o posto é usar o
-          <strong> escalonamento</strong>, transformar a matriz em forma de escada
-          e contar as linhas que não são zero.
+          O posto (ou rank) de uma matriz quantifica o número máximo de linhas ou colunas linearmente independentes. O método computacional padrão para determiná-lo consiste em escalonar a matriz até a forma escalonada e contar as linhas não nulas.
         </p>
         <TipBox>
-          <strong>Definição essencial:</strong> o posto de uma matriz é o número de
-          linhas não nulas na matriz escalonada.
+          Definição: o posto de uma matriz equivale exatamente ao número de linhas não inteiramente nulas após o escalonamento gaussiano completo.
         </TipBox>
       </div>
 
-      <section className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
-        <h2 className="text-2xl font-semibold mb-3">O que é uma linha não nula?</h2>
+      <section className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
+        <h2 className="text-2xl font-semibold mb-3">Linha não nula vs linha nula</h2>
         <p className="mb-4 leading-relaxed">
-          Uma linha não nula é uma linha que tem pelo menos um elemento diferente de
-          zero. Se toda a linha for zero, ela é uma linha nula e não conta para o
-          posto.
-        </p>
-        <p className="mb-4 leading-relaxed">
-          Por exemplo, a linha <Formula>[0, 0, 0]</Formula> é nula, enquanto <Formula>[1, 2, 3]</Formula> e <Formula>[0, 5, 0]</Formula> são linhas não nulas.
+          Uma linha é classificada como não nula se contiver ao menos uma entrada diferente de zero. Linhas compostas exclusivamente por zeros (<Formula>[0, 0, \dots, 0]</Formula>) são nulas e não contribuem para o posto.
         </p>
       </section>
 
-      <section className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
+      <section className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
         <h2 className="text-2xl font-semibold mb-3">Exemplo resolvido: matriz 3x3</h2>
         <p className="mb-4 leading-relaxed">
-          Vamos calcular o posto da matriz <Formula>A</Formula> usando escalonamento.
+          Determine o posto da matriz <Formula>A</Formula>:
         </p>
         <div className="mb-6">
           <MatrixDisplay
@@ -43,17 +34,11 @@ function PostoDeMatrizTutorial() {
           />
         </div>
         <p className="mb-4 leading-relaxed">
-          Essa matriz tem a segunda linha como combinação da primeira: <Formula>2 × [1, 2, 3] = [2, 4, 6]</Formula>.
-          Por isso, as linhas não são todas independentes.
+          Note que a linha 2 é o dobro exato da linha 1 (<Formula>L_2 = 2 L_1</Formula>), evidenciando dependência linear prévia.
         </p>
-        <p className="mb-4 leading-relaxed">
-          Agora vamos usar operações de linha para escalonar a matriz.</p>
 
         <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 p-4 mb-6 dark:bg-slate-950 dark:border-slate-700">
-          <h3 className="text-xl font-semibold mb-3">Passo 1: eliminar abaixo do primeiro pivô</h3>
-          <p className="mb-3 leading-relaxed">
-            Usamos o primeiro elemento da primeira linha como pivô. A seguir, zeramos os elementos abaixo dele.
-          </p>
+          <h3 className="text-xl font-semibold mb-3">1. Eliminação na primeira coluna</h3>
           <p className="font-mono text-sm sm:text-base break-words">
             L2 ← L2 - 2 × L1<br />
             L3 ← L3 - 1 × L1
@@ -66,14 +51,10 @@ function PostoDeMatrizTutorial() {
           />
         </div>
 
-        <p className="mb-4 leading-relaxed">
-          Nesse ponto, a segunda linha virou <Formula>[0, 0, 0]</Formula>. A terceira linha ainda tem um elemento não nulo, então ela continua sendo uma linha importante para o posto.
-        </p>
-
         <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 p-4 mb-6 dark:bg-slate-950 dark:border-slate-700">
-          <h3 className="text-xl font-semibold mb-3">Passo 2: organizar a forma escalonada</h3>
+          <h3 className="text-xl font-semibold mb-3">2. Permutação de linhas (L2 ↔ L3)</h3>
           <p className="mb-3 leading-relaxed">
-            Para ficar mais claro, trocamos a segunda e a terceira linha. Assim, a linha nula fica por baixo.
+            Movemos a linha nula para a base da matriz:
           </p>
           <p className="font-mono text-sm sm:text-base break-words">
             L2 ↔ L3
@@ -86,78 +67,52 @@ function PostoDeMatrizTutorial() {
           />
         </div>
 
-        <p className="mb-4 leading-relaxed">
-          Agora a matriz está em forma escalonada. Ela tem duas linhas não nulas e uma linha zerada.</p>
         <TipBox>
-          O posto é o número de linhas não nulas na matriz escalonada. Aqui, o posto de <Formula>A</Formula> é <Formula>2</Formula>.
+          A matriz escalonada apresenta 2 linhas não nulas e 1 linha nula. Portanto, <Formula>\text{posto}(A) = 2</Formula>.
         </TipBox>
       </section>
 
-      <section className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
-        <h2 className="text-2xl font-semibold mb-3">Por que o escalonamento mostra o posto?</h2>
+      <section className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
+        <h2 className="text-2xl font-semibold mb-3">Propriedades e limites dimensionais</h2>
         <p className="mb-4 leading-relaxed">
-          O escalonamento usa operações de linha que não mudam a dependência entre as linhas. Ele apenas rearranja a matriz para que as linhas independentes fiquem na parte de cima e as linhas dependentes ou nulas fiquem por baixo.
-        </p>
-        <p className="mb-4 leading-relaxed">
-          Por isso, depois de escalonar, contar as linhas não nulas é a forma mais direta de encontrar o posto. Esse resultado é o mesmo mesmo que mudarmos a ordem das linhas.
-        </p>
-      </section>
-
-      <section className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
-        <h2 className="text-2xl font-semibold mb-3">Posto de matriz quadrada e matriz retangular</h2>
-        <p className="mb-4 leading-relaxed">
-          O posto existe para qualquer matriz, quadrada ou retangular. Em uma matriz quadrada <Formula>n × n</Formula>, o posto máximo é <Formula>n</Formula>. Em uma matriz retangular, o posto máximo é o menor entre o número de linhas e colunas.
-        </p>
-        <p className="mb-4 leading-relaxed">
-          Por exemplo, em uma matriz <Formula>3 × 5</Formula>, o posto não pode ser maior que <Formula>3</Formula>, porque só existem 3 linhas independentes possíveis.
-        </p>
-      </section>
-
-      <section className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
-        <h2 className="text-2xl font-semibold mb-3">Posto e sistemas lineares</h2>
-        <p className="mb-4 leading-relaxed">
-          O posto de uma matriz de coeficientes decide quantas equações independentes o sistema realmente tem. Se o posto for menor que o número de incógnitas, o sistema pode ter infinitas soluções ou nenhuma solução exclusiva.
-        </p>
-        <p className="mb-4 leading-relaxed">
-          Se o posto da matriz aumentada for igual ao posto da matriz de coeficientes, o sistema é consistente. Para entender melhor isso, veja o tutorial de <Link to="/tutorial/sistemas-lineares" className="font-semibold text-accent hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-200">sistemas lineares</Link>.
-        </p>
-      </section>
-
-      <section className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
-        <h2 className="text-2xl font-semibold mb-3">Posto, determinante e inversa</h2>
-        <p className="mb-4 leading-relaxed">
-          Em uma matriz quadrada <Formula>n × n</Formula>:
+          Para qualquer matriz de dimensão <Formula>m \times n</Formula>:
         </p>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
-            Se o posto for <Formula>n</Formula>, a matriz tem todas as linhas independentes e pode ser invertida.
+            O posto nunca pode exceder o menor valor entre linhas e colunas: <Formula>\text{posto}(A) \le \min(m, n)</Formula>.
           </li>
           <li>
-            Se o posto for menor que <Formula>n</Formula>, o determinante é zero e a matriz não tem inversa.
+            <strong>Posto completo (matriz quadrada):</strong> se uma matriz <Formula>n \times n</Formula> tem <Formula>\text{posto}(A) = n</Formula>, ela é não singular, admite inversa e <Formula>\det(A) \neq 0</Formula>.
+          </li>
+          <li>
+            <strong>Posto deficiente:</strong> se <Formula>\text{posto}(A) &lt; n</Formula>, a matriz quadrada é singular (<Formula>\det(A) = 0</Formula>) e não admite inversa.
+          </li>
+          <li>
+            O posto por linhas é estritamente idêntico ao posto por colunas: <Formula>\text{posto}(A) = \text{posto}(A^T)</Formula>.
           </li>
         </ul>
-        <p className="mt-4 leading-relaxed">
-          Para ler mais sobre isso, veja <Link to="/tutorial/determinante-de-matrizes" className="font-semibold text-accent hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-200">determinante de matrizes</Link> e <Link to="/tutorial/matriz-inversa" className="font-semibold text-accent hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-200">matriz inversa</Link>.</p>
       </section>
 
-      <section className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
-        <h2 className="text-2xl font-semibold mb-3">Erros comuns ao calcular o posto</h2>
+      <section className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
+        <h2 className="text-2xl font-semibold mb-3">Relação com o Teorema de Rouché-Capelli</h2>
+        <p className="mb-4 leading-relaxed">
+          Na análise de sistemas lineares <Formula>Ax = b</Formula>:
+        </p>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
-          <li>Contar linhas nulas como se fossem não nulas.</li>
-          <li>Não usar o escalonamento completo até a forma escalonada.</li>
-          <li>Achar que o posto é sempre o número de colunas.</li>
-          <li>Esquecer que linhas múltiplas entre si não aumentam o posto.</li>
+          <li>Se <Formula>\text{posto}(A) = \text{posto}(A|b) = n</Formula>: solução única (SPD).</li>
+          <li>Se <Formula>\text{posto}(A) = \text{posto}(A|b) &lt; n</Formula>: infinitas soluções com <Formula>n - \text{posto}(A)</Formula> variáveis livres (SPI).</li>
+          <li>Se <Formula>\text{posto}(A) &lt; \text{posto}(A|b)</Formula>: sistema inconsistente / impossível (SI).</li>
         </ul>
       </section>
 
       <TutorialCTA
-        title="Pratique o cálculo do posto com a calculadora"
+        title="Pratique na calculadora"
         primaryTo="/"
         primaryLabel="Abrir calculadora de matrizes"
         secondaryTo="/tutorial/escalonamento-gauss"
         secondaryLabel="Ver escalonamento de Gauss"
       >
-        Use o mesmo exemplo no modo de escalonamento e observe como a matriz fica em forma de escada. Depois, conte as linhas não nulas para encontrar o posto.
+        Insira matrizes quadradas ou retangulares na calculadora para acompanhar o escalonamento e a contagem de pivôs que definem o posto.
       </TutorialCTA>
     </div>
   );

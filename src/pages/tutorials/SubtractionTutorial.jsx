@@ -8,58 +8,50 @@ function MatrixSubtractionTutorial() {
   return (
     <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
-        Subtrair matrizes é parecido com somar matrizes: a operação acontece
-        posição por posição. A diferença é que, em vez de juntar os valores,
-        tiramos de A o valor correspondente em B.
+        A subtração de matrizes é realizada calculando a diferença entre os elementos que ocupam a mesma posição em duas matrizes de mesma dimensão.
       </p>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          A Intuição: Comparar Duas Matrizes
+          Como funciona a subtração
         </h2>
         <p className="mb-4 leading-relaxed">
-          Pense em duas tabelas com o mesmo formato. A subtração mostra a
-          diferença entre elas em cada posição. Por isso, ela é útil quando
-          queremos comparar mudanças, perdas, aumentos ou desvios.
+          Cada elemento da matriz resultante é obtido subtraindo o valor de <Formula>B</Formula> do valor de <Formula>A</Formula> na mesma linha e coluna.
         </p>
         <TipBox>
-          <strong>Resumo rápido:</strong> em <Formula>A - B</Formula>, cada
-          posição da resposta recebe o valor de A menos o valor de B na mesma
-          posição.
+          Em <Formula>A - B</Formula>, calculamos <Formula>c_(ij) = a_(ij) - b_(ij)</Formula> para cada posição.
         </TipBox>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
-        <h2 className="text-2xl font-semibold mb-3">Regra Principal</h2>
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+        <h2 className="text-2xl font-semibold mb-3">Condição de existência</h2>
         <p className="mb-4 leading-relaxed">
-          A subtração <Formula>A - B</Formula> só existe quando as duas matrizes
-          têm o mesmo tamanho. A matriz resultado mantém esse mesmo tamanho.
+          Assim como na soma, a subtração só é possível se ambas as matrizes tiverem a mesma ordem (mesma quantidade de linhas e colunas).
         </p>
         <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg overflow-x-auto">
           <Formula>C(i, j) = A(i, j) - B(i, j)</Formula>
         </div>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Como Subtrair Matrizes Passo a Passo
+          Passo a passo
         </h2>
         <ol className="list-decimal pl-5 space-y-3 leading-relaxed">
-          <li>Confira se A e B têm o mesmo número de linhas e colunas.</li>
-          <li>Escolha uma posição da matriz.</li>
-          <li>Subtraia o valor de B do valor de A nessa mesma posição.</li>
-          <li>Escreva o resultado na matriz resposta.</li>
-          <li>Repita o processo para todas as posições.</li>
+          <li>Confirme se as matrizes <Formula>A</Formula> e <Formula>B</Formula> possuem dimensões iguais.</li>
+          <li>Identifique os elementos na posição <Formula>(i, j)</Formula> em ambas as matrizes.</li>
+          <li>Calcule <Formula>a_(ij) - b_(ij)</Formula>, observando as regras de sinais para números negativos.</li>
+          <li>Insira a resposta na posição correspondente da matriz final.</li>
+          <li>Repita a operação para todas as entradas.</li>
         </ol>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-4">
-          Exemplo Resolvido: Subtração de Matrizes 2x2
+          Exemplo resolvido (2x2)
         </h2>
         <p className="mb-4 leading-relaxed">
-          Vamos calcular A - B. Como as duas matrizes são 2x2, podemos subtrair
-          posição com posição.
+          Considere as matrizes de ordem 2×2 abaixo:
         </p>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -110,7 +102,7 @@ function MatrixSubtractionTutorial() {
           </div>
         </div>
 
-        <h3 className="text-xl font-semibold mt-6">Resultado Final</h3>
+        <h3 className="text-xl font-semibold mt-6">Resultado final</h3>
         <MatrixDisplay
           matrix={[
             [5, -1],
@@ -119,48 +111,37 @@ function MatrixSubtractionTutorial() {
         />
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
-        <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+        <h2 className="text-2xl font-semibold mb-3">Cuidados importantes</h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
-            <strong>Inverter a ordem:</strong> em geral,{" "}
-            <Formula>A - B</Formula> não é igual a <Formula>B - A</Formula>.
+            <strong>A subtração não é comutativa:</strong> em geral,{" "}
+            <Formula>A - B ≠ B - A</Formula>. A ordem dos termos altera os sinais dos resultados.
           </li>
           <li>
-            <strong>Ignorar tamanhos:</strong> só é possível subtrair matrizes
-            com as mesmas dimensões.
+            <strong>Jogo de sinais:</strong> subtrair um número negativo equivale a somá-lo (ex: <Formula>3 - (-2) = 5</Formula>).
           </li>
           <li>
-            <strong>Errar com números negativos:</strong>{" "}
-            <Formula>4 - 5 = -1</Formula>, então resultados negativos podem
-            aparecer normalmente.
+            <strong>Compatibilidade de ordem:</strong> matrizes com dimensões diferentes não admitem subtração.
           </li>
         </ul>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Onde a Subtração de Matrizes Aparece?
+          Aplicações práticas
         </h2>
         <p className="mb-4 leading-relaxed">
-          A subtração de matrizes aparece quando queremos medir diferenças entre
-          tabelas no mesmo formato: orçamento planejado contra gasto real,
-          notas antes e depois de uma prova, imagens antes e depois de uma
-          transformação ou dados coletados em dois momentos.
+          A subtração matricial é usada para calcular variações temporais de dados, diferenças entre estimativas e valores reais, e filtros de detecção de bordas em visão computacional.
         </p>
-        <TipBox>
-          Quando duas matrizes descrevem a mesma coisa em momentos diferentes,
-          a subtração mostra o que mudou em cada posição.
-        </TipBox>
       </div>
 
       <TutorialCTA
-        title="Pratique com a Calculadora"
+        title="Pratique na calculadora"
         secondaryTo="/tutorial/soma-de-matrizes"
         secondaryLabel="Ver soma de matrizes"
       >
-        Escolha “Subtração (A - B)”, use matrizes do mesmo tamanho e acompanhe a
-        diferença calculada em cada elemento.
+        Insira matrizes personalizadas na calculadora para conferir a subtração elemento a elemento no passo a passo.
       </TutorialCTA>
     </div>
   );

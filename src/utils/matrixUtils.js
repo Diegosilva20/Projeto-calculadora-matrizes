@@ -1,5 +1,5 @@
 // src/utils/matrixUtils.js
-// Shared pure utility functions — imported by both matrixCalculations.js and gaussianElimination.js.
+// Pure utility functions shared by matrixCalculations.js and gaussianElimination.js
 // This file must NOT import from either of those files to prevent circular dependencies.
 
 /**

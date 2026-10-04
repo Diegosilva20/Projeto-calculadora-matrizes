@@ -8,58 +8,49 @@ function ScalarMultiplicationTutorial() {
   return (
     <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
-        Multiplicar uma matriz por escalar significa multiplicar todos os seus
-        elementos por um mesmo número. Esse número é chamado de escalar porque
-        ele aumenta, diminui ou muda o sinal da matriz inteira de uma vez.
+        Multiplicar uma matriz por um escalar significa multiplicar cada um de seus elementos por uma mesma constante numérica.
       </p>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          A Intuição: Aplicar o Mesmo Fator em Tudo
+          Como funciona a multiplicação por escalar
         </h2>
         <p className="mb-4 leading-relaxed">
-          Imagine uma tabela de preços. Se todos os valores precisam triplicar,
-          não calculamos uma regra diferente para cada célula: multiplicamos
-          todos os números pelo mesmo fator. Na matriz, acontece a mesma coisa.
+          O termo "escalar" refere-se a um número real comum (ou fração). Quando multiplicamos uma matriz inteira por esse número, todas as entradas individuais são reescaladas proporcionalmente.
         </p>
         <TipBox>
-          <strong>Resumo rápido:</strong> o escalar multiplica cada elemento da
-          matriz, mantendo o mesmo número de linhas e colunas.
+          O escalar multiplica elemento por elemento, sem alterar a ordem (linhas e colunas) da matriz.
         </TipBox>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
-        <h2 className="text-2xl font-semibold mb-3">Regra Principal</h2>
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+        <h2 className="text-2xl font-semibold mb-3">Definição matemática</h2>
         <p className="mb-4 leading-relaxed">
-          Se <Formula>k</Formula> é um número e <Formula>A</Formula> é uma
-          matriz, então <Formula>kA</Formula> é a matriz formada multiplicando
-          cada elemento de A por <Formula>k</Formula>.
+          Se <Formula>k</Formula> é um número real e <Formula>A</Formula> é uma matriz, a matriz <Formula>kA</Formula> é obtida multiplicando cada entrada <Formula>a_(ij)</Formula> por <Formula>k</Formula>:
         </p>
         <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg overflow-x-auto">
-          <Formula>C(i, j) = k x A(i, j)</Formula>
+          <Formula>C(i, j) = k × A(i, j)</Formula>
         </div>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Como Multiplicar por Escalar Passo a Passo
+          Passo a passo
         </h2>
         <ol className="list-decimal pl-5 space-y-3 leading-relaxed">
-          <li>Identifique o escalar, ou seja, o número que multiplica a matriz.</li>
-          <li>Pegue o primeiro elemento da matriz.</li>
-          <li>Multiplique esse elemento pelo escalar.</li>
-          <li>Escreva o resultado na mesma posição.</li>
-          <li>Repita até multiplicar todos os elementos.</li>
+          <li>Identifique o valor do escalar <Formula>k</Formula>.</li>
+          <li>Percorra cada posição <Formula>(i, j)</Formula> da matriz original.</li>
+          <li>Multiplique o número dessa posição por <Formula>k</Formula>.</li>
+          <li>Escreva o produto na posição equivalente da nova matriz.</li>
         </ol>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-4">
-          Exemplo Resolvido: 3 Vezes uma Matriz 2x2
+          Exemplo resolvido: multiplicação por 3
         </h2>
         <p className="mb-4 leading-relaxed">
-          Vamos calcular <Formula>3A</Formula>. O escalar é 3, então todos os
-          elementos da matriz A serão multiplicados por 3.
+          Considere a matriz <Formula>A</Formula> e o escalar <Formula>k = 3</Formula>:
         </p>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -96,63 +87,48 @@ function ScalarMultiplicationTutorial() {
           <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">Primeira linha</h3>
             <p className="font-mono text-sm sm:text-base break-words">
-              3 x 2 = 6 e 3 x (-1) = -3
+              3 × 2 = 6 e 3 × (-1) = -3
             </p>
           </div>
           <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">Segunda linha</h3>
             <p className="font-mono text-sm sm:text-base break-words">
-              3 x 0 = 0 e 3 x 4 = 12
+              3 × 0 = 0 e 3 × 4 = 12
             </p>
           </div>
         </div>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
-        <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+        <h2 className="text-2xl font-semibold mb-3">Cuidados importantes</h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
-            <strong>Multiplicar só uma linha:</strong> o escalar deve multiplicar
-            todos os elementos da matriz.
+            <strong>Multiplicar todos os elementos:</strong> o escalar afeta cada elemento da matriz, não apenas uma linha ou coluna isolada.
           </li>
           <li>
-            <strong>Mudar o tamanho da matriz:</strong> multiplicar por escalar
-            não altera linhas nem colunas.
+            <strong>Manutenção da dimensão:</strong> a matriz resultante possui exatamente o mesmo número de linhas e colunas da original.
           </li>
           <li>
-            <strong>Errar sinais:</strong> um escalar negativo troca o sinal de
-            todos os elementos não nulos.
-          </li>
-          <li>
-            <strong>Confundir com determinante:</strong> multiplicar uma matriz
-            por escalar não é a mesma coisa que calcular seu determinante.
+            <strong>Sinais:</strong> um escalar negativo inverte o sinal de todos os elementos não nulos.
           </li>
         </ul>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Onde a Multiplicação por Escalar Aparece?
+          Aplicações práticas
         </h2>
         <p className="mb-4 leading-relaxed">
-          Essa operação aparece quando todos os valores de uma matriz precisam
-          ser redimensionados pelo mesmo fator. Ela é comum em gráficos,
-          transformações geométricas, ajustes de tabelas, física e modelos que
-          usam matrizes para representar quantidades.
+          Multiplicar por escalar é fundamental no redimensionamento (zoom) de vetores e geometrias, conversão de unidades monetárias ou físicas em matrizes de dados e combinações lineares de vetores.
         </p>
-        <TipBox>
-          Se o escalar é maior que 1, os valores aumentam. Se está entre 0 e 1,
-          os valores diminuem. Se é negativo, os sinais mudam.
-        </TipBox>
       </div>
 
       <TutorialCTA
-        title="Pratique com a Calculadora"
+        title="Pratique na calculadora"
         secondaryTo="/tutorial/soma-de-matrizes"
         secondaryLabel="Ver soma de matrizes"
       >
-        Escolha “Multiplicação por Escalar”, digite o número multiplicador e
-        veja cada elemento sendo recalculado no passo a passo.
+        Defina um escalar e os valores da matriz para visualizar a multiplicação elemento a elemento no passo a passo da calculadora.
       </TutorialCTA>
     </div>
   );

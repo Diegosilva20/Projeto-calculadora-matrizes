@@ -156,15 +156,15 @@
     "semantic_hash": "2f74a641cfda5cf7d5904f7608e95e1d"
   },
   "src/data/tutorialsInfo.js": {
-    "mtime": 1788271197.592186,
-    "seen": 1791087608.7613537,
-    "ast_hash": "dc422822bcc2df39f626c33ec12fbc0c",
-    "semantic_hash": ""
+    "mtime": 1788022876.4143095,
+    "seen": 1788027160.0063064,
+    "ast_hash": "5d54cbf4c5c31aebeb00e99a0d63f76a",
+    "semantic_hash": "5d54cbf4c5c31aebeb00e99a0d63f76a"
   },
   "src/hooks/useMatrixCalculator.js": {
-    "mtime": 1788234170.4503713,
-    "seen": 1791087608.7613556,
-    "ast_hash": "c99c21e49b27b8ebd73872ba1af9be02",
+    "mtime": 1788035422.9182527,
+    "seen": 1788036981.3167696,
+    "ast_hash": "124f83810d8da146b203636860b28756",
     "semantic_hash": ""
   },
   "src/index.jsx": {
@@ -174,15 +174,15 @@
     "semantic_hash": ""
   },
   "src/pages/Contato.jsx": {
-    "mtime": 1788271187.5371559,
-    "seen": 1791087608.761358,
-    "ast_hash": "f867c47063b763ba9c60bd9c0da6203c",
+    "mtime": 1788233083.3350618,
+    "seen": 1788233150.0734737,
+    "ast_hash": "7ca4b38b22a2399fbacdbdcbf3a00318",
     "semantic_hash": ""
   },
   "src/pages/Home.jsx": {
-    "mtime": 1788271226.5365784,
-    "seen": 1791087608.7613595,
-    "ast_hash": "0974cf5625a7a74621b42de39b3e0390",
+    "mtime": 1788233083.3350618,
+    "seen": 1788233150.0734751,
+    "ast_hash": "55b506901935cb20e407af60a2cdeaad",
     "semantic_hash": ""
   },
   "src/pages/NotFound.jsx": {
@@ -198,9 +198,9 @@
     "semantic_hash": ""
   },
   "src/pages/Sobre.jsx": {
-    "mtime": 1788271177.9587271,
-    "seen": 1791087608.7613633,
-    "ast_hash": "378401a4b2949a325756e8b5db1acc9e",
+    "mtime": 1788233083.3350618,
+    "seen": 1788233150.0734782,
+    "ast_hash": "10768ccd2db3a4094588cc5d9a1d7074",
     "semantic_hash": ""
   },
   "src/pages/TermosUso.jsx": {
@@ -210,105 +210,105 @@
     "semantic_hash": ""
   },
   "src/pages/TutorialPage.jsx": {
-    "mtime": 1788271577.2501867,
-    "seen": 1791087608.7613657,
-    "ast_hash": "f9961a3f55df7f092920264ec5bae905",
+    "mtime": 1788233083.3350618,
+    "seen": 1788233150.0734801,
+    "ast_hash": "c8bc0b23a90579043cace716d1fb2a64",
     "semantic_hash": ""
   },
   "src/pages/Tutorials.jsx": {
-    "mtime": 1788271206.3616297,
-    "seen": 1791087608.7613668,
-    "ast_hash": "a5053bfbddd57a8f96151274ffdf4681",
+    "mtime": 1788233083.3432317,
+    "seen": 1788233150.0734813,
+    "ast_hash": "0e9021201f00fbf58c41017c448821de",
     "semantic_hash": ""
   },
   "src/pages/tutorials/AdditionTutorial.jsx": {
-    "mtime": 1788271269.5135217,
-    "seen": 1791087608.761368,
-    "ast_hash": "7b580125c1343d25d35476eda63b1d20",
+    "mtime": 1788139761.749741,
+    "seen": 1788233150.0734823,
+    "ast_hash": "25d5b90967ac08032400ac4fe08f8d86",
     "semantic_hash": ""
   },
   "src/pages/tutorials/Determinant2x2Tutorial.jsx": {
-    "mtime": 1788271394.0311422,
-    "seen": 1791087608.761369,
-    "ast_hash": "81876b3bc88041a135c71e6d88583800",
+    "mtime": 1788139761.7503538,
+    "seen": 1788233150.0734835,
+    "ast_hash": "d82b7155b03ceefe150eecf0563c5920",
     "semantic_hash": ""
   },
   "src/pages/tutorials/DeterminantTutorial.jsx": {
-    "mtime": 1788271417.842091,
-    "seen": 1791087608.7613702,
-    "ast_hash": "8b767e244b750d6d54b8228059c597a4",
+    "mtime": 1788139761.7514267,
+    "seen": 1788233150.0734842,
+    "ast_hash": "c413e7805fee5824dd30ecbea9e5b52e",
     "semantic_hash": ""
   },
   "src/pages/tutorials/GaussTutorial.jsx": {
-    "mtime": 1788271477.7699125,
-    "seen": 1791087608.7613711,
-    "ast_hash": "813f35f0040d3f4df51cf3d74d4d9221",
+    "mtime": 1788139761.7519593,
+    "seen": 1788233150.0734856,
+    "ast_hash": "4f7fb914483b435124b762e3ebbef256",
     "semantic_hash": ""
   },
   "src/pages/tutorials/IdentityMatrixTutorial.jsx": {
-    "mtime": 1788271353.6052024,
-    "seen": 1791087608.7613723,
-    "ast_hash": "1572fcd78b8764619add1c30bd6c1760",
+    "mtime": 1788139761.7524726,
+    "seen": 1788233150.0734866,
+    "ast_hash": "4691ede6bef6034bd1011aeaa04c4fd0",
     "semantic_hash": ""
   },
   "src/pages/tutorials/InverseTutorial.jsx": {
-    "mtime": 1788271458.3837183,
-    "seen": 1791087608.7613738,
-    "ast_hash": "50686300deda6550b4820195e2c8efe3",
+    "mtime": 1788139761.7530077,
+    "seen": 1788233150.0734875,
+    "ast_hash": "dcd32f0dfb8aad67b4ca3c04151bb6e1",
     "semantic_hash": ""
   },
   "src/pages/tutorials/LinearSystemsTutorial.jsx": {
-    "mtime": 1788271494.7089887,
-    "seen": 1791087608.7613747,
-    "ast_hash": "48ace6a2935c72e0dc8840f6ba2d7b37",
+    "mtime": 1788139761.7535288,
+    "seen": 1788233150.073489,
+    "ast_hash": "c0a346397f36999bad6c743134446dec",
     "semantic_hash": ""
   },
   "src/pages/tutorials/MultiplicationTutorial.jsx": {
-    "mtime": 1788271374.5434155,
-    "seen": 1791087608.761376,
-    "ast_hash": "a09972b20e2a3c06562fc85732a4f14c",
+    "mtime": 1788139761.7540557,
+    "seen": 1788233150.07349,
+    "ast_hash": "f93457475a4e602770e643737747886b",
     "semantic_hash": ""
   },
   "src/pages/tutorials/PostoDeMatrizTutorial.jsx": {
-    "mtime": 1788271550.866974,
-    "seen": 1791087608.761377,
-    "ast_hash": "4acb53583f6cb124a498c2a6f9a76bac",
+    "mtime": 1788139761.7551208,
+    "seen": 1788233150.0734916,
+    "ast_hash": "1aed318eed596a2183f0b389e8ed504d",
     "semantic_hash": ""
   },
   "src/pages/tutorials/RegraDeCramerTutorial.jsx": {
-    "mtime": 1788271521.0745072,
-    "seen": 1791087608.761378,
-    "ast_hash": "86a6e57ffbbb1a31774ddbfcb867e64a",
+    "mtime": 1788139761.7570333,
+    "seen": 1788233150.0734925,
+    "ast_hash": "ab6afb802189022e5e584a019eaa225a",
     "semantic_hash": ""
   },
   "src/pages/tutorials/SarrusTutorial.jsx": {
-    "mtime": 1788271436.1649313,
-    "seen": 1791087608.7613792,
-    "ast_hash": "1ee48c5e17f42eeaf32a03d6965bceed",
+    "mtime": 1788139761.760443,
+    "seen": 1788233150.0734935,
+    "ast_hash": "8fa7440108c509e2f0c11d9a806c0fb3",
     "semantic_hash": ""
   },
   "src/pages/tutorials/ScalarMultiplicationTutorial.jsx": {
-    "mtime": 1788271303.0948882,
-    "seen": 1791087608.7613804,
-    "ast_hash": "9c8222d6254dd74dddc5b4e7e0d467b7",
+    "mtime": 1788139761.7616057,
+    "seen": 1788233150.0734944,
+    "ast_hash": "63f5ec8520fbc495a294698fc8ea5aa7",
     "semantic_hash": ""
   },
   "src/pages/tutorials/SubtractionTutorial.jsx": {
-    "mtime": 1788271285.703122,
-    "seen": 1791087608.7613814,
-    "ast_hash": "916b523da5b07d882e7a10746e5473b9",
+    "mtime": 1788139761.7621505,
+    "seen": 1788233150.0734959,
+    "ast_hash": "6ca39e23e563dddef05144bc168e1815",
     "semantic_hash": ""
   },
   "src/pages/tutorials/TransposeTutorial.jsx": {
-    "mtime": 1788271332.2128077,
-    "seen": 1791087608.7613823,
-    "ast_hash": "a7762b636a2a6b03a81cc95cdb2cd38b",
+    "mtime": 1788139761.762673,
+    "seen": 1788233150.0734968,
+    "ast_hash": "059a599225fac68f05f3b7f45c4065fd",
     "semantic_hash": ""
   },
   "src/pages/tutorials/WhatIsMatrixTutorial.jsx": {
-    "mtime": 1788271257.1187294,
-    "seen": 1791087608.7613838,
-    "ast_hash": "2ead61867176f610f9829142b250bfc5",
+    "mtime": 1788139761.762673,
+    "seen": 1788233150.0734978,
+    "ast_hash": "fefce2b5f2a718b7387fa43be2c41f3a",
     "semantic_hash": ""
   },
   "src/prerender.jsx": {
@@ -360,9 +360,9 @@
     "semantic_hash": ""
   },
   "src/utils/matrixUtils.js": {
-    "mtime": 1788271166.3352985,
-    "seen": 1791087608.76139,
-    "ast_hash": "de9f700446d8ce862a0730a16410edae",
+    "mtime": 1788029120.1037996,
+    "seen": 1788029478.2722023,
+    "ast_hash": "9174d251a3b2509cad60144082b7958b",
     "semantic_hash": ""
   },
   ".agents/rules/graphify.md": {
@@ -468,9 +468,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1788271236.6477282,
-    "seen": 1791087608.7617245,
-    "ast_hash": "a06e84d8c64d4d45f8ae9d088c3b89e3",
+    "mtime": 1788233083.3495536,
+    "seen": 1788233150.0738544,
+    "ast_hash": "4aac4afadc9e451d701f68c8ac153942",
     "semantic_hash": ""
   },
   "index.html": {
@@ -2889,12 +2889,6 @@
     "mtime": 1788140600.523875,
     "seen": 1788233150.0734336,
     "ast_hash": "6e850420bc2444590e1f1454f6c485e0",
-    "semantic_hash": ""
-  },
-  "public/googledd19af453d7706a8.html": {
-    "mtime": 1788233450.6521864,
-    "seen": 1791087608.7617285,
-    "ast_hash": "32b33de3d292b76c34d0c607b4c72048",
     "semantic_hash": ""
   }
 }

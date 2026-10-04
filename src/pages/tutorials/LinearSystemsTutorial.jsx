@@ -8,51 +8,35 @@ function LinearSystemsTutorial() {
   return (
     <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
-        Resolver um sistema linear significa encontrar valores que deixam todas
-        as equações verdadeiras ao mesmo tempo. Com matrizes, esse processo fica
-        mais organizado: você transforma as equações em uma tabela de números e
-        resolve seguindo uma sequência de passos.
+        Um sistema de equações lineares pode ser representado e resolvido matricialmente. A representação por matriz aumentada sintetiza os coeficientes e os termos constantes, permitindo encontrar a solução do sistema de maneira algorítmica por eliminação gaussiana.
       </p>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          A Intuição: Equações Viram uma Tabela
+          Representação matricial
         </h2>
         <p className="mb-4 leading-relaxed">
-          Em um sistema, cada equação tem coeficientes, variáveis e resultado. A
-          matriz serve para guardar apenas os números importantes, sem repetir
-          toda a escrita com <Formula>x</Formula>, <Formula>y</Formula> e sinais
-          de igualdade a cada linha.
+          Todo sistema linear pode ser escrito na forma compacta <Formula>A \cdot x = b</Formula>, onde <Formula>A</Formula> é a matriz dos coeficientes, <Formula>x</Formula> é o vetor coluna das incógnitas e <Formula>b</Formula> é o vetor dos termos independentes.
         </p>
         <TipBox>
-          <strong>Resumo rápido:</strong> a matriz de coeficientes guarda os
-          números que multiplicam as variáveis. A matriz aumentada também guarda
-          os resultados das equações na última coluna.
+          A matriz aumentada <Formula>[A | b]</Formula> junta a matriz de coeficientes e os termos independentes na última coluna, simplificando a aplicação de operações de linha.
         </TipBox>
-        <p className="mt-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          Na calculadora, sistemas lineares continuam como um uso educacional do
-          escalonamento: monte a matriz aumentada e escolha “Eliminação de
-          Gauss”. Assim a ferramenta mostra as operações de linha sem criar uma
-          operação separada para sistemas.
-        </p>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Como Montar a Matriz Aumentada
+          Montagem da matriz aumentada
         </h2>
         <p className="mb-4 leading-relaxed">
-          Vamos começar com um sistema simples:
+          Considere o sistema linear 2×2:
         </p>
-        <div className="p-4 bg-gray-100 rounded mb-5 font-mono text-center leading-8">
+        <div className="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded mb-5 font-mono text-center leading-8">
           2x + y = 5
           <br />
           3x - 2y = 4
         </div>
         <p className="mb-4 leading-relaxed">
-          Como a ordem das variáveis é <Formula>x</Formula> e depois{" "}
-          <Formula>y</Formula>, colocamos os coeficientes nessa mesma ordem. A
-          última coluna recebe os resultados.
+          Organizando as variáveis <Formula>x</Formula> na coluna 1, <Formula>y</Formula> na coluna 2 e as constantes na coluna 3, obtemos a matriz aumentada <Formula>[A | b]</Formula>:
         </p>
         <MatrixDisplay
           matrix={[
@@ -60,32 +44,26 @@ function LinearSystemsTutorial() {
             [3, -2, 4],
           ]}
         />
-        <p className="mt-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          Essa matriz representa <Formula>[A | b]</Formula>: a parte da esquerda
-          contém os coeficientes e a última coluna contém os resultados.
-        </p>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Como Resolver Sistemas Lineares Passo a Passo
+          Passo a passo da resolução
         </h2>
         <ol className="list-decimal pl-5 space-y-3 leading-relaxed">
-          <li>Escreva todas as equações com as variáveis na mesma ordem.</li>
-          <li>Monte a matriz aumentada com coeficientes e resultados.</li>
-          <li>Escolha o primeiro pivô, normalmente o primeiro número da primeira linha.</li>
-          <li>Use operações de linha para criar zeros abaixo do pivô.</li>
-          <li>Repita o processo até a matriz ficar em forma de escada.</li>
-          <li>Volte de baixo para cima para encontrar as variáveis.</li>
+          <li>Alinhe as equações garantindo a mesma ordem de incógnitas em todas as linhas.</li>
+          <li>Construa a matriz aumentada <Formula>[A | b]</Formula>.</li>
+          <li>Aplique a eliminação de Gauss para triangularizar o bloco de coeficientes.</li>
+          <li>Utilize a substituição retroativa para determinar o valor numérico de cada variável.</li>
         </ol>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-4">
-          Exemplo Resolvido: Sistema 2x2 por Escalonamento
+          Exemplo resolvido: sistema 2x2
         </h2>
         <p className="mb-4 leading-relaxed">
-          Vamos resolver o sistema anterior. A matriz aumentada inicial é:
+          Vamos escalonar a matriz aumentada:
         </p>
         <MatrixDisplay
           matrix={[
@@ -104,11 +82,10 @@ function LinearSystemsTutorial() {
         <div className="mt-6 space-y-5">
           <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
-              Passo 1: zerar o número abaixo do pivô
+              1. Eliminação na coluna 1
             </h3>
             <p className="mb-3 leading-relaxed">
-              O pivô é o <Formula>2</Formula> da primeira linha. Queremos zerar
-              o <Formula>3</Formula> que está abaixo dele. Uma forma direta é:
+              Com o pivô 2 na linha 1, anulamos o elemento 3 da linha 2:
             </p>
             <p className="font-mono text-sm sm:text-base break-words">
               L2 ← L2 - (3/2)L1
@@ -117,7 +94,7 @@ function LinearSystemsTutorial() {
 
           <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
-              Passo 2: escrever a nova matriz
+              2. Matriz escalonada
             </h3>
             <MatrixDisplay
               matrix={[
@@ -125,97 +102,70 @@ function LinearSystemsTutorial() {
                 [0, -3.5, -3.5],
               ]}
             />
-            <p className="mt-3 leading-relaxed">
-              Agora a segunda linha ficou mais simples: ela só tem{" "}
-              <Formula>y</Formula>.
-            </p>
           </div>
 
           <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 dark:bg-slate-900 p-4">
             <h3 className="text-lg font-semibold mb-2">
-              Passo 3: resolver de baixo para cima
+              3. Substituição retroativa
             </h3>
             <p className="font-mono text-sm sm:text-base break-words mb-2">
-              -3,5y = -3,5 → y = 1
+              -3.5y = -3.5 \implies y = 1
             </p>
             <p className="font-mono text-sm sm:text-base break-words">
-              2x + 1 = 5 → 2x = 4 → x = 2
+              2x + (1) = 5 \implies 2x = 4 \implies x = 2
             </p>
           </div>
         </div>
 
-        <p className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg text-center">
-          <strong>Resultado:</strong> <Formula>x = 2</Formula> e{" "}
-          <Formula>y = 1</Formula>.
+        <p className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg text-center dark:bg-green-950/40 dark:border-green-800">
+          <strong>Solução única:</strong> <Formula>x = 2</Formula> e <Formula>y = 1</Formula> (Conjunto solução <Formula>S = \{(2, 1)\}</Formula>).
         </p>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Como Saber o Tipo de Solução?
+          Classificação dos sistemas lineares
         </h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
-            <strong>Uma solução:</strong> ao final, cada variável fica bem
-            determinada.
+            <strong>Sistema Possível e Determinado (SPD):</strong> possui uma única solução. O posto da matriz de coeficientes é igual ao posto da matriz aumentada e igual ao número de incógnitas (<Formula>posto(A) = posto(A|b) = n</Formula>).
           </li>
           <li>
-            <strong>Infinitas soluções:</strong> aparece uma linha verdadeira,
-            como <Formula>0 = 0</Formula>, e sobra pelo menos uma variável livre.
+            <strong>Sistema Possível e Indeterminado (SPI):</strong> possui infinitas soluções. Ocorre quando <Formula>posto(A) = posto(A|b) &lt; n</Formula>, gerando graus de liberdade (variáveis livres).
           </li>
           <li>
-            <strong>Nenhuma solução:</strong> aparece uma contradição, como{" "}
-            <Formula>0 = 5</Formula>.
+            <strong>Sistema Impossível (SI):</strong> não admite solução. Identificado quando surge uma linha do tipo <Formula>0 = k</Formula> (com <Formula>k \neq 0</Formula>), caracterizando <Formula>posto(A) &lt; posto(A|b)</Formula>.
           </li>
         </ul>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
-        <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+        <h2 className="text-2xl font-semibold mb-3">Cuidados frequentes</h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
-            <strong>Mudar a ordem das variáveis:</strong> se a primeira coluna é
-            de <Formula>x</Formula>, mantenha isso em todas as linhas.
+            <strong>Alinhamento de variáveis:</strong> mantenha estritamente a mesma incógnita em cada coluna antes de preencher a matriz.
           </li>
           <li>
-            <strong>Esquecer coeficiente 1:</strong> em <Formula>x + y = 5</Formula>,
-            o coeficiente de <Formula>x</Formula> é 1, não vazio.
-          </li>
-          <li>
-            <strong>Perder sinais negativos:</strong> um sinal trocado muda toda
-            a resposta.
-          </li>
-          <li>
-            <strong>Não mexer na coluna dos resultados:</strong> toda operação
-            feita na linha também vale para o último número da linha.
+            <strong>Coeficiente implícito 1 ou zero:</strong> em termos como <Formula>x</Formula> o coeficiente é 1; caso a variável esteja ausente na equação, preencha com 0.
           </li>
         </ul>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Onde Sistemas Lineares Aparecem?
+          Aplicações práticas
         </h2>
         <p className="mb-4 leading-relaxed">
-          Sistemas lineares aparecem quando várias condições precisam ser
-          satisfeitas ao mesmo tempo: preços de produtos, mistura de substâncias,
-          equilíbrio de forças, circuitos elétricos, economia, computação gráfica
-          e ajuste de dados.
+          Sistemas lineares modelam balanços de massa e energia em engenharia química, cálculo de correntes em malhas elétricas (Leis de Kirchhoff), equilíbrio econômico de insumo-produto (modelo de Leontief) e regressão linear multidimensional.
         </p>
-        <TipBox>
-          Se um problema tem várias incógnitas e várias informações conectadas,
-          há uma boa chance de ele virar um sistema linear.
-        </TipBox>
       </div>
 
       <TutorialCTA
-        title="Pratique com a Calculadora"
+        title="Pratique na calculadora"
         secondaryTo="/tutorial/escalonamento-gauss"
         secondaryLabel="Ver escalonamento"
       >
-        Monte a matriz aumentada do seu sistema, escolha “Eliminação de Gauss”
-        e veja a matriz mudando passo a passo. Depois compare o resultado com a
-        substituição de baixo para cima.
+        Preencha a matriz aumentada com as equações do seu problema e selecione “Eliminação de Gauss” para acompanhar a solução completa.
       </TutorialCTA>
     </div>
   );

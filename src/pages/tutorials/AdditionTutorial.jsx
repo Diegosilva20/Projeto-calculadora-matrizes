@@ -8,58 +8,50 @@ function MatrixAdditionTutorial() {
   return (
     <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <p className="mb-6 text-lg leading-relaxed">
-        Somar matrizes é uma das operações mais diretas da álgebra linear. A
-        ideia é comparar duas matrizes do mesmo tamanho e somar os números que
-        ocupam a mesma posição.
+        A soma de matrizes é calculada elemento a elemento. Para somar duas matrizes, basta somar os valores que ocupam a mesma posição em cada uma delas.
       </p>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          A Intuição: Somar Posição com Posição
+          Como funciona a soma
         </h2>
         <p className="mb-4 leading-relaxed">
-          Imagine duas tabelas com a mesma estrutura. Se uma posição representa
-          o mesmo tipo de informação nas duas tabelas, faz sentido somar esses
-          dois valores. É exatamente isso que acontece na soma de matrizes.
+          Se duas matrizes compartilham as mesmas dimensões, cada entrada da primeira corresponde diretamente à mesma entrada na segunda. A operação une esses valores ponto a ponto.
         </p>
         <TipBox>
-          <strong>Resumo rápido:</strong> na soma, cada elemento da resposta
-          vem da soma dos elementos que estão na mesma posição em A e B.
+          Cada elemento <Formula>c_(ij)</Formula> da matriz resposta vem da soma direta de <Formula>a_(ij) + b_(ij)</Formula>.
         </TipBox>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
-        <h2 className="text-2xl font-semibold mb-3">Regra Principal</h2>
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+        <h2 className="text-2xl font-semibold mb-3">Condição de existência</h2>
         <p className="mb-4 leading-relaxed">
-          A soma <Formula>A + B</Formula> só existe quando A e B têm o mesmo
-          número de linhas e colunas. Se A é 2x2, B também precisa ser 2x2. Se A
-          é 3x4, B também precisa ser 3x4.
+          A operação <Formula>A + B</Formula> só é definida quando <Formula>A</Formula> e <Formula>B</Formula> possuem exatamente a mesma ordem (mesmo número de linhas e mesmo número de colunas).
         </p>
         <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg overflow-x-auto">
           <Formula>C(i, j) = A(i, j) + B(i, j)</Formula>
         </div>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Como Somar Matrizes Passo a Passo
+          Passo a passo
         </h2>
         <ol className="list-decimal pl-5 space-y-3 leading-relaxed">
-          <li>Confira se as duas matrizes têm o mesmo tamanho.</li>
-          <li>Comece pela primeira posição.</li>
-          <li>Some o valor de A com o valor de B nessa mesma posição.</li>
-          <li>Escreva o resultado na mesma posição da matriz resposta.</li>
-          <li>Repita até preencher todos os elementos.</li>
+          <li>Verifique se ambas as matrizes têm a mesma ordem.</li>
+          <li>Identifique o elemento na linha <Formula>i</Formula> e coluna <Formula>j</Formula> de cada matriz.</li>
+          <li>Some os dois números mantendo a atenção aos sinais.</li>
+          <li>Posicione o resultado na mesma linha <Formula>i</Formula> e coluna <Formula>j</Formula> da matriz resultante.</li>
+          <li>Repita o procedimento para todas as posições.</li>
         </ol>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-4">
-          Exemplo Resolvido: Soma de Matrizes 2x2
+          Exemplo resolvido (2x2)
         </h2>
         <p className="mb-4 leading-relaxed">
-          Vamos somar A + B. As duas matrizes são 2x2, então a operação é
-          permitida e a resposta também será 2x2.
+          Considere as matrizes <Formula>A</Formula> e <Formula>B</Formula> de ordem 2×2:
         </p>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -110,7 +102,7 @@ function MatrixAdditionTutorial() {
           </div>
         </div>
 
-        <h3 className="text-xl font-semibold mt-6">Resultado Final</h3>
+        <h3 className="text-xl font-semibold mt-6">Resultado final</h3>
         <MatrixDisplay
           matrix={[
             [7, 1],
@@ -119,46 +111,36 @@ function MatrixAdditionTutorial() {
         />
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
-        <h2 className="text-2xl font-semibold mb-3">Erros Comuns</h2>
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+        <h2 className="text-2xl font-semibold mb-3">Cuidados importantes</h2>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
-            <strong>Somar matrizes de tamanhos diferentes:</strong> uma matriz
-            2x3 não pode ser somada com uma matriz 3x2.
+            <strong>Dimensões incompatíveis:</strong> matrizes com ordens diferentes (como 2×3 e 3×2) não podem ser somadas.
           </li>
           <li>
-            <strong>Trocar posições:</strong> o elemento da posição (1, 2) deve
-            ser somado com o elemento da posição (1, 2), não com outro lugar.
+            <strong>Alinhamento de posições:</strong> sempre some posições idênticas entre as matrizes.
           </li>
           <li>
-            <strong>Esquecer sinais negativos:</strong> somar um número negativo
-            equivale a diminuir.
+            <strong>Regras de sinais:</strong> somar um elemento negativo equivale a uma subtração (ex: <Formula>3 + (-1) = 2</Formula>).
           </li>
         </ul>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg  mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
+      <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
         <h2 className="text-2xl font-semibold mb-3">
-          Onde a Soma de Matrizes Aparece?
+          Aplicações práticas
         </h2>
         <p className="mb-4 leading-relaxed">
-          A soma de matrizes aparece quando queremos juntar informações
-          organizadas no mesmo formato: notas por disciplina, custos por mês,
-          pixels de imagens, tabelas de dados ou resultados de medições.
+          A soma matricial é comum na consolidação de dados de períodos diferentes, sobreposição de camadas em processamento gráfico e combinação linear de vetores.
         </p>
-        <TipBox>
-          Se duas matrizes representam a mesma estrutura de dados, a soma ajuda
-          a combinar essas informações sem mudar a organização da tabela.
-        </TipBox>
       </div>
 
       <TutorialCTA
-        title="Pratique com a Calculadora"
+        title="Pratique na calculadora"
         secondaryTo="/tutorial/subtracao-de-matrizes"
         secondaryLabel="Ver subtração de matrizes"
       >
-        Escolha “Soma (A + B)”, preencha duas matrizes do mesmo tamanho e confira
-        cada posição no passo a passo.
+        Insira matrizes personalizadas e veja a soma calculada passo a passo com o detalhamento de cada posição.
       </TutorialCTA>
     </div>
   );

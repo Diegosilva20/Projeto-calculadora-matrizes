@@ -7,18 +7,20 @@ const tutorialCategories = [
   {
     title: "Operações básicas",
     description:
-      "Conceitos iniciais para entender como matrizes mudam elemento por elemento.",
+      "Operações elemento a elemento e noções fundamentais de dimensões e posições.",
     slugs: [
+      "o-que-e-uma-matriz",
       "soma-de-matrizes",
       "subtracao-de-matrizes",
       "multiplicacao-por-escalar",
       "matriz-transposta",
+      "matriz-identidade",
     ],
   },
   {
-    title: "Operações intermediárias",
+    title: "Multiplicação e determinantes",
     description:
-      "Guias para cálculos mais frequentes em exercícios de álgebra linear.",
+      "Regras de produto matricial, cálculo de determinantes e matriz inversa.",
     slugs: [
       "multiplicacao-de-matrizes",
       "determinante-2x2",
@@ -28,9 +30,9 @@ const tutorialCategories = [
     ],
   },
   {
-    title: "Sistemas e métodos",
+    title: "Sistemas e escalonamento",
     description:
-      "Métodos para escalonar matrizes e interpretar sistemas lineares.",
+      "Eliminação de Gauss, Regra de Cramer e análise do posto da matriz.",
     slugs: ["escalonamento-gauss", "sistemas-lineares", "regra-de-cramer", "posto-de-matriz"],
   },
 ];
@@ -47,7 +49,7 @@ const TutorialCard = ({ tutorial }) => (
       to={`/tutorial/${tutorial.slug}`}
       className="inline-flex flex-wrap items-center gap-x-1 text-sm font-bold text-accent transition-transform group-hover:translate-x-2 dark:text-blue-400"
     >
-      Ler tutorial: {tutorial.title} <span>→</span>
+      Acessar tutorial <span>→</span>
     </Link>
   </article>
 );
@@ -73,7 +75,7 @@ const Tutorials = () => {
           ...categories,
           {
             title: "Outros tutoriais",
-            description: "Conteúdos complementares do catálogo.",
+            description: "Conteúdos complementares.",
             tutorials: remainingTutorials,
           },
         ]
@@ -82,11 +84,11 @@ const Tutorials = () => {
   return (
     <>
       <Helmet>
-        <title>Tutoriais de Matrizes com Exemplos Resolvidos | Matriz Calculator</title>
-        <meta name="description" content="Aprenda matrizes com tutoriais passo a passo, exemplos resolvidos, fórmulas e links para calculadora de determinante, inversa, multiplicação e Gauss." />
+        <title>Tutoriais de Álgebra Linear com Exemplos Resolvidos | CalculaMatriz</title>
+        <meta name="description" content="Aprenda matrizes com tutoriais práticos, fórmulas explicadas e exemplos resolvidos passo a passo para determinante, inversa, multiplicação e Gauss." />
         <link rel="canonical" href="https://calculamatriz.vercel.app/tutorials" />
-        <meta property="og:title" content="Tutoriais de Matrizes com Exemplos Resolvidos | Matriz Calculator" />
-        <meta property="og:description" content="Aprenda matrizes com tutoriais passo a passo, exemplos resolvidos, fórmulas e links para calculadora de determinante, inversa, multiplicação e Gauss." />
+        <meta property="og:title" content="Tutoriais de Álgebra Linear com Exemplos Resolvidos | CalculaMatriz" />
+        <meta property="og:description" content="Aprenda matrizes com tutoriais práticos, fórmulas explicadas e exemplos resolvidos passo a passo para determinante, inversa, multiplicação e Gauss." />
         <meta property="og:url" content="https://calculamatriz.vercel.app/tutorials" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://calculamatriz.vercel.app/logo1920.png" />
@@ -99,11 +101,10 @@ const Tutorials = () => {
       <section className="p-4 sm:p-6 max-w-5xl mx-auto text-center min-h-[70vh]">
         <header className="mb-12">
           <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-slate-900 dark:text-white dark:text-slate-100">
-            Catálogo de Tutoriais de Álgebra Linear
+            Tutoriais de Álgebra Linear
           </h1>
           <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-2xl mx-auto dark:text-slate-300">
-            Escolha um tema e veja a explicação passo a passo, com exemplos
-            antes de usar a calculadora.
+            Exemplos práticos, fórmulas explicadas e integração direta com a calculadora para testar cada operação.
           </p>
         </header>
 

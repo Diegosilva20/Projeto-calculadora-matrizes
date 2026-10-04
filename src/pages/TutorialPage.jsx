@@ -6,376 +6,321 @@ import FAQSection from "../components/tutorial/FAQSection";
 
 const seoDictionary = {
   "determinante-de-matrizes": {
-    title: "Determinante de Matrizes: Fórmula, Exemplo e Calculadora",
+    title: "Determinante de Matrizes: Cálculo, Propriedades e Exemplos",
     description:
-      "Aprenda a calcular determinante de matriz 2x2, 3x3 e maiores com fórmula, exemplo resolvido e calculadora de matrizes passo a passo.",
+      "Aprenda a calcular determinantes para matrizes 2x2, 3x3 e ordens superiores, com fórmulas passo a passo e resolução detalhada na calculadora.",
   },
   "determinante-2x2": {
-    title: "Determinante 2x2: Fórmula e Exemplo Resolvido",
+    title: "Determinante 2x2: Fórmula, Exemplos e Cálculo Direto",
     description:
-      "Aprenda a calcular determinante de matriz 2x2 com fórmula simples, exemplo passo a passo, sinais negativos e calculadora online.",
+      "Como calcular determinantes de matrizes 2x2 pela diferença entre produtos das diagonais, com exemplos resolvidos e atenção a sinais negativos.",
   },
   "determinante-3x3-regra-de-sarrus": {
-    title: "Determinante 3x3 pela Regra de Sarrus: Exemplo Resolvido",
+    title: "Regra de Sarrus para Determinantes 3x3: Guia e Exemplos",
     description:
-      "Veja a fórmula da Regra de Sarrus, monte as diagonais da matriz 3x3 e acompanhe um exemplo resolvido passo a passo.",
+      "Veja a aplicação da Regra de Sarrus em matrizes 3x3 com a soma e subtração das diagonais ilustradas passo a passo.",
   },
   "matriz-inversa": {
-    title: "Matriz Inversa: Fórmula, Exemplo Resolvido e Calculadora",
+    title: "Matriz Inversa: Fórmula 2x2, Gauss-Jordan e Exemplos",
     description:
-      "Entenda quando a matriz inversa existe, veja a fórmula 2x2 e use a calculadora com passo a passo e frações exatas.",
+      "Entenda as condições de invertibilidade, a fórmula analítica para matrizes 2x2 e o método de Gauss-Jordan para ordens maiores.",
   },
   "regra-de-cramer": {
-    title: "Regra de Cramer: Como Resolver Sistemas Lineares com Determinantes",
+    title: "Regra de Cramer para Sistemas Lineares: Teoria e Exemplos",
     description:
-      "Aprenda a usar a Regra de Cramer em sistemas 2x2 e 3x3, entendendo D, Dx, Dy e quando aplicar determinantes para resolver incógnitas.",
+      "Aprenda a resolver sistemas lineares quadrados utilizando determinantes parciais (D, Dx, Dy e Dz) com exemplos detalhados.",
   },
   "posto-de-matriz": {
     title: "Posto de Matriz: Como Calcular pelo Escalonamento",
     description:
-      "Aprenda a encontrar o posto de uma matriz com escalonamento, contando linhas não nulas e entendendo a relação com determinante e matriz inversa.",
+      "Como determinar o posto (rank) de uma matriz contando linhas não nulas após escalonamento e sua relação com a solução de sistemas lineares.",
   },
   "escalonamento-gauss": {
-    title: "Escalonamento de Matrizes por Gauss Passo a Passo",
+    title: "Eliminação de Gauss: Escalonamento de Matrizes Passo a Passo",
     description:
-      "Aprenda eliminação de Gauss com pivôs, operações de linha, exemplo resolvido e calculadora de matriz escalonada passo a passo.",
+      "Aprenda a escalonar matrizes por operações elementares de linha e pivôs para resolver sistemas lineares e calcular o posto.",
   },
   "sistemas-lineares": {
-    title: "Sistemas Lineares com Matrizes: Exemplo Resolvido",
+    title: "Sistemas Lineares com Matrizes: Representação e Resolução",
     description:
-      "Aprenda a montar matriz aumentada, usar escalonamento de Gauss e resolver sistemas lineares com exemplo passo a passo.",
+      "Como montar a matriz aumentada de um sistema linear e encontrar a solução usando eliminação gaussiana e substituição retroativa.",
   },
   "matriz-transposta": {
-    title: "Matriz Transposta: Fórmula, Exemplo e Calculadora",
+    title: "Matriz Transposta: Definição, Propriedades e Exemplos",
     description:
-      "Aprenda a fórmula da matriz transposta, troque linhas por colunas e confira um exemplo resolvido na calculadora.",
+      "Aprenda como transformar linhas em colunas, as mudanças de dimensão e as principais propriedades algébricas da matriz transposta.",
   },
   "multiplicacao-de-matrizes": {
-    title: "Multiplicação de Matrizes Passo a Passo | Calculadora",
+    title: "Multiplicação de Matrizes: Regra Linha por Coluna e Exemplos",
     description:
-      "Entenda a regra linha por coluna, veja exemplo resolvido de multiplicação de matrizes e confira cada etapa na calculadora.",
+      "Entenda a condição de compatibilidade dimensional e o método de cálculo linha por coluna na multiplicação matricial.",
   },
   "soma-de-matrizes": {
-    title: "Soma de Matrizes: Regra, Exemplo Resolvido e Calculadora",
+    title: "Adição de Matrizes: Regra, Propriedades e Exemplos",
     description:
-      "Aprenda a somar matrizes de mesmo tamanho, use a regra posição por posição e pratique com cálculo passo a passo.",
+      "Como somar matrizes elemento a elemento, requisitos de ordem idêntica e propriedades comutativa e associativa.",
   },
   "subtracao-de-matrizes": {
-    title: "Subtração de Matrizes: Regra e Exemplo Resolvido",
+    title: "Subtração de Matrizes: Regra e Exemplos Resolvidos",
     description:
-      "Veja como subtrair matrizes de mesmo tamanho, cuide dos sinais e acompanhe um exemplo resolvido passo a passo.",
+      "Como subtrair matrizes de mesma dimensão, distribuição de sinais negativos e cuidados com a não comutatividade.",
   },
   "multiplicacao-por-escalar": {
-    title: "Multiplicação de Matriz por Escalar: Fórmula e Exemplo",
+    title: "Multiplicação de Matriz por Escalar: Propriedades e Exemplos",
     description:
-      "Entenda a fórmula da multiplicação por escalar, calcule cada elemento da matriz e veja um exemplo resolvido.",
+      "Como multiplicar todos os elementos de uma matriz por um número real e a interpretação geométrica do redimensionamento.",
   },
   "o-que-e-uma-matriz": {
-    title: "O que é uma Matriz? Definição, Linhas e Colunas",
+    title: "O que é uma Matriz: Definição, Notação e Tipos",
     description:
-      "Entenda o que é uma matriz, veja linhas, colunas, ordem, notação e exemplos antes de usar a calculadora de matrizes.",
+      "Introdução completa à representação matricial, dimensões, índices de elementos e principais tipos de matrizes.",
   },
   "matriz-identidade": {
-    title: "Matriz Identidade: Definição, Fórmula e Exemplo",
+    title: "Matriz Identidade: Definição, Propriedades e Aplicações",
     description:
-      "Veja a fórmula da matriz identidade, exemplos 2x2 e 3x3 e por que ela é importante para inversa, Gauss e sistemas lineares.",
+      "Conheça o elemento neutro da multiplicação matricial, sua estrutura com diagonal unitária e seu papel na definição da matriz inversa.",
   },
 };
 
 const faqDictionary = {
   "determinante-de-matrizes": [
     {
-      question: "Quando posso calcular o determinante de uma matriz?",
+      question: "Quando é possível calcular o determinante de uma matriz?",
       answer:
-        "O determinante só existe para matrizes quadradas, ou seja, matrizes com o mesmo número de linhas e colunas.",
+        "O determinante é definido unicamente para matrizes quadradas (2x2, 3x3, 4x4, etc.), isto é, com igual número de linhas e colunas.",
     },
     {
-      question: "O que significa determinante igual a zero?",
+      question: "O que indica um determinante igual a zero?",
       answer:
-        "Quando o determinante é zero, a matriz não tem inversa e, em sistemas lineares, isso indica que pode não haver solução única.",
+        "Um determinante nulo indica que a matriz é singular (não possui inversa) e que suas linhas ou colunas são linearmente dependentes.",
     },
     {
-      question: "Posso usar a regra de Sarrus em qualquer matriz?",
+      question: "A Regra de Sarrus pode ser aplicada em qualquer matriz?",
       answer:
-        "Não. A regra de Sarrus é usada apenas para matrizes 3x3. Para matrizes maiores, use cofatores ou eliminação gaussiana.",
+        "Não. A Regra de Sarrus é restrita a matrizes 3x3. Para ordens 4x4 ou superiores, utilizam-se o Teorema de Laplace ou a triangularização por eliminação de Gauss.",
     },
   ],
   "determinante-2x2": [
     {
-      question: "Qual é a fórmula do determinante 2x2?",
+      question: "Qual é a fórmula do determinante de uma matriz 2x2?",
       answer:
-        "Para A = [[a, b], [c, d]], o determinante é det(A) = (a × d) - (b × c).",
+        "Para a matriz [[a, b], [c, d]], o determinante é dado por det(A) = (a × d) - (b × c).",
     },
     {
-      question: "Determinante 2x2 pode dar número negativo?",
+      question: "O determinante 2x2 pode ser negativo?",
       answer:
-        "Sim. O resultado pode ser positivo, negativo ou zero. Isso depende dos produtos das duas diagonais.",
+        "Sim. O determinante pode resultar em valores positivos, negativos ou zero, dependendo da magnitude dos produtos das diagonais.",
     },
     {
-      question: "O que significa determinante 2x2 igual a zero?",
+      question: "O que representa o determinante 2x2 igual a zero?",
       answer:
-        "Significa que a matriz 2x2 não tem inversa e, em um sistema linear 2x2, não há solução única.",
+        "Indica que a matriz não admite matriz inversa e que, se associada a um sistema linear, este não terá solução única.",
     },
     {
-      question: "Posso usar essa fórmula em matriz 3x3?",
+      question: "A fórmula 2x2 pode ser expandida para matrizes 3x3?",
       answer:
-        "Não. A fórmula (a × d) - (b × c) vale apenas para matrizes 2x2. Para 3x3, use a Regra de Sarrus ou outro método.",
+        "Não. A fórmula simples (ad - bc) aplica-se somente à ordem 2. Matrizes 3x3 requerem a Regra de Sarrus ou Laplace.",
     },
   ],
   "matriz-inversa": [
     {
-      question: "Quando uma matriz tem inversa?",
+      question: "Quais são os requisitos para uma matriz ter inversa?",
       answer:
-        "Uma matriz tem inversa quando é quadrada e seu determinante é diferente de zero.",
+        "A matriz deve ser quadrada e seu determinante deve ser diferente de zero (det(A) ≠ 0).",
     },
     {
-      question: "Toda matriz quadrada tem inversa?",
+      question: "Toda matriz quadrada é invertível?",
       answer:
-        "Não. Se o determinante da matriz for zero, ela é chamada de singular e não possui inversa.",
+        "Não. Matrizes quadradas cujo determinante é igual a zero não possuem inversa e são chamadas de matrizes singulares.",
     },
     {
-      question: "A fórmula da inversa 2x2 serve para matrizes 3x3?",
+      question: "A fórmula direta da inversa 2x2 funciona para matrizes 3x3?",
       answer:
-        "Não. A fórmula rápida vale apenas para matrizes 2x2. Para matrizes maiores, usamos operações de linha ou outros métodos algébricos.",
+        "Não. Para ordens 3x3 ou maiores, calcula-se a inversa pelo método de eliminação de Gauss-Jordan ou pela matriz adjunta de cofatores.",
     },
   ],
   "escalonamento-gauss": [
     {
-      question: "O que é escalonamento de matrizes?",
+      question: "O que é o escalonamento de matrizes?",
       answer:
-        "Escalonar uma matriz é usar operações de linha para criar zeros abaixo dos pivôs, deixando a matriz em forma de escada.",
+        "É a aplicação sequencial de operações elementares de linha para anular os termos situados abaixo dos pivôs, conduzindo a matriz a uma forma triangular superior.",
     },
     {
-      question: "A calculadora faz Gauss ou Gauss-Jordan?",
+      question: "A calculadora utiliza Gauss ou Gauss-Jordan?",
       answer:
-        "A calculadora aplica Eliminação de Gauss, chegando à forma escalonada. Ela não mostra a forma reduzida completa de Gauss-Jordan.",
+        "A calculadora executa a eliminação de Gauss clássica até a forma escalonada e apresenta a substituição retroativa para a resolução de incógnitas.",
     },
     {
-      question: "Para que serve a substituição reversa?",
+      question: "Como funciona a substituição retroativa?",
       answer:
-        "Depois do escalonamento, a substituição reversa permite resolver o sistema de baixo para cima e encontrar as variáveis.",
+        "Com a matriz em formato triangular, determina-se a última incógnita diretamente e substitui-se o valor nas equações superiores até encontrar todas as variáveis.",
     },
   ],
   "sistemas-lineares": [
     {
-      question: "Como transformar um sistema linear em matriz?",
+      question: "Como se monta a matriz aumentada de um sistema linear?",
       answer:
-        "Coloque os coeficientes das variáveis em colunas, mantendo sempre a mesma ordem, e coloque os resultados na última coluna da matriz aumentada.",
+        "Alinham-se os coeficientes numéricos de cada variável nas colunas correspondentes e posicionam-se os termos constantes na última coluna da matriz.",
     },
     {
       question: "O que é uma matriz aumentada?",
       answer:
-        "É a matriz que junta os coeficientes do sistema e a coluna dos resultados, geralmente escrita como [A | b].",
+        "É a representação em bloco [A | b] que combina a matriz dos coeficientes do sistema linear com o vetor dos termos independentes.",
     },
     {
-      question: "Todo sistema linear tem uma única solução?",
+      question: "Todo sistema linear admite uma solução única?",
       answer:
-        "Não. Um sistema pode ter uma solução, infinitas soluções ou nenhuma solução, dependendo da relação entre suas equações.",
+        "Não. Sistemas lineares podem apresentar solução única (SPD), infinitas soluções (SPI) ou nenhuma solução (SI).",
     },
   ],
   "regra-de-cramer": [
     {
-      question: "Quando posso usar a Regra de Cramer?",
+      question: "Quando a Regra de Cramer é aplicável?",
       answer:
-        "Use a Regra de Cramer em sistemas quadrados (2x2 ou 3x3) quando o determinante da matriz de coeficientes for diferente de zero.",
+        "Em sistemas lineares com número igual de equações e incógnitas, desde que o determinante da matriz de coeficientes seja não nulo (D ≠ 0).",
     },
     {
-      question: "O que são D, Dx e Dy na Regra de Cramer?",
+      question: "O que representam D, Dx e Dy na Regra de Cramer?",
       answer:
-        "D é o determinante da matriz dos coeficientes. Dx substitui a coluna de x pela coluna de resultados e Dy substitui a coluna de y pela coluna de resultados.",
+        "D é o determinante da matriz original. Dx e Dy são os determinantes obtidos ao substituir as colunas das respectivas incógnitas pelos termos independentes do sistema.",
     },
     {
-      question: "A Regra de Cramer vale para sistemas 4x4?",
+      question: "Por que não se costuma usar Cramer para sistemas 4x4 ou maiores?",
       answer:
-        "Teoricamente sim, mas na prática o cálculo dos determinantes fica muito pesado. Para sistemas maiores, o escalonamento é mais eficiente.",
+        "O cálculo de múltiplos determinantes de alta ordem tem custo computacional elevado. A eliminação de Gauss é significativamente mais rápida.",
     },
     {
-      question: "O que acontece se D = 0?",
+      question: "O que ocorre quando D = 0?",
       answer:
-        "Quando D = 0, a matriz dos coeficientes não tem inversa e a Regra de Cramer não pode ser usada para encontrar uma solução única.",
-    },
-    {
-      question: "É melhor usar Regra de Cramer ou escalonamento?",
-      answer:
-        "Para sistemas 2x2 e 3x3 com D ≠ 0, a Regra de Cramer é direta. Para sistemas maiores ou quando D = 0, o escalonamento é mais eficiente.",
+        "A Regra de Cramer torna-se inaplicável por exigir divisão por zero. O sistema será classificado como impossível ou indeterminado.",
     },
   ],
   "posto-de-matriz": [
     {
       question: "O que é o posto de uma matriz?",
       answer:
-        "O posto é o número de linhas não nulas na forma escalonada da matriz. Ele mede quantas linhas independentes existem na matriz.",
+        "É o número máximo de linhas (ou colunas) linearmente independentes, mensurado pelo total de linhas não nulas na matriz escalonada.",
     },
     {
-      question: "Como calcular o posto de uma matriz?",
+      question: "Como calcular o posto numericamente?",
       answer:
-        "Escalone a matriz usando operações de linha e depois conte quantas linhas não nulas sobraram.",
+        "Aplica-se a eliminação de Gauss até a forma escalonada por linhas e conta-se a quantidade de linhas que possuem ao menos um termo não nulo.",
     },
     {
-      question: "O posto é o número de linhas ou de colunas?",
+      question: "O posto por linhas é igual ao posto por colunas?",
       answer:
-        "O posto é o número máximo de linhas independentes ou colunas independentes. Em qualquer caso, é o mesmo valor para uma dada matriz.",
+        "Sim. Para qualquer matriz real, o posto por linhas é estritamente idêntico ao posto por colunas.",
     },
     {
-      question: "O que significa uma linha não nula?",
+      question: "O posto se aplica a matrizes retangulares?",
       answer:
-        "Uma linha não nula é uma linha que tem pelo menos um elemento diferente de zero. Uma linha com todos elementos zero não conta para o posto.",
-    },
-    {
-      question: "Qual a relação entre posto, determinante e matriz inversa?",
-      answer:
-        "Para uma matriz quadrada n x n, se o posto for n, a matriz pode ser invertida. Se o posto for menor que n, o determinante é zero e a matriz não tem inversa.",
-    },
-    {
-      question: "É possível calcular o posto de uma matriz retangular?",
-      answer:
-        "Sim. O posto também vale para matrizes retangulares e é sempre menor ou igual ao menor número de linhas ou colunas.",
+        "Sim. O posto é definido para matrizes de qualquer dimensão m x n e nunca pode ultrapassar o menor valor entre m e n.",
     },
   ],
   "matriz-transposta": [
     {
-      question: "O que é matriz transposta?",
+      question: "O que é a matriz transposta?",
       answer:
-        "A matriz transposta é obtida trocando as linhas por colunas. O elemento que estava na posição (i, j) passa para a posição (j, i).",
+        "É a matriz obtida pela permuta ordenada entre linhas e colunas: a linha i da matriz original torna-se a coluna i da transposta.",
     },
     {
-      question: "O tamanho da matriz muda ao transpor?",
+      question: "A dimensão se altera na transposição?",
       answer:
-        "Sim. Uma matriz m x n vira uma matriz n x m. Por exemplo, uma matriz 2x3 vira 3x2.",
+        "Sim para matrizes retangulares: uma matriz m x n gera uma transposta n x m. Matrizes quadradas preservam a mesma ordem.",
     },
     {
-      question: "Transposta é a mesma coisa que inversa?",
+      question: "Transposta e inversa são a mesma operação?",
       answer:
-        "Não. A transposta apenas troca linhas e colunas. A inversa é outra matriz que, multiplicada pela original, gera a matriz identidade.",
+        "Não. A transposta apenas reorganiza os eixos da matriz. A inversa desfaz a multiplicação matricial (A × A⁻¹ = I).",
     },
   ],
   "multiplicacao-de-matrizes": [
     {
-      question: "Quando duas matrizes podem ser multiplicadas?",
+      question: "Qual é a condição para multiplicar duas matrizes?",
       answer:
-        "A multiplicação A x B existe quando o número de colunas da matriz A é igual ao número de linhas da matriz B.",
+        "O número de colunas da primeira matriz deve ser estritamente igual ao número de linhas da segunda matriz.",
     },
     {
-      question: "Como calcular cada elemento da matriz resultado?",
+      question: "Como se calcula cada termo do produto matricial?",
       answer:
-        "Cada elemento é calculado pegando uma linha da primeira matriz e uma coluna da segunda, multiplicando os valores correspondentes e somando os produtos.",
+        "Cada entrada c_ij resulta da soma dos produtos entre os elementos da linha i da primeira matriz e os elementos da coluna j da segunda matriz.",
     },
     {
-      question: "A ordem da multiplicação de matrizes importa?",
+      question: "A multiplicação de matrizes é comutativa?",
       answer:
-        "Sim. Em geral, A x B não é igual a B x A. A ordem das matrizes muda o cálculo e pode até tornar a multiplicação impossível.",
+        "Não. Em termos gerais, A × B ≠ B × A. Alterar a ordem das matrizes modifica o resultado ou pode tornar o produto incompatível.",
     },
   ],
   "determinante-3x3-regra-de-sarrus": [
     {
       question: "O que é a Regra de Sarrus?",
       answer:
-        "É um método visual para calcular determinantes de matrizes 3x3 usando produtos de diagonais principais e secundárias.",
+        "É um método mnemônico para matrizes 3x3 fundamentado na soma dos produtos das três diagonais principais subtraída da soma das três diagonais secundárias.",
     },
     {
-      question: "A Regra de Sarrus serve para matriz 4x4?",
+      question: "A Regra de Sarrus pode ser aplicada em matrizes 4x4?",
       answer:
-        "Não. A Regra de Sarrus vale apenas para matrizes 3x3. Para 4x4 ou maiores, use cofatores ou eliminação.",
-    },
-    {
-      question: "Como calcular o resultado final em Sarrus?",
-      answer:
-        "Some os produtos das diagonais principais e subtraia a soma dos produtos das diagonais secundárias.",
+        "Não. A regra só é matematicamente válida para matrizes 3x3. Ordens maiores demandam expansão por Laplace ou escalonamento.",
     },
   ],
   "soma-de-matrizes": [
     {
-      question: "Quando posso somar duas matrizes?",
+      question: "Quando duas matrizes podem ser somadas?",
       answer:
-        "Você pode somar duas matrizes quando elas têm exatamente o mesmo número de linhas e colunas.",
+        "Exclusivamente quando ambas possuem dimensões rigorosamente idênticas (mesmo número de linhas e colunas).",
     },
     {
-      question: "Como calcular cada elemento da soma?",
+      question: "Como se calcula a soma?",
       answer:
-        "Some os elementos que estão na mesma posição: o elemento (i, j) de A com o elemento (i, j) de B.",
-    },
-    {
-      question: "A ordem da soma de matrizes importa?",
-      answer:
-        "Não. Quando a soma existe, A + B e B + A dão o mesmo resultado.",
+        "Somando-se os valores que ocupam a mesma posição nas duas matrizes: c_ij = a_ij + b_ij.",
     },
   ],
   "subtracao-de-matrizes": [
     {
-      question: "Quando posso subtrair duas matrizes?",
+      question: "A subtração de matrizes é comutativa?",
       answer:
-        "A subtração só existe quando as duas matrizes têm o mesmo tamanho.",
+        "Não. A - B é diferente de B - A, resultando em matrizes com todos os elementos de sinais opostos (A - B = -(B - A)).",
     },
     {
-      question: "A ordem da subtração de matrizes importa?",
+      question: "Qual é o requisito para subtrair matrizes?",
       answer:
-        "Sim. Em geral, A - B é diferente de B - A, porque os sinais mudam.",
-    },
-    {
-      question: "Como lidar com números negativos na subtração?",
-      answer:
-        "Mantenha a regra posição por posição e cuide dos sinais. Por exemplo, subtrair um número negativo equivale a somar.",
+        "As matrizes devem apresentar as mesmas dimensões exatas m x n.",
     },
   ],
   "multiplicacao-por-escalar": [
     {
-      question: "O que é escalar em matrizes?",
+      question: "O que é multiplicação por escalar?",
       answer:
-        "Escalar é um número comum que multiplica todos os elementos da matriz.",
+        "É a operação em que cada entrada individual de uma matriz é multiplicada por uma constante numérica real k.",
     },
     {
-      question: "Multiplicar por escalar muda o tamanho da matriz?",
+      question: "A multiplicação por escalar altera a dimensão da matriz?",
       answer:
-        "Não. A matriz resultado mantém o mesmo número de linhas e colunas da matriz original.",
-    },
-    {
-      question: "O que acontece se o escalar for negativo?",
-      answer:
-        "Todos os elementos são multiplicados pelo número negativo, então os sinais dos elementos não nulos mudam.",
+        "Não. A matriz resultante mantém as mesmas dimensões da matriz original.",
     },
   ],
   "o-que-e-uma-matriz": [
     {
-      question: "O que é uma matriz?",
+      question: "O que é uma matriz na matemática?",
       answer:
-        "Uma matriz é uma tabela com números organizados em linhas e colunas. É uma forma prática de guardar e trabalhar com dados estruturados.",
+        "Uma matriz é uma tabela bidimensional de números organizados em linhas horizontais e colunas verticais, com dimensão m x n.",
     },
     {
-      question: "Como identifico o tamanho de uma matriz?",
+      question: "Como são indexados os elementos de uma matriz?",
       answer:
-        "O tamanho é sempre descrito como linhas × colunas. Por exemplo, uma matriz 2x3 tem 2 linhas e 3 colunas.",
-    },
-    {
-      question: "Qual é a notação de um elemento de matriz?",
-      answer:
-        "Usamos A(i, j) ou a_ij, onde i é o número da linha e j é o número da coluna. Por exemplo, A(2,3) é o elemento na linha 2, coluna 3.",
-    },
-    {
-      question: "Por que matrizes são importantes?",
-      answer:
-        "Matrizes aparecem em resolver sistemas de equações, transformações geométricas, processamento de dados, imagens e muitas áreas da engenharia e ciência.",
+        "Por meio do par (i, j), onde i indica o número da linha e j indica o número da coluna que contêm o elemento.",
     },
   ],
   "matriz-identidade": [
     {
-      question: "O que é a matriz identidade?",
+      question: "O que caracteriza a matriz identidade?",
       answer:
-        "É a matriz 'um' da multiplicação. Quando você multiplica qualquer matriz A pela identidade, obtém A novamente: A × I = A.",
+        "É uma matriz quadrada com valor 1 em todas as posições da diagonal principal e valor 0 em todas as demais entradas.",
     },
     {
-      question: "Como é a forma da matriz identidade?",
+      question: "Qual é a propriedade principal da matriz identidade?",
       answer:
-        "Tem 1 na diagonal principal e 0 em todas as outras posições. É sempre quadrada (2x2, 3x3, 4x4, etc.).",
-    },
-    {
-      question: "Por que a matriz identidade é importante?",
-      answer:
-        "Porque define o conceito de inversa (A × A⁻¹ = I) e é fundamental em Gauss, escalonamento e resolução de sistemas lineares.",
-    },
-    {
-      question: "Cada tamanho tem uma matriz identidade diferente?",
-      answer:
-        "Sim, existe uma identidade 2x2, uma 3x3, uma 4x4, e assim por diante. Mas todas seguem o mesmo padrão: 1 na diagonal, 0 no resto.",
+        "Ela atua como elemento neutro na multiplicação matricial: para qualquer matriz compatível A, temos A × I = I × A = A.",
     },
   ],
 };
