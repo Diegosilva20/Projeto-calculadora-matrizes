@@ -7,8 +7,11 @@ import UseExampleButton from "../../components/tutorial/UseExampleButton";
 function SarrusTutorial() {
   return (
     <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
+      <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-slate-900 dark:text-white dark:text-slate-100">
+        Determinante 3x3 pela Regra de Sarrus
+      </h1>
       <p className="mb-6 text-lg leading-relaxed">
-        A Regra de Sarrus é um método mnemônico e direto para calcular determinantes de matrizes de ordem 3 (3×3), estruturado na soma dos produtos das diagonais principais e subtração das secundárias.
+        A Regra de Sarrus é um método mnemônico e direto para calcular determinantes de matrizes de ordem 3 (3×3), estruturado na soma dos produtos das diagonais principais e subtração das secundárias. Aplique a regra de Sarrus em matrizes 3x3 com o método das diagonais principais e secundárias.
       </p>
 
       <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
@@ -31,7 +34,7 @@ function SarrusTutorial() {
           A Regra de Sarrus aplica-se <strong>exclusivamente a matrizes 3×3</strong>. Ela não é matematicamente válida para matrizes 4×4 ou de ordens superiores, onde se deve empregar o Teorema de Laplace ou escalonamento.
         </p>
         <div className="text-center font-semibold text-lg p-4 bg-slate-50 border border-slate-200 rounded-lg overflow-x-auto">
-          <Formula>A \text{ de ordem } 3 \times 3</Formula> → aplicação válida
+          <Formula>{"A \\text{ de ordem } 3 \\times 3"}</Formula> → aplicação válida
         </div>
       </div>
 

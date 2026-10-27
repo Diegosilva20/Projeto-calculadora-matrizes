@@ -1,11 +1,13 @@
 import { tutorialsInfo } from "./tutorialsInfo.js";
 
 export const siteBaseUrl = "https://calculamatriz.vercel.app";
-export const defaultLastmod = "2026-05-12";
+export const defaultLastmod = "2026-10-27";
 
 export const staticSeoRoutes = [
   { path: "/", changefreq: "daily", priority: "1.0" },
   { path: "/tutorials", changefreq: "weekly", priority: "0.8" },
+  { path: "/visualizador", changefreq: "weekly", priority: "0.8" },
+  { path: "/pratica", changefreq: "weekly", priority: "0.8" },
   { path: "/sobre", changefreq: "monthly", priority: "0.5" },
   { path: "/contato", changefreq: "monthly", priority: "0.5" },
   { path: "/politica-privacidade", changefreq: "yearly", priority: "0.3" },

@@ -1,27 +1,34 @@
-# Calculadora de Matrizes
+# CalculaMatriz — Calculadora de Matrizes e Álgebra Linear
 
-> Calculadora de Matrizes Online Gratuita com resolução passo a passo e frações exatas.
+> Calculadora de Matrizes Online Gratuita (https://calculamatriz.vercel.app) com resolução passo a passo, frações exatas, visualizador geométrico 2D e modo de prática interativa.
 
-Esta ferramenta educacional resolve operações matriciais mostrando todas as etapas intermediárias (como Eliminação de Gauss, Regra de Cramer e multiplicação linha por coluna).
+Esta plataforma educacional resolve operações matriciais mostrando todas as etapas intermediárias (como Eliminação de Gauss, Regra de Cramer, Determinantes, Matriz Inversa, Posto e Multiplicação linha por coluna).
 
-## O que a ferramenta faz
-- Soma e Subtração de Matrizes
-- Multiplicação de Matrizes
-- Determinante (Fórmula e Gauss)
-- Matriz Inversa
-- Escalonamento de Matrizes (Método de Gauss)
-- Posto de Matriz
-- Sistemas Lineares (Regra de Cramer e Gauss)
+## Ferramentas Interativas
+- [Calculadora de Matrizes Passo a Passo](https://calculamatriz.vercel.app/)
+- [Visualizador Geométrico de Matrizes 2D](https://calculamatriz.vercel.app/visualizador)
+- [Modo Treino — Exercícios de Matrizes](https://calculamatriz.vercel.app/pratica)
+- [Central de Tutoriais de Álgebra Linear](https://calculamatriz.vercel.app/tutorials)
 
 ## Tutoriais Disponíveis
-O site oferece artigos educativos sobre:
+- [O que é uma Matriz](https://calculamatriz.vercel.app/tutorial/o-que-e-uma-matriz)
+- [Matriz Identidade](https://calculamatriz.vercel.app/tutorial/matriz-identidade)
+- [Soma de Matrizes](https://calculamatriz.vercel.app/tutorial/soma-de-matrizes)
+- [Subtração de Matrizes](https://calculamatriz.vercel.app/tutorial/subtracao-de-matrizes)
+- [Multiplicação por Escalar](https://calculamatriz.vercel.app/tutorial/multiplicacao-por-escalar)
 - [Multiplicação de Matrizes](https://calculamatriz.vercel.app/tutorial/multiplicacao-de-matrizes)
+- [Matriz Transposta](https://calculamatriz.vercel.app/tutorial/matriz-transposta)
+- [Determinante de Matrizes: Fórmula e Propriedades](https://calculamatriz.vercel.app/tutorial/determinante-de-matrizes)
 - [Determinante 2x2](https://calculamatriz.vercel.app/tutorial/determinante-2x2)
-- [Determinante de Matrizes: Fórmula](https://calculamatriz.vercel.app/tutorial/determinante-matrizes)
+- [Determinante 3x3 — Regra de Sarrus](https://calculamatriz.vercel.app/tutorial/determinante-3x3-regra-de-sarrus)
 - [Matriz Inversa](https://calculamatriz.vercel.app/tutorial/matriz-inversa)
-- [Escalonamento por Gauss](https://calculamatriz.vercel.app/tutorial/escalonamento-matrizes)
-- [Regra de Cramer](https://calculamatriz.vercel.app/tutorial/regra-de-cramer)
+- [Escalonamento de Matrizes por Gauss](https://calculamatriz.vercel.app/tutorial/escalonamento-gauss)
+- [Posto de Matriz (Rank)](https://calculamatriz.vercel.app/tutorial/posto-de-matriz)
 - [Sistemas Lineares](https://calculamatriz.vercel.app/tutorial/sistemas-lineares)
+- [Regra de Cramer](https://calculamatriz.vercel.app/tutorial/regra-de-cramer)
 
-## Notas Técnicas
-Todas as operações matemáticas preservam precisão utilizando a biblioteca Math.js. A interface é um Single Page Application (SPA).
+## Institucional
+- [Sobre o CalculaMatriz](https://calculamatriz.vercel.app/sobre)
+- [Contato](https://calculamatriz.vercel.app/contato)
+- [Política de Privacidade](https://calculamatriz.vercel.app/politica-privacidade)
+- [Termos de Uso](https://calculamatriz.vercel.app/termos-uso)

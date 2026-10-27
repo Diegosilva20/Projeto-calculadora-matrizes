@@ -11,6 +11,8 @@ import TermosUso from "./pages/TermosUso";
 import Contato from "./pages/Contato";
 import Sobre from "./pages/Sobre";
 import Tutorials from "./pages/Tutorials";
+import Pratica from "./pages/Pratica";
+import Visualizador from "./pages/Visualizador";
 import NotFound from "./pages/NotFound";
 
 const pages = {
@@ -21,17 +23,64 @@ const pages = {
   Contato,
   Sobre,
   Tutorials,
+  Pratica,
+  Visualizador,
   NotFound,
 };
 
+const decodeHtmlEntities = (value) =>
+  String(value)
+    .replace(/&quot;/g, '"')
+    .replace(/&#x27;|&#39;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&");
+
 const extractTitle = (titleMarkup) => {
-  const match = titleMarkup.match(/<title[^>]*>(.*?)<\/title>/i);
-  return match?.[1] || "Calculadora de Matrizes";
+  const match = titleMarkup.match(/<title[^>]*>(.*?)<\/title>/is);
+  return match?.[1] ? decodeHtmlEntities(match[1]) : "";
+};
+
+const extractHoistedHeadFromHtml = (rawHtml) => {
+  let bodyHtml = rawHtml;
+  const extractedElements = [];
+  let extractedTitleMarkup = "";
+
+  const leadingHeadPattern =
+    /^(?:<(?:title|base)\b[^>]*>.*?<\/(?:title|base)>|<(?:meta|link)\b[^>]*\/?>)+/is;
+  const leadingMatch = bodyHtml.match(leadingHeadPattern);
+
+  if (leadingMatch) {
+    const leadingChunk = leadingMatch[0];
+    bodyHtml = bodyHtml.slice(leadingChunk.length);
+
+    const titleMatch = leadingChunk.match(/<title\b[^>]*>.*?<\/title>/is);
+    if (titleMatch) {
+      extractedTitleMarkup = titleMatch[0];
+    }
+
+    const tagMatches =
+      leadingChunk.match(/<(?:base\b[^>]*>.*?<\/base|meta\b[^>]*\/?|link\b[^>]*\/?)>/gis) || [];
+    extractedElements.push(...tagMatches);
+  }
+
+  const ldJsonPattern = /<script\b[^>]*type="application\/ld\+json"[^>]*>.*?<\/script>/gis;
+  const ldJsonMatches = bodyHtml.match(ldJsonPattern) || [];
+  if (ldJsonMatches.length > 0) {
+    extractedElements.push(...ldJsonMatches);
+    bodyHtml = bodyHtml.replace(ldJsonPattern, "");
+  }
+
+  return {
+    bodyHtml,
+    extractedTitleMarkup,
+    extractedElements,
+  };
 };
 
 export function prerender({ url }) {
   const helmetContext = {};
-  const html = renderToString(
+  const rawHtml = renderToString(
     <HelmetProvider context={helmetContext}>
       <StaticRouter location={url}>
         <AppShell>
@@ -42,17 +91,26 @@ export function prerender({ url }) {
   );
 
   const { helmet } = helmetContext;
-  const headElements = [
+  const { bodyHtml, extractedTitleMarkup, extractedElements } =
+    extractHoistedHeadFromHtml(rawHtml);
+
+  const helmetElements = [
     helmet?.meta?.toString(),
     helmet?.link?.toString(),
     helmet?.script?.toString(),
   ].filter(Boolean);
 
+  const headElements = [...helmetElements, ...extractedElements].filter(Boolean);
+  const resolvedTitle =
+    extractTitle(helmet?.title?.toString() || "") ||
+    extractTitle(extractedTitleMarkup) ||
+    "Calculadora de Matrizes";
+
   return {
-    html,
+    html: bodyHtml,
     head: {
       lang: "pt-BR",
-      title: extractTitle(helmet?.title?.toString() || ""),
+      title: resolvedTitle,
       elements: new Set(headElements),
     },
   };

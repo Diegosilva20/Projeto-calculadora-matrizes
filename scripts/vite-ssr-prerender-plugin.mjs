@@ -25,15 +25,30 @@ const applyHead = (template, head = {}) => {
   let html = template;
 
   if (head.lang) {
-    html = html.replace(/<html([^>]*)lang="[^"]*"([^>]*)>/i, `<html$1lang="${escapeHtml(head.lang)}"$2>`);
+    html = html.replace(
+      /<html([^>]*)lang="[^"]*"([^>]*)>/i,
+      `<html$1lang="${escapeHtml(head.lang)}"$2>`,
+    );
   }
 
   if (head.title) {
-    html = html.replace(/<title[^>]*>.*?<\/title>/is, `<title>${escapeHtml(head.title)}</title>`);
+    html = html.replace(
+      /<title[^>]*>.*?<\/title>/is,
+      `<title>${escapeHtml(head.title)}</title>`,
+    );
   }
 
   if (head.elements?.size) {
-    html = html.replace("</head>", `${Array.from(head.elements).join("\n")}\n</head>`);
+    const elementsArray = Array.from(head.elements);
+    const hasCustomDescription = elementsArray.some((el) =>
+      /<meta\b[^>]*name=["']description["']/i.test(el),
+    );
+
+    if (hasCustomDescription) {
+      html = html.replace(/<meta\b[^>]*name=["']description["'][^>]*>\s*/gis, "");
+    }
+
+    html = html.replace("</head>", `${elementsArray.join("\n")}\n</head>`);
   }
 
   return html;

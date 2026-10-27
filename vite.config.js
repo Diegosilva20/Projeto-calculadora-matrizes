@@ -30,10 +30,10 @@ export default defineConfig({
       },
       includeAssets: ['favicon.ico', 'logo192.png', 'logo512.png'],
       manifest: {
-        name: 'Matriz Calculator',
-        short_name: 'Matrizes+',
+        name: 'CalculaMatriz',
+        short_name: 'CalculaMatriz',
         description:
-          'Calculadora de matrizes e resolu\u00e7\u00e3o de sistemas lineares passo a passo.',
+          'Calculadora de matrizes e resolução de sistemas lineares passo a passo.',
         lang: 'pt-BR',
         start_url: '/',
         scope: '/',

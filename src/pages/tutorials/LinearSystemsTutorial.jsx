@@ -7,8 +7,11 @@ import UseExampleButton from "../../components/tutorial/UseExampleButton";
 function LinearSystemsTutorial() {
   return (
     <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
+      <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-slate-900 dark:text-white dark:text-slate-100">
+        Sistemas Lineares com Matrizes: Passo a Passo
+      </h1>
       <p className="mb-6 text-lg leading-relaxed">
-        Um sistema de equações lineares pode ser representado e resolvido matricialmente. A representação por matriz aumentada sintetiza os coeficientes e os termos constantes, permitindo encontrar a solução do sistema de maneira algorítmica por eliminação gaussiana.
+        Um sistema de equações lineares pode ser representado e resolvido matricialmente. Monte a matriz aumentada e resolva sistemas lineares pelo método de eliminação de Gauss. A representação por matriz aumentada sintetiza os coeficientes e os termos constantes, permitindo encontrar a solução do sistema de maneira algorítmica por eliminação gaussiana.
       </p>
 
       <div className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20">
@@ -118,7 +121,7 @@ function LinearSystemsTutorial() {
         </div>
 
         <p className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg text-center dark:bg-green-950/40 dark:border-green-800">
-          <strong>Solução única:</strong> <Formula>x = 2</Formula> e <Formula>y = 1</Formula> (Conjunto solução <Formula>S = \{(2, 1)\}</Formula>).
+          <strong>Solução única:</strong> <Formula>x = 2</Formula> e <Formula>y = 1</Formula> (Conjunto solução <Formula>{"S = \\{(2, 1)\\}"}</Formula>).
         </p>
       </div>
 

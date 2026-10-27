@@ -211,7 +211,7 @@ const Home = () => {
     },
     {
       "@context": "https://schema.org",
-      "@type": "QAPage",
+      "@type": "FAQPage",
       mainEntity: faqItems.map((item) => ({
         "@type": "Question",
         name: item.question,

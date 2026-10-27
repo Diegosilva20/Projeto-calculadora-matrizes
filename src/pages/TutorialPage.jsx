@@ -335,7 +335,7 @@ const TutorialPage = () => {
   const canonicalSlug = slugAliases[slug] || slug;
 
   const seo = seoDictionary[canonicalSlug] || {
-    title: "Tutorial de Operações com Matrizes | Matriz Calculator",
+    title: "Tutorial de Operações com Matrizes | CalculaMatriz",
     description:
       "Aprenda passo a passo como realizar cálculos complexos com matrizes de forma simples e rápida.",
   };
@@ -344,12 +344,12 @@ const TutorialPage = () => {
   const tutorialStructuredData = tutorial
     ? {
         "@context": "https://schema.org",
-        "@type": "EducationalResource",
+        "@type": ["TechArticle", "LearningResource"],
         headline: tutorial.title,
         description: tutorial.description,
         author: {
           "@type": "Organization",
-          name: "Matriz Calculator",
+          name: "CalculaMatriz",
         },
         inLanguage: "pt-BR",
         isAccessibleForFree: true,
@@ -360,10 +360,36 @@ const TutorialPage = () => {
       }
     : null;
   const faqItems = faqDictionary[canonicalSlug];
+  const breadcrumbStructuredData = tutorial
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Calculadora de Matrizes",
+            item: "https://calculamatriz.vercel.app/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Tutoriais de Álgebra Linear",
+            item: "https://calculamatriz.vercel.app/tutorials",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: tutorial.title,
+            item: `https://calculamatriz.vercel.app/tutorial/${canonicalSlug}`,
+          },
+        ],
+      }
+    : null;
   const faqStructuredData = faqItems
     ? {
         "@context": "https://schema.org",
-        "@type": "QAPage",
+        "@type": "FAQPage",
         mainEntity: faqItems.map((item) => ({
           "@type": "Question",
           name: item.question,
@@ -379,7 +405,7 @@ const TutorialPage = () => {
     return (
       <div className="max-w-3xl mx-auto py-24 px-6 text-center min-h-[60vh]">
         <Helmet>
-          <title>Página não encontrada | Matriz Calculator</title>
+          <title>Página não encontrada | CalculaMatriz</title>
           <meta
             name="description"
             content="O tutorial solicitado não foi encontrado. Volte para a calculadora de matrizes ou explore os guias disponíveis."
@@ -425,6 +451,9 @@ const TutorialPage = () => {
         <meta name="twitter:image" content="https://calculamatriz.vercel.app/logo1920.png" />
         <script type="application/ld+json">
           {JSON.stringify(tutorialStructuredData)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbStructuredData)}
         </script>
         {faqStructuredData && (
           <script type="application/ld+json">

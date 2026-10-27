@@ -8,8 +8,11 @@ function PostoDeMatrizTutorial() {
   return (
     <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white dark:text-slate-100">
       <div className="mb-8">
+        <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-slate-900 dark:text-white dark:text-slate-100">
+          Posto (Rank) de uma Matriz
+        </h1>
         <p className="mb-6 text-lg leading-relaxed">
-          O posto (ou rank) de uma matriz quantifica o número máximo de linhas ou colunas linearmente independentes. O método computacional padrão para determiná-lo consiste em escalonar a matriz até a forma escalonada e contar as linhas não nulas.
+          Encontre o posto (rank) de uma matriz contando as linhas não nulas após o escalonamento. O posto quantifica o número máximo de linhas ou colunas linearmente independentes. O método computacional padrão para determiná-lo consiste em escalonar a matriz até a forma escalonada e contar as linhas não nulas.
         </p>
         <TipBox>
           Definição: o posto de uma matriz equivale exatamente ao número de linhas não inteiramente nulas após o escalonamento gaussiano completo.
@@ -19,7 +22,7 @@ function PostoDeMatrizTutorial() {
       <section className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
         <h2 className="text-2xl font-semibold mb-3">Linha não nula vs linha nula</h2>
         <p className="mb-4 leading-relaxed">
-          Uma linha é classificada como não nula se contiver ao menos uma entrada diferente de zero. Linhas compostas exclusivamente por zeros (<Formula>[0, 0, \dots, 0]</Formula>) são nulas e não contribuem para o posto.
+          Uma linha é classificada como não nula se contiver ao menos uma entrada diferente de zero. Linhas compostas exclusivamente por zeros (<Formula>{"[0, 0, \\dots, 0]"}</Formula>) são nulas e não contribuem para o posto.
         </p>
       </section>
 
@@ -34,7 +37,7 @@ function PostoDeMatrizTutorial() {
           />
         </div>
         <p className="mb-4 leading-relaxed">
-          Note que a linha 2 é o dobro exato da linha 1 (<Formula>L_2 = 2 L_1</Formula>), evidenciando dependência linear prévia.
+          Note que a linha 2 é o dobro exato da linha 1 (<Formula>{"L_2 = 2 L_1"}</Formula>), evidenciando dependência linear prévia.
         </p>
 
         <div className="rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 bg-slate-50 p-4 mb-6 dark:bg-slate-950 dark:border-slate-700">
@@ -68,27 +71,27 @@ function PostoDeMatrizTutorial() {
         </div>
 
         <TipBox>
-          A matriz escalonada apresenta 2 linhas não nulas e 1 linha nula. Portanto, <Formula>\text{posto}(A) = 2</Formula>.
+          A matriz escalonada apresenta 2 linhas não nulas e 1 linha nula. Portanto, <Formula>{"\\text{posto}(A) = 2"}</Formula>.
         </TipBox>
       </section>
 
       <section className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
         <h2 className="text-2xl font-semibold mb-3">Propriedades e limites dimensionais</h2>
         <p className="mb-4 leading-relaxed">
-          Para qualquer matriz de dimensão <Formula>m \times n</Formula>:
+          Para qualquer matriz de dimensão <Formula>{"m \\times n"}</Formula>:
         </p>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
           <li>
-            O posto nunca pode exceder o menor valor entre linhas e colunas: <Formula>\text{posto}(A) \le \min(m, n)</Formula>.
+            O posto nunca pode exceder o menor valor entre linhas e colunas: <Formula>{"\\text{posto}(A) \\le \\min(m, n)"}</Formula>.
           </li>
           <li>
-            <strong>Posto completo (matriz quadrada):</strong> se uma matriz <Formula>n \times n</Formula> tem <Formula>\text{posto}(A) = n</Formula>, ela é não singular, admite inversa e <Formula>\det(A) \neq 0</Formula>.
+            <strong>Posto completo (matriz quadrada):</strong> se uma matriz <Formula>{"n \\times n"}</Formula> tem <Formula>{"\\text{posto}(A) = n"}</Formula>, ela é não singular, admite inversa e <Formula>{"\\det(A) \\neq 0"}</Formula>.
           </li>
           <li>
-            <strong>Posto deficiente:</strong> se <Formula>\text{posto}(A) &lt; n</Formula>, a matriz quadrada é singular (<Formula>\det(A) = 0</Formula>) e não admite inversa.
+            <strong>Posto deficiente:</strong> se <Formula>{"\\text{posto}(A) < n"}</Formula>, a matriz quadrada é singular (<Formula>{"\\det(A) = 0"}</Formula>) e não admite inversa.
           </li>
           <li>
-            O posto por linhas é estritamente idêntico ao posto por colunas: <Formula>\text{posto}(A) = \text{posto}(A^T)</Formula>.
+            O posto por linhas é estritamente idêntico ao posto por colunas: <Formula>{"\\text{posto}(A) = \\text{posto}(A^T)"}</Formula>.
           </li>
         </ul>
       </section>
@@ -96,12 +99,12 @@ function PostoDeMatrizTutorial() {
       <section className="bg-white p-4 sm:p-6 rounded-lg mb-8 border border-slate-200 shadow-sm dark:border-slate-700/20 dark:bg-slate-900 dark:border-slate-700">
         <h2 className="text-2xl font-semibold mb-3">Relação com o Teorema de Rouché-Capelli</h2>
         <p className="mb-4 leading-relaxed">
-          Na análise de sistemas lineares <Formula>Ax = b</Formula>:
+          Na análise de sistemas lineares <Formula>{"Ax = b"}</Formula>:
         </p>
         <ul className="list-disc pl-5 space-y-3 leading-relaxed">
-          <li>Se <Formula>\text{posto}(A) = \text{posto}(A|b) = n</Formula>: solução única (SPD).</li>
-          <li>Se <Formula>\text{posto}(A) = \text{posto}(A|b) &lt; n</Formula>: infinitas soluções com <Formula>n - \text{posto}(A)</Formula> variáveis livres (SPI).</li>
-          <li>Se <Formula>\text{posto}(A) &lt; \text{posto}(A|b)</Formula>: sistema inconsistente / impossível (SI).</li>
+          <li>Se <Formula>{"\\text{posto}(A) = \\text{posto}(A|b) = n"}</Formula>: solução única (SPD).</li>
+          <li>Se <Formula>{"\\text{posto}(A) = \\text{posto}(A|b) < n"}</Formula>: infinitas soluções com <Formula>{"n - \\text{posto}(A)"}</Formula> variáveis livres (SPI).</li>
+          <li>Se <Formula>{"\\text{posto}(A) < \\text{posto}(A|b)"}</Formula>: sistema inconsistente / impossível (SI).</li>
         </ul>
       </section>
 

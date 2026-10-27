@@ -7,9 +7,18 @@ const Footer = () => (
   <footer className="mt-12 border-t border-blueprint-800/20 bg-gray-100 pt-6 transition-colors dark:border-slate-800 dark:bg-slate-950">
     <div className="container mx-auto text-center">
       <p className="text-sm text-slate-600 dark:text-slate-300 dark:text-slate-400">
-        © 2026 MatrizCalculator. Todos os direitos reservados.
+        © 2026 CalculaMatriz. Todos os direitos reservados.
       </p>
       <div className="mt-2 flex flex-col items-center justify-center space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0">
+        <Link to="/tutorials" className={footerLinkClasses}>
+          Tutoriais
+        </Link>
+        <Link to="/visualizador" className={footerLinkClasses}>
+          Visualizador 2D
+        </Link>
+        <Link to="/pratica" className={footerLinkClasses}>
+          Modo Treino
+        </Link>
         <Link to="/sobre" className={footerLinkClasses}>
           Sobre
         </Link>
@@ -28,4 +37,3 @@ const Footer = () => (
 );
 
 export default Footer;
-  

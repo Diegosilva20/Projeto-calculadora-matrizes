@@ -1,7 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { prerenderPaths, tutorialSeoRoutes } from "../src/data/seoRoutes.js";
+import {
+  prerenderPaths,
+  siteBaseUrl,
+  tutorialSeoRoutes,
+} from "../src/data/seoRoutes.js";
 import { tutorialsInfo } from "../src/data/tutorialsInfo.js";
 
 const distDir = fileURLToPath(new URL("../dist/", import.meta.url));
@@ -25,7 +29,7 @@ const tutorialExpectations = Object.fromEntries(
 const routeExpectations = {
   ...tutorialExpectations,
   "/": ["Calculadora de Matrizes", "application/ld+json"],
-  "/tutorials": ["Catálogo de Tutoriais"],
+  "/tutorials": ["Tutoriais de Álgebra Linear"],
 };
 
 const tutorialPaths = new Set(tutorialSeoRoutes.map((route) => route.path));
@@ -43,6 +47,16 @@ const fileForRoute = (routePath) => {
   );
 };
 
+const splitHeadAndBody = (html) => {
+  const headMatch = html.match(/<head[^>]*>([\s\S]*?)<\/head>/i);
+  const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+
+  return {
+    head: headMatch?.[1] || "",
+    body: bodyMatch?.[1] || "",
+  };
+};
+
 const failures = [];
 
 routesToCheck.forEach((routePath) => {
@@ -54,24 +68,82 @@ routesToCheck.forEach((routePath) => {
   }
 
   const html = fs.readFileSync(filePath, "utf8");
+  const { head, body } = splitHeadAndBody(html);
 
   if (html.includes('<div id="root"></div>')) {
     failures.push(`${routePath}: shell React vazio encontrado`);
   }
 
-  if (!/<title[^>]*>[^<]+<\/title>/i.test(html)) {
-    failures.push(`${routePath}: title renderizado nao encontrado`);
+  if (body.includes("<!--$!-->")) {
+    failures.push(
+      `${routePath}: fronteira Suspense em fallback/erro detectada no SSR (<!--$!-->)`,
+    );
   }
 
-  if (!/<h1[\s>]/i.test(html)) {
-    failures.push(`${routePath}: h1 renderizado nao encontrado`);
+  const headTitles = head.match(/<title\b[^>]*>[^<]+<\/title>/gi) || [];
+  const bodyTitles = body.match(/<title\b[^>]*>[\s\S]*?<\/title>/gi) || [];
+
+  if (headTitles.length !== 1) {
+    failures.push(
+      `${routePath}: esperado exatamente 1 <title> no <head>, encontrado(s) ${headTitles.length}`,
+    );
   }
 
-  if (
-    tutorialPaths.has(routePath) &&
-    !html.includes("application/ld+json")
-  ) {
-    failures.push(`${routePath}: JSON-LD esperado nao encontrado`);
+  if (bodyTitles.length > 0) {
+    failures.push(
+      `${routePath}: encontrado(s) ${bodyTitles.length} <title> indevido(s) no <body>`,
+    );
+  }
+
+  const headDescriptions =
+    head.match(/<meta\b[^>]*name=["']description["'][^>]*>/gi) || [];
+  const bodyDescriptions =
+    body.match(/<meta\b[^>]*name=["']description["'][^>]*>/gi) || [];
+
+  if (headDescriptions.length !== 1) {
+    failures.push(
+      `${routePath}: esperado exatamente 1 <meta name="description"> no <head>, encontrado(s) ${headDescriptions.length}`,
+    );
+  }
+
+  if (bodyDescriptions.length > 0) {
+    failures.push(
+      `${routePath}: encontrado(s) ${bodyDescriptions.length} <meta name="description"> indevido(s) no <body>`,
+    );
+  }
+
+  const expectedCanonicalHref = `${siteBaseUrl}${routePath === "/" ? "/" : routePath}`;
+  const headCanonicals =
+    head.match(/<link\b[^>]*rel=["']canonical["'][^>]*>/gi) || [];
+  const bodyCanonicals =
+    body.match(/<link\b[^>]*rel=["']canonical["'][^>]*>/gi) || [];
+
+  if (headCanonicals.length !== 1) {
+    failures.push(
+      `${routePath}: esperado exatamente 1 <link rel="canonical"> no <head>, encontrado(s) ${headCanonicals.length}`,
+    );
+  } else if (!headCanonicals[0].includes(`href="${expectedCanonicalHref}"`)) {
+    failures.push(
+      `${routePath}: canonical no <head> nao corresponde a ${expectedCanonicalHref}`,
+    );
+  }
+
+  if (bodyCanonicals.length > 0) {
+    failures.push(
+      `${routePath}: <link rel="canonical"> encontrado no <body> (ignorado pelo Googlebot)`,
+    );
+  }
+
+  if (!/<h1[\s>]/i.test(body)) {
+    failures.push(`${routePath}: h1 renderizado nao encontrado no <body>`);
+  }
+
+  if (tutorialPaths.has(routePath) && !head.includes("application/ld+json")) {
+    failures.push(`${routePath}: JSON-LD esperado nao encontrado no <head>`);
+  }
+
+  if (body.includes("application/ld+json")) {
+    failures.push(`${routePath}: JSON-LD encontrado no <body> em vez do <head>`);
   }
 
   (routeExpectations[routePath] || []).forEach((expectedText) => {
@@ -87,4 +159,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log(`Pre-render validado em ${routesToCheck.length} rotas.`);
+console.log(`Pre-render validado em ${routesToCheck.length} rotas (head + body).`);

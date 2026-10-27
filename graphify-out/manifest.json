@@ -30,16 +30,16 @@
     "semantic_hash": "79aa70c635626ba34b1b769c9a6b06e9"
   },
   "scripts/validate-prerender-output.mjs": {
-    "mtime": 1788022876.4143095,
-    "seen": 1788027160.006285,
-    "ast_hash": "6e778617fd653b41254a932199da0e34",
-    "semantic_hash": "6e778617fd653b41254a932199da0e34"
+    "mtime": 1793107849.837132,
+    "seen": 1793107934.4217062,
+    "ast_hash": "fcf6936c2a65e78a0d14024c0ae59f9b",
+    "semantic_hash": ""
   },
   "scripts/vite-ssr-prerender-plugin.mjs": {
-    "mtime": 1788022876.4143095,
-    "seen": 1788027160.0062866,
-    "ast_hash": "26149dedca2eb66d7a65ef84b4abcc36",
-    "semantic_hash": "26149dedca2eb66d7a65ef84b4abcc36"
+    "mtime": 1793107642.1709063,
+    "seen": 1793107934.4217098,
+    "ast_hash": "468b6ea2da8bb8eb25e85bf9684d2650",
+    "semantic_hash": ""
   },
   "sitemap-generator.mjs": {
     "mtime": 1788022876.4143095,
@@ -48,9 +48,9 @@
     "semantic_hash": "12fb61fef8b1c254f14b52e16426e374"
   },
   "src/App.jsx": {
-    "mtime": 1788036345.869319,
-    "seen": 1788036981.316745,
-    "ast_hash": "c4da054e73eecf2b580a2b36314ebaeb",
+    "mtime": 1791088662.0210888,
+    "seen": 1793107934.4217157,
+    "ast_hash": "b4129286b634614863b2c0ccb85ff992",
     "semantic_hash": ""
   },
   "src/algorithms/gaussianElimination.js": {
@@ -66,15 +66,15 @@
     "semantic_hash": ""
   },
   "src/components/common/Footer.jsx": {
-    "mtime": 1788033777.5452287,
-    "seen": 1788036981.3167503,
-    "ast_hash": "0f2a4c883f8c24c96b7c5d49dadadb43",
+    "mtime": 1793108435.9508314,
+    "seen": 1793108833.2765117,
+    "ast_hash": "e859497865869b7db0cb4bb612a2f073",
     "semantic_hash": ""
   },
   "src/components/common/Header.jsx": {
-    "mtime": 1788033787.0720458,
-    "seen": 1788036981.3167512,
-    "ast_hash": "8a2ecb0f37b5e709431f176f1896424a",
+    "mtime": 1791088669.4691389,
+    "seen": 1793107934.421728,
+    "ast_hash": "40cef1fcdfe7bc8c3cb605066be9a752",
     "semantic_hash": ""
   },
   "src/components/common/MatrixDisplay.jsx": {
@@ -84,9 +84,9 @@
     "semantic_hash": ""
   },
   "src/components/common/MatrixInput.jsx": {
-    "mtime": 1788140600.631435,
-    "seen": 1788233150.0734525,
-    "ast_hash": "e8272b0dfb9c481ff1b78248e3fa39a7",
+    "mtime": 1791087793.6479692,
+    "seen": 1793107934.4217331,
+    "ast_hash": "aac8d6740f2aa45b95cc8dc835356691",
     "semantic_hash": ""
   },
   "src/components/common/ScrollToTop.jsx": {
@@ -144,9 +144,9 @@
     "semantic_hash": ""
   },
   "src/data/seoRoutes.js": {
-    "mtime": 1788233083.345967,
-    "seen": 1788233150.0734673,
-    "ast_hash": "98f4503e9becb740dea6cb0ffb0733be",
+    "mtime": 1793108430.559831,
+    "seen": 1793108833.2766614,
+    "ast_hash": "130fadf37f91892ac414dd6a194fe994",
     "semantic_hash": ""
   },
   "src/data/tutorialsData.jsx": {
@@ -162,9 +162,9 @@
     "semantic_hash": ""
   },
   "src/hooks/useMatrixCalculator.js": {
-    "mtime": 1788234170.4503713,
-    "seen": 1791087608.7613556,
-    "ast_hash": "c99c21e49b27b8ebd73872ba1af9be02",
+    "mtime": 1791087783.7279997,
+    "seen": 1793107934.4217649,
+    "ast_hash": "16a5aa30db621b68e2b592cdb98691dc",
     "semantic_hash": ""
   },
   "src/index.jsx": {
@@ -180,9 +180,9 @@
     "semantic_hash": ""
   },
   "src/pages/Home.jsx": {
-    "mtime": 1788271226.5365784,
-    "seen": 1791087608.7613595,
-    "ast_hash": "0974cf5625a7a74621b42de39b3e0390",
+    "mtime": 1793108627.4307911,
+    "seen": 1793108833.2766774,
+    "ast_hash": "aa37f62054524c7da68346b9bf7f6ae0",
     "semantic_hash": ""
   },
   "src/pages/NotFound.jsx": {
@@ -192,9 +192,9 @@
     "semantic_hash": ""
   },
   "src/pages/PoliticaPrivacidade.jsx": {
-    "mtime": 1788233083.3350618,
-    "seen": 1788233150.073477,
-    "ast_hash": "bff04da0a949ae7e5a2a3c292af17820",
+    "mtime": 1793108582.4315088,
+    "seen": 1793108833.2766824,
+    "ast_hash": "40a5707dd0aab6b0466fbfb32f54b018",
     "semantic_hash": ""
   },
   "src/pages/Sobre.jsx": {
@@ -204,15 +204,15 @@
     "semantic_hash": ""
   },
   "src/pages/TermosUso.jsx": {
-    "mtime": 1788233083.3350618,
-    "seen": 1788233150.0734794,
-    "ast_hash": "fde3b44ef95f90e378dd5b61726fe388",
+    "mtime": 1793108580.8946383,
+    "seen": 1793108833.2766893,
+    "ast_hash": "0699e3bf208ce406d0fad3494a01af16",
     "semantic_hash": ""
   },
   "src/pages/TutorialPage.jsx": {
-    "mtime": 1788271577.2501867,
-    "seen": 1791087608.7613657,
-    "ast_hash": "f9961a3f55df7f092920264ec5bae905",
+    "mtime": 1793108764.4657393,
+    "seen": 1793108833.2766914,
+    "ast_hash": "4d56f54305974f93e510379e748649ee",
     "semantic_hash": ""
   },
   "src/pages/Tutorials.jsx": {
@@ -258,9 +258,9 @@
     "semantic_hash": ""
   },
   "src/pages/tutorials/LinearSystemsTutorial.jsx": {
-    "mtime": 1788271494.7089887,
-    "seen": 1791087608.7613747,
-    "ast_hash": "48ace6a2935c72e0dc8840f6ba2d7b37",
+    "mtime": 1791089431.9033785,
+    "seen": 1793107934.421809,
+    "ast_hash": "898f242e49ac3147ba73c15350179a22",
     "semantic_hash": ""
   },
   "src/pages/tutorials/MultiplicationTutorial.jsx": {
@@ -270,21 +270,21 @@
     "semantic_hash": ""
   },
   "src/pages/tutorials/PostoDeMatrizTutorial.jsx": {
-    "mtime": 1788271550.866974,
-    "seen": 1791087608.761377,
-    "ast_hash": "4acb53583f6cb124a498c2a6f9a76bac",
+    "mtime": 1791089408.9136763,
+    "seen": 1793107934.4218128,
+    "ast_hash": "37b4b413bab3cd3e261691934a7ab180",
     "semantic_hash": ""
   },
   "src/pages/tutorials/RegraDeCramerTutorial.jsx": {
-    "mtime": 1788271521.0745072,
-    "seen": 1791087608.761378,
-    "ast_hash": "86a6e57ffbbb1a31774ddbfcb867e64a",
+    "mtime": 1793107837.9126675,
+    "seen": 1793107934.4218142,
+    "ast_hash": "d39d19e11f669bd10d31f9a820de0656",
     "semantic_hash": ""
   },
   "src/pages/tutorials/SarrusTutorial.jsx": {
-    "mtime": 1788271436.1649313,
-    "seen": 1791087608.7613792,
-    "ast_hash": "1ee48c5e17f42eeaf32a03d6965bceed",
+    "mtime": 1791089421.07418,
+    "seen": 1793107934.4218154,
+    "ast_hash": "c05abee1be418f8bdc69a5a6cbfd6e84",
     "semantic_hash": ""
   },
   "src/pages/tutorials/ScalarMultiplicationTutorial.jsx": {
@@ -312,10 +312,10 @@
     "semantic_hash": ""
   },
   "src/prerender.jsx": {
-    "mtime": 1788026985.4601538,
-    "seen": 1788027160.0063314,
-    "ast_hash": "be54088d9d2c0362a484a584a858e227",
-    "semantic_hash": "be54088d9d2c0362a484a584a858e227"
+    "mtime": 1793107603.9560766,
+    "seen": 1793107934.4218223,
+    "ast_hash": "3f1f6d65a42138f199563efe1cb12812",
+    "semantic_hash": ""
   },
   "src/reportWebVitals.js": {
     "mtime": 1788022876.4292717,
@@ -342,9 +342,9 @@
     "semantic_hash": ""
   },
   "vite.config.js": {
-    "mtime": 1788029471.2327552,
-    "seen": 1788029478.2722063,
-    "ast_hash": "7142d66c30d888f82eca9ea464eedce6",
+    "mtime": 1793108437.6146529,
+    "seen": 1793108833.2767475,
+    "ast_hash": "43d5f04daff28f3541d1105797f5d7c1",
     "semantic_hash": ""
   },
   "src/algorithms/gaussianElimination.test.js": {
@@ -2832,9 +2832,9 @@
     "semantic_hash": ""
   },
   "public/llms.txt": {
-    "mtime": 1788233083.3495536,
-    "seen": 1788233150.0738583,
-    "ast_hash": "6efbf2d24ac4e6babb2de45bc5da2531",
+    "mtime": 1793108433.2638955,
+    "seen": 1793108833.2774434,
+    "ast_hash": "471fe70976a4635a3a2a6df1014cc63d",
     "semantic_hash": ""
   },
   ".agents/plugins/claude-seo/assets/cover.svg": {
@@ -2895,6 +2895,24 @@
     "mtime": 1788233450.6521864,
     "seen": 1791087608.7617285,
     "ast_hash": "32b33de3d292b76c34d0c607b4c72048",
+    "semantic_hash": ""
+  },
+  "src/pages/Pratica.jsx": {
+    "mtime": 1793108516.5317392,
+    "seen": 1793108833.2766852,
+    "ast_hash": "cfeef85667cc40a6beb17c1413858308",
+    "semantic_hash": ""
+  },
+  "src/pages/Visualizador.jsx": {
+    "mtime": 1793108517.957106,
+    "seen": 1793108833.2766953,
+    "ast_hash": "8e2e59687756adf565e1506cc65849ee",
+    "semantic_hash": ""
+  },
+  "PLANO_DE_ACAO.md": {
+    "mtime": 1791088676.6654055,
+    "seen": 1793107934.4221673,
+    "ast_hash": "cd1d6497ed07a23205ad0f3faa22ef26",
     "semantic_hash": ""
   }
 }

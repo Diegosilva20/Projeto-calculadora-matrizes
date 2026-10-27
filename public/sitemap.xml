@@ -2,127 +2,139 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://calculamatriz.vercel.app/</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/tutorials</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calculamatriz.vercel.app/visualizador</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calculamatriz.vercel.app/pratica</loc>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/sobre</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/contato</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/politica-privacidade</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/termos-uso</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/tutorial/determinante-de-matrizes</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/tutorial/matriz-inversa</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/tutorial/escalonamento-gauss</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/tutorial/matriz-transposta</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/tutorial/multiplicacao-de-matrizes</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/tutorial/sistemas-lineares</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/tutorial/soma-de-matrizes</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/tutorial/subtracao-de-matrizes</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/tutorial/multiplicacao-por-escalar</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/tutorial/determinante-3x3-regra-de-sarrus</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/tutorial/o-que-e-uma-matriz</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/tutorial/matriz-identidade</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/tutorial/determinante-2x2</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/tutorial/regra-de-cramer</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://calculamatriz.vercel.app/tutorial/posto-de-matriz</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

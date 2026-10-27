@@ -1,7 +1,17 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import MatrixDisplay from "../components/common/MatrixDisplay";
 import { createEmptyMatrix } from "../utils/matrixCalculations";
+
+const INITIAL_A = [
+  ["2", "-1"],
+  ["4", "3"],
+];
+const INITIAL_B = [
+  ["1", "5"],
+  ["-2", "2"],
+];
 
 const generateRandomMatrix = (rows, cols, min = -9, max = 9) => {
   return Array.from({ length: rows }, () =>
@@ -22,11 +32,18 @@ const calculateSum = (matrixA, matrixB) => {
 };
 
 const Pratica = () => {
+  const canonicalUrl = "https://calculamatriz.vercel.app/pratica";
+  const pageTitle = "Modo Treino: Exercícios Interativos de Matrizes | CalculaMatriz";
+  const pageDescription =
+    "Pratique operações com matrizes de forma interativa no Modo Treino do CalculaMatriz. Resolva desafios 2x2, 3x3 e 4x4 com validação em tempo real.";
+
   const [size, setSize] = useState({ rows: 2, cols: 2 });
-  const [matrixA, setMatrixA] = useState([]);
-  const [matrixB, setMatrixB] = useState([]);
-  const [correctResult, setCorrectResult] = useState([]);
-  const [userResult, setUserResult] = useState([]);
+  const [matrixA, setMatrixA] = useState(INITIAL_A);
+  const [matrixB, setMatrixB] = useState(INITIAL_B);
+  const [correctResult, setCorrectResult] = useState(() =>
+    calculateSum(INITIAL_A, INITIAL_B)
+  );
+  const [userResult, setUserResult] = useState(() => createEmptyMatrix(2, 2));
   const [isCompleted, setIsCompleted] = useState(false);
 
   const generateChallenge = useCallback(() => {
@@ -44,7 +61,6 @@ const Pratica = () => {
   }, [generateChallenge]);
 
   const handleInputChange = (r, c, value) => {
-    // Permite digitação de números, negativos e decimais
     const numericRegex = /^-?[0-9]*\.?[0-9]*(\/[0-9]*)?$/;
     if (!numericRegex.test(value) && value !== "") return;
 
@@ -53,7 +69,6 @@ const Pratica = () => {
     );
     setUserResult(newUserResult);
 
-    // Checa se completou
     let completed = true;
     for (let i = 0; i < size.rows; i++) {
       for (let j = 0; j < size.cols; j++) {
@@ -66,14 +81,43 @@ const Pratica = () => {
     setIsCompleted(completed);
   };
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Modo Treino de Matrizes — CalculaMatriz",
+    description: pageDescription,
+    url: canonicalUrl,
+    applicationCategory: "EducationalApplication",
+    operatingSystem: "All",
+    inLanguage: "pt-BR",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "BRL",
+    },
+  };
+
   return (
     <div className="w-full max-w-4xl mx-auto p-4 sm:p-6 text-center">
       <Helmet>
-        <title>Modo Treino: Prática Interativa | Matriz Calculator</title>
-        <meta
-          name="description"
-          content="Treine seus conhecimentos em álgebra linear resolvendo operações com matrizes na prática."
-        />
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:image" content="https://calculamatriz.vercel.app/logo1920.png" />
+        <meta property="og:image:width" content="1920" />
+        <meta property="og:image:height" content="1080" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content="https://calculamatriz.vercel.app/logo1920.png" />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
       </Helmet>
 
       <header className="mb-8">
@@ -87,10 +131,18 @@ const Pratica = () => {
 
       <div className="mb-8 flex justify-center gap-4">
         <div className="flex items-center gap-2">
-          <label className="text-sm font-semibold dark:text-slate-200">Tamanho:</label>
+          <label htmlFor="practice-size" className="text-sm font-semibold dark:text-slate-200">
+            Tamanho:
+          </label>
           <select
+            id="practice-size"
             value={size.rows}
-            onChange={(e) => setSize({ rows: parseInt(e.target.value), cols: parseInt(e.target.value) })}
+            onChange={(e) =>
+              setSize({
+                rows: parseInt(e.target.value, 10),
+                cols: parseInt(e.target.value, 10),
+              })
+            }
             className="rounded border border-slate-200 shadow-sm p-1 text-sm outline-none focus:ring-2 focus:ring-accent dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
           >
             <option value={2}>2x2</option>
@@ -101,18 +153,17 @@ const Pratica = () => {
       </div>
 
       <div className="bg-white p-6 sm:p-10 rounded-2xl border border-slate-200 shadow-sm dark:border-slate-800 dark:bg-slate-900 transition-colors">
-        
         {/* Desafio (A + B) */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-8 mb-10 overflow-x-auto pb-4">
           <div className="flex flex-col items-center">
             <span className="mb-2 font-semibold text-slate-500 dark:text-slate-400">Matriz A</span>
             <MatrixDisplay matrix={matrixA} />
           </div>
-          
+
           <div className="text-3xl font-bold text-slate-400 dark:text-slate-500 shrink-0">
             +
           </div>
-          
+
           <div className="flex flex-col items-center">
             <span className="mb-2 font-semibold text-slate-500 dark:text-slate-400">Matriz B</span>
             <MatrixDisplay matrix={matrixB} />
@@ -134,14 +185,18 @@ const Pratica = () => {
                 const isCorrect = isFilled && val === correctResult[i][j];
                 const isWrong = isFilled && val !== correctResult[i][j];
 
-                let cellClass = "w-full font-mono rounded-xl border-2 p-3 text-center text-lg outline-none transition-all focus:ring-2 focus:ring-accent ";
-                
+                let cellClass =
+                  "w-full font-mono rounded-xl border-2 p-3 text-center text-lg outline-none transition-all focus:ring-2 focus:ring-accent ";
+
                 if (isCorrect) {
-                  cellClass += "border-green-500 bg-green-50 text-green-700 dark:bg-green-900/30 dark:border-green-600 dark:text-green-300";
+                  cellClass +=
+                    "border-green-500 bg-green-50 text-green-700 dark:bg-green-900/30 dark:border-green-600 dark:text-green-300";
                 } else if (isWrong) {
-                  cellClass += "border-red-400 bg-red-50 text-red-700 dark:bg-red-900/30 dark:border-red-600 dark:text-red-300";
+                  cellClass +=
+                    "border-red-400 bg-red-50 text-red-700 dark:bg-red-900/30 dark:border-red-600 dark:text-red-300";
                 } else {
-                  cellClass += "border-slate-200 shadow-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 placeholder-slate-300 dark:placeholder-slate-700";
+                  cellClass +=
+                    "border-slate-200 shadow-sm dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 placeholder-slate-300 dark:placeholder-slate-700";
                 }
 
                 return (
@@ -149,6 +204,7 @@ const Pratica = () => {
                     key={`user-${i}-${j}`}
                     type="text"
                     inputMode="text"
+                    aria-label={`Entrada linha ${i + 1} coluna ${j + 1}`}
                     value={val}
                     onChange={(e) => handleInputChange(i, j, e.target.value)}
                     placeholder="?"
@@ -178,6 +234,23 @@ const Pratica = () => {
           </div>
         )}
       </div>
+
+      <section className="mt-12 text-left bg-white p-6 rounded-2xl border border-slate-200 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <h2 className="text-xl font-bold mb-3 text-slate-900 dark:text-slate-100">
+          Como funciona a prática de adição de matrizes?
+        </h2>
+        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          Para somar duas matrizes de mesma ordem, basta somar os elementos correspondentes que ocupam a mesma posição <code className="font-mono">(i, j)</code>: <code className="font-mono">c_ij = a_ij + b_ij</code>. Preste atenção especial às regras de sinais ao somar números negativos.
+        </p>
+        <div className="flex flex-wrap gap-3 text-sm font-semibold">
+          <Link to="/tutorial/soma-de-matrizes" className="text-accent hover:underline dark:text-blue-400">
+            Ver tutorial de Soma de Matrizes →
+          </Link>
+          <Link to="/" className="text-slate-600 hover:underline dark:text-slate-400">
+            Voltar para a Calculadora Completa
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };

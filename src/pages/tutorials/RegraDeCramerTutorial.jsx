@@ -8,23 +8,23 @@ function RegraDeCramerTutorial() {
   return (
     <div className="px-3 sm:px-6 py-6 max-w-4xl mx-auto text-slate-900 dark:text-white">
       <section className="bg-white p-4 sm:p-6 rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
-        <h2 className="text-2xl font-semibold mb-4">
-          Regra de Cramer
-        </h2>
+        <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-slate-900 dark:text-white dark:text-slate-100">
+          Regra de Cramer: Como Resolver Sistemas Lineares com Determinantes
+        </h1>
         <p className="leading-relaxed mb-4">
-          A Regra de Cramer é um método analítico explícito para resolver sistemas lineares quadrados utilizando determinantes. Cada incógnita é calculada diretamente pela razão entre o determinante da matriz com a coluna da variável substituída pelos termos independentes e o determinante principal.
+          A Regra de Cramer é um método analítico explícito para resolver sistemas lineares quadrados utilizando determinantes. Resolva sistemas lineares 2x2 e 3x3 usando os determinantes D, Dx, Dy e Dz. Cada incógnita é calculada diretamente pela razão entre o determinante da matriz com a coluna da variável substituída pelos termos independentes e o determinante principal.
         </p>
       </section>
 
       <section className="bg-white p-4 sm:p-6 rounded-lg border border-slate-200 shadow-sm dark:border-slate-700/20 mb-8">
         <h2 className="text-2xl font-semibold mb-4">Condições de aplicabilidade</h2>
         <ul className="list-disc pl-6 space-y-3 leading-relaxed text-slate-700 dark:text-slate-300">
-          <li><strong>Sistema quadrado:</strong> o número de equações deve ser rigorosamente igual ao número de incógnitas (<Formula>n \times n</Formula>).</li>
-          <li><strong>Determinante principal não nulo:</strong> o determinante da matriz de coeficientes deve ser estritamente diferente de zero (<Formula>D = \det(A) \neq 0</Formula>).</li>
+          <li><strong>Sistema quadrado:</strong> o número de equações deve ser rigorosamente igual ao número de incógnitas (<Formula>{"n \\times n"}</Formula>).</li>
+          <li><strong>Determinante principal não nulo:</strong> o determinante da matriz de coeficientes deve ser estritamente diferente de zero (<Formula>{"D = \\det(A) \\neq 0"}</Formula>).</li>
           <li><strong>Escopo prático:</strong> recomendada para ordens 2×2 e 3×3. Para sistemas de ordem 4 ou superior, a eliminação gaussiana é computacionalmente superior devido à complexidade fatorial do cálculo de determinantes.</li>
         </ul>
         <TipBox>
-          Caso <Formula>D = 0</Formula>, a Regra de Cramer não pode ser utilizada (o sistema será indeterminado ou impossível).
+          Caso <Formula>{"D = 0"}</Formula>, a Regra de Cramer não pode ser utilizada (o sistema será indeterminado ou impossível).
         </TipBox>
       </section>
 
@@ -51,10 +51,10 @@ function RegraDeCramerTutorial() {
         </p>
         <div className="space-y-3">
           <p className="leading-relaxed">
-            <Formula>x = \frac{D_x}{D}</Formula> e <Formula>y = \frac{D_y}{D}</Formula>
+            <Formula>{"x = \\frac{D_x}{D}"}</Formula> e <Formula>{"y = \\frac{D_y}{D}"}</Formula>
           </p>
           <p className="leading-relaxed text-sm text-slate-600 dark:text-slate-300">
-            Onde <Formula>D</Formula> é o determinante de <Formula>A</Formula>, <Formula>D_x</Formula> é obtido substituindo a 1ª coluna pelos termos independentes e <Formula>D_y</Formula> substituindo a 2ª coluna.
+            Onde <Formula>{"D"}</Formula> é o determinante de <Formula>{"A"}</Formula>, <Formula>{"D_x"}</Formula> é obtido substituindo a 1ª coluna pelos termos independentes e <Formula>{"D_y"}</Formula> substituindo a 2ª coluna.
           </p>
         </div>
       </section>
@@ -99,7 +99,7 @@ function RegraDeCramerTutorial() {
             y = Dy / D = 9 / 11
           </p>
           <p className="mt-3 leading-relaxed">
-            Conjunto solução: <Formula>S = \{ (25/11, 9/11) \}</Formula>.
+            Conjunto solução: <Formula>{"S = \\{ (25/11, 9/11) \\}"}</Formula>.
           </p>
         </div>
       </section>
@@ -118,18 +118,18 @@ function RegraDeCramerTutorial() {
             <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
               <tr>
                 <td className="py-2 px-3 font-medium">Formato do sistema</td>
-                <td className="py-2 px-3">Apenas quadrados (<Formula>n \times n</Formula>)</td>
-                <td className="py-2 px-3">Qualquer formato (<Formula>m \times n</Formula>)</td>
+                <td className="py-2 px-3">Apenas quadrados (<Formula>{"n \\times n"}</Formula>)</td>
+                <td className="py-2 px-3">Qualquer formato (<Formula>{"m \\times n"}</Formula>)</td>
               </tr>
               <tr>
                 <td className="py-2 px-3 font-medium">Condição</td>
-                <td className="py-2 px-3">Exige <Formula>\det(A) \neq 0</Formula></td>
+                <td className="py-2 px-3">Exige <Formula>{"\\det(A) \\neq 0"}</Formula></td>
                 <td className="py-2 px-3">Funciona para qualquer matriz</td>
               </tr>
               <tr>
                 <td className="py-2 px-3 font-medium">Eficiência numérica</td>
-                <td className="py-2 px-3">Inviável para <Formula>n \ge 4</Formula></td>
-                <td className="py-2 px-3">Ótima (<Formula>O(n^3)</Formula>)</td>
+                <td className="py-2 px-3">Inviável para <Formula>{"n \\ge 4"}</Formula></td>
+                <td className="py-2 px-3">Ótima (<Formula>{"O(n^3)"}</Formula>)</td>
               </tr>
             </tbody>
           </table>
@@ -143,7 +143,7 @@ function RegraDeCramerTutorial() {
             <strong>Substituição isolada de colunas:</strong> substitua apenas a coluna da incógnita em cálculo, preservando as demais colunas intactas.
           </li>
           <li>
-            <strong>Divisão por zero:</strong> nunca aplique as frações de Cramer se <Formula>D = 0</Formula>.
+            <strong>Divisão por zero:</strong> nunca aplique as frações de Cramer se <Formula>{"D = 0"}</Formula>.
           </li>
         </ul>
       </section>
